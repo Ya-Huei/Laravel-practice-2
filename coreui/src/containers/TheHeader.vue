@@ -17,7 +17,7 @@
     <CMenu/>
 
     <CHeaderNav class="mr-4">
-      <CHeaderNavItem class="d-md-down-none mx-2">
+      <!-- <CHeaderNavItem class="d-md-down-none mx-2">
         <CHeaderNavLink>
           <CIcon name="cil-bell"/>
         </CHeaderNavLink>
@@ -26,10 +26,10 @@
         <CHeaderNavLink>
           <CIcon name="cil-list"/>
         </CHeaderNavLink>
-      </CHeaderNavItem>
+      </CHeaderNavItem> -->
       <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          <CIcon name="cil-envelope-open"/>
+        <CHeaderNavLink  @click="logout()">
+          <CIcon name="cil-lock-locked" /> Logout
         </CHeaderNavLink>
       </CHeaderNavItem>
       <TheHeaderDropdownAccnt/>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import CMenu from './Menu'
 import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
 
@@ -49,6 +50,18 @@ export default {
   components: {
     TheHeaderDropdownAccnt,
     CMenu
+  },
+  methods:{
+    logout(){
+      console.log("aeiou");
+      let self = this;
+      axios.post('/api/logout?token=' + localStorage.getItem("api_token"),{})
+      .then(function (response) {
+        self.$router.push({ path: '/login' });
+      }).catch(function (error) {
+        console.log(error); 
+      });
+    }
   }
 }
 </script>

@@ -669,8 +669,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Menu */ "../coreui/src/containers/Menu.vue");
-/* harmony import */ var _TheHeaderDropdownAccnt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TheHeaderDropdownAccnt */ "../coreui/src/containers/TheHeaderDropdownAccnt.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Menu */ "../coreui/src/containers/Menu.vue");
+/* harmony import */ var _TheHeaderDropdownAccnt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TheHeaderDropdownAccnt */ "../coreui/src/containers/TheHeaderDropdownAccnt.vue");
 //
 //
 //
@@ -713,13 +715,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TheHeader',
   components: {
-    TheHeaderDropdownAccnt: _TheHeaderDropdownAccnt__WEBPACK_IMPORTED_MODULE_1__["default"],
-    CMenu: _Menu__WEBPACK_IMPORTED_MODULE_0__["default"]
+    TheHeaderDropdownAccnt: _TheHeaderDropdownAccnt__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CMenu: _Menu__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    logout: function logout() {
+      console.log("aeiou");
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/logout?token=' + localStorage.getItem("api_token"), {}).then(function (response) {
+        self.$router.push({
+          path: '/login'
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -1325,33 +1341,17 @@ var render = function() {
             [
               _c(
                 "CHeaderNavLink",
-                [_c("CIcon", { attrs: { name: "cil-bell" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CHeaderNavItem",
-            { staticClass: "d-md-down-none mx-2" },
-            [
-              _c(
-                "CHeaderNavLink",
-                [_c("CIcon", { attrs: { name: "cil-list" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CHeaderNavItem",
-            { staticClass: "d-md-down-none mx-2" },
-            [
-              _c(
-                "CHeaderNavLink",
-                [_c("CIcon", { attrs: { name: "cil-envelope-open" } })],
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.logout()
+                    }
+                  }
+                },
+                [
+                  _c("CIcon", { attrs: { name: "cil-lock-locked" } }),
+                  _vm._v(" Logout\n      ")
+                ],
                 1
               )
             ],

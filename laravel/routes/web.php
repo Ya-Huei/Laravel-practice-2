@@ -18,9 +18,8 @@ Route::get('/{any}', function () {
 //Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
-/*
-Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
-Route::get('logout', 'AuthController@logout');
-Route::post('logout', 'AuthController@logout');
-*/
+
+// Route::post('register', 'AuthController@register');
+// Route::post('login', 'AuthController@login');
+// Route::get('logout', 'AuthController@logout');
+// Route::post('logout', 'AuthController@logout');

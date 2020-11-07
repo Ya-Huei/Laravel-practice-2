@@ -135,14 +135,14 @@ class MenusTableSeeder extends Seeder
         // $this->insertLink('guest,user,admin', 'Dashboard', '/', 'cil-speedometer');
         // $this->insertLink('guest', 'Login', '/login', 'cil-account-logout');
         // $this->insertLink('guest', 'Register', '/register', 'cil-account-logout');
-        $this->beginDropdown('admin', 'Settings', '/', 'cil-puzzle');
+        // $this->beginDropdown('admin', 'Settings', '/', 'cil-puzzle');
             // $this->insertLink('admin', 'Media',    '/media');
-            $this->insertLink('admin', 'Users',    '/users');
-            $this->insertLink('admin', 'Roles',    '/roles');
+        $this->insertLink('admin', 'Users',    '/users');
+        $this->insertLink('admin', 'Roles',    '/roles');
             // $this->insertLink('admin', 'Menu',    '/menu');
             // $this->insertLink('admin', 'BREAD',    '/bread');
             // $this->insertLink('admin', 'Email',    '/email');
-        $this->endDropdown();
+        // $this->endDropdown();
         // $this->insertTitle('user,admin', 'Theme');
         // $this->insertLink('user,admin', 'Colors', '/colors', 'cil-drop');
         // $this->insertLink('user,admin', 'Typography', '/typography', 'cil-pencil');
