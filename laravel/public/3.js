@@ -1,103 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[3],{
 
-/***/ "../coreui/src/views/widgets/WidgetsBrand.vue":
-/*!****************************************************!*\
-  !*** ../coreui/src/views/widgets/WidgetsBrand.vue ***!
-  \****************************************************/
+/***/ "../coreui/src/views/menuElements/CreateMenuElement.vue":
+/*!**************************************************************!*\
+  !*** ../coreui/src/views/menuElements/CreateMenuElement.vue ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _WidgetsBrand_vue_vue_type_template_id_3dfa97bc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true& */ "../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true&");
-/* harmony import */ var _WidgetsBrand_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WidgetsBrand.vue?vue&type=script&lang=js& */ "../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _WidgetsBrand_vue_vue_type_style_index_0_id_3dfa97bc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css& */ "../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css&");
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _WidgetsBrand_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _WidgetsBrand_vue_vue_type_template_id_3dfa97bc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _WidgetsBrand_vue_vue_type_template_id_3dfa97bc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "3dfa97bc",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "coreui/src/views/widgets/WidgetsBrand.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./WidgetsBrand.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css&":
-/*!*************************************************************************************************************!*\
-  !*** ../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css& ***!
-  \*************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_style_loader_index_js_laravel_node_modules_css_loader_index_js_ref_6_1_laravel_node_modules_vue_loader_lib_loaders_stylePostLoader_js_laravel_node_modules_postcss_loader_src_index_js_ref_6_2_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_style_index_0_id_3dfa97bc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/style-loader!../../../../laravel/node_modules/css-loader??ref--6-1!../../../../laravel/node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../laravel/node_modules/postcss-loader/src??ref--6-2!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css&");
-/* harmony import */ var _laravel_node_modules_style_loader_index_js_laravel_node_modules_css_loader_index_js_ref_6_1_laravel_node_modules_vue_loader_lib_loaders_stylePostLoader_js_laravel_node_modules_postcss_loader_src_index_js_ref_6_2_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_style_index_0_id_3dfa97bc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_laravel_node_modules_style_loader_index_js_laravel_node_modules_css_loader_index_js_ref_6_1_laravel_node_modules_vue_loader_lib_loaders_stylePostLoader_js_laravel_node_modules_postcss_loader_src_index_js_ref_6_2_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_style_index_0_id_3dfa97bc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _laravel_node_modules_style_loader_index_js_laravel_node_modules_css_loader_index_js_ref_6_1_laravel_node_modules_vue_loader_lib_loaders_stylePostLoader_js_laravel_node_modules_postcss_loader_src_index_js_ref_6_2_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_style_index_0_id_3dfa97bc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _laravel_node_modules_style_loader_index_js_laravel_node_modules_css_loader_index_js_ref_6_1_laravel_node_modules_vue_loader_lib_loaders_stylePostLoader_js_laravel_node_modules_postcss_loader_src_index_js_ref_6_2_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_style_index_0_id_3dfa97bc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_style_loader_index_js_laravel_node_modules_css_loader_index_js_ref_6_1_laravel_node_modules_vue_loader_lib_loaders_stylePostLoader_js_laravel_node_modules_postcss_loader_src_index_js_ref_6_2_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_style_index_0_id_3dfa97bc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true&":
-/*!***********************************************************************************************!*\
-  !*** ../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true& ***!
-  \***********************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_template_id_3dfa97bc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_template_id_3dfa97bc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsBrand_vue_vue_type_template_id_3dfa97bc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "../coreui/src/views/widgets/WidgetsDropdown.vue":
-/*!*******************************************************!*\
-  !*** ../coreui/src/views/widgets/WidgetsDropdown.vue ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _WidgetsDropdown_vue_vue_type_template_id_857ebc74___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WidgetsDropdown.vue?vue&type=template&id=857ebc74& */ "../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=template&id=857ebc74&");
-/* harmony import */ var _WidgetsDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WidgetsDropdown.vue?vue&type=script&lang=js& */ "../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=script&lang=js&");
+/* harmony import */ var _CreateMenuElement_vue_vue_type_template_id_3109ff92___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateMenuElement.vue?vue&type=template&id=3109ff92& */ "../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=template&id=3109ff92&");
+/* harmony import */ var _CreateMenuElement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMenuElement.vue?vue&type=script&lang=js& */ "../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -107,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _WidgetsDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _WidgetsDropdown_vue_vue_type_template_id_857ebc74___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _WidgetsDropdown_vue_vue_type_template_id_857ebc74___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _CreateMenuElement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateMenuElement_vue_vue_type_template_id_3109ff92___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateMenuElement_vue_vue_type_template_id_3109ff92___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -119,136 +32,54 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/widgets/WidgetsDropdown.vue"
+component.options.__file = "coreui/src/views/menuElements/CreateMenuElement.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=script&lang=js&":
-/*!********************************************************************************!*\
-  !*** ../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************/
+/***/ "../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./WidgetsDropdown.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsDropdown_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMenuElement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateMenuElement.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMenuElement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=template&id=857ebc74&":
-/*!**************************************************************************************!*\
-  !*** ../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=template&id=857ebc74& ***!
-  \**************************************************************************************/
+/***/ "../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=template&id=3109ff92&":
+/*!*********************************************************************************************!*\
+  !*** ../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=template&id=3109ff92& ***!
+  \*********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsDropdown_vue_vue_type_template_id_857ebc74___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./WidgetsDropdown.vue?vue&type=template&id=857ebc74& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=template&id=857ebc74&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsDropdown_vue_vue_type_template_id_857ebc74___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMenuElement_vue_vue_type_template_id_3109ff92___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateMenuElement.vue?vue&type=template&id=3109ff92& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=template&id=3109ff92&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMenuElement_vue_vue_type_template_id_3109ff92___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_WidgetsDropdown_vue_vue_type_template_id_857ebc74___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateMenuElement_vue_vue_type_template_id_3109ff92___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _charts_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../charts/index.js */ "../coreui/src/views/charts/index.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -325,509 +156,147 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'WidgetsBrand',
-  components: {
-    CChartLineSimple: _charts_index_js__WEBPACK_IMPORTED_MODULE_0__["CChartLineSimple"]
+  name: 'CreateMenuElement',
+  data: function data() {
+    return {
+      role: [],
+      menulist: [],
+      parents: [],
+      types: [{
+        label: 'Link',
+        value: 'link'
+      }, {
+        label: 'Title',
+        value: 'title'
+      }, {
+        label: 'Dropdown',
+        value: 'dropdown'
+      }],
+      menuelement: {
+        menu: 0,
+        name: '',
+        role: [],
+        type: 'link',
+        href: '',
+        icon: '',
+        parent: 0
+      },
+      message: '',
+      dismissSecs: 7,
+      dismissCountDown: 0,
+      showDismissibleAlert: false,
+      divHref: false,
+      divDropdownParent: false,
+      divIcon: false
+    };
   },
-  props: {
-    noCharts: Boolean
+  methods: {
+    goBack: function goBack() {
+      this.$router.go(-1); // this.$router.replace({path: '/users'})
+    },
+    selectRadioSelectRole: function selectRadioSelectRole(role) {
+      var temp = this.menuelement.role.indexOf(role);
+
+      if (temp > -1) {
+        this.menuelement.role.splice(temp, 1);
+      } else {
+        this.menuelement.role.push(role);
+      }
+    },
+    changeType: function changeType() {
+      var temp = this.menuelement.type;
+
+      if (temp == 'title') {
+        this.divHref = false;
+        this.divDropdownParent = false;
+        this.divIcon = false;
+      } else if (temp == 'link') {
+        this.divHref = true;
+        this.divDropdownParent = true;
+        this.divIcon = true;
+      } else {
+        this.divHref = false;
+        this.divDropdownParent = true;
+        this.divIcon = true;
+      }
+    },
+    updateSelectParent: function updateSelectParent() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/menu/element/get-parents?token=' + localStorage.getItem("api_token") + '&menu=' + self.menuelement.menu).then(function (response) {
+        self.parents = [{
+          label: 'Has no parent',
+          value: 'none'
+        }];
+
+        for (var i = 0; i < response.data.length; i++) {
+          self.parents.push(response.data[i]);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+        self.$router.push({
+          path: 'login'
+        });
+      });
+    },
+    store: function store() {
+      var self = this;
+      console.log(self.menuelement);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/menu/element/store?token=' + localStorage.getItem("api_token"), self.menuelement).then(function (response) {
+        self.name = '';
+        self.message = 'Successfully created menu element.';
+        self.showAlert();
+      })["catch"](function (error) {
+        if (error.response.data.message == 'The given data was invalid.') {
+          self.message = '';
+
+          for (var key in error.response.data.errors) {
+            if (error.response.data.errors.hasOwnProperty(key)) {
+              self.message += error.response.data.errors[key][0] + '  ';
+            }
+          }
+
+          self.showAlert();
+        } else {
+          console.log(error);
+          self.$router.push({
+            path: 'login'
+          });
+        }
+      });
+    },
+    countDownChanged: function countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert: function showAlert() {
+      this.dismissCountDown = this.dismissSecs;
+    },
+    getData: function getData() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/menu/element/create?token=' + localStorage.getItem("api_token") + '&id=' + self.$route.params.menu).then(function (response) {
+        self.role = response.data.roles;
+        self.menulist = response.data.menulist;
+      })["catch"](function (error) {
+        console.log(error);
+        self.$router.push({
+          path: '/login'
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getData();
+    this.menuelement.menu = this.$route.params.menu;
+    this.updateSelectParent();
+    this.changeType();
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _charts_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../charts/index.js */ "../coreui/src/views/charts/index.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'WidgetsDropdown',
-  components: {
-    CChartLineSimple: _charts_index_js__WEBPACK_IMPORTED_MODULE_0__["CChartLineSimple"],
-    CChartBarSimple: _charts_index_js__WEBPACK_IMPORTED_MODULE_0__["CChartBarSimple"]
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../laravel/node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.c-chart-brand[data-v-3dfa97bc] {\n  position: absolute;\n  width: 100%;\n  height: 100px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../laravel/node_modules/css-loader??ref--6-1!../../../../laravel/node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../laravel/node_modules/postcss-loader/src??ref--6-2!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=style&index=0&id=3dfa97bc&scoped=true&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../laravel/node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/widgets/WidgetsBrand.vue?vue&type=template&id=3dfa97bc&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "CRow",
-    [
-      !_vm.noCharts
-        ? [
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      color: "facebook",
-                      "right-header": "89k",
-                      "right-footer": "friends",
-                      "left-header": "459",
-                      "left-footer": "feeds"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cib-facebook", height: "52" }
-                    }),
-                    _vm._v(" "),
-                    _c("CChartLineSimple", {
-                      staticClass: "c-chart-brand",
-                      attrs: {
-                        "background-color": "rgba(255,255,255,.1)",
-                        "data-points": [65, 59, 84, 84, 51, 55, 40],
-                        label: "Friends",
-                        labels: "months"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      color: "twitter",
-                      "right-header": "973k",
-                      "right-footer": "followers",
-                      "left-header": "1.792",
-                      "left-footer": "tweets"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cib-twitter", height: "52" }
-                    }),
-                    _vm._v(" "),
-                    _c("CChartLineSimple", {
-                      staticClass: "c-chart-brand",
-                      attrs: {
-                        "background-color": "rgba(255,255,255,.1)",
-                        "data-points": [1, 13, 9, 17, 34, 41, 38],
-                        label: "Followers",
-                        labels: "months"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      color: "linkedin",
-                      "right-header": "500+",
-                      "right-footer": "contracts",
-                      "left-header": "292",
-                      "left-footer": "feeds"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cib-linkedin", height: "52" }
-                    }),
-                    _vm._v(" "),
-                    _c("CChartLineSimple", {
-                      staticClass: "c-chart-brand",
-                      attrs: {
-                        "background-color": "rgba(255,255,255,.1)",
-                        "data-points": [78, 81, 80, 45, 34, 12, 40],
-                        label: "Contracts",
-                        labels: "months"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      "right-header": "12",
-                      "right-footer": "events",
-                      "left-header": "4",
-                      "left-footer": "meetings",
-                      color: "warning"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cil-calendar", height: "52" }
-                    }),
-                    _vm._v(" "),
-                    _c("CChartLineSimple", {
-                      staticClass: "c-chart-brand",
-                      attrs: {
-                        "background-color": "rgba(255,255,255,.1)",
-                        "data-points": [35, 23, 56, 22, 97, 23, 64],
-                        label: "Followers",
-                        labels: "months"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ]
-        : [
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      color: "facebook",
-                      "right-header": "89k",
-                      "right-footer": "friends",
-                      "left-header": "459",
-                      "left-footer": "feeds"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cib-facebook", height: "56" }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      color: "twitter",
-                      "right-header": "973k",
-                      "right-footer": "followers",
-                      "left-header": "1.792",
-                      "left-footer": "tweets"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cib-twitter", height: "56" }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      color: "linkedin",
-                      "right-header": "500+",
-                      "right-footer": "contracts",
-                      "left-header": "292",
-                      "left-footer": "feeds"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cib-linkedin", height: "56" }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "CCol",
-              { attrs: { md: "3", sm: "6" } },
-              [
-                _c(
-                  "CWidgetBrand",
-                  {
-                    attrs: {
-                      "right-header": "12",
-                      "right-footer": "events",
-                      "left-header": "4",
-                      "left-footer": "meetings",
-                      color: "warning"
-                    }
-                  },
-                  [
-                    _c("CIcon", {
-                      staticClass: "my-4",
-                      attrs: { name: "cil-calendar", height: "56" }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ]
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=template&id=857ebc74&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/widgets/WidgetsDropdown.vue?vue&type=template&id=857ebc74& ***!
-  \********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=template&id=3109ff92&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/menuElements/CreateMenuElement.vue?vue&type=template&id=3109ff92& ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -844,303 +313,231 @@ var render = function() {
     [
       _c(
         "CCol",
-        { attrs: { sm: "6", lg: "3" } },
+        { attrs: { col: "12", lg: "6" } },
         [
-          _c("CWidgetDropdown", {
-            attrs: {
-              color: "primary",
-              header: "9.823",
-              text: "Members online"
-            },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function() {
-                  return [
-                    _c(
-                      "CDropdown",
-                      {
-                        attrs: {
-                          color: "transparent p-0",
-                          placement: "bottom-end"
-                        },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "toggler-content",
-                            fn: function() {
-                              return [
-                                _c("CIcon", { attrs: { name: "cil-settings" } })
-                              ]
-                            },
-                            proxy: true
-                          }
-                        ])
-                      },
-                      [
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Another action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Something else here...")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", { attrs: { disabled: "" } }, [
-                          _vm._v("Disabled action")
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                },
-                proxy: true
-              },
-              {
-                key: "footer",
-                fn: function() {
-                  return [
-                    _c("CChartLineSimple", {
-                      staticClass: "mt-3 mx-3",
-                      staticStyle: { height: "70px" },
+          _c(
+            "CCard",
+            { attrs: { "no-header": "" } },
+            [
+              _c(
+                "CCardBody",
+                [
+                  _c("h3", [
+                    _vm._v("\n          Create Menu Element\n        ")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "CAlert",
+                    {
                       attrs: {
-                        pointed: "",
-                        "data-points": [65, 59, 84, 84, 51, 55, 40],
-                        "point-hover-background-color": "primary",
-                        label: "Members",
-                        labels: "months"
-                      }
-                    })
-                  ]
-                },
-                proxy: true
-              }
-            ])
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CCol",
-        { attrs: { sm: "6", lg: "3" } },
-        [
-          _c("CWidgetDropdown", {
-            attrs: { color: "info", header: "9.823", text: "Members online" },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function() {
-                  return [
-                    _c(
-                      "CDropdown",
-                      {
-                        attrs: {
-                          color: "transparent p-0",
-                          placement: "bottom-end",
-                          caret: false
-                        },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "toggler-content",
-                            fn: function() {
-                              return [
-                                _c("CIcon", {
-                                  attrs: { name: "cil-location-pin" }
-                                })
-                              ]
-                            },
-                            proxy: true
-                          }
-                        ])
+                        show: _vm.dismissCountDown,
+                        color: "primary",
+                        fade: ""
                       },
-                      [
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Another action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Something else here...")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", { attrs: { disabled: "" } }, [
-                          _vm._v("Disabled action")
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                },
-                proxy: true
-              },
-              {
-                key: "footer",
-                fn: function() {
-                  return [
-                    _c("CChartLineSimple", {
-                      staticClass: "mt-3 mx-3",
-                      staticStyle: { height: "70px" },
-                      attrs: {
-                        pointed: "",
-                        "data-points": [1, 18, 9, 17, 34, 22, 11],
-                        "point-hover-background-color": "info",
-                        options: { elements: { line: { tension: 0.00001 } } },
-                        label: "Members",
-                        labels: "months"
+                      on: {
+                        "update:show": function($event) {
+                          _vm.dismissCountDown = $event
+                        }
                       }
-                    })
-                  ]
-                },
-                proxy: true
-              }
-            ])
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CCol",
-        { attrs: { sm: "6", lg: "3" } },
-        [
-          _c("CWidgetDropdown", {
-            attrs: {
-              color: "warning",
-              header: "9.823",
-              text: "Members online"
-            },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function() {
-                  return [
-                    _c(
-                      "CDropdown",
-                      {
-                        attrs: {
-                          color: "transparent p-0",
-                          placement: "bottom-end"
+                    },
+                    [
+                      _vm._v(
+                        "\n          (" +
+                          _vm._s(_vm.dismissCountDown) +
+                          ") " +
+                          _vm._s(_vm.message) +
+                          "\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("CSelect", {
+                    attrs: {
+                      label: "Menu",
+                      value: _vm.menuelement.menu,
+                      plain: true,
+                      options: _vm.menulist
+                    },
+                    on: {
+                      "update:value": [
+                        function($event) {
+                          return _vm.$set(_vm.menuelement, "menu", $event)
                         },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "toggler-content",
-                            fn: function() {
-                              return [
-                                _c("CIcon", { attrs: { name: "cil-settings" } })
-                              ]
-                            },
-                            proxy: true
+                        function($event) {
+                          return _vm.updateSelectParent()
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Roles")]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "m-3" },
+                    _vm._l(_vm.role, function(rol) {
+                      return _c("CInputCheckbox", {
+                        key: rol,
+                        attrs: { label: rol, name: "selectRoles" },
+                        on: {
+                          "update:checked": function($event) {
+                            return _vm.selectRadioSelectRole(rol)
                           }
-                        ])
+                        }
+                      })
+                    }),
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("CInput", {
+                    attrs: { label: "Name", type: "text", placeholder: "Name" },
+                    model: {
+                      value: _vm.menuelement.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.menuelement, "name", $$v)
                       },
-                      [
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Another action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Something else here...")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", { attrs: { disabled: "" } }, [
-                          _vm._v("Disabled action")
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                },
-                proxy: true
-              },
-              {
-                key: "footer",
-                fn: function() {
-                  return [
-                    _c("CChartLineSimple", {
-                      staticClass: "mt-3",
-                      staticStyle: { height: "70px" },
-                      attrs: {
-                        "background-color": "rgba(255,255,255,.2)",
-                        "data-points": [78, 81, 80, 45, 34, 12, 40],
-                        options: { elements: { line: { borderWidth: 2.5 } } },
-                        "point-hover-background-color": "warning",
-                        label: "Members",
-                        labels: "months"
-                      }
-                    })
-                  ]
-                },
-                proxy: true
-              }
-            ])
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CCol",
-        { attrs: { sm: "6", lg: "3" } },
-        [
-          _c("CWidgetDropdown", {
-            attrs: { color: "danger", header: "9.823", text: "Members online" },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function() {
-                  return [
-                    _c(
-                      "CDropdown",
-                      {
-                        attrs: {
-                          color: "transparent p-0",
-                          placement: "bottom-end"
+                      expression: "menuelement.name"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("CSelect", {
+                    attrs: {
+                      label: "Type",
+                      value: _vm.menuelement.type,
+                      plain: true,
+                      options: _vm.types
+                    },
+                    on: {
+                      "update:value": [
+                        function($event) {
+                          return _vm.$set(_vm.menuelement, "type", $event)
                         },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "toggler-content",
-                            fn: function() {
-                              return [
-                                _c("CIcon", { attrs: { name: "cil-settings" } })
-                              ]
+                        function($event) {
+                          return _vm.changeType()
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Other")]),
+                  _vm._v(" "),
+                  _vm.divHref
+                    ? _c(
+                        "div",
+                        [
+                          _c("CInput", {
+                            attrs: {
+                              label: "Href",
+                              type: "text",
+                              placeholder: "Href"
                             },
-                            proxy: true
-                          }
-                        ])
-                      },
-                      [
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Another action")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", [_vm._v("Something else here...")]),
-                        _vm._v(" "),
-                        _c("CDropdownItem", { attrs: { disabled: "" } }, [
-                          _vm._v("Disabled action")
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                },
-                proxy: true
-              },
-              {
-                key: "footer",
-                fn: function() {
-                  return [
-                    _c("CChartBarSimple", {
-                      staticClass: "mt-3 mx-3",
-                      staticStyle: { height: "70px" },
-                      attrs: {
-                        "background-color": "rgb(250, 152, 152)",
-                        label: "Members",
-                        labels: "months"
+                            model: {
+                              value: _vm.menuelement.href,
+                              callback: function($$v) {
+                                _vm.$set(_vm.menuelement, "href", $$v)
+                              },
+                              expression: "menuelement.href"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.divDropdownParent
+                    ? _c(
+                        "div",
+                        [
+                          _c("CSelect", {
+                            attrs: {
+                              label: "Dropdown parent",
+                              value: _vm.menuelement.parent,
+                              plain: true,
+                              options: _vm.parents
+                            },
+                            on: {
+                              "update:value": function($event) {
+                                return _vm.$set(
+                                  _vm.menuelement,
+                                  "parent",
+                                  $event
+                                )
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.divIcon
+                    ? _c(
+                        "div",
+                        [
+                          _vm._v(
+                            "\n            Icon - Find icon class in: \n            "
+                          ),
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href:
+                                  "https://coreui.io/docs/icons/icons-list/#coreui-icons-free-502-icons",
+                                target: "_blank"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n              CoreUI icons documentation\n            "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("CInput", {
+                            attrs: {
+                              type: "text",
+                              placeholder:
+                                "CoreUI Icon class - example: cil-bell"
+                            },
+                            model: {
+                              value: _vm.menuelement.icon,
+                              callback: function($$v) {
+                                _vm.$set(_vm.menuelement, "icon", $$v)
+                              },
+                              expression: "menuelement.icon"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "CButton",
+                    {
+                      attrs: { color: "primary" },
+                      on: {
+                        click: function($event) {
+                          return _vm.store()
+                        }
                       }
-                    })
-                  ]
-                },
-                proxy: true
-              }
-            ])
-          })
+                    },
+                    [_vm._v("Create")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "CButton",
+                    { attrs: { color: "primary" }, on: { click: _vm.goBack } },
+                    [_vm._v("Back")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
         ],
         1
       )

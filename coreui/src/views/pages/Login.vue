@@ -85,7 +85,7 @@ import axios from "axios";
             self.email = '';
             self.password = '';
             localStorage.setItem("api_token", response.data.access_token);
-            self.$router.push({ path: 'notes' });
+            self.$router.push({ path: 'users' });
           })
           .catch(function (error) {
             self.message = 'Incorrect E-mail or password';
