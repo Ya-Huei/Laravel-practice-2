@@ -149,6 +149,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CreateUser',
@@ -159,18 +162,18 @@ __webpack_require__.r(__webpack_exports__);
         email: '',
         password: ''
       },
-      message: '1234',
+      message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
       showDismissibleAlert: false,
-      selected: [],
-      // Must be an array reference!
+      selectedRoles: [],
       show: true,
       horizontal: {
         label: 'col-3',
         input: 'col-9'
       },
-      options: ['Role 1', 'Role 2', 'Role 3']
+      optionRoles: [],
+      isCreatedUser: true
     };
   },
   methods: {
@@ -179,50 +182,61 @@ __webpack_require__.r(__webpack_exports__);
     },
     store: function store() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users?token=' + localStorage.getItem("api_token"), {
-        name: self.user.name,
-        email: self.user.email,
-        password: self.user.password
-      }).then(function (response) {
-        self.note = {
-          title: '',
-          content: '',
-          applies_to_date: '',
-          status_id: null,
-          note_type: ''
-        };
-        self.message = 'Successfully created user.';
-        self.showAlert();
-      })["catch"](function (error) {
-        if (error.response.data.message == 'The given data was invalid.') {
-          self.message = '';
-
-          for (var key in error.response.data.errors) {
-            if (error.response.data.errors.hasOwnProperty(key)) {
-              self.message += error.response.data.errors[key][0] + '  ';
-            }
-          }
-
-          self.showAlert();
-        } else {
-          console.log(error);
-          self.$router.push({
-            path: 'login'
-          });
-        }
-      });
+      console.log(self.selectedRoles); // axios.post('/api/users?token=' + localStorage.getItem("api_token"),
+      //   {
+      //     isCreatedUser: false,
+      //     name: self.user.name,
+      //     email: self.user.email,
+      //     password: self.user.password,
+      //   }
+      // )
+      // .then(function (response) {
+      //     isCreatedUser: true;
+      //     self.note = {
+      //       title: '',
+      //       content: '',
+      //       applies_to_date: '',
+      //       status_id: null,
+      //       note_type: '',
+      //     };
+      //     self.message = 'Successfully created user.';
+      //     self.showAlert();
+      // }).catch(function (error) {
+      //     isCreatedUser: true;
+      //     if(error.response.data.message == 'The given data was invalid.'){
+      //       self.message = '';
+      //       for (let key in error.response.data.errors) {
+      //         if (error.response.data.errors.hasOwnProperty(key)) {
+      //           self.message += error.response.data.errors[key][0] + '  ';
+      //         }
+      //       }
+      //       self.showAlert();
+      //     }else{
+      //       console.log(error);
+      //       self.$router.push({ path: 'login' }); 
+      //     }
+      // });
     },
     countDownChanged: function countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown;
     },
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
+    },
+    selectRoles: function selectRoles(role) {
+      var temp = this.selectedRoles.indexOf(role);
+
+      if (temp > -1) {
+        this.selectedRoles.splice(temp, 1);
+      } else {
+        this.selectedRoles.push(role);
+      }
     }
   },
-  mounted: function mounted() {
+  beforeCreate: function beforeCreate() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/create?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.statuses = response.data;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles?token=' + localStorage.getItem("api_token")).then(function (response) {
+      self.optionRoles = response.data;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({
@@ -367,15 +381,19 @@ var render = function() {
                           _c(
                             "CCol",
                             { attrs: { sm: "9" } },
-                            _vm._l(_vm.options, function(option) {
+                            _vm._l(_vm.optionRoles, function(optionRole) {
                               return _c("CInputCheckbox", {
-                                key: option,
+                                key: optionRole.name,
                                 attrs: {
-                                  label: option,
-                                  value: option,
+                                  label: optionRole.name,
+                                  name: "selectRoles",
                                   custom: true,
-                                  name: "Option 1",
                                   inline: true
+                                },
+                                on: {
+                                  "update:checked": function($event) {
+                                    return _vm.selectRoles(optionRole.name)
+                                  }
                                 }
                               })
                             }),
@@ -398,19 +416,34 @@ var render = function() {
                   _c(
                     "CButton",
                     {
-                      attrs: { color: "primary" },
+                      attrs: { disabled: !_vm.isCreatedUser, color: "primary" },
                       on: {
                         click: function($event) {
                           return _vm.store()
                         }
                       }
                     },
-                    [_vm._v("Create")]
+                    [
+                      _vm.isCreatedUser
+                        ? _c("span", [_vm._v("Create")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.isCreatedUser
+                        ? _c("CSpinner", {
+                            attrs: { color: "info", size: "sm" }
+                          })
+                        : _vm._e()
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
                     "CButton",
-                    { attrs: { color: "danger" }, on: { click: _vm.goBack } },
+                    {
+                      staticClass: "ml-2",
+                      attrs: { color: "danger" },
+                      on: { click: _vm.goBack }
+                    },
                     [_vm._v("Back")]
                   )
                 ],

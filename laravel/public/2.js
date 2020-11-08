@@ -340,6 +340,7 @@ var render = function() {
                                       ? _c(
                                           "CButton",
                                           {
+                                            staticClass: "ml-1",
                                             attrs: { color: "danger" },
                                             on: {
                                               click: function($event) {

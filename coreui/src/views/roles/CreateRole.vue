@@ -42,7 +42,7 @@
           </CCardBody>
           <CCardFooter class="d-flex justify-content-end">
             <CButton color="primary" @click="store()">Create</CButton>
-            <CButton color="danger" @click="goBack">Back</CButton>
+            <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
           </CCardFooter>
       </CCard>
     </CCol>

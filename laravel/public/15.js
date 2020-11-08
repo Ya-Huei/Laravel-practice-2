@@ -359,7 +359,11 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "CButton",
-                    { attrs: { color: "danger" }, on: { click: _vm.goBack } },
+                    {
+                      staticClass: "ml-2",
+                      attrs: { color: "danger" },
+                      on: { click: _vm.goBack }
+                    },
                     [_vm._v("Back")]
                   )
                 ],
