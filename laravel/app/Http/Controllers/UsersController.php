@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\User;
+use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {
@@ -32,6 +34,41 @@ class UsersController extends Controller
         ->whereNull('deleted_at')
         ->get();
         return response()->json( compact('users', 'you') );
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     */
+    public function create()
+    {
+        return response()->json( ['status' => 'success'] );  
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name'       => 'required|min:1|max:256',
+            'email'      => 'required|email|max:256',
+            'password'   => 'required|min:1|max:256',
+        ]);
+        Log::info($request);
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->email_verified_at = now();
+        $user->remember_token = Str::random(10);
+        $user->menuroles = 'user,admin';
+        $user->status = 'Active';
+        $user->save();
+        $user->assignRole('admin');
+        return response()->json( ['status' => 'success'] );
     }
 
     /**

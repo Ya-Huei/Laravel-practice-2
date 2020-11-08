@@ -132,15 +132,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Users',
   data: function data() {
     return {
       items: [],
-      fields: ['id', 'name', 'registered', 'roles', 'status', 'show', 'edit', 'delete'],
+      fields: ['id', 'name', 'email', 'roles', 'updated', 'registered', 'operate'],
       currentPage: 1,
-      perPage: 5,
+      perPage: 6,
       totalRows: 0,
       you: null,
       message: '',
@@ -170,6 +173,11 @@ __webpack_require__.r(__webpack_exports__);
       var userLink = this.userLink(id);
       this.$router.push({
         path: userLink
+      });
+    },
+    createUser: function createUser() {
+      this.$router.push({
+        path: 'users/create'
       });
     },
     editUser: function editUser(id) {
@@ -240,7 +248,7 @@ var render = function() {
     [
       _c(
         "CCol",
-        { attrs: { col: "12", xl: "8" } },
+        { attrs: { col: "12", xl: "12" } },
         [
           _c(
             "transition",
@@ -249,7 +257,45 @@ var render = function() {
               _c(
                 "CCard",
                 [
-                  _c("CCardHeader", [_vm._v("\n          Users\n      ")]),
+                  _c(
+                    "CCardHeader",
+                    { staticClass: "container-fluid" },
+                    [
+                      _c(
+                        "CRow",
+                        [
+                          _c("CCol", { attrs: { col: "6" } }, [
+                            _c("h4", [_vm._v("Users")])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            {
+                              staticClass: "d-flex justify-content-end",
+                              attrs: { col: "6" }
+                            },
+                            [
+                              _c(
+                                "CButton",
+                                {
+                                  attrs: { color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.createUser()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Create User")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
                     "CCardBody",
@@ -285,61 +331,12 @@ var render = function() {
                           striped: "",
                           items: _vm.items,
                           fields: _vm.fields,
-                          "items-per-page": 5,
+                          "items-per-page": 6,
                           pagination: ""
                         },
                         scopedSlots: _vm._u([
                           {
-                            key: "status",
-                            fn: function(ref) {
-                              var item = ref.item
-                              return [
-                                _c(
-                                  "td",
-                                  [
-                                    _c(
-                                      "CBadge",
-                                      {
-                                        attrs: {
-                                          color: _vm.getBadge(item.status)
-                                        }
-                                      },
-                                      [_vm._v(_vm._s(item.status))]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          },
-                          {
-                            key: "show",
-                            fn: function(ref) {
-                              var item = ref.item
-                              return [
-                                _c(
-                                  "td",
-                                  [
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "primary" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.showUser(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Show")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          },
-                          {
-                            key: "edit",
+                            key: "operate",
                             fn: function(ref) {
                               var item = ref.item
                               return [
@@ -357,21 +354,8 @@ var render = function() {
                                         }
                                       },
                                       [_vm._v("Edit")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          },
-                          {
-                            key: "delete",
-                            fn: function(ref) {
-                              var item = ref.item
-                              return [
-                                _c(
-                                  "td",
-                                  [
+                                    ),
+                                    _vm._v(" "),
                                     _vm.you != item.id
                                       ? _c(
                                           "CButton",

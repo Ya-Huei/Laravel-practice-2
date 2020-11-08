@@ -11,8 +11,8 @@ const Login = () => import('@/views/pages/Login')
 
 // Users
 const Users = () => import('@/views/users/Users')
-const User = () => import('@/views/users/User')
 const EditUser = () => import('@/views/users/EditUser')
+const CreateUser = () => import('@/views/users/CreateUser')
 
 //Roles
 const Roles = () => import('@/views/roles/Roles')
@@ -134,17 +134,17 @@ function configRoutes () {
               component: Users,
             },
             {
-              path: ':id',
-              meta: { label: 'User Details'},
-              name: 'User',
-              component: User,
+              path: 'create',
+              meta: { label: 'Create User' },
+              nmae: 'Create User',
+              component: CreateUser
             },
             {
               path: ':id/edit',
               meta: { label: 'Edit User' },
               name: 'Edit User',
               component: EditUser
-            },
+            }
           ]
         },
         {

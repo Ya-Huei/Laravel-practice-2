@@ -1,10 +1,17 @@
 <template>
   <CRow>
-    <CCol col="12" xl="8">
+    <CCol col="12" xl="12">
       <transition name="slide">
       <CCard>
-        <CCardHeader>
-            Users
+        <CCardHeader class="container-fluid">
+          <CRow>
+            <CCol col="6">
+              <h4>Users</h4>
+            </CCol>
+            <CCol col="6" class="d-flex justify-content-end">
+              <CButton color="primary" @click="createUser()">Create User</CButton>
+            </CCol>
+          </CRow>
         </CCardHeader>
         <CCardBody>
           <CAlert
@@ -19,26 +26,22 @@
             striped
             :items="items"
             :fields="fields"
-            :items-per-page="5"
+            :items-per-page="6"
             pagination
           >
-          <template #status="{item}">
+          <!-- <template #status="{item}">
             <td>
               <CBadge :color="getBadge(item.status)">{{ item.status }}</CBadge>
             </td>
-          </template>
-          <template #show="{item}">
+          </template> -->
+          <!-- <template #show="{item}">
             <td>
               <CButton color="primary" @click="showUser( item.id )">Show</CButton>
             </td>
-          </template>
-          <template #edit="{item}">
+          </template> -->
+          <template #operate="{item}">
             <td>
               <CButton color="primary" @click="editUser( item.id )">Edit</CButton>
-            </td>
-          </template>
-          <template #delete="{item}">
-            <td>
               <CButton v-if="you!=item.id" color="danger" @click="deleteUser( item.id )">Delete</CButton>
             </td>
           </template>
@@ -58,9 +61,9 @@ export default {
   data: () => {
     return {
       items: [],
-      fields: ['id', 'name', 'registered', 'roles', 'status', 'show', 'edit', 'delete'],
+      fields: ['id', 'name', 'email', 'roles', 'updated', 'registered', 'operate'],
       currentPage: 1,
-      perPage: 5,
+      perPage: 6,
       totalRows: 0,
       you: null,
       message: '',
@@ -93,6 +96,9 @@ export default {
       const userLink = this.userLink( id );
       this.$router.push({path: userLink});
     },
+    createUser () {
+      this.$router.push({path: 'users/create'});
+    },
     editUser ( id ) {
       const editLink = this.editLink( id );
       this.$router.push({path: editLink});
@@ -100,7 +106,7 @@ export default {
     deleteUser ( id ) {
       let self = this;
       let userId = id;
-      axios.post(  '/api/users/' + id + '?token=' + localStorage.getItem("api_token"), {
+      axios.post('/api/users/' + id + '?token=' + localStorage.getItem("api_token"), {
         _method: 'DELETE'
       })
       .then(function (response) {
@@ -120,7 +126,7 @@ export default {
     },
     getUsers (){
       let self = this;
-      axios.get(  '/api/users?token=' + localStorage.getItem("api_token"))
+      axios.get('/api/users?token=' + localStorage.getItem("api_token"))
       .then(function (response) {
         self.items = response.data.users;
         self.you = response.data.you;

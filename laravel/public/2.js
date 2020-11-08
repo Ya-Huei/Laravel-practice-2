@@ -293,7 +293,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../laravel/node_modu
 
 
 // module
-exports.push([module.i, "\n.card-body[data-v-647b649e] table > tbody > tr > td {\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.card-body[data-v-647b649e] table > tbody > tr > td {\r\n  cursor: pointer;\n}\r\n", ""]);
 
 // exports
 

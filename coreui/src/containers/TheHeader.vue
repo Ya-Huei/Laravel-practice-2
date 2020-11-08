@@ -27,12 +27,12 @@
           <CIcon name="cil-list"/>
         </CHeaderNavLink>
       </CHeaderNavItem> -->
-      <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink  @click="logout()">
+      <CHeaderNavItem class="mx-2">
+        <CHeaderNavLink  @click.native="logout()">
           <CIcon name="cil-lock-locked" /> Logout
         </CHeaderNavLink>
       </CHeaderNavItem>
-      <TheHeaderDropdownAccnt/>
+      <!-- <TheHeaderDropdownAccnt/> -->
     </CHeaderNav>
     <CSubheader class="px-3">
       <CBreadcrumbRouter class="border-0 mb-0"/>
@@ -43,12 +43,12 @@
 <script>
 import axios from 'axios'
 import CMenu from './Menu'
-import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
+// import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
 
 export default {
   name: 'TheHeader',
   components: {
-    TheHeaderDropdownAccnt,
+    // TheHeaderDropdownAccnt,
     CMenu
   },
   methods:{

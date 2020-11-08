@@ -120,26 +120,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Login',
@@ -152,11 +132,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    goRegister: function goRegister() {
-      this.$router.push({
-        path: 'register'
-      });
-    },
     login: function login() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/login', {
@@ -206,130 +181,109 @@ var render = function() {
             "CCol",
             [
               _c(
-                "CCardGroup",
+                "CCard",
+                { staticClass: "p-4" },
                 [
                   _c(
-                    "CCard",
-                    { staticClass: "p-4" },
+                    "CCardBody",
                     [
                       _c(
-                        "CCardBody",
+                        "CForm",
+                        {
+                          attrs: { method: "POST" },
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.login($event)
+                            }
+                          }
+                        },
                         [
-                          _c(
-                            "CForm",
-                            {
-                              attrs: { method: "POST" },
-                              on: {
-                                submit: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.login($event)
-                                }
-                              }
+                          _c("h1", [_vm._v("Login")]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-muted" }, [
+                            _vm._v("Sign In to your account")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.message))
+                          ]),
+                          _vm._v(" "),
+                          _c("CInput", {
+                            attrs: {
+                              prependHtml: "<i class='cui-user'></i>",
+                              placeholder: "Username",
+                              autocomplete: "username email"
                             },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "prepend-content",
+                                fn: function() {
+                                  return [
+                                    _c("CIcon", { attrs: { name: "cil-user" } })
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ]),
+                            model: {
+                              value: _vm.email,
+                              callback: function($$v) {
+                                _vm.email = $$v
+                              },
+                              expression: "email"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("CInput", {
+                            attrs: {
+                              prependHtml: "<i class='cui-lock-locked'></i>",
+                              placeholder: "Password",
+                              type: "password",
+                              autocomplete: "curent-password"
+                            },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "prepend-content",
+                                fn: function() {
+                                  return [
+                                    _c("CIcon", {
+                                      attrs: { name: "cil-lock-locked" }
+                                    })
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ]),
+                            model: {
+                              value: _vm.password,
+                              callback: function($$v) {
+                                _vm.password = $$v
+                              },
+                              expression: "password"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "CRow",
                             [
-                              _c("h1", [_vm._v("Login")]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "text-muted" }, [
-                                _vm._v("Sign In to your account")
-                              ]),
-                              _vm._v(" "),
-                              _c("CInput", {
-                                attrs: {
-                                  prependHtml: "<i class='cui-user'></i>",
-                                  placeholder: "Username",
-                                  autocomplete: "username email"
-                                },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "prepend-content",
-                                    fn: function() {
-                                      return [
-                                        _c("CIcon", {
-                                          attrs: { name: "cil-user" }
-                                        })
-                                      ]
-                                    },
-                                    proxy: true
-                                  }
-                                ]),
-                                model: {
-                                  value: _vm.email,
-                                  callback: function($$v) {
-                                    _vm.email = $$v
-                                  },
-                                  expression: "email"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("CInput", {
-                                attrs: {
-                                  prependHtml:
-                                    "<i class='cui-lock-locked'></i>",
-                                  placeholder: "Password",
-                                  type: "password",
-                                  autocomplete: "curent-password"
-                                },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "prepend-content",
-                                    fn: function() {
-                                      return [
-                                        _c("CIcon", {
-                                          attrs: { name: "cil-lock-locked" }
-                                        })
-                                      ]
-                                    },
-                                    proxy: true
-                                  }
-                                ]),
-                                model: {
-                                  value: _vm.password,
-                                  callback: function($$v) {
-                                    _vm.password = $$v
-                                  },
-                                  expression: "password"
-                                }
-                              }),
-                              _vm._v(" "),
                               _c(
-                                "CRow",
+                                "CCol",
+                                {
+                                  staticClass: "text-right",
+                                  attrs: { col: "12" }
+                                },
                                 [
                                   _c(
-                                    "CCol",
-                                    { attrs: { col: "6" } },
-                                    [
-                                      _c(
-                                        "CButton",
-                                        {
-                                          staticClass: "px-4",
-                                          attrs: {
-                                            type: "submit",
-                                            color: "primary"
-                                          }
-                                        },
-                                        [_vm._v("Login")]
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "CCol",
+                                    "CButton",
                                     {
-                                      staticClass: "text-right",
-                                      attrs: { col: "6" }
+                                      staticClass: "px-4",
+                                      attrs: {
+                                        type: "submit",
+                                        color: "primary"
+                                      }
                                     },
-                                    [
-                                      _c(
-                                        "CButton",
-                                        {
-                                          staticClass: "px-0",
-                                          attrs: { color: "link" }
-                                        },
-                                        [_vm._v("Forgot password?")]
-                                      )
-                                    ],
-                                    1
+                                    [_vm._v("Login")]
                                   )
                                 ],
                                 1
@@ -339,42 +293,6 @@ var render = function() {
                           )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "CCard",
-                    {
-                      staticClass: "text-center py-5 d-md-down-none",
-                      attrs: {
-                        color: "primary",
-                        "text-color": "white",
-                        "body-wrapper": ""
-                      }
-                    },
-                    [
-                      _c("h2", [_vm._v("Sign up")]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "CButton",
-                        {
-                          staticClass: "active mt-3",
-                          attrs: { color: "primary" },
-                          on: {
-                            click: function($event) {
-                              return _vm.goRegister()
-                            }
-                          }
-                        },
-                        [_vm._v("\n            Register Now!\n          ")]
                       )
                     ],
                     1

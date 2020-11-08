@@ -1,7 +1,10 @@
 <template>
   <CRow>
-    <CCol col="12" lg="6">
-      <CCard no-header>
+    <CCol col="12" lg="12">
+      <CCard>
+        <CCardHeader>
+          <h4>Edit User</h4>
+        </CCardHeader>
         <CCardBody>
           <CForm>
             <template slot="header">
@@ -14,12 +17,49 @@
             >
               ({{dismissCountDown}}) {{ message }}
             </CAlert>
-            <CInput type="text" label="Name" placeholder="Name" v-model="name"></CInput>
-            <CInput type="text" label="Email" placeholder="Email" v-model="email"></CInput>
-            <CButton color="primary" @click="update()">Save</CButton>
-            <CButton color="primary" @click="goBack">Back</CButton>
-          </CForm>
-        </CCardBody>
+            <CInput
+              description="Enter your account"
+              label="Account"
+              horizontal
+              disabled
+            />
+            <CInput
+              type="password"
+              description="Please enter password"
+              label="Password"
+              horizontal
+            />
+            <CInput
+              type="password"
+              description="Please check password"
+              label="Check Password"
+              horizontal
+            />
+
+            <template>
+              <div class="form-group form-row">
+                <CCol tag="label" sm="3" class="col-form-label">
+                  Roles
+                </CCol>
+                <CCol sm="9" :class="form-inline">
+                  <CInputCheckbox
+                    v-for="(option) in options"
+                    :key="option"
+                    :label="option"
+                    :value="option"
+                    :custom="1"
+                    :name="`Option 1`"
+                    :inline="true"
+                  />
+                </CCol>
+              </div>
+            </template>
+            </CForm>
+          </CCardBody>
+        <CCardFooter class="text-right">
+          <CButton color="primary" @click="update()">Save</CButton>
+          <CButton color="primary" @click="goBack">Back</CButton>
+        </CCardFooter>
       </CCard>
     </CCol>
   </CRow>
@@ -37,13 +77,27 @@ export default {
   },
   data: () => {
     return {
-        name: '',
-        email: '',
-        showMessage: false,
-        message: '',
-        dismissSecs: 7,
-        dismissCountDown: 0,
-        showDismissibleAlert: false
+      name: '',
+      email: '',
+      showMessage: false,
+      message: '',
+      dismissSecs: 7,
+      dismissCountDown: 0,
+      showDismissibleAlert: false,
+      selected: [], // Must be an array reference!
+      show: true,
+      horizontal: { label:'col-3', input:'col-9' },
+      options: ['Role 1', 'Role 2', 'Role 3'],
+      selectOptions: [
+        'Option 1', 'Option 2', 'Option 3',
+        { 
+          value: ['some value', 'another value'], 
+          label: 'Selected option'
+        }
+      ],
+      selectedOption: ['some value', 'another value'],
+
+      formCollapsed: true,
     }
   },
   methods: {
@@ -53,7 +107,7 @@ export default {
     },
     update() {
         let self = this;
-        axios.post(  '/api/users/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
+        axios.post('/api/users/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
         {
             _method: 'PUT',
             name: self.name,
@@ -76,7 +130,7 @@ export default {
   },
   mounted: function(){
     let self = this;
-    axios.get(  '/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
+    axios.get(  this.$apiAdress + '/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
     .then(function (response) {
         self.name = response.data.name;
         self.email = response.data.email;
