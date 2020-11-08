@@ -30,7 +30,7 @@ class UsersController extends Controller
     {
         $you = auth()->user()->id;
         $users = DB::table('users')
-        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.status', 'users.email_verified_at as registered')
+        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.updated_at as updated', 'users.created_at as registered')
         ->whereNull('deleted_at')
         ->get();
         return response()->json( compact('users', 'you') );
@@ -57,7 +57,6 @@ class UsersController extends Controller
             'email'      => 'required|email|max:256',
             'password'   => 'required|min:1|max:256',
         ]);
-        Log::info($request);
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -80,8 +79,8 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = DB::table('users')
-        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.status', 'users.email_verified_at as registered')
-        ->where('users.id', '=', $id)
+        ->select('id', 'name', 'email', 'menuroles as roles', 'status', 'email_verified_at as registered')
+        ->where('id', '=', $id)
         ->first();
         return response()->json( $user );
     }

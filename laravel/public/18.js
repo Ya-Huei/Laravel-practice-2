@@ -152,15 +152,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CreateUser',
-
-  /*
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
-  */
   data: function data() {
     return {
       user: {
@@ -179,18 +170,12 @@ __webpack_require__.r(__webpack_exports__);
         label: 'col-3',
         input: 'col-9'
       },
-      options: ['Role 1', 'Role 2', 'Role 3'],
-      selectOptions: ['Option 1', 'Option 2', 'Option 3', {
-        value: ['some value', 'another value'],
-        label: 'Selected option'
-      }],
-      selectedOption: ['some value', 'another value'],
-      formCollapsed: true
+      options: ['Role 1', 'Role 2', 'Role 3']
     };
   },
   methods: {
     goBack: function goBack() {
-      this.$router.go(-1); // this.$router.replace({path: '/users'})
+      this.$router.go(-1);
     },
     store: function store() {
       var self = this;
@@ -199,8 +184,6 @@ __webpack_require__.r(__webpack_exports__);
         email: self.user.email,
         password: self.user.password
       }).then(function (response) {
-        console.log(3);
-        console.log(response);
         self.note = {
           title: '',
           content: '',
@@ -222,7 +205,6 @@ __webpack_require__.r(__webpack_exports__);
 
           self.showAlert();
         } else {
-          console.log(1);
           console.log(error);
           self.$router.push({
             path: 'login'
@@ -242,7 +224,6 @@ __webpack_require__.r(__webpack_exports__);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/create?token=' + localStorage.getItem("api_token")).then(function (response) {
       self.statuses = response.data;
     })["catch"](function (error) {
-      console.log(2);
       console.log(error);
       self.$router.push({
         path: 'login'
@@ -412,7 +393,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "CCardFooter",
-                { staticClass: "text-right" },
+                { staticClass: "d-flex justify-content-end" },
                 [
                   _c(
                     "CButton",

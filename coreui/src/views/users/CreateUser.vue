@@ -58,7 +58,7 @@
                 </div>
             </CForm>
           </CCardBody>
-          <CCardFooter class="text-right">
+          <CCardFooter class="d-flex justify-content-end">
             <CButton color="primary" @click="store()">Create</CButton>
             <CButton color="danger" @click="goBack">Back</CButton>
           </CCardFooter>
@@ -71,14 +71,6 @@
 import axios from 'axios'
 export default {
   name: 'CreateUser',
-  /*
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
-  */
   data: () => {
     return {
       user: {
@@ -94,22 +86,11 @@ export default {
       show: true,
       horizontal: { label:'col-3', input:'col-9' },
       options: ['Role 1', 'Role 2', 'Role 3'],
-      selectOptions: [
-        'Option 1', 'Option 2', 'Option 3',
-        { 
-          value: ['some value', 'another value'], 
-          label: 'Selected option'
-        }
-      ],
-      selectedOption: ['some value', 'another value'],
-
-      formCollapsed: true,
     }
   },
   methods: {
     goBack() {
       this.$router.go(-1)
-      // this.$router.replace({path: '/users'})
     },
     store() {
 
@@ -122,8 +103,6 @@ export default {
           }
         )
         .then(function (response) {
-            console.log(3);
-            console.log(response);
             self.note = {
               title: '',
               content: '',
@@ -143,7 +122,6 @@ export default {
               }
               self.showAlert();
             }else{
-              console.log(1);
               console.log(error);
               self.$router.push({ path: 'login' }); 
             }
@@ -162,7 +140,6 @@ export default {
     .then(function (response) {
         self.statuses = response.data;
     }).catch(function (error) {
-        console.log(2);
         console.log(error);
         self.$router.push({ path: 'login' });
     });

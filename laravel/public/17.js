@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.$apiAdress + '/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token")).then(function (response) {
       self.name = response.data.name;
     })["catch"](function (error) {
       console.log(error);

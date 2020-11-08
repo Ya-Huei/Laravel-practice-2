@@ -1,11 +1,13 @@
 <template>
   <CRow>
-    <CCol col="12" lg="6">
+    <CCol col="12" lg="12">
       <CCard>
-        <CCardBody>
-          <h3>
+        <CCardHeader>
+          <h4>
             Edit Role id:  {{ $route.params.id }}
-          </h3>
+          </h4>
+        </CCardHeader>
+        <CCardBody>
           <CAlert
             :show.sync="dismissCountDown"
             color="primary"
@@ -13,10 +15,36 @@
           >
             ({{dismissCountDown}}) {{ message }}
           </CAlert>
-            <CInput label="Name" type="text" placeholder="Name" v-model="role.name"/>
-          <CButton color="primary" @click="update()">Save</CButton>
-          <CButton color="primary" @click="goBack">Back</CButton>
-        </CCardBody>
+          <CInput
+              description="Please enter name"
+              label="Name"
+              v-model="role.name"
+              horizontal
+            />
+
+            <template>
+              <div class="form-group form-row">
+                <CCol tag="label" sm="3" class="col-form-label">
+                  Permissions
+                </CCol>
+                <CCol sm="9" :class="form-inline">
+                  <CInputCheckbox
+                    v-for="(option) in options"
+                    :key="option"
+                    :label="option"
+                    :value="option"
+                    :custom="1"
+                    :name="`Option 1`"
+                    :inline="true"
+                  />
+                </CCol>
+              </div>
+            </template>
+          </CCardBody>
+          <CCardFooter>
+            <CButton color="primary" @click="update()">Save</CButton>
+            <CButton color="primary" @click="goBack">Back</CButton>
+          </CCardFooter>
       </CCard>
     </CCol>
   </CRow>
@@ -43,7 +71,21 @@ export default {
         message: '',
         dismissSecs: 7,
         dismissCountDown: 0,
-    }
+        selected: [], // Must be an array reference!
+        show: true,
+        horizontal: { label:'col-3', input:'col-9' },
+        options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13'],
+        selectOptions: [
+          'Option 1', 'Option 2', 'Option 3',
+          { 
+            value: ['some value', 'another value'], 
+            label: 'Selected option'
+          }
+        ],
+        selectedOption: ['some value', 'another value'],
+
+        formCollapsed: true,
+      }
   },
   methods: {
     goBack() {
@@ -51,7 +93,7 @@ export default {
     },
     update() {
         let self = this;
-        axios.post(  '/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
+        axios.post(  this.$apiAdress + '/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
         {
             _method: 'PUT',
             name:  self.role.name
@@ -80,7 +122,7 @@ export default {
   },
   mounted: function(){
     let self = this;
-    axios.get(  '/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
+    axios.get(  this.$apiAdress + '/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
     .then(function (response) {
         self.role = response.data;
     }).catch(function (error) {

@@ -106,9 +106,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'CreateRole',
+  name: 'CreateUser',
 
   /*
   props: {
@@ -126,12 +151,20 @@ __webpack_require__.r(__webpack_exports__);
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
-      showDismissibleAlert: false
+      showDismissibleAlert: false,
+      selected: [],
+      // Must be an array reference!
+      show: true,
+      horizontal: {
+        label: 'col-3',
+        input: 'col-9'
+      },
+      options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13']
     };
   },
   methods: {
     goBack: function goBack() {
-      this.$router.go(-1); // this.$router.replace({path: '/users'})
+      this.$router.go(-1);
     },
     store: function store() {
       var self = this;
@@ -145,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
           status_id: null,
           note_type: ''
         };
-        self.message = 'Successfully created role.';
+        self.message = 'Successfully created user.';
         self.showAlert();
       })["catch"](function (error) {
         if (error.response.data.message == 'The given data was invalid.') {
@@ -175,7 +208,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles/create?token=' + localStorage.getItem("api_token")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/create?token=' + localStorage.getItem("api_token")).then(function (response) {
       self.statuses = response.data;
     })["catch"](function (error) {
       console.log(error);
@@ -208,17 +241,16 @@ var render = function() {
     [
       _c(
         "CCol",
-        { attrs: { col: "12", lg: "6" } },
+        { attrs: { col: "12", lg: "12" } },
         [
           _c(
             "CCard",
-            { attrs: { "no-header": "" } },
             [
+              _c("CCardHeader", [_c("h4", [_vm._v("Create Role")])]),
+              _vm._v(" "),
               _c(
                 "CCardBody",
                 [
-                  _c("h3", [_vm._v("\n          Create Role\n        ")]),
-                  _vm._v(" "),
                   _c(
                     "CAlert",
                     {
@@ -244,17 +276,74 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("CInput", {
-                    attrs: { label: "Name", type: "text", placeholder: "Name" },
-                    model: {
-                      value: _vm.role.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.role, "name", $$v)
-                      },
-                      expression: "role.name"
-                    }
-                  }),
-                  _vm._v(" "),
+                  _c(
+                    "CForm",
+                    [
+                      _c("CInput", {
+                        attrs: {
+                          description: "Enter your name",
+                          label: "Name",
+                          horizontal: ""
+                        },
+                        model: {
+                          value: _vm.role.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.role, "name", $$v)
+                          },
+                          expression: "role.name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "form-group form-row" },
+                          [
+                            _c(
+                              "CCol",
+                              {
+                                staticClass: "col-form-label",
+                                attrs: { tag: "label", sm: "3" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  Permissions\n                "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "CCol",
+                              { attrs: { sm: "9" } },
+                              _vm._l(_vm.options, function(option) {
+                                return _c("CInputCheckbox", {
+                                  key: option,
+                                  attrs: {
+                                    label: option,
+                                    value: option,
+                                    custom: true,
+                                    name: "Option 1",
+                                    inline: true
+                                  }
+                                })
+                              }),
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    ],
+                    2
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "CCardFooter",
+                { staticClass: "d-flex justify-content-end" },
+                [
                   _c(
                     "CButton",
                     {
@@ -270,7 +359,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "CButton",
-                    { attrs: { color: "primary" }, on: { click: _vm.goBack } },
+                    { attrs: { color: "danger" }, on: { click: _vm.goBack } },
                     [_vm._v("Back")]
                   )
                 ],

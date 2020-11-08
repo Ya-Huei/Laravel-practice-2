@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[21],{
 
-/***/ "../coreui/src/views/users/CreateUser.vue":
+/***/ "../coreui/src/views/roles/CreateRole.vue":
 /*!************************************************!*\
-  !*** ../coreui/src/views/users/CreateUser.vue ***!
+  !*** ../coreui/src/views/roles/CreateRole.vue ***!
   \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateUser.vue?vue&type=template&id=7af63c10& */ "../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&");
-/* harmony import */ var _CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateUser.vue?vue&type=script&lang=js& */ "../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&");
+/* harmony import */ var _CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateRole.vue?vue&type=template&id=1c5107ce& */ "../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&");
+/* harmony import */ var _CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateRole.vue?vue&type=script&lang=js& */ "../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -20,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -32,206 +32,57 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/users/CreateUser.vue"
+component.options.__file = "coreui/src/views/roles/CreateRole.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&":
+/***/ "../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&":
 /*!*************************************************************************!*\
-  !*** ../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js& ***!
+  !*** ../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js& ***!
   \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateUser.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRole.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&":
+/***/ "../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&":
 /*!*******************************************************************************!*\
-  !*** ../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10& ***!
+  !*** ../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce& ***!
   \*******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateUser.vue?vue&type=template&id=7af63c10& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRole.vue?vue&type=template&id=1c5107ce& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'CreateUser',
-
-  /*
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
-  */
-  data: function data() {
-    return {
-      role: {
-        name: ''
-      },
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      selected: [],
-      // Must be an array reference!
-      show: true,
-      horizontal: {
-        label: 'col-3',
-        input: 'col-9'
-      },
-      options: ['Role 1', 'Role 2', 'Role 3'],
-      selectOptions: ['Option 1', 'Option 2', 'Option 3', {
-        value: ['some value', 'another value'],
-        label: 'Selected option'
-      }],
-      selectedOption: ['some value', 'another value'],
-      formCollapsed: true
-    };
-  },
-  methods: {
-    goBack: function goBack() {
-      this.$router.go(-1); // this.$router.replace({path: '/users'})
-    },
-    store: function store() {
-      var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.$apiAdress + '/api/roles?token=' + localStorage.getItem("api_token"), {
-        name: self.role.name
-      }).then(function (response) {
-        self.note = {
-          title: '',
-          content: '',
-          applies_to_date: '',
-          status_id: null,
-          note_type: ''
-        };
-        self.message = 'Successfully created user.';
-        self.showAlert();
-      })["catch"](function (error) {
-        if (error.response.data.message == 'The given data was invalid.') {
-          self.message = '';
-
-          for (var key in error.response.data.errors) {
-            if (error.response.data.errors.hasOwnProperty(key)) {
-              self.message += error.response.data.errors[key][0] + '  ';
-            }
-          }
-
-          self.showAlert();
-        } else {
-          console.log(error);
-          self.$router.push({
-            path: 'login'
-          });
-        }
-      });
-    },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert: function showAlert() {
-      this.dismissCountDown = this.dismissSecs;
-    }
-  },
-  mounted: function mounted() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.$apiAdress + '/api/users/create?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.statuses = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: 'login'
-      });
-    });
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\roles\\CreateRole.vue: Unexpected token, expected \",\" (87:22)\n\n\u001b[0m \u001b[90m 85 | \u001b[39m    store() {\u001b[0m\n\u001b[0m \u001b[90m 86 | \u001b[39m        let self \u001b[33m=\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 87 | \u001b[39m        console\u001b[33m.\u001b[39mlog(\u001b[32m''\u001b[39mself\u001b[33m.\u001b[39mrole\u001b[33m.\u001b[39mname)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 88 | \u001b[39m        axios\u001b[33m.\u001b[39mpost(\u001b[32m'/api/roles?token='\u001b[39m \u001b[33m+\u001b[39m localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m\"api_token\"\u001b[39m)\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 89 | \u001b[39m          {\u001b[0m\n\u001b[0m \u001b[90m 90 | \u001b[39m            name\u001b[33m:\u001b[39m self\u001b[33m.\u001b[39mrole\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.expect (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7759:28)\n    at Parser.parseCallExpressionArguments (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8754:14)\n    at Parser.parseSubscript (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8661:29)\n    at Parser.parseSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8577:19)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8566:17)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8275:23)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10138:23)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseBlock (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Parser.parseFunctionBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9584:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9554:10)\n    at Parser.parseMethod (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9508:10)\n    at Parser.parseObjectMethod (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9424:19)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:23)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseObjectProperty (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9441:101)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:101)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)");
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&":
 /*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce& ***!
   \*************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -254,7 +105,7 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Create User")])]),
+              _c("CCardHeader", [_c("h4", [_vm._v("Create Role")])]),
               _vm._v(" "),
               _c(
                 "CCardBody",
@@ -264,24 +115,8 @@ var render = function() {
                     [
                       _c("CInput", {
                         attrs: {
-                          description: "Enter your account",
-                          label: "Account",
-                          horizontal: ""
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: {
-                          description: "Enter your password",
-                          label: "Password",
-                          horizontal: ""
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: {
-                          description: "Check your password",
-                          label: "Check password",
+                          description: "Enter your name",
+                          label: "Name",
                           horizontal: ""
                         }
                       }),
@@ -299,24 +134,21 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                  Roles\n                "
+                                  "\n                  Permissions\n                "
                                 )
                               ]
                             ),
                             _vm._v(" "),
                             _c(
                               "CCol",
-                              {
-                                class: _vm.form - _vm.inline,
-                                attrs: { sm: "9" }
-                              },
+                              { attrs: { sm: "9" } },
                               _vm._l(_vm.options, function(option) {
                                 return _c("CInputCheckbox", {
                                   key: option,
                                   attrs: {
                                     label: option,
                                     value: option,
-                                    custom: 1,
+                                    custom: true,
                                     name: "Option 1",
                                     inline: true
                                   }
@@ -337,7 +169,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "CCardFooter",
-                { staticClass: "text-right" },
+                { staticClass: "d-flex justify-content-end" },
                 [
                   _c(
                     "CButton",

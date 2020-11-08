@@ -104,6 +104,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'EditRole',
@@ -124,7 +152,21 @@ __webpack_require__.r(__webpack_exports__);
       },
       message: '',
       dismissSecs: 7,
-      dismissCountDown: 0
+      dismissCountDown: 0,
+      selected: [],
+      // Must be an array reference!
+      show: true,
+      horizontal: {
+        label: 'col-3',
+        input: 'col-9'
+      },
+      options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13'],
+      selectOptions: ['Option 1', 'Option 2', 'Option 3', {
+        value: ['some value', 'another value'],
+        label: 'Selected option'
+      }],
+      selectedOption: ['some value', 'another value'],
+      formCollapsed: true
     };
   },
   methods: {
@@ -133,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     update: function update() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"), {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.$apiAdress + '/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"), {
         _method: 'PUT',
         name: self.role.name
       }).then(function (response) {
@@ -164,7 +206,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.$apiAdress + '/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
       self.role = response.data;
     })["catch"](function (error) {
       console.log(error);
@@ -204,22 +246,24 @@ var render = function() {
     [
       _c(
         "CCol",
-        { attrs: { col: "12", lg: "6" } },
+        { attrs: { col: "12", lg: "12" } },
         [
           _c(
             "CCard",
             [
+              _c("CCardHeader", [
+                _c("h4", [
+                  _vm._v(
+                    "\n          Edit Role id:  " +
+                      _vm._s(_vm.$route.params.id) +
+                      "\n        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
               _c(
                 "CCardBody",
                 [
-                  _c("h3", [
-                    _vm._v(
-                      "\n          Edit Role id:  " +
-                        _vm._s(_vm.$route.params.id) +
-                        "\n        "
-                    )
-                  ]),
-                  _vm._v(" "),
                   _c(
                     "CAlert",
                     {
@@ -246,7 +290,11 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("CInput", {
-                    attrs: { label: "Name", type: "text", placeholder: "Name" },
+                    attrs: {
+                      description: "Please enter name",
+                      label: "Name",
+                      horizontal: ""
+                    },
                     model: {
                       value: _vm.role.name,
                       callback: function($$v) {
@@ -256,6 +304,52 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "form-group form-row" },
+                      [
+                        _c(
+                          "CCol",
+                          {
+                            staticClass: "col-form-label",
+                            attrs: { tag: "label", sm: "3" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                Permissions\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "CCol",
+                          { class: _vm.form - _vm.inline, attrs: { sm: "9" } },
+                          _vm._l(_vm.options, function(option) {
+                            return _c("CInputCheckbox", {
+                              key: option,
+                              attrs: {
+                                label: option,
+                                value: option,
+                                custom: 1,
+                                name: "Option 1",
+                                inline: true
+                              }
+                            })
+                          }),
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "CCardFooter",
+                [
                   _c(
                     "CButton",
                     {

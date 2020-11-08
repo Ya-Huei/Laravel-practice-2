@@ -86,16 +86,16 @@ export default {
           : status === 'Pending' ? 'warning'
             : status === 'Banned' ? 'danger' : 'primary'
     },
-    userLink (id) {
-      return `users/${id.toString()}`
-    },
+    // userLink (id) {
+    //   return `users/${id.toString()}`
+    // },
     editLink (id) {
       return `users/${id.toString()}/edit`
     },
-    showUser ( id ) {
-      const userLink = this.userLink( id );
-      this.$router.push({path: userLink});
-    },
+    // showUser ( id ) {
+    //   const userLink = this.userLink( id );
+    //   this.$router.push({path: userLink});
+    // },
     createUser () {
       this.$router.push({path: 'users/create'});
     },

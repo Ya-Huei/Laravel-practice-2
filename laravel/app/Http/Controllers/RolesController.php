@@ -11,57 +11,16 @@ use App\Models\RoleHierarchy;
 
 class RolesController extends Controller
 {
-
-    /*
-        TO REMOVE
-
-    public function test(){
-        //JWTAuth::toUser($token);
-
-        $user = auth()->user();
-        return response()->json( $user );
-    }
-    */
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $roles = DB::table('roles')
-        ->leftJoin('role_hierarchy', 'roles.id', '=', 'role_hierarchy.role_id')
-        ->select('roles.*', 'role_hierarchy.hierarchy')
-        ->orderBy('hierarchy', 'asc')
+        // ->leftJoin('role_hierarchy', 'roles.id', '=', 'role_hierarchy.role_id')
+        ->select('id', 'name', 'updated_at as updated', 'created_at as registered')
         ->get();
         return response()->json( $roles );
-    }
-
-    public function moveUp(Request $request){
-        $element = RoleHierarchy::where('role_id', '=', $request->input('id'))->first();
-        $switchElement = RoleHierarchy::where('hierarchy', '<', $element->hierarchy)
-            ->orderBy('hierarchy', 'desc')->first();
-        if(!empty($switchElement)){
-            $temp = $element->hierarchy;
-            $element->hierarchy = $switchElement->hierarchy;
-            $switchElement->hierarchy = $temp;
-            $element->save();
-            $switchElement->save();
-        }
-        return response()->json( ['status' => 'success'] );
-    }
-
-    public function moveDown(Request $request){
-        $element = RoleHierarchy::where('role_id', '=', $request->input('id'))->first();
-        $switchElement = RoleHierarchy::where('hierarchy', '>', $element->hierarchy)
-            ->orderBy('hierarchy', 'asc')->first();
-        if(!empty($switchElement)){
-            $temp = $element->hierarchy;
-            $element->hierarchy = $switchElement->hierarchy;
-            $switchElement->hierarchy = $temp;
-            $element->save();
-            $switchElement->save();
-        }
-        return response()->json( ['status' => 'success'] );
     }
 
     /**
@@ -86,19 +45,6 @@ class RolesController extends Controller
         $role = new Role();
         $role->name = $request->input('name');
         $role->save();
-        $hierarchy = RoleHierarchy::select('hierarchy')
-        ->orderBy('hierarchy', 'desc')->first();
-        if(empty($hierarchy)){
-            $hierarchy = 0;
-        }else{
-            $hierarchy = $hierarchy['hierarchy'];
-        }
-        $hierarchy = ((integer)$hierarchy) + 1;
-        $roleHierarchy = new RoleHierarchy();
-        $roleHierarchy->role_id = $role->id;
-        $roleHierarchy->hierarchy = $hierarchy;
-        $roleHierarchy->save();
-        //$request->session()->flash('message', 'Successfully created role');
         return response()->json( ['status' => 'success'] );
     }
 
@@ -153,13 +99,13 @@ class RolesController extends Controller
     public function destroy($id, Request $request)
     {
         $role = Role::where('id', '=', $id)->first();
-        $roleHierarchy = RoleHierarchy::where('role_id', '=', $id)->first();
+        // $roleHierarchy = RoleHierarchy::where('role_id', '=', $id)->first();
         $menuRole = Menurole::where('role_name', '=', $role->name)->first();
         if(!empty($menuRole)){
             return response()->json( ['status' => 'rejected'] );
         }else{
             $role->delete();
-            $roleHierarchy->delete();
+            // $roleHierarchy->delete();
             return response()->json( ['status' => 'success'] );
         }
     }
