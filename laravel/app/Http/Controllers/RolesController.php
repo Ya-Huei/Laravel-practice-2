@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use App\Models\Menurole;
-use App\Models\RoleHierarchy;
 
 class RolesController extends Controller
 {
@@ -40,11 +38,21 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:1|max:128'
+            'name' => 'required|min:1|max:128',
+            'permissions' => 'required'
         ]);
         $role = new Role();
-        $role->name = $request->input('name');
+        $name = $request->input('name');
+        $role->name = $name;
         $role->save();
+
+        foreach($request->input('permissions') as $item_id){
+            $menuRole = new Menurole();
+            $menuRole->role_name = $name;
+            $menuRole->menus_id = $item_id;
+            $menuRole->save();
+        }
+
         return response()->json( ['status' => 'success'] );
     }
 
@@ -67,9 +75,18 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = Role::where('id', '=', $id)->first();
+        $permissionDetail = Menurole::select('menus_id')->where('role_name', '=', $role->name)->get();
+        $permissions = array();
+
+
+        foreach ($permissionDetail as $key => $value) {
+            array_push($permissions, $value['menus_id']);
+        }
+
         return response()->json( array(
             'id' => $role->id,
-            'name' => $role->name
+            'name' => $role->name,
+            'permissions' => $permissions
         ));
     }
 
@@ -82,12 +99,18 @@ class RolesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|min:1|max:128'
+            'permissions' => 'required'
         ]);
         $role = Role::where('id', '=', $id)->first();
-        $role->name = $request->input('name');
-        $role->save();
-        //$request->session()->flash('message', 'Successfully updated role');
+        Menurole::where('role_name', $role->name)->delete();
+
+        foreach($request->input('permissions') as $item_id){
+            $menuRole = new Menurole();
+            $menuRole->role_name = $role->name;
+            $menuRole->menus_id = $item_id;
+            $menuRole->save();
+        }
+        
         return response()->json( ['status' => 'success'] );
     }
 
@@ -99,13 +122,11 @@ class RolesController extends Controller
     public function destroy($id, Request $request)
     {
         $role = Role::where('id', '=', $id)->first();
-        // $roleHierarchy = RoleHierarchy::where('role_id', '=', $id)->first();
         $menuRole = Menurole::where('role_name', '=', $role->name)->first();
         if(!empty($menuRole)){
             return response()->json( ['status' => 'rejected'] );
         }else{
             $role->delete();
-            // $roleHierarchy->delete();
             return response()->json( ['status' => 'success'] );
         }
     }

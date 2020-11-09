@@ -20,28 +20,29 @@
                 v-model="role.name"
                 horizontal
               />
-              <template>
                 <div class="form-group form-row">
                   <CCol tag="label" sm="3" class="col-form-label">
                     Permissions
                   </CCol>
                   <CCol sm="9">
                     <CInputCheckbox
-                      v-for="(option) in options"
-                      :key="option"
-                      :label="option"
-                      :value="option"
+                      v-for="optionPermission in optionPermissions"
+                      :key="optionPermission.id"
+                      :label="optionPermission.name"
+                      name="selectPermissions"
                       :custom="true"
-                      :name="`Option 1`"
                       :inline="true"
+                      @update:checked="selectPermissions(optionPermission.id)"
                     />
                   </CCol>
                 </div>
-              </template>
             </CForm>
           </CCardBody>
           <CCardFooter class="d-flex justify-content-end">
-            <CButton color="primary" @click="store()">Create</CButton>
+            <CButton :disabled="!isCreatedRole" color="primary" @click="store()">
+              <span v-if="isCreatedRole">Create</span>
+              <CSpinner v-if="!isCreatedRole" color="info"  size="sm" />
+            </CButton>
             <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
           </CCardFooter>
       </CCard>
@@ -53,27 +54,20 @@
 import axios from 'axios'
 export default {
   name: 'CreateUser',
-  /*
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
-  */
   data: () => {
     return {
       role: {
         name: '',
+        permissions: [],
       },
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
       showDismissibleAlert: false,
-      selected: [], // Must be an array reference!
       show: true,
       horizontal: { label:'col-3', input:'col-9' },
-      options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13'],
+      optionPermissions: [],
+      isCreatedRole: true,
     }
   },
   methods: {
@@ -82,34 +76,19 @@ export default {
     },
     store() {
         let self = this;
+        self.isCreatedRole = false;
         axios.post('/api/roles?token=' + localStorage.getItem("api_token"),
           {
-            name: self.role.name,
+              name: self.role.name,
+              permissions: self.role.permissions,
           }
         )
         .then(function (response) {
-            self.note = {
-              title: '',
-              content: '',
-              applies_to_date: '',
-              status_id: null,
-              note_type: '',
-            };
-            self.message = 'Successfully created user.';
-            self.showAlert();
+            self.goBack();
         }).catch(function (error) {
-            if(error.response.data.message == 'The given data was invalid.'){
-              self.message = '';
-              for (let key in error.response.data.errors) {
-                if (error.response.data.errors.hasOwnProperty(key)) {
-                  self.message += error.response.data.errors[key][0] + '  ';
-                }
-              }
-              self.showAlert();
-            }else{
-              console.log(error);
-              self.$router.push({ path: 'login' }); 
-            }
+            self.isCreatedRole = true;
+            self.message = error;
+            self.showAlert();
         });
     },
     countDownChanged (dismissCountDown) {
@@ -118,15 +97,23 @@ export default {
     showAlert () {
       this.dismissCountDown = this.dismissSecs
     },
+    selectPermissions(permission){
+      let temp = this.role.permissions.indexOf(permission); 
+      if (temp > -1) {
+        this.role.permissions.splice(temp, 1);
+      }else{
+        this.role.permissions.push(permission);
+      }
+    },
   },
-  mounted: function(){
+  beforeCreate: function(){
     let self = this;
-    axios.get('/api/users/create?token=' + localStorage.getItem("api_token"))
+    axios.get('/api/menu/getAllMenu?token=' + localStorage.getItem("api_token"))
     .then(function (response) {
-        self.statuses = response.data;
+        self.optionPermissions = response.data;
     }).catch(function (error) {
         console.log(error);
-        self.$router.push({ path: 'login' });
+        self.$router.push({ path: '/login' });
     });
   }
 }

@@ -21,19 +21,21 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('refresh', 'AuthController@refresh');
     Route::post('register', 'AuthController@register'); 
 
-    Route::resource('notes', 'NotesController');
+    // Route::resource('notes', 'NotesController');
 
-    Route::resource('resource/{table}/resource', 'ResourceController');
+    // Route::resource('resource/{table}/resource', 'ResourceController');
     
     Route::group(['middleware' => 'admin'], function ($router) {
 
-        Route::resource('mail',        'MailController');
-        Route::get('prepareSend/{id}', 'MailController@prepareSend')->name('prepareSend');
-        Route::post('mailSend/{id}',   'MailController@send')->name('mailSend');
+        // Route::resource('mail',        'MailController');
+        // Route::get('prepareSend/{id}', 'MailController@prepareSend')->name('prepareSend');
+        // Route::post('mailSend/{id}',   'MailController@send')->name('mailSend');
 
-        Route::resource('bread',  'BreadController');   //create BREAD (resource)
+        // Route::resource('bread',  'BreadController');   //create BREAD (resource)
 
         Route::resource('users', 'UsersController');
+
+        Route::get('menu/getAllMenu', 'MenuController@getAllMenu');
 
         Route::prefix('menu/menu')->group(function () { 
             Route::get('/',         'MenuEditController@index')->name('menu.menu.index');
@@ -55,28 +57,28 @@ Route::group(['middleware' => 'api'], function ($router) {
             Route::get('/show',         'MenuElementController@show')->name('menu.show');
             Route::get('/delete',       'MenuElementController@delete')->name('menu.delete');
         });
-        Route::prefix('media')->group(function ($router) {
-            Route::get('/',                 'MediaController@index')->name('media.folder.index');
-            Route::get('/folder/store',     'MediaController@folderAdd')->name('media.folder.add');
-            Route::post('/folder/update',   'MediaController@folderUpdate')->name('media.folder.update');
-            Route::get('/folder',           'MediaController@folder')->name('media.folder');
-            Route::post('/folder/move',     'MediaController@folderMove')->name('media.folder.move');
-            Route::post('/folder/delete',   'MediaController@folderDelete')->name('media.folder.delete');;
+        // Route::prefix('media')->group(function ($router) {
+        //     Route::get('/',                 'MediaController@index')->name('media.folder.index');
+        //     Route::get('/folder/store',     'MediaController@folderAdd')->name('media.folder.add');
+        //     Route::post('/folder/update',   'MediaController@folderUpdate')->name('media.folder.update');
+        //     Route::get('/folder',           'MediaController@folder')->name('media.folder');
+        //     Route::post('/folder/move',     'MediaController@folderMove')->name('media.folder.move');
+        //     Route::post('/folder/delete',   'MediaController@folderDelete')->name('media.folder.delete');;
 
-            Route::post('/file/store',      'MediaController@fileAdd')->name('media.file.add');
-            Route::get('/file',             'MediaController@file');
-            Route::post('/file/delete',     'MediaController@fileDelete')->name('media.file.delete');
-            Route::post('/file/update',     'MediaController@fileUpdate')->name('media.file.update');
-            Route::post('/file/move',       'MediaController@fileMove')->name('media.file.move');
-            Route::post('/file/cropp',      'MediaController@cropp');
-            Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
+        //     Route::post('/file/store',      'MediaController@fileAdd')->name('media.file.add');
+        //     Route::get('/file',             'MediaController@file');
+        //     Route::post('/file/delete',     'MediaController@fileDelete')->name('media.file.delete');
+        //     Route::post('/file/update',     'MediaController@fileUpdate')->name('media.file.update');
+        //     Route::post('/file/move',       'MediaController@fileMove')->name('media.file.move');
+        //     Route::post('/file/cropp',      'MediaController@cropp');
+        //     Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
 
-            Route::get('/file/download',    'MediaController@fileDownload');
-        });
+        //     Route::get('/file/download',    'MediaController@fileDownload');
+        // });
 
-        Route::resource('roles',        'RolesController');
-        Route::get('/roles/move/move-up',      'RolesController@moveUp')->name('roles.up');
-        Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
+        Route::resource('roles', 'RolesController');
+        // Route::get('/roles/move/move-up',      'RolesController@moveUp')->name('roles.up');
+        // Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
     });
 });
 

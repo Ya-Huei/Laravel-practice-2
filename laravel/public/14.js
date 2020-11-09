@@ -131,35 +131,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CreateUser',
-
-  /*
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
-  */
   data: function data() {
     return {
       role: {
-        name: ''
+        name: '',
+        permissions: []
       },
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
       showDismissibleAlert: false,
-      selected: [],
-      // Must be an array reference!
       show: true,
       horizontal: {
         label: 'col-3',
         input: 'col-9'
       },
-      options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13']
+      optionPermissions: [],
+      isCreatedRole: true
     };
   },
   methods: {
@@ -168,35 +160,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     store: function store() {
       var self = this;
+      self.isCreatedRole = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles?token=' + localStorage.getItem("api_token"), {
-        name: self.role.name
+        name: self.role.name,
+        permissions: self.role.permissions
       }).then(function (response) {
-        self.note = {
-          title: '',
-          content: '',
-          applies_to_date: '',
-          status_id: null,
-          note_type: ''
-        };
-        self.message = 'Successfully created user.';
-        self.showAlert();
+        self.goBack();
       })["catch"](function (error) {
-        if (error.response.data.message == 'The given data was invalid.') {
-          self.message = '';
-
-          for (var key in error.response.data.errors) {
-            if (error.response.data.errors.hasOwnProperty(key)) {
-              self.message += error.response.data.errors[key][0] + '  ';
-            }
-          }
-
-          self.showAlert();
-        } else {
-          console.log(error);
-          self.$router.push({
-            path: 'login'
-          });
-        }
+        self.isCreatedRole = true;
+        self.message = error;
+        self.showAlert();
       });
     },
     countDownChanged: function countDownChanged(dismissCountDown) {
@@ -204,16 +177,25 @@ __webpack_require__.r(__webpack_exports__);
     },
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
+    },
+    selectPermissions: function selectPermissions(permission) {
+      var temp = this.role.permissions.indexOf(permission);
+
+      if (temp > -1) {
+        this.role.permissions.splice(temp, 1);
+      } else {
+        this.role.permissions.push(permission);
+      }
     }
   },
-  mounted: function mounted() {
+  beforeCreate: function beforeCreate() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/create?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.statuses = response.data;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/menu/getAllMenu?token=' + localStorage.getItem("api_token")).then(function (response) {
+      self.optionPermissions = response.data;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({
-        path: 'login'
+        path: '/login'
       });
     });
   }
@@ -294,47 +276,53 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "form-group form-row" },
-                          [
-                            _c(
-                              "CCol",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { tag: "label", sm: "3" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Permissions\n                "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "CCol",
-                              { attrs: { sm: "9" } },
-                              _vm._l(_vm.options, function(option) {
-                                return _c("CInputCheckbox", {
-                                  key: option,
-                                  attrs: {
-                                    label: option,
-                                    value: option,
-                                    custom: true,
-                                    name: "Option 1",
-                                    inline: true
+                      _c(
+                        "div",
+                        { staticClass: "form-group form-row" },
+                        [
+                          _c(
+                            "CCol",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { tag: "label", sm: "3" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                  Permissions\n                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { sm: "9" } },
+                            _vm._l(_vm.optionPermissions, function(
+                              optionPermission
+                            ) {
+                              return _c("CInputCheckbox", {
+                                key: optionPermission.id,
+                                attrs: {
+                                  label: optionPermission.name,
+                                  name: "selectPermissions",
+                                  custom: true,
+                                  inline: true
+                                },
+                                on: {
+                                  "update:checked": function($event) {
+                                    return _vm.selectPermissions(
+                                      optionPermission.id
+                                    )
                                   }
-                                })
-                              }),
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
+                                }
+                              })
+                            }),
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
-                    2
+                    1
                   )
                 ],
                 1
@@ -347,14 +335,25 @@ var render = function() {
                   _c(
                     "CButton",
                     {
-                      attrs: { color: "primary" },
+                      attrs: { disabled: !_vm.isCreatedRole, color: "primary" },
                       on: {
                         click: function($event) {
                           return _vm.store()
                         }
                       }
                     },
-                    [_vm._v("Create")]
+                    [
+                      _vm.isCreatedRole
+                        ? _c("span", [_vm._v("Create")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.isCreatedRole
+                        ? _c("CSpinner", {
+                            attrs: { color: "info", size: "sm" }
+                          })
+                        : _vm._e()
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(

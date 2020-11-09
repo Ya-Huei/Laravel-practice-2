@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\User;
-use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Menus\GetSidebarMenu;
+use Illuminate\Support\Facades\Log;
 
 class MenuController extends Controller
 {
@@ -31,6 +32,17 @@ class MenuController extends Controller
         }
         $menus = new GetSidebarMenu();
         return response()->json( $menus->get( $roles, $menuName ) );
+    }
+
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllMenu(){
+        $menus = new GetSidebarMenu();
+        return response()->json( $menus->getAllExceptFormat() );
     }
 
 }

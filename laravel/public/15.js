@@ -80,6 +80,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/icons */ "../coreui/node_modules/@coreui/icons/js/index.js");
+//
 //
 //
 //
@@ -133,31 +135,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'EditRole',
+  name: 'EditUser',
   data: function data() {
     return {
       role: {
-        id: null,
-        name: ''
+        name: '',
+        permissions: []
       },
+      showMessage: false,
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
-      selected: [],
-      // Must be an array reference!
+      showDismissibleAlert: false,
       show: true,
       horizontal: {
         label: 'col-3',
         input: 'col-9'
       },
-      options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13'],
-      selectOptions: ['Option 1', 'Option 2', 'Option 3', {
-        value: ['some value', 'another value'],
-        label: 'Selected option'
-      }],
-      selectedOption: ['some value', 'another value'],
-      formCollapsed: true
+      optionPermissions: [],
+      isEditedRole: true
     };
   },
   methods: {
@@ -166,54 +164,59 @@ __webpack_require__.r(__webpack_exports__);
     },
     update: function update() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.$apiAdress + '/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"), {
+      console.log(self.role.permissions);
+      self.isEditedRole = false;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"), {
         _method: 'PUT',
-        name: self.role.name
+        permissions: self.role.permissions
       }).then(function (response) {
-        self.message = 'Successfully updated role.';
-        self.showAlert();
+        self.goBack();
       })["catch"](function (error) {
-        if (error.response.data.message == 'The given data was invalid.') {
-          self.message = '';
-
-          for (var key in error.response.data.errors) {
-            if (error.response.data.errors.hasOwnProperty(key)) {
-              self.message += error.response.data.errors[key][0] + '  ';
-            }
-          }
-
-          self.showAlert();
-        } else {
-          console.log(error);
-          self.$router.push({
-            path: '/login'
-          });
-        }
+        self.isEditedRole = true;
+        self.message = error;
+        self.showAlert();
       });
+    },
+    countDownChanged: function countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
     },
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
+    },
+    selectRoles: function selectRoles(menu_id) {
+      var temp = this.role.permissions.indexOf(menu_id);
+
+      if (temp > -1) {
+        this.role.permissions.splice(temp, 1);
+      } else {
+        this.role.permissions.push(menu_id);
+      }
+
+      console.log(this.role.permissions);
     }
   },
-  mounted: function mounted() {
+  beforeCreate: function beforeCreate() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.$apiAdress + '/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.role = response.data;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/menu/getAllMenu?token=' + localStorage.getItem("api_token")).then(function (response) {
+      self.optionPermissions = response.data;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({
         path: '/login'
       });
     });
+  },
+  mounted: function mounted() {
+    var self = this;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
+      self.role.name = response.data.name;
+      self.role.permissions = response.data.permissions;
+      console.log(self.role.permissions);
+    })["catch"](function (error) {
+      console.log(error); // self.$router.push({ path: '/login' });
+    });
   }
 });
-/*
-      items: (id) => {
-        const user = usersData.find( user => user.id.toString() === id)
-        const userDetails = user ? Object.entries(user) : [['id', 'Not found']]
-        return userDetails.map(([key, value]) => {return {key: key, value: value}})
-      },
-*/
 
 /***/ }),
 
@@ -242,121 +245,138 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [
-                _c("h4", [
-                  _vm._v(
-                    "\n          Edit Role id:  " +
-                      _vm._s(_vm.$route.params.id) +
-                      "\n        "
-                  )
-                ])
-              ]),
+              _c("CCardHeader", [_c("h4", [_vm._v("Edit Role")])]),
               _vm._v(" "),
               _c(
                 "CCardBody",
                 [
                   _c(
-                    "CAlert",
-                    {
-                      attrs: {
-                        show: _vm.dismissCountDown,
-                        color: "primary",
-                        fade: ""
-                      },
-                      on: {
-                        "update:show": function($event) {
-                          _vm.dismissCountDown = $event
-                        }
-                      }
-                    },
+                    "CForm",
                     [
-                      _vm._v(
-                        "\n          (" +
-                          _vm._s(_vm.dismissCountDown) +
-                          ") " +
-                          _vm._s(_vm.message) +
-                          "\n        "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("CInput", {
-                    attrs: {
-                      description: "Please enter name",
-                      label: "Name",
-                      horizontal: ""
-                    },
-                    model: {
-                      value: _vm.role.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.role, "name", $$v)
-                      },
-                      expression: "role.name"
-                    }
-                  }),
-                  _vm._v(" "),
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "form-group form-row" },
-                      [
-                        _c(
-                          "CCol",
-                          {
-                            staticClass: "col-form-label",
-                            attrs: { tag: "label", sm: "3" }
+                      _c(
+                        "CAlert",
+                        {
+                          attrs: {
+                            show: _vm.dismissCountDown,
+                            color: "primary",
+                            fade: ""
                           },
-                          [
-                            _vm._v(
-                              "\n                Permissions\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "CCol",
-                          { class: _vm.form - _vm.inline, attrs: { sm: "9" } },
-                          _vm._l(_vm.options, function(option) {
-                            return _c("CInputCheckbox", {
-                              key: option,
-                              attrs: {
-                                label: option,
-                                value: option,
-                                custom: 1,
-                                name: "Option 1",
-                                inline: true
-                              }
-                            })
-                          }),
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ]
+                          on: {
+                            "update:show": function($event) {
+                              _vm.dismissCountDown = $event
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n            (" +
+                              _vm._s(_vm.dismissCountDown) +
+                              ") " +
+                              _vm._s(_vm.message) +
+                              "\n          "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("CInput", {
+                        attrs: { label: "Name", horizontal: "", disabled: "" },
+                        model: {
+                          value: _vm.role.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.role, "name", $$v)
+                          },
+                          expression: "role.name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group form-row" },
+                        [
+                          _c(
+                            "CCol",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { tag: "label", sm: "3" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                Permissions\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { sm: "9" } },
+                            _vm._l(_vm.optionPermissions, function(
+                              optionPermission
+                            ) {
+                              return _c("CInputCheckbox", {
+                                key: optionPermission.id,
+                                attrs: {
+                                  label: optionPermission.name,
+                                  name: "selectRoles",
+                                  custom: true,
+                                  inline: true,
+                                  checked: _vm.role.permissions.includes(
+                                    optionPermission.id
+                                  )
+                                },
+                                on: {
+                                  "update:checked": function($event) {
+                                    return _vm.selectRoles(optionPermission.id)
+                                  }
+                                }
+                              })
+                            }),
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
-                2
+                1
               ),
               _vm._v(" "),
               _c(
                 "CCardFooter",
+                { staticClass: "text-right" },
                 [
                   _c(
                     "CButton",
                     {
-                      attrs: { color: "primary" },
+                      attrs: { disabled: !_vm.isEditedRole, color: "primary" },
                       on: {
                         click: function($event) {
                           return _vm.update()
                         }
                       }
                     },
-                    [_vm._v("Save")]
+                    [
+                      _vm.isEditedRole
+                        ? _c("span", [_vm._v("Save")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.isEditedRole
+                        ? _c("CSpinner", {
+                            attrs: { color: "info", size: "sm" }
+                          })
+                        : _vm._e()
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
                     "CButton",
-                    { attrs: { color: "primary" }, on: { click: _vm.goBack } },
+                    {
+                      staticClass: "ml-2",
+                      attrs: { color: "danger" },
+                      on: { click: _vm.goBack }
+                    },
                     [_vm._v("Back")]
                   )
                 ],

@@ -3,48 +3,49 @@
     <CCol col="12" lg="12">
       <CCard>
         <CCardHeader>
-          <h4>
-            Edit Role id:  {{ $route.params.id }}
-          </h4>
+          <h4>Edit Role</h4>
         </CCardHeader>
         <CCardBody>
-          <CAlert
-            :show.sync="dismissCountDown"
-            color="primary"
-            fade
-          >
-            ({{dismissCountDown}}) {{ message }}
-          </CAlert>
-          <CInput
-              description="Please enter name"
+          <CForm>
+            <CAlert
+              :show.sync="dismissCountDown"
+              color="primary"
+              fade
+            >
+              ({{dismissCountDown}}) {{ message }}
+            </CAlert>
+            <CInput
               label="Name"
               v-model="role.name"
               horizontal
+              disabled
             />
-
-            <template>
               <div class="form-group form-row">
                 <CCol tag="label" sm="3" class="col-form-label">
                   Permissions
                 </CCol>
-                <CCol sm="9" :class="form-inline">
+                <CCol sm="9">
                   <CInputCheckbox
-                    v-for="(option) in options"
-                    :key="option"
-                    :label="option"
-                    :value="option"
-                    :custom="1"
-                    :name="`Option 1`"
+                    v-for="optionPermission in optionPermissions"
+                    :key="optionPermission.id"
+                    :label="optionPermission.name"
+                    name="selectRoles"
+                    :custom="true"
                     :inline="true"
+                    :checked="role.permissions.includes(optionPermission.id)"
+                    @update:checked="selectRoles(optionPermission.id)"
                   />
                 </CCol>
               </div>
-            </template>
+            </CForm>
           </CCardBody>
-          <CCardFooter>
-            <CButton color="primary" @click="update()">Save</CButton>
-            <CButton color="primary" @click="goBack">Back</CButton>
-          </CCardFooter>
+        <CCardFooter class="text-right">
+          <CButton :disabled="!isEditedRole" color="primary" @click="update()">
+            <span v-if="isEditedRole">Save</span>
+            <CSpinner v-if="!isEditedRole" color="info"  size="sm" />
+          </CButton>
+          <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
+        </CCardFooter>
       </CCard>
     </CCol>
   </CRow>
@@ -52,32 +53,25 @@
 
 <script>
 import axios from 'axios'
+import { cilHandPointDown } from '@coreui/icons'
 export default {
-  name: 'EditRole',
+  name: 'EditUser',
   data: () => {
     return {
-        role: {
-          id: null,
-          name: '',
-        },
-        message: '',
-        dismissSecs: 7,
-        dismissCountDown: 0,
-        selected: [], // Must be an array reference!
-        show: true,
-        horizontal: { label:'col-3', input:'col-9' },
-        options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13'],
-        selectOptions: [
-          'Option 1', 'Option 2', 'Option 3',
-          { 
-            value: ['some value', 'another value'], 
-            label: 'Selected option'
-          }
-        ],
-        selectedOption: ['some value', 'another value'],
-
-        formCollapsed: true,
-      }
+      role: {
+        name: '',
+        permissions: [],
+      },
+      showMessage: false,
+      message: '',
+      dismissSecs: 7,
+      dismissCountDown: 0,
+      showDismissibleAlert: false,
+      show: true,
+      horizontal: { label:'col-3', input:'col-9' },
+      optionPermissions: [],
+      isEditedRole: true,
+    }
   },
   methods: {
     goBack() {
@@ -85,51 +79,60 @@ export default {
     },
     update() {
         let self = this;
-        axios.post(  this.$apiAdress + '/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
+        console.log(self.role.permissions);
+        self.isEditedRole = false;
+        axios.post('/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
         {
             _method: 'PUT',
-            name:  self.role.name
+            permissions: self.role.permissions,
         })
         .then(function (response) {
-            self.message = 'Successfully updated role.';
-            self.showAlert();
+            self.goBack();
         }).catch(function (error) {
-            if(error.response.data.message == 'The given data was invalid.'){
-              self.message = '';
-              for (let key in error.response.data.errors) {
-                if (error.response.data.errors.hasOwnProperty(key)) {
-                  self.message += error.response.data.errors[key][0] + '  ';
-                }
-              }
-              self.showAlert();
-            }else{
-              console.log(error); 
-              self.$router.push({ path: '/login' }); 
-            }
+            self.isEditedRole = true;
+            self.message = error;
+            self.showAlert();
         });
+    },
+    countDownChanged (dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
     },
     showAlert () {
       this.dismissCountDown = this.dismissSecs
     },
+    selectRoles(menu_id){
+      let temp = this.role.permissions.indexOf(menu_id); 
+      if (temp > -1) {
+        this.role.permissions.splice(temp, 1);
+      }else{
+        this.role.permissions.push(menu_id);
+      }
+      console.log(this.role.permissions);
+    },
   },
-  mounted: function(){
+  beforeCreate: function(){
     let self = this;
-    axios.get(  this.$apiAdress + '/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
+    axios.get('/api/menu/getAllMenu?token=' + localStorage.getItem("api_token"))
     .then(function (response) {
-        self.role = response.data;
+        self.optionPermissions = response.data;
     }).catch(function (error) {
         console.log(error);
         self.$router.push({ path: '/login' });
     });
+  },
+  mounted: function(){
+    let self = this;
+    axios.get('/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
+    .then(function (response) {
+        self.role.name = response.data.name;
+        self.role.permissions = response.data.permissions;
+        console.log(self.role.permissions);
+    }).catch(function (error) {
+        console.log(error);
+        // self.$router.push({ path: '/login' });
+    });
   }
 }
 
-/*
-      items: (id) => {
-        const user = usersData.find( user => user.id.toString() === id)
-        const userDetails = user ? Object.entries(user) : [['id', 'Not found']]
-        return userDetails.map(([key, value]) => {return {key: key, value: value}})
-      },
-*/
 
 </script>

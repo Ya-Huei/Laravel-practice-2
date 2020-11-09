@@ -16,7 +16,6 @@ const CreateUser = () => import('@/views/users/CreateUser')
 
 //Roles
 const Roles = () => import('@/views/roles/Roles')
-const Role = () => import('@/views/roles/Role')
 const EditRole = () => import('@/views/roles/EditRole')
 const CreateRole = () => import('@/views/roles/CreateRole')
 
@@ -163,12 +162,6 @@ function configRoutes () {
               meta: { label: 'Create Role' },
               name: 'Create Role',
               component: CreateRole
-            },
-            {
-              path: ':id',
-              meta: { label: 'Role Details'},
-              name: 'Role',
-              component: Role,
             },
             {
               path: ':id/edit',
