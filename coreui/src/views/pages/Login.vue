@@ -26,7 +26,7 @@
                   <template #prepend-content><CIcon name="cil-lock-locked"/></template>
                 </CInput>
                 <CRow>
-                  <CCol col="12" class="text-right">
+                  <CCol col="12" class="d-flex justify-content-end">
                     <CButton type="submit" color="primary" class="px-4">Login</CButton>
                   </CCol>
                 </CRow>

@@ -270,7 +270,7 @@ var render = function() {
                               _c(
                                 "CCol",
                                 {
-                                  staticClass: "text-right",
+                                  staticClass: "d-flex justify-content-end",
                                   attrs: { col: "12" }
                                 },
                                 [
