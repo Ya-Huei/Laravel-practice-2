@@ -776,7 +776,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.show = sidebarClosed ? true : 'responsive';
     });
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/menu?token=' + localStorage.getItem("api_token")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/menu?token=' + localStorage.getItem("api_token") + '&menu=' + 'side_bar').then(function (response) {
       self.nav = self.rebuildData(response.data);
     })["catch"](function (error) {
       console.log(error);

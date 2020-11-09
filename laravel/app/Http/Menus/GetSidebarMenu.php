@@ -28,6 +28,9 @@ class GetSidebarMenu implements MenuInterface{
     }
 
     public function get($roles, $menuName = 'sidebar menu'){
+        if($menuName == 'top_menu'){
+            return;
+        }
         $roles = explode(',', $roles);
         $this->getMenuFromDB($roles);
         $rfd = new RenderFromDatabaseData;
