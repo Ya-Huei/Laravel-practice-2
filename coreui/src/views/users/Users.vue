@@ -29,16 +29,6 @@
             :items-per-page="6"
             pagination
           >
-          <!-- <template #status="{item}">
-            <td>
-              <CBadge :color="getBadge(item.status)">{{ item.status }}</CBadge>
-            </td>
-          </template> -->
-          <!-- <template #show="{item}">
-            <td>
-              <CButton color="primary" @click="showUser( item.id )">Show</CButton>
-            </td>
-          </template> -->
           <template #operate="{item}">
             <td>
               <CButton color="primary" @click="editUser( item.id )">Edit</CButton>
@@ -86,18 +76,11 @@ export default {
           : status === 'Pending' ? 'warning'
             : status === 'Banned' ? 'danger' : 'primary'
     },
-    // userLink (id) {
-    //   return `users/${id.toString()}`
-    // },
     editLink (id) {
       return `users/${id.toString()}/edit`
     },
-    // showUser ( id ) {
-    //   const userLink = this.userLink( id );
-    //   this.$router.push({path: userLink});
-    // },
     createUser () {
-      this.$router.push({path: 'users/create'});
+      this.$router.push({path: `users/create`});
     },
     editUser ( id ) {
       const editLink = this.editLink( id );

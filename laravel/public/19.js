@@ -80,6 +80,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/icons */ "../coreui/node_modules/@coreui/icons/js/index.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -148,57 +155,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'EditUser',
-  props: {
-    caption: {
-      type: String,
-      "default": 'User id'
-    }
-  },
   data: function data() {
     return {
-      name: '',
-      email: '',
+      user: {
+        name: '',
+        email: '',
+        password: '',
+        roles: []
+      },
       showMessage: false,
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
       showDismissibleAlert: false,
-      selected: [],
-      // Must be an array reference!
       show: true,
       horizontal: {
         label: 'col-3',
         input: 'col-9'
       },
-      options: ['Role 1', 'Role 2', 'Role 3'],
-      selectOptions: ['Option 1', 'Option 2', 'Option 3', {
-        value: ['some value', 'another value'],
-        label: 'Selected option'
-      }],
-      selectedOption: ['some value', 'another value'],
-      formCollapsed: true
+      optionRoles: [],
+      isEditedUser: true
     };
   },
   methods: {
     goBack: function goBack() {
-      this.$router.go(-1); // this.$router.replace({path: '/users'})
+      this.$router.go(-1);
     },
     update: function update() {
       var self = this;
+      self.isEditedUser = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"), {
         _method: 'PUT',
-        name: self.name,
-        email: self.email
+        password: self.user.password,
+        roles: self.user.roles
       }).then(function (response) {
-        self.message = 'Successfully updated user.';
-        self.showAlert();
+        self.goBack();
       })["catch"](function (error) {
-        console.log(error);
-        self.$router.push({
-          path: '/login'
-        });
+        self.isEditedUser = true;
+        self.message = error;
+        self.showAlert();
       });
     },
     countDownChanged: function countDownChanged(dismissCountDown) {
@@ -206,13 +204,34 @@ __webpack_require__.r(__webpack_exports__);
     },
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
+    },
+    selectRoles: function selectRoles(role) {
+      var temp = this.user.roles.indexOf(role);
+
+      if (temp > -1) {
+        this.user.roles.splice(temp, 1);
+      } else {
+        this.user.roles.push(role);
+      }
     }
+  },
+  beforeCreate: function beforeCreate() {
+    var self = this;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles?token=' + localStorage.getItem("api_token")).then(function (response) {
+      self.optionRoles = response.data;
+    })["catch"](function (error) {
+      console.log(error);
+      self.$router.push({
+        path: '/login'
+      });
+    });
   },
   mounted: function mounted() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.$apiAdress + '/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.name = response.data.name;
-      self.email = response.data.email;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
+      self.user.name = response.data.name;
+      self.user.email = response.data.email;
+      self.user.roles = response.data.roles.split(",");
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({
@@ -257,14 +276,6 @@ var render = function() {
                   _c(
                     "CForm",
                     [
-                      _c("template", { slot: "header" }, [
-                        _vm._v(
-                          "\n            Edit User id:  " +
-                            _vm._s(_vm.$route.params.id) +
-                            "\n          "
-                        )
-                      ]),
-                      _vm._v(" "),
                       _c(
                         "CAlert",
                         {
@@ -291,11 +302,24 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("CInput", {
-                        attrs: {
-                          description: "Enter your account",
-                          label: "Account",
-                          horizontal: "",
-                          disabled: ""
+                        attrs: { label: "Name", horizontal: "", disabled: "" },
+                        model: {
+                          value: _vm.user.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.user, "name", $$v)
+                          },
+                          expression: "user.name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("CInput", {
+                        attrs: { label: "Email", horizontal: "", disabled: "" },
+                        model: {
+                          value: _vm.user.email,
+                          callback: function($$v) {
+                            _vm.$set(_vm.user, "email", $$v)
+                          },
+                          expression: "user.email"
                         }
                       }),
                       _vm._v(" "),
@@ -305,6 +329,13 @@ var render = function() {
                           description: "Please enter password",
                           label: "Password",
                           horizontal: ""
+                        },
+                        model: {
+                          value: _vm.user.password,
+                          callback: function($$v) {
+                            _vm.$set(_vm.user, "password", $$v)
+                          },
+                          expression: "user.password"
                         }
                       }),
                       _vm._v(" "),
@@ -317,50 +348,48 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "form-group form-row" },
-                          [
-                            _c(
-                              "CCol",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { tag: "label", sm: "3" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                Roles\n              "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "CCol",
-                              {
-                                class: _vm.form - _vm.inline,
-                                attrs: { sm: "9" }
-                              },
-                              _vm._l(_vm.options, function(option) {
-                                return _c("CInputCheckbox", {
-                                  key: option,
-                                  attrs: {
-                                    label: option,
-                                    value: option,
-                                    custom: 1,
-                                    name: "Option 1",
-                                    inline: true
+                      _c(
+                        "div",
+                        { staticClass: "form-group form-row" },
+                        [
+                          _c(
+                            "CCol",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { tag: "label", sm: "3" }
+                            },
+                            [_vm._v("\n                Roles\n              ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { sm: "9" } },
+                            _vm._l(_vm.optionRoles, function(optionRole) {
+                              return _c("CInputCheckbox", {
+                                key: optionRole.name,
+                                attrs: {
+                                  label: optionRole.name,
+                                  name: "selectRoles",
+                                  custom: true,
+                                  inline: true,
+                                  checked: _vm.user.roles.includes(
+                                    optionRole.name
+                                  )
+                                },
+                                on: {
+                                  "update:checked": function($event) {
+                                    return _vm.selectRoles(optionRole.name)
                                   }
-                                })
-                              }),
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
+                                }
+                              })
+                            }),
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
-                    2
+                    1
                   )
                 ],
                 1
@@ -373,19 +402,34 @@ var render = function() {
                   _c(
                     "CButton",
                     {
-                      attrs: { color: "primary" },
+                      attrs: { disabled: !_vm.isEditedUser, color: "primary" },
                       on: {
                         click: function($event) {
                           return _vm.update()
                         }
                       }
                     },
-                    [_vm._v("Save")]
+                    [
+                      _vm.isEditedUser
+                        ? _c("span", [_vm._v("Save")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.isEditedUser
+                        ? _c("CSpinner", {
+                            attrs: { color: "info", size: "sm" }
+                          })
+                        : _vm._e()
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
                     "CButton",
-                    { attrs: { color: "primary" }, on: { click: _vm.goBack } },
+                    {
+                      staticClass: "ml-2",
+                      attrs: { color: "danger" },
+                      on: { click: _vm.goBack }
+                    },
                     [_vm._v("Back")]
                   )
                 ],

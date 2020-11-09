@@ -125,16 +125,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Users',
@@ -163,19 +153,12 @@ __webpack_require__.r(__webpack_exports__);
     getBadge: function getBadge(status) {
       return status === 'Active' ? 'success' : status === 'Inactive' ? 'secondary' : status === 'Pending' ? 'warning' : status === 'Banned' ? 'danger' : 'primary';
     },
-    // userLink (id) {
-    //   return `users/${id.toString()}`
-    // },
     editLink: function editLink(id) {
       return "users/".concat(id.toString(), "/edit");
     },
-    // showUser ( id ) {
-    //   const userLink = this.userLink( id );
-    //   this.$router.push({path: userLink});
-    // },
     createUser: function createUser() {
       this.$router.push({
-        path: 'users/create'
+        path: "users/create"
       });
     },
     editUser: function editUser(id) {

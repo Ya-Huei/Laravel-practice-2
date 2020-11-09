@@ -56,6 +56,7 @@ class UsersController extends Controller
             'name'       => 'required|min:1|max:256',
             'email'      => 'required|email|max:256',
             'password'   => 'required|min:1|max:256',
+            'roles'      => 'required'
         ]);
         $user = new User();
         $user->name = $request->input('name');
@@ -63,10 +64,14 @@ class UsersController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->email_verified_at = now();
         $user->remember_token = Str::random(10);
-        $user->menuroles = 'user,admin';
+        $roles = $request->input('roles');
+        $user->menuroles = implode(",", $roles);
         $user->status = 'Active';
         $user->save();
-        $user->assignRole('admin');
+
+        foreach($roles as $role){
+            $user->assignRole($role);
+        }
         return response()->json( ['status' => 'success'] );
     }
 
@@ -94,7 +99,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = DB::table('users')
-        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.status')
+        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles')
         ->where('users.id', '=', $id)
         ->first();
         return response()->json( $user );
@@ -110,14 +115,24 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name'       => 'required|min:1|max:256',
-            'email'      => 'required|email|max:256'
+            'password'   => 'max:256',
+            'roles'      => 'required'
         ]);
         $user = User::find($id);
-        $user->name       = $request->input('name');
-        $user->email      = $request->input('email');
+        $password = $request->input('password');
+        if(isset($password) && $password != ""){
+            $user->password  = bcrypt($password);
+        }
+
+        $roles = $request->input('roles');
+        $user->menuroles = implode(",", $roles);
         $user->save();
-        //$request->session()->flash('message', 'Successfully updated user');
+
+        $user->roles()->detach();
+        foreach($roles as $role){
+            $user->assignRole($role);
+        }
+
         return response()->json( ['status' => 'success'] );
     }
 

@@ -7,9 +7,6 @@
         </CCardHeader>
         <CCardBody>
           <CForm>
-            <template slot="header">
-              Edit User id:  {{ $route.params.id }}
-            </template>
             <CAlert
               :show.sync="dismissCountDown"
               color="primary"
@@ -18,14 +15,21 @@
               ({{dismissCountDown}}) {{ message }}
             </CAlert>
             <CInput
-              description="Enter your account"
-              label="Account"
+              label="Name"
+              v-model="user.name"
+              horizontal
+              disabled
+            />
+            <CInput
+              label="Email"
+              v-model="user.email"
               horizontal
               disabled
             />
             <CInput
               type="password"
               description="Please enter password"
+              v-model="user.password"
               label="Password"
               horizontal
             />
@@ -36,29 +40,31 @@
               horizontal
             />
 
-            <template>
               <div class="form-group form-row">
                 <CCol tag="label" sm="3" class="col-form-label">
                   Roles
                 </CCol>
-                <CCol sm="9" :class="form-inline">
+                <CCol sm="9">
                   <CInputCheckbox
-                    v-for="(option) in options"
-                    :key="option"
-                    :label="option"
-                    :value="option"
-                    :custom="1"
-                    :name="`Option 1`"
+                    v-for="optionRole in optionRoles"
+                    :key="optionRole.name"
+                    :label="optionRole.name"
+                    name="selectRoles"
+                    :custom="true"
                     :inline="true"
+                    :checked="user.roles.includes(optionRole.name)"
+                    @update:checked="selectRoles(optionRole.name)"
                   />
                 </CCol>
               </div>
-            </template>
             </CForm>
           </CCardBody>
         <CCardFooter class="text-right">
-          <CButton color="primary" @click="update()">Save</CButton>
-          <CButton color="primary" @click="goBack">Back</CButton>
+          <CButton :disabled="!isEditedUser" color="primary" @click="update()">
+            <span v-if="isEditedUser">Save</span>
+            <CSpinner v-if="!isEditedUser" color="info"  size="sm" />
+          </CButton>
+          <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
         </CCardFooter>
       </CCard>
     </CCol>
@@ -67,58 +73,47 @@
 
 <script>
 import axios from 'axios'
+import { cilHandPointDown } from '@coreui/icons'
 export default {
   name: 'EditUser',
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
   data: () => {
     return {
-      name: '',
-      email: '',
+      user: {
+        name: '',
+        email: '',
+        password: '',
+        roles: [],
+      },
       showMessage: false,
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
       showDismissibleAlert: false,
-      selected: [], // Must be an array reference!
       show: true,
       horizontal: { label:'col-3', input:'col-9' },
-      options: ['Role 1', 'Role 2', 'Role 3'],
-      selectOptions: [
-        'Option 1', 'Option 2', 'Option 3',
-        { 
-          value: ['some value', 'another value'], 
-          label: 'Selected option'
-        }
-      ],
-      selectedOption: ['some value', 'another value'],
-
-      formCollapsed: true,
+      optionRoles: [],
+      isEditedUser: true,
     }
   },
   methods: {
     goBack() {
       this.$router.go(-1)
-      // this.$router.replace({path: '/users'})
     },
     update() {
         let self = this;
+        self.isEditedUser = false;
         axios.post('/api/users/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
         {
             _method: 'PUT',
-            name: self.name,
-            email: self.email,
+            password: self.user.password,
+            roles: self.user.roles,
         })
         .then(function (response) {
-            self.message = 'Successfully updated user.';
-            self.showAlert();
+            self.goBack();
         }).catch(function (error) {
-            console.log(error);
-            self.$router.push({ path: '/login' });
+            self.isEditedUser = true;
+            self.message = error;
+            self.showAlert();
         });
     },
     countDownChanged (dismissCountDown) {
@@ -127,13 +122,32 @@ export default {
     showAlert () {
       this.dismissCountDown = this.dismissSecs
     },
+    selectRoles(role){
+      let temp = this.user.roles.indexOf(role); 
+      if (temp > -1) {
+        this.user.roles.splice(temp, 1);
+      }else{
+        this.user.roles.push(role);
+      }
+    },
+  },
+  beforeCreate: function(){
+    let self = this;
+    axios.get('/api/roles?token=' + localStorage.getItem("api_token"))
+    .then(function (response) {
+        self.optionRoles = response.data;
+    }).catch(function (error) {
+        console.log(error);
+        self.$router.push({ path: '/login' });
+    });
   },
   mounted: function(){
     let self = this;
-    axios.get(  this.$apiAdress + '/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
+    axios.get('/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
     .then(function (response) {
-        self.name = response.data.name;
-        self.email = response.data.email;
+        self.user.name = response.data.name;
+        self.user.email = response.data.email;
+        self.user.roles = response.data.roles.split(",");
     }).catch(function (error) {
         console.log(error);
         self.$router.push({ path: '/login' });

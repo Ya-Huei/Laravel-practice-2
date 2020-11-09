@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[15],{
 
-/***/ "../coreui/src/views/roles/CreateRole.vue":
-/*!************************************************!*\
-  !*** ../coreui/src/views/roles/CreateRole.vue ***!
-  \************************************************/
+/***/ "../coreui/src/views/roles/EditRole.vue":
+/*!**********************************************!*\
+  !*** ../coreui/src/views/roles/EditRole.vue ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateRole.vue?vue&type=template&id=1c5107ce& */ "../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&");
-/* harmony import */ var _CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateRole.vue?vue&type=script&lang=js& */ "../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&");
+/* harmony import */ var _EditRole_vue_vue_type_template_id_68013fdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditRole.vue?vue&type=template&id=68013fdc& */ "../coreui/src/views/roles/EditRole.vue?vue&type=template&id=68013fdc&");
+/* harmony import */ var _EditRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditRole.vue?vue&type=script&lang=js& */ "../coreui/src/views/roles/EditRole.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -20,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _EditRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditRole_vue_vue_type_template_id_68013fdc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditRole_vue_vue_type_template_id_68013fdc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -32,47 +32,47 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/roles/CreateRole.vue"
+component.options.__file = "coreui/src/views/roles/EditRole.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&":
-/*!*************************************************************************!*\
-  !*** ../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************/
+/***/ "../coreui/src/views/roles/EditRole.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ../coreui/src/views/roles/EditRole.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRole.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditRole.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/EditRole.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&":
-/*!*******************************************************************************!*\
-  !*** ../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce& ***!
-  \*******************************************************************************/
+/***/ "../coreui/src/views/roles/EditRole.vue?vue&type=template&id=68013fdc&":
+/*!*****************************************************************************!*\
+  !*** ../coreui/src/views/roles/EditRole.vue?vue&type=template&id=68013fdc& ***!
+  \*****************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRole.vue?vue&type=template&id=1c5107ce& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRole_vue_vue_type_template_id_68013fdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditRole.vue?vue&type=template&id=68013fdc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/EditRole.vue?vue&type=template&id=68013fdc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRole_vue_vue_type_template_id_68013fdc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRole_vue_vue_type_template_id_1c5107ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRole_vue_vue_type_template_id_68013fdc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/EditRole.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/EditRole.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -131,27 +131,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'CreateUser',
-
-  /*
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
-  */
+  name: 'EditRole',
   data: function data() {
     return {
       role: {
+        id: null,
         name: ''
       },
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
-      showDismissibleAlert: false,
       selected: [],
       // Must be an array reference!
       show: true,
@@ -159,26 +151,26 @@ __webpack_require__.r(__webpack_exports__);
         label: 'col-3',
         input: 'col-9'
       },
-      options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13']
+      options: ['P 1', 'P 2', 'P 3', 'P 4', 'P 5', 'P 6', 'P 7', 'P 8', 'P 9', 'P 10', 'P 11', 'P 12', 'P 13'],
+      selectOptions: ['Option 1', 'Option 2', 'Option 3', {
+        value: ['some value', 'another value'],
+        label: 'Selected option'
+      }],
+      selectedOption: ['some value', 'another value'],
+      formCollapsed: true
     };
   },
   methods: {
     goBack: function goBack() {
       this.$router.go(-1);
     },
-    store: function store() {
+    update: function update() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles?token=' + localStorage.getItem("api_token"), {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.$apiAdress + '/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"), {
+        _method: 'PUT',
         name: self.role.name
       }).then(function (response) {
-        self.note = {
-          title: '',
-          content: '',
-          applies_to_date: '',
-          status_id: null,
-          note_type: ''
-        };
-        self.message = 'Successfully created user.';
+        self.message = 'Successfully updated role.';
         self.showAlert();
       })["catch"](function (error) {
         if (error.response.data.message == 'The given data was invalid.') {
@@ -194,13 +186,10 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           console.log(error);
           self.$router.push({
-            path: 'login'
+            path: '/login'
           });
         }
       });
-    },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
     },
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
@@ -208,23 +197,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/create?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.statuses = response.data;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(this.$apiAdress + '/api/roles/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
+      self.role = response.data;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({
-        path: 'login'
+        path: '/login'
       });
     });
   }
 });
+/*
+      items: (id) => {
+        const user = usersData.find( user => user.id.toString() === id)
+        const userDetails = user ? Object.entries(user) : [['id', 'Not found']]
+        return userDetails.map(([key, value]) => {return {key: key, value: value}})
+      },
+*/
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/CreateRole.vue?vue&type=template&id=1c5107ce& ***!
-  \*************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/EditRole.vue?vue&type=template&id=68013fdc&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/EditRole.vue?vue&type=template&id=68013fdc& ***!
+  \***********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -246,7 +242,15 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Create Role")])]),
+              _c("CCardHeader", [
+                _c("h4", [
+                  _vm._v(
+                    "\n          Edit Role id:  " +
+                      _vm._s(_vm.$route.params.id) +
+                      "\n        "
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "CCardBody",
@@ -276,73 +280,66 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "CForm",
-                    [
-                      _c("CInput", {
-                        attrs: {
-                          description: "Enter your name",
-                          label: "Name",
-                          horizontal: ""
-                        },
-                        model: {
-                          value: _vm.role.name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.role, "name", $$v)
-                          },
-                          expression: "role.name"
-                        }
-                      }),
-                      _vm._v(" "),
+                  _c("CInput", {
+                    attrs: {
+                      description: "Please enter name",
+                      label: "Name",
+                      horizontal: ""
+                    },
+                    model: {
+                      value: _vm.role.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.role, "name", $$v)
+                      },
+                      expression: "role.name"
+                    }
+                  }),
+                  _vm._v(" "),
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "form-group form-row" },
                       [
                         _c(
-                          "div",
-                          { staticClass: "form-group form-row" },
+                          "CCol",
+                          {
+                            staticClass: "col-form-label",
+                            attrs: { tag: "label", sm: "3" }
+                          },
                           [
-                            _c(
-                              "CCol",
-                              {
-                                staticClass: "col-form-label",
-                                attrs: { tag: "label", sm: "3" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Permissions\n                "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "CCol",
-                              { attrs: { sm: "9" } },
-                              _vm._l(_vm.options, function(option) {
-                                return _c("CInputCheckbox", {
-                                  key: option,
-                                  attrs: {
-                                    label: option,
-                                    value: option,
-                                    custom: true,
-                                    name: "Option 1",
-                                    inline: true
-                                  }
-                                })
-                              }),
-                              1
+                            _vm._v(
+                              "\n                Permissions\n              "
                             )
-                          ],
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "CCol",
+                          { class: _vm.form - _vm.inline, attrs: { sm: "9" } },
+                          _vm._l(_vm.options, function(option) {
+                            return _c("CInputCheckbox", {
+                              key: option,
+                              attrs: {
+                                label: option,
+                                value: option,
+                                custom: 1,
+                                name: "Option 1",
+                                inline: true
+                              }
+                            })
+                          }),
                           1
                         )
-                      ]
-                    ],
-                    2
-                  )
+                      ],
+                      1
+                    )
+                  ]
                 ],
-                1
+                2
               ),
               _vm._v(" "),
               _c(
                 "CCardFooter",
-                { staticClass: "d-flex justify-content-end" },
                 [
                   _c(
                     "CButton",
@@ -350,20 +347,16 @@ var render = function() {
                       attrs: { color: "primary" },
                       on: {
                         click: function($event) {
-                          return _vm.store()
+                          return _vm.update()
                         }
                       }
                     },
-                    [_vm._v("Create")]
+                    [_vm._v("Save")]
                   ),
                   _vm._v(" "),
                   _c(
                     "CButton",
-                    {
-                      staticClass: "ml-2",
-                      attrs: { color: "danger" },
-                      on: { click: _vm.goBack }
-                    },
+                    { attrs: { color: "primary" }, on: { click: _vm.goBack } },
                     [_vm._v("Back")]
                   )
                 ],

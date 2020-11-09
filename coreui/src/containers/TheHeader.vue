@@ -17,22 +17,11 @@
     <CMenu/>
 
     <CHeaderNav class="mr-4">
-      <!-- <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          <CIcon name="cil-bell"/>
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          <CIcon name="cil-list"/>
-        </CHeaderNavLink>
-      </CHeaderNavItem> -->
       <CHeaderNavItem class="mx-2">
         <CHeaderNavLink  @click.native="logout()">
           <CIcon name="cil-lock-locked" /> Logout
         </CHeaderNavLink>
       </CHeaderNavItem>
-      <!-- <TheHeaderDropdownAccnt/> -->
     </CHeaderNav>
     <CSubheader class="px-3">
       <CBreadcrumbRouter class="border-0 mb-0"/>
@@ -43,17 +32,14 @@
 <script>
 import axios from 'axios'
 import CMenu from './Menu'
-// import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
 
 export default {
   name: 'TheHeader',
   components: {
-    // TheHeaderDropdownAccnt,
     CMenu
   },
   methods:{
     logout(){
-      console.log("aeiou");
       let self = this;
       axios.post('/api/logout?token=' + localStorage.getItem("api_token"),{})
       .then(function (response) {

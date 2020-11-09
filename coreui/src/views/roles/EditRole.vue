@@ -54,14 +54,6 @@
 import axios from 'axios'
 export default {
   name: 'EditRole',
-  /*
-  props: {
-    caption: {
-      type: String,
-      default: 'User id'
-    },
-  },
-  */
   data: () => {
     return {
         role: {

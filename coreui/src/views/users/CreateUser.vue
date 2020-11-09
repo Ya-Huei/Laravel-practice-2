@@ -37,6 +37,7 @@
                 description="Check your password"
                 label="Check password"
                 type="password"
+                v-model="checkPassword"
                 horizontal
               />
               
@@ -80,16 +81,17 @@ export default {
         name: '',
         email: '',
         password: '',
+        roles: [],
       },
       message: '',
       dismissSecs: 7,
       dismissCountDown: 0,
       showDismissibleAlert: false,
-      selectedRoles: [],
       show: true,
       horizontal: { label:'col-3', input:'col-9' },
       optionRoles: [],
       isCreatedUser: true,
+      checkPassword: ''
     }
   },
   methods: {
@@ -98,41 +100,22 @@ export default {
     },
     store() {
         let self = this;
-        console.log(self.selectedRoles);
-        // axios.post('/api/users?token=' + localStorage.getItem("api_token"),
-        //   {
-        //     isCreatedUser: false,
-        //     name: self.user.name,
-        //     email: self.user.email,
-        //     password: self.user.password,
-        //   }
-        // )
-        // .then(function (response) {
-        //     isCreatedUser: true;
-        //     self.note = {
-        //       title: '',
-        //       content: '',
-        //       applies_to_date: '',
-        //       status_id: null,
-        //       note_type: '',
-        //     };
-        //     self.message = 'Successfully created user.';
-        //     self.showAlert();
-        // }).catch(function (error) {
-        //     isCreatedUser: true;
-        //     if(error.response.data.message == 'The given data was invalid.'){
-        //       self.message = '';
-        //       for (let key in error.response.data.errors) {
-        //         if (error.response.data.errors.hasOwnProperty(key)) {
-        //           self.message += error.response.data.errors[key][0] + '  ';
-        //         }
-        //       }
-        //       self.showAlert();
-        //     }else{
-        //       console.log(error);
-        //       self.$router.push({ path: 'login' }); 
-        //     }
-        // });
+        self.isCreatedUser = false;
+        axios.post('/api/users?token=' + localStorage.getItem("api_token"),
+          {
+              name: self.user.name,
+              email: self.user.email,
+              password: self.user.password,
+              roles: self.user.roles,
+          }
+        )
+        .then(function (response) {
+            self.goBack();
+        }).catch(function (error) {
+            self.isCreatedUser = true;
+            self.message = error;
+            self.showAlert();
+        });
     },
     countDownChanged (dismissCountDown) {
       this.dismissCountDown = dismissCountDown
@@ -141,11 +124,11 @@ export default {
       this.dismissCountDown = this.dismissSecs
     },
     selectRoles(role){
-      let temp = this.selectedRoles.indexOf(role); 
+      let temp = this.user.roles.indexOf(role); 
       if (temp > -1) {
-        this.selectedRoles.splice(temp, 1);
+        this.user.roles.splice(temp, 1);
       }else{
-        this.selectedRoles.push(role);
+        this.user.roles.push(role);
       }
     },
   },
@@ -156,7 +139,7 @@ export default {
         self.optionRoles = response.data;
     }).catch(function (error) {
         console.log(error);
-        self.$router.push({ path: 'login' });
+        self.$router.push({ path: '/login' });
     });
   }
 }
