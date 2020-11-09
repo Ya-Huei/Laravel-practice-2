@@ -19,18 +19,6 @@ const Roles = () => import('@/views/roles/Roles')
 const EditRole = () => import('@/views/roles/EditRole')
 const CreateRole = () => import('@/views/roles/CreateRole')
 
-//Menus
-const Menus       = () => import('@/views/menu/MenuIndex')
-const CreateMenu  = () => import('@/views/menu/CreateMenu')
-const EditMenu    = () => import('@/views/menu/EditMenu')
-const DeleteMenu  = () => import('@/views/menu/DeleteMenu')
-
-const MenuElements = () => import('@/views/menuElements/ElementsIndex')
-const CreateMenuElement = () => import('@/views/menuElements/CreateMenuElement')
-const EditMenuElement = () => import('@/views/menuElements/EditMenuElement')
-const ShowMenuElement = () => import('@/views/menuElements/ShowMenuElement')
-const DeleteMenuElement = () => import('@/views/menuElements/DeleteMenuElement')
-
 Vue.use(Router)
 
 export default new Router({
@@ -52,74 +40,6 @@ function configRoutes () {
           path: 'users',
           name: 'Users',
           component: Users
-        },
-        {
-          path: 'menu',
-          meta: { label: 'Menu'},
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: '',
-              component: Menus,
-            },
-            {
-              path: 'create',
-              meta: { label: 'Create Menu' },
-              name: 'CreateMenu',
-              component: CreateMenu
-            },
-            {
-              path: ':id/edit',
-              meta: { label: 'Edit Menu' },
-              name: 'EditMenu',
-              component: EditMenu
-            },
-            {
-              path: ':id/delete',
-              meta: { label: 'Delete Menu' },
-              name: 'DeleteMenu',
-              component: DeleteMenu
-            },
-          ]
-        },
-        {
-          path: 'menuelement',
-          meta: { label: 'MenuElement'},
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: ':menu/menuelement',
-              component: MenuElements,
-            },
-            {
-              path: ':menu/menuelement/create',
-              meta: { label: 'Create Menu Element' },
-              name: 'Create Menu Element',
-              component: CreateMenuElement
-            },
-            {
-              path: ':menu/menuelement/:id',
-              meta: { label: 'Menu Element Details'},
-              name: 'Menu Element',
-              component: ShowMenuElement,
-            },
-            {
-              path: ':menu/menuelement/:id/edit',
-              meta: { label: 'Edit Menu Element' },
-              name: 'Edit Menu Element',
-              component: EditMenuElement
-            },
-            {
-              path: ':menu/menuelement/:id/delete',
-              meta: { label: 'Delete Menu Element' },
-              name: 'Delete Menu Element',
-              component: DeleteMenuElement
-            },
-          ]
         },
         {
           path: 'users',

@@ -122,12 +122,8 @@ class RolesController extends Controller
     public function destroy($id, Request $request)
     {
         $role = Role::where('id', '=', $id)->first();
-        $menuRole = Menurole::where('role_name', '=', $role->name)->first();
-        if(!empty($menuRole)){
-            return response()->json( ['status' => 'rejected'] );
-        }else{
-            $role->delete();
-            return response()->json( ['status' => 'success'] );
-        }
+        $menuRole = Menurole::where('role_name', '=', $role->name)->delete();
+        $role->delete();
+        return response()->json( ['status' => 'success'] );
     }
 }
