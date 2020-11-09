@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Log;
 
 class GetSidebarMenu implements MenuInterface{
 
-    private $mb; //menu builder
     private $menu;
 
     public function __construct(){
@@ -22,39 +21,15 @@ class GetSidebarMenu implements MenuInterface{
 
     private function getMenuFromDB($roles){
         $this->menu = Menus::join('menu_role', 'menus.id', '=', 'menu_role.menus_id')
-            // ->join('menulist', 'menulist.id', '=', 'menus.menu_id')
             ->select('menus.*')
             ->whereIn('menu_role.role_name', $roles)
             ->groupBy('menus.id')
             ->orderBy('menus.sequence', 'asc')->get();       
     }
 
-    private function getGuestMenu($menuName){
-        $this->getMenuFromDB($menuName, 'guest');
-    }
-
-    private function getUserMenu($menuName){
-        $this->getMenuFromDB($menuName, 'user');
-    }
-
-    private function getAdminMenu($menuName){
-        $this->getMenuFromDB($menuName, 'admin');
-    }
-
     public function get($roles, $menuName = 'sidebar menu'){
         $roles = explode(',', $roles);
-        // Log::info('abc: ' . $roles);
         $this->getMenuFromDB($roles);
-        // $roles = explode(',', $roles);
-        // if(empty($roles)){
-        //     $this->getGuestMenu($menuName);
-        // }elseif(in_array('admin', $roles)){
-        //     $this->getAdminMenu($menuName);
-        // }elseif(in_array('user', $roles)){
-        //     $this->getUserMenu($menuName);
-        // }else{
-        //     $this->getGuestMenu($menuName);
-        // }
         $rfd = new RenderFromDatabaseData;
         return $rfd->render($this->menu);
     }
