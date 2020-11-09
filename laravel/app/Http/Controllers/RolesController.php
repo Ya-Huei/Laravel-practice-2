@@ -122,7 +122,7 @@ class RolesController extends Controller
     public function destroy($id, Request $request)
     {
         $role = Role::where('id', '=', $id)->first();
-        $menuRole = Menurole::where('role_name', '=', $role->name)->delete();
+        Menurole::where('role_name', '=', $role->name)->delete();
         $role->delete();
         return response()->json( ['status' => 'success'] );
     }
