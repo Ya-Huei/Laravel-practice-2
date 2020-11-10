@@ -12,7 +12,6 @@ class MenusTableSeeder extends Seeder
     private $sequence = 1;
     private $joinData = array();
     private $adminRole = null;
-    private $userRole = null;
 
     public function join($roles, $menusId){
         $roles = explode(',', $roles);
@@ -65,9 +64,6 @@ class MenusTableSeeder extends Seeder
             $permission = Permission::create(['name' => 'visit ' . $name]);
         }
         $roles = explode(',', $roles);
-        if(in_array('user', $roles)){
-            $this->userRole->givePermissionTo($permission);
-        }
         if(in_array('admin', $roles)){
             $this->adminRole->givePermissionTo($permission);
         }
@@ -124,7 +120,6 @@ class MenusTableSeeder extends Seeder
     {
         /* Get roles */
         $this->adminRole = Role::where('name' , '=' , 'admin' )->first();
-        $this->userRole = Role::where('name', '=', 'user' )->first();
         $this->menuId = DB::getPdo()->lastInsertId();  //set menuId
         /* guest menu */
         $this->insertLink('admin', 'Users',    '/users');
