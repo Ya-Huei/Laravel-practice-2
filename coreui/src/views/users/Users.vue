@@ -31,7 +31,7 @@
           >
           <template #operate="{item}">
             <td>
-              <CButton color="primary" @click="editUser( item.id )">Edit</CButton>
+              <CButton v-if="you!=item.id" color="primary" @click="editUser( item.id )">Edit</CButton>
               <CButton v-if="you!=item.id" color="danger" class="ml-1" @click="deleteUser( item.id )">Delete</CButton>
             </td>
           </template>

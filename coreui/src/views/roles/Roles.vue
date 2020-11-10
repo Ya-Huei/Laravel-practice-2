@@ -32,7 +32,7 @@
           <template #operate="{item}">
             <td>
               <CButton color="primary" @click="editRole( item.id )">Edit</CButton>
-              <CButton v-if="you!=item.id" color="danger" class="ml-1" @click="deleteRole( item.id )">Delete</CButton>
+              <CButton v-if="adminId!=item.id" color="danger" class="ml-1" @click="deleteRole( item.id )">Delete</CButton>
             </td>
           </template>
         </CDataTable>
@@ -55,7 +55,7 @@ export default {
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      you: null,
+      adminId: 1,
       message: '',
       showMessage: false,
       dismissSecs: 7,
@@ -93,7 +93,6 @@ export default {
         _method: 'DELETE'
       })
       .then(function (response) {
-          console.log(response);
           if(response.data.status == 'success'){
             self.message = 'Successfully deleted role.';
           }else{
@@ -116,7 +115,6 @@ export default {
       let self = this;
       axios.get('/api/roles?token=' + localStorage.getItem("api_token"))
       .then(function (response) {
-        // self.items = response.data.users;
         self.items = response.data;
       }).catch(function (error) {
         console.log(error);

@@ -324,18 +324,20 @@ var render = function() {
                                 _c(
                                   "td",
                                   [
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "primary" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editUser(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Edit")]
-                                    ),
+                                    _vm.you != item.id
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            attrs: { color: "primary" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.editUser(item.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Edit")]
+                                        )
+                                      : _vm._e(),
                                     _vm._v(" "),
                                     _vm.you != item.id
                                       ? _c(

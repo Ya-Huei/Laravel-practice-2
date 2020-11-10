@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      you: null,
+      adminId: 1,
       message: '',
       showMessage: false,
       dismissSecs: 7,
@@ -173,8 +173,6 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles/' + id + '?token=' + localStorage.getItem("api_token"), {
         _method: 'DELETE'
       }).then(function (response) {
-        console.log(response);
-
         if (response.data.status == 'success') {
           self.message = 'Successfully deleted role.';
         } else {
@@ -199,7 +197,6 @@ __webpack_require__.r(__webpack_exports__);
     getRoles: function getRoles() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles?token=' + localStorage.getItem("api_token")).then(function (response) {
-        // self.items = response.data.users;
         self.items = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -343,7 +340,7 @@ var render = function() {
                                       [_vm._v("Edit")]
                                     ),
                                     _vm._v(" "),
-                                    _vm.you != item.id
+                                    _vm.adminId != item.id
                                       ? _c(
                                           "CButton",
                                           {
