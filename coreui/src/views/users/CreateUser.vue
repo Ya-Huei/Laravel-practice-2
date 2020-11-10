@@ -6,13 +6,16 @@
           <h4>Create User</h4>
         </CCardHeader>
         <CCardBody>
-          <CAlert
-            :show.sync="dismissCountDown"
-            color="primary"
-            fade
-          >
-            ({{dismissCountDown}}) {{ message }}
-          </CAlert>
+          <span v-if="showAlert">
+            <CAlert
+              v-for="(message) in messages"
+              :key="message"
+              color="danger"
+            >
+            {{message}}
+            </CAlert>
+          </span>
+          
           <CForm>
               <CInput
                 description="Enter your name"
@@ -73,6 +76,7 @@
 
 <script>
 import axios from 'axios'
+import { cibLogstash } from '@coreui/icons'
 export default {
   name: 'CreateUser',
   data: () => {
@@ -83,15 +87,12 @@ export default {
         password: '',
         roles: [],
       },
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      show: true,
+      messages: [],
       horizontal: { label:'col-3', input:'col-9' },
       optionRoles: [],
       isCreatedUser: true,
-      checkPassword: ''
+      checkPassword: '',
+      showAlert: false
     }
   },
   methods: {
@@ -101,6 +102,7 @@ export default {
     store() {
         let self = this;
         self.isCreatedUser = false;
+        self.messages = [];
         axios.post('/api/users?token=' + localStorage.getItem("api_token"),
           {
               name: self.user.name,
@@ -113,15 +115,9 @@ export default {
             self.goBack();
         }).catch(function (error) {
             self.isCreatedUser = true;
-            self.message = error;
-            self.showAlert();
+            self.messages = error.response.data.errors;
+            self.showAlert = true;
         });
-    },
-    countDownChanged (dismissCountDown) {
-      this.dismissCountDown = dismissCountDown
-    },
-    showAlert () {
-      this.dismissCountDown = this.dismissSecs
     },
     selectRoles(role){
       let temp = this.user.roles.indexOf(role); 

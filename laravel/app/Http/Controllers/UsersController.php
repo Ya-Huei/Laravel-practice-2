@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Requests\UserStoreFormValidation;
 use App\User;
 
 class UsersController extends Controller
@@ -49,14 +50,8 @@ class UsersController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(UserStoreFormValidation $request)
     {
-        $request->validate([
-            'name'       => 'required|min:1|max:256',
-            'email'      => 'required|email|max:256',
-            'password'   => 'required|min:1|max:256',
-            'roles'      => 'required'
-        ]);
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');

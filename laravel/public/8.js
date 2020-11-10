@@ -80,6 +80,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/icons */ "../coreui/node_modules/@coreui/icons/js/index.js");
+//
+//
+//
 //
 //
 //
@@ -154,6 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CreateUser',
   data: function data() {
@@ -164,18 +169,15 @@ __webpack_require__.r(__webpack_exports__);
         password: '',
         roles: []
       },
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      show: true,
+      messages: [],
       horizontal: {
         label: 'col-3',
         input: 'col-9'
       },
       optionRoles: [],
       isCreatedUser: true,
-      checkPassword: ''
+      checkPassword: '',
+      showAlert: false
     };
   },
   methods: {
@@ -185,6 +187,7 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var self = this;
       self.isCreatedUser = false;
+      self.messages = [];
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users?token=' + localStorage.getItem("api_token"), {
         name: self.user.name,
         email: self.user.email,
@@ -194,15 +197,9 @@ __webpack_require__.r(__webpack_exports__);
         self.goBack();
       })["catch"](function (error) {
         self.isCreatedUser = true;
-        self.message = error;
-        self.showAlert();
+        self.messages = error.response.data.errors;
+        self.showAlert = true;
       });
-    },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert: function showAlert() {
-      this.dismissCountDown = this.dismissSecs;
     },
     selectRoles: function selectRoles(role) {
       var temp = this.user.roles.indexOf(role);
@@ -259,30 +256,25 @@ var render = function() {
               _c(
                 "CCardBody",
                 [
-                  _c(
-                    "CAlert",
-                    {
-                      attrs: {
-                        show: _vm.dismissCountDown,
-                        color: "primary",
-                        fade: ""
-                      },
-                      on: {
-                        "update:show": function($event) {
-                          _vm.dismissCountDown = $event
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n          (" +
-                          _vm._s(_vm.dismissCountDown) +
-                          ") " +
-                          _vm._s(_vm.message) +
-                          "\n        "
+                  _vm.showAlert
+                    ? _c(
+                        "span",
+                        _vm._l(_vm.messages, function(message) {
+                          return _c(
+                            "CAlert",
+                            { key: message, attrs: { color: "danger" } },
+                            [
+                              _vm._v(
+                                "\n          " +
+                                  _vm._s(message) +
+                                  "\n          "
+                              )
+                            ]
+                          )
+                        }),
+                        1
                       )
-                    ]
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "CForm",
