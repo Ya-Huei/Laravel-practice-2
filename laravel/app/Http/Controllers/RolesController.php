@@ -7,6 +7,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use App\Models\Menurole;
 use App\User;
+use App\Services\MenuRoleService;
 use Illuminate\Support\Facades\Log;
 
 class RolesController extends Controller
@@ -17,7 +18,6 @@ class RolesController extends Controller
     public function index()
     {
         $roles = DB::table('roles')
-        // ->leftJoin('role_hierarchy', 'roles.id', '=', 'role_hierarchy.role_id')
         ->select('id', 'name', 'updated_at as updated', 'created_at as registered')
         ->get();
         return response()->json( $roles );
@@ -48,12 +48,7 @@ class RolesController extends Controller
         $role->name = $name;
         $role->save();
 
-        foreach($request->input('permissions') as $item_id){
-            $menuRole = new Menurole();
-            $menuRole->role_name = $name;
-            $menuRole->menus_id = $item_id;
-            $menuRole->save();
-        }
+        MenuRoleService::insertRolePermissions($name, $request->input('permissions'));
 
         return response()->json( ['status' => 'success'] );
     }
@@ -77,13 +72,7 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = Role::where('id', '=', $id)->first();
-        $permissionDetail = Menurole::select('menus_id')->where('role_name', '=', $role->name)->get();
-        $permissions = array();
-
-
-        foreach ($permissionDetail as $key => $value) {
-            array_push($permissions, $value['menus_id']);
-        }
+        $permissions = MenuRoleService::getPermissions($role->name);
 
         return response()->json( array(
             'id' => $role->id,
@@ -104,14 +93,9 @@ class RolesController extends Controller
             'permissions' => 'required'
         ]);
         $role = Role::where('id', '=', $id)->first();
-        Menurole::where('role_name', $role->name)->delete();
 
-        foreach($request->input('permissions') as $item_id){
-            $menuRole = new Menurole();
-            $menuRole->role_name = $role->name;
-            $menuRole->menus_id = $item_id;
-            $menuRole->save();
-        }
+        MenuRoleService::deleteRolePermissions($role->name);
+        MenuRoleService::insertRolePermissions($role->name, $request->input('permissions'));
         
         return response()->json( ['status' => 'success'] );
     }
