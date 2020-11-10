@@ -93,7 +93,12 @@ export default {
         _method: 'DELETE'
       })
       .then(function (response) {
-          self.message = 'Successfully deleted role.';
+          console.log(response);
+          if(response.data.status == 'success'){
+            self.message = 'Successfully deleted role.';
+          }else{
+            self.message = response.data.message;
+          }
           self.showAlert();
           self.getRoles();
       }).catch(function (error) {

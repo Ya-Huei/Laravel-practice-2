@@ -173,7 +173,14 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles/' + id + '?token=' + localStorage.getItem("api_token"), {
         _method: 'DELETE'
       }).then(function (response) {
-        self.message = 'Successfully deleted role.';
+        console.log(response);
+
+        if (response.data.status == 'success') {
+          self.message = 'Successfully deleted role.';
+        } else {
+          self.message = response.data.message;
+        }
+
         self.showAlert();
         self.getRoles();
       })["catch"](function (error) {

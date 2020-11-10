@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use App\Models\Menurole;
+use App\User;
+use Illuminate\Support\Facades\Log;
 
 class RolesController extends Controller
 {
@@ -122,8 +124,16 @@ class RolesController extends Controller
     public function destroy($id, Request $request)
     {
         $role = Role::where('id', '=', $id)->first();
-        Menurole::where('role_name', '=', $role->name)->delete();
-        $role->delete();
+        $users = User::role($role->name)->get();
+
+        if(count($users) !== 0){
+            return response()->json( ['status' => 'fail', 'message' => 'Please remove the role of the users who has this role.'] );
+        }
+        
+        if($role){
+            Menurole::where('role_name', '=', $role->name)->delete();
+            $role->delete();
+        }
         return response()->json( ['status' => 'success'] );
     }
 }

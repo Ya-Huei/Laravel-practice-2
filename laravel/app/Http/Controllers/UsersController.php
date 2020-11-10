@@ -126,11 +126,8 @@ class UsersController extends Controller
         $roles = $request->input('roles');
         $user->menuroles = implode(",", $roles);
         $user->save();
-
-        $user->roles()->detach();
-        foreach($roles as $role){
-            $user->assignRole($role);
-        }
+        
+        $user->syncRoles($roles);
 
         return response()->json( ['status' => 'success'] );
     }
