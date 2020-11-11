@@ -24,7 +24,8 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "clearCache": "jest --clearCache",
-    "release": "npm-run-all clearCache lint build test:unit test:e2e"
+    "release": "npm-run-all clearCache lint build test:unit test:e2e",
+    "format": "prettier --write 'src/**/*.{js,vue}'"
   },
   "dependencies": {
     "@coreui/coreui": "~3.0.0",
