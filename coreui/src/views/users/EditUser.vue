@@ -6,39 +6,43 @@
           <h4>Edit User</h4>
         </CCardHeader>
         <CCardBody>
-          <CForm>
+            <span v-if="showMessage">
             <CAlert
-              :show.sync="dismissCountDown"
-              color="primary"
-              fade
+              v-for="(message) in messages"
+              :key="message"
+              color="danger"
             >
-              ({{dismissCountDown}}) {{ message }}
+              {{ message }}
             </CAlert>
-            <CInput
-              label="Name"
-              v-model="user.name"
-              horizontal
-              disabled
-            />
-            <CInput
-              label="Email"
-              v-model="user.email"
-              horizontal
-              disabled
-            />
-            <CInput
-              type="password"
-              description="Please enter password"
-              v-model="user.password"
-              label="Password"
-              horizontal
-            />
-            <CInput
-              type="password"
-              description="Please check password"
-              label="Check Password"
-              horizontal
-            />
+            </span>
+
+            <CForm>
+              <CInput
+                label="Name"
+                v-model="user.name"
+                horizontal
+                disabled
+              />
+              <CInput
+                label="Email"
+                v-model="user.email"
+                horizontal
+                disabled
+              />
+              <CInput
+                type="password"
+                description="Please enter password"
+                v-model="user.password"
+                label="Password"
+                horizontal
+              />
+              <CInput
+                type="password"
+                description="Please check password"
+                v-model="user.checkPassword"
+                label="Password Confirmation"
+                horizontal
+              />
 
               <div class="form-group form-row">
                 <CCol tag="label" sm="3" class="col-form-label">
@@ -73,8 +77,10 @@
 
 <script>
 import axios from 'axios'
+import format from '../mixins/Format.vue'
 import { cilHandPointDown } from '@coreui/icons'
 export default {
+  mixins: [format],
   name: 'EditUser',
   data: () => {
     return {
@@ -82,17 +88,14 @@ export default {
         name: '',
         email: '',
         password: '',
+        checkPassword: '',
         roles: [],
       },
-      showMessage: false,
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      show: true,
+      messages: [],
       horizontal: { label:'col-3', input:'col-9' },
       optionRoles: [],
       isEditedUser: true,
+      showMessage: false
     }
   },
   methods: {
@@ -106,21 +109,16 @@ export default {
         {
             _method: 'PUT',
             password: self.user.password,
+            password_confirmation: self.user.checkPassword,
             roles: self.user.roles,
         })
         .then(function (response) {
             self.goBack();
         }).catch(function (error) {
             self.isEditedUser = true;
-            self.message = error;
-            self.showAlert();
+            self.messages = self.formResponseFormat(error);
+            self.showMessage = true;
         });
-    },
-    countDownChanged (dismissCountDown) {
-      this.dismissCountDown = dismissCountDown
-    },
-    showAlert () {
-      this.dismissCountDown = this.dismissSecs
     },
     selectRoles(role){
       let temp = this.user.roles.indexOf(role); 

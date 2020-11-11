@@ -106,12 +106,8 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateFormValidation $request, $id)
     {
-        $validatedData = $request->validate([
-            'password'   => 'max:256',
-            'roles'      => 'required'
-        ]);
         $user = User::find($id);
         $password = $request->input('password');
         if(isset($password) && $password != ""){

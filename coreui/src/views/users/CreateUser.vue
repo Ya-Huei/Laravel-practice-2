@@ -3,10 +3,10 @@
     <CCol col="12" lg="12">
       <CCard>
         <CCardHeader>
-          <h4>Create User</h4>
+           <h4>Create User</h4>
         </CCardHeader>
         <CCardBody>
-          <span v-if="showAlert">
+          <span v-if="showMessage">
             <CAlert
               v-for="(message) in messages"
               :key="message"
@@ -38,9 +38,9 @@
               />
               <CInput
                 description="Check your password"
-                label="Check password"
+                label="Password Confirmation"
                 type="password"
-                v-model="checkPassword"
+                v-model="user.checkPassword"
                 horizontal
               />
               
@@ -76,8 +76,10 @@
 
 <script>
 import axios from 'axios'
+import format from '../mixins/Format.vue'
 import { cibLogstash } from '@coreui/icons'
 export default {
+  mixins: [format],
   name: 'CreateUser',
   data: () => {
     return {
@@ -85,14 +87,14 @@ export default {
         name: '',
         email: '',
         password: '',
+        checkPassword: '',
         roles: [],
       },
       messages: [],
       horizontal: { label:'col-3', input:'col-9' },
       optionRoles: [],
       isCreatedUser: true,
-      checkPassword: '',
-      showAlert: false
+      showMessage: false
     }
   },
   methods: {
@@ -108,6 +110,7 @@ export default {
               name: self.user.name,
               email: self.user.email,
               password: self.user.password,
+              password_confirmation: self.user.checkPassword,
               roles: self.user.roles,
           }
         )
@@ -115,8 +118,8 @@ export default {
             self.goBack();
         }).catch(function (error) {
             self.isCreatedUser = true;
-            self.messages = error.response.data.errors;
-            self.showAlert = true;
+            self.messages = self.formResponseFormat(error);
+            self.showMessage = true;
         });
     },
     selectRoles(role){
