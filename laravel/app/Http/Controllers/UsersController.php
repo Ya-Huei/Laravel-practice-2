@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\UserStoreFormValidation;
+use App\Http\Requests\UserUpdateFormValidation;
 use App\User;
 
 class UsersController extends Controller

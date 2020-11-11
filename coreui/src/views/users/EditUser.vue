@@ -78,7 +78,6 @@
 <script>
 import axios from 'axios'
 import format from '../mixins/Format.vue'
-import { cilHandPointDown } from '@coreui/icons'
 export default {
   mixins: [format],
   name: 'EditUser',

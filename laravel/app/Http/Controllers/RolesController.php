@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Menurole;
 use App\User;
 use App\Services\MenuRoleService;
-use Illuminate\Support\Facades\Log;
+use App\Http\Requests\RoleStoreFormValidation;
+use App\Http\Requests\RoleUpdateFormValidation;
 
 class RolesController extends Controller
 {
@@ -37,12 +38,8 @@ class RolesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(RoleStoreFormValidation $request)
     {
-        $request->validate([
-            'name' => 'required|min:1|max:128',
-            'permissions' => 'required'
-        ]);
         $role = new Role();
         $name = $request->input('name');
         $role->name = $name;
@@ -87,11 +84,8 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      */
-    public function update(Request $request, $id)
+    public function update(RoleUpdateFormValidation $request, $id)
     {
-        $request->validate([
-            'permissions' => 'required'
-        ]);
         $role = Role::where('id', '=', $id)->first();
 
         MenuRoleService::deleteRolePermissions($role->name);

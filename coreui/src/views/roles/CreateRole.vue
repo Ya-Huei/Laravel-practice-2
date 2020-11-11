@@ -6,13 +6,15 @@
           <h4>Create Role</h4>
         </CCardHeader>
         <CCardBody>
+          <span v-if="showMessage">
           <CAlert
-            :show.sync="dismissCountDown"
-            color="primary"
-            fade
+            v-for="(message) in messages"
+              :key="message"
+              color="danger"
           >
-            ({{dismissCountDown}}) {{ message }}
+            {{ message }}
           </CAlert>
+          </span>
           <CForm>
               <CInput
                 description="Enter your name"
@@ -52,22 +54,21 @@
 
 <script>
 import axios from 'axios'
+import format from '../mixins/Format.vue'
 export default {
-  name: 'CreateUser',
+  mixins: [format],
+  name: 'CreateRole',
   data: () => {
     return {
       role: {
         name: '',
         permissions: [],
       },
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      show: true,
+      messages: [],
       horizontal: { label:'col-3', input:'col-9' },
       optionPermissions: [],
       isCreatedRole: true,
+      showMessage: false
     }
   },
   methods: {
@@ -87,15 +88,9 @@ export default {
             self.goBack();
         }).catch(function (error) {
             self.isCreatedRole = true;
-            self.message = error;
-            self.showAlert();
+            self.messages = self.formResponseFormat(error);
+            self.showMessage = true;
         });
-    },
-    countDownChanged (dismissCountDown) {
-      this.dismissCountDown = dismissCountDown
-    },
-    showAlert () {
-      this.dismissCountDown = this.dismissSecs
     },
     selectPermissions(permission){
       let temp = this.role.permissions.indexOf(permission); 

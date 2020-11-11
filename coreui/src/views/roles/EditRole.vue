@@ -6,14 +6,16 @@
           <h4>Edit Role</h4>
         </CCardHeader>
         <CCardBody>
-          <CForm>
+            <span v-if="showMessage">
             <CAlert
-              :show.sync="dismissCountDown"
-              color="primary"
-              fade
+              v-for="(message) in messages"
+                :key="message"
+                color="danger"
             >
-              ({{dismissCountDown}}) {{ message }}
+              {{ message }}
             </CAlert>
+            </span>
+            <CForm>
             <CInput
               label="Name"
               v-model="role.name"
@@ -53,8 +55,9 @@
 
 <script>
 import axios from 'axios'
-import { cilHandPointDown } from '@coreui/icons'
+import format from '../mixins/Format.vue'
 export default {
+  mixins: [format],
   name: 'EditUser',
   data: () => {
     return {
@@ -62,15 +65,11 @@ export default {
         name: '',
         permissions: [],
       },
-      showMessage: false,
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      show: true,
+      messages: [],
       horizontal: { label:'col-3', input:'col-9' },
       optionPermissions: [],
       isEditedRole: true,
+      showMessage: false,
     }
   },
   methods: {
@@ -79,7 +78,6 @@ export default {
     },
     update() {
         let self = this;
-        console.log(self.role.permissions);
         self.isEditedRole = false;
         axios.post('/api/roles/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
         {
@@ -90,15 +88,9 @@ export default {
             self.goBack();
         }).catch(function (error) {
             self.isEditedRole = true;
-            self.message = error;
-            self.showAlert();
+            self.messages = self.formResponseFormat(error);
+            self.showMessage = true;
         });
-    },
-    countDownChanged (dismissCountDown) {
-      this.dismissCountDown = dismissCountDown
-    },
-    showAlert () {
-      this.dismissCountDown = this.dismissSecs
     },
     selectRoles(menu_id){
       let temp = this.role.permissions.indexOf(menu_id); 
@@ -107,7 +99,6 @@ export default {
       }else{
         this.role.permissions.push(menu_id);
       }
-      console.log(this.role.permissions);
     },
   },
   beforeCreate: function(){
@@ -126,10 +117,9 @@ export default {
     .then(function (response) {
         self.role.name = response.data.name;
         self.role.permissions = response.data.permissions;
-        console.log(self.role.permissions);
     }).catch(function (error) {
         console.log(error);
-        // self.$router.push({ path: '/login' });
+        self.$router.push({ path: '/login' });
     });
   }
 }

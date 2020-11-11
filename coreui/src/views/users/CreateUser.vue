@@ -77,7 +77,6 @@
 <script>
 import axios from 'axios'
 import format from '../mixins/Format.vue'
-import { cibLogstash } from '@coreui/icons'
 export default {
   mixins: [format],
   name: 'CreateUser',

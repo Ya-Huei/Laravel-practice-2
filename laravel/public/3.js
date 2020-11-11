@@ -173,7 +173,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/Format.vue */ "../coreui/src/views/mixins/Format.vue");
-/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons */ "../coreui/node_modules/@coreui/icons/js/index.js");
 //
 //
 //
@@ -251,7 +250,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({

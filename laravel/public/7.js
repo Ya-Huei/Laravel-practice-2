@@ -1,5 +1,55 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[7],{
 
+/***/ "../coreui/src/views/mixins/Format.vue":
+/*!*********************************************!*\
+  !*** ../coreui/src/views/mixins/Format.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Format.vue?vue&type=script&lang=js& */ "../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  _Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "coreui/src/views/mixins/Format.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Format.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "../coreui/src/views/roles/CreateRole.vue":
 /*!************************************************!*\
   !*** ../coreui/src/views/roles/CreateRole.vue ***!
@@ -69,6 +119,48 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    formResponseFormat: function formResponseFormat(error) {
+      var messages = [];
+
+      if (typeof error.response.data.errors == 'undefined') {
+        messages.push("error");
+        return messages;
+      }
+
+      for (var _i = 0, _Object$entries = Object.entries(error.response.data.errors); _i < _Object$entries.length; _i++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            key = _Object$entries$_i[0],
+            value = _Object$entries$_i[1];
+
+        messages.push(value[0]);
+      }
+
+      return messages;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/CreateRole.vue?vue&type=script&lang=js& ***!
@@ -80,6 +172,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/Format.vue */ "../coreui/src/views/mixins/Format.vue");
+//
+//
 //
 //
 //
@@ -133,25 +228,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'CreateUser',
+  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
+  name: 'CreateRole',
   data: function data() {
     return {
       role: {
         name: '',
         permissions: []
       },
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      show: true,
+      messages: [],
       horizontal: {
         label: 'col-3',
         input: 'col-9'
       },
       optionPermissions: [],
-      isCreatedRole: true
+      isCreatedRole: true,
+      showMessage: false
     };
   },
   methods: {
@@ -168,15 +262,9 @@ __webpack_require__.r(__webpack_exports__);
         self.goBack();
       })["catch"](function (error) {
         self.isCreatedRole = true;
-        self.message = error;
-        self.showAlert();
+        self.messages = self.formResponseFormat(error);
+        self.showMessage = true;
       });
-    },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert: function showAlert() {
-      this.dismissCountDown = this.dismissSecs;
     },
     selectPermissions: function selectPermissions(permission) {
       var temp = this.role.permissions.indexOf(permission);
@@ -233,30 +321,23 @@ var render = function() {
               _c(
                 "CCardBody",
                 [
-                  _c(
-                    "CAlert",
-                    {
-                      attrs: {
-                        show: _vm.dismissCountDown,
-                        color: "primary",
-                        fade: ""
-                      },
-                      on: {
-                        "update:show": function($event) {
-                          _vm.dismissCountDown = $event
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n          (" +
-                          _vm._s(_vm.dismissCountDown) +
-                          ") " +
-                          _vm._s(_vm.message) +
-                          "\n        "
+                  _vm.showMessage
+                    ? _c(
+                        "span",
+                        _vm._l(_vm.messages, function(message) {
+                          return _c(
+                            "CAlert",
+                            { key: message, attrs: { color: "danger" } },
+                            [
+                              _vm._v(
+                                "\n          " + _vm._s(message) + "\n        "
+                              )
+                            ]
+                          )
+                        }),
+                        1
                       )
-                    ]
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "CForm",
