@@ -289,7 +289,7 @@ var render = function() {
                         {
                           attrs: {
                             show: _vm.dismissCountDown,
-                            color: "primary",
+                            color: "danger",
                             fade: ""
                           },
                           on: {

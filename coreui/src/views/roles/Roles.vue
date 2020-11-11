@@ -16,7 +16,7 @@
         <CCardBody>
           <CAlert
             :show.sync="dismissCountDown"
-            color="primary"
+            color="danger"
             fade
           >
             ({{dismissCountDown}}) {{ message }}
