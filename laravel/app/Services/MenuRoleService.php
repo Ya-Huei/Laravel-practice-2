@@ -21,7 +21,7 @@ class MenuRoleService
         Menurole::where('role_id', $roleId)->delete();
     }
 
-    public static function getPermissions($roleId)
+    public static function getRolePermissions($roleId)
     {
         $permissionDetail = Menurole::select('menu_id')->where('role_id', $roleId)->get();
         $permissions = array();

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Menus\GetSidebarMenu;
+use App\Services\PermissionUserService;
+use App\Models\Menus;
+use App\MenuBuilder\RenderFromDatabaseData;
 
 class MenuController extends Controller
 {
@@ -16,21 +18,18 @@ class MenuController extends Controller
     {
         try {
             $user = auth()->user();
+            $roles = '';
             if ($user && !empty($user)) {
                 $roles =  $user->getRoleNames();
-            } else {
-                $roles = '';
             }
         } catch (Exception $e) {
             $roles = '';
         }
-        if ($request->has('menu')) {
-            $menuName = $request->input('menu');
-        } else {
-            $menuName = 'sidebar menu';
-        }
-        $menus = new GetSidebarMenu();
-        return response()->json($menus->get($roles, $menuName));
+
+        $permissions = PermissionUserService::getUserPermissions($user);
+
+        $rfd = new RenderFromDatabaseData;
+        return response()->json($rfd->render($permissions));
     }
 
     
@@ -41,7 +40,7 @@ class MenuController extends Controller
      */
     public function getAllMenu()
     {
-        $menus = new GetSidebarMenu();
-        return response()->json($menus->getAllExceptFormat());
+        $menus = Menus::select('menus.*')->orderBy('menus.sequence', 'asc')->get();
+        return response()->json($menus);
     }
 }

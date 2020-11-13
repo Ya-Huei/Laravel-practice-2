@@ -120,32 +120,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Login',
+  name: "Login",
   data: function data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       showMessage: false,
-      message: ''
+      message: ""
     };
   },
   methods: {
     login: function login() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/login', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/login", {
         email: self.email,
         password: self.password
       }).then(function (response) {
-        self.email = '';
-        self.password = '';
+        self.email = "";
+        self.password = "";
         localStorage.setItem("api_token", response.data.access_token);
         self.$router.push({
-          path: 'users'
+          path: response.data.default_page
         });
       })["catch"](function (error) {
-        self.message = 'Incorrect E-mail or password';
+        self.message = "Incorrect E-mail or password";
         self.showMessage = true;
         console.log(error);
       });

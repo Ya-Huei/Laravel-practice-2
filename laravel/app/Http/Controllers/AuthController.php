@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Services\PermissionUserService;
 
 class AuthController extends Controller
-{ 
+{
     /**
      * Create a new AuthController instance.
      *
@@ -32,7 +34,14 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        $response = [
+            'default_page'  => $this->getDefaultPage(),
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => Auth::factory()->getTTL() * 60
+        ];
+
+        return response()->json($response);
     }
 
     /**
@@ -47,29 +56,12 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function refresh()
+    private function getDefaultPage()
     {
-        return $this->respondWithToken(Auth::refresh());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => Auth::factory()->getTTL() * 60
-        ]);
+        $user = auth()->user();
+        $permissions = PermissionUserService::getUserPermissions($user);
+        foreach ($permissions as $key => $value) {
+            return $value['href'];
+        }
     }
 }

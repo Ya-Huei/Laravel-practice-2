@@ -18,12 +18,10 @@ Route::group(['middleware' => 'api'], function ($router) {
 
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('register', 'AuthController@register');
+    Route::get('menu/getAllMenu', 'MenuController@getAllMenu');
 
-    Route::group(['middleware' => 'admin'], function ($router) {
+    Route::group(['middleware' => 'permissions'], function ($router) {
         Route::resource('users', UsersController::class)->except(['show']);
-        Route::get('menu/getAllMenu', 'MenuController@getAllMenu');
         Route::resource('roles', RolesController::class)->except(['show']);
         ;
     });

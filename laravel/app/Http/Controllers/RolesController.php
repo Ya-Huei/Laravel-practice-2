@@ -72,7 +72,7 @@ class RolesController extends Controller
             return response()->json(['status' => '403']);
         }
 
-        $permissions = MenuRoleService::getPermissions($role->id);
+        $permissions = MenuRoleService::getRolePermissions($role->id);
 
         return response()->json(array(
             'id' => $role->id,
