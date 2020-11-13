@@ -16,7 +16,12 @@ class CreateMenuroleTable extends Migration
         Schema::create('menu_role', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('role_name');
-            $table->integer('menus_id')->unsigned();
+            $table->unsignedBigInteger('menus_id');
+
+            $table->foreign('menus_id')
+                ->references('id')
+                ->on('menus')
+                ->onDelete('cascade');
         });
     }
 

@@ -34,7 +34,7 @@ class UsersController extends Controller
         ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.updated_at as updated', 'users.created_at as registered')
         ->whereNull('deleted_at')
         ->get();
-        return response()->json( compact('users', 'you') );
+        return response()->json(compact('users', 'you'));
     }
 
     /**
@@ -43,7 +43,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return response()->json( ['status' => 'success'] );  
+        return response()->json(['status' => 'success']);
     }
 
     /**
@@ -64,54 +64,41 @@ class UsersController extends Controller
         $user->status = 'Active';
         $user->save();
 
-        foreach($roles as $role){
+        foreach ($roles as $role) {
             $user->assignRole($role);
         }
-        return response()->json( ['status' => 'success'] );
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $user = DB::table('users')
-        ->select('id', 'name', 'email', 'menuroles as roles', 'status', 'email_verified_at as registered')
-        ->where('id', '=', $id)
-        ->first();
-        return response()->json( $user );
+        return response()->json(['status' => 'success']);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = DB::table('users')
-        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles')
-        ->where('users.id', '=', $id)
-        ->first();
-        return response()->json( $user );
+        if ($user->name == "admin") {
+            return response()->json(['status' => '403']);
+        }
+        // $user = DB::table('users')
+        // ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles')
+        // ->where('users.id', '=', $id)
+        // ->first();
+        return response()->json($user);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateFormValidation $request, $id)
+    public function update(UserUpdateFormValidation $request, User $user)
     {
-        $user = User::find($id);
         $password = $request->input('password');
-        if(isset($password) && $password != ""){
+        if (isset($password) && $password != "") {
             $user->password  = bcrypt($password);
         }
 
@@ -121,21 +108,22 @@ class UsersController extends Controller
         
         $user->syncRoles($roles);
 
-        return response()->json( ['status' => 'success'] );
+        return response()->json(['status' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
-        if($user){
-            $user->delete();
+        if ($user->name == "admin") {
+            return response()->json(['status' => '403']);
         }
-        return response()->json( ['status' => 'success'] );
+
+        $user->delete();
+        return response()->json(['status' => 'success']);
     }
 }

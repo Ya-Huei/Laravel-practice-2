@@ -125,18 +125,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Roles',
+  name: "Roles",
   data: function data() {
     return {
       items: [],
-      fields: ['id', 'name', 'updated', 'registered', 'operate'],
+      fields: ["id", "name", "updated", "registered", "operate"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      adminId: 1,
-      message: '',
+      adminName: "admin",
+      message: "",
       showMessage: false,
       dismissSecs: 7,
       dismissCountDown: 0,
@@ -144,21 +153,18 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   paginationProps: {
-    align: 'center',
+    align: "center",
     doubleArrows: false,
-    previousButtonHtml: 'prev',
-    nextButtonHtml: 'next'
+    previousButtonHtml: "prev",
+    nextButtonHtml: "next"
   },
   methods: {
-    getBadge: function getBadge(status) {
-      return status === 'Active' ? 'success' : status === 'Inactive' ? 'secondary' : status === 'Pending' ? 'warning' : status === 'Banned' ? 'danger' : 'primary';
-    },
     editLink: function editLink(id) {
       return "roles/".concat(id.toString(), "/edit");
     },
     createRole: function createRole() {
       this.$router.push({
-        path: 'roles/create'
+        path: "roles/create"
       });
     },
     editRole: function editRole(id) {
@@ -170,11 +176,18 @@ __webpack_require__.r(__webpack_exports__);
     deleteRole: function deleteRole(id) {
       var self = this;
       var userId = id;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles/' + id + '?token=' + localStorage.getItem("api_token"), {
-        _method: 'DELETE'
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/roles/" + id + "?token=" + localStorage.getItem("api_token"), {
+        _method: "DELETE"
       }).then(function (response) {
-        if (response.data.status == 'success') {
-          self.message = 'Successfully deleted role.';
+        if (response.data.status == "403") {
+          self.$router.push({
+            path: "/roles"
+          });
+          return;
+        }
+
+        if (response.data.status == "success") {
+          self.message = "Successfully deleted role.";
         } else {
           self.message = response.data.message;
         }
@@ -184,7 +197,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({
-          path: '/login'
+          path: "/login"
         });
       });
     },
@@ -196,12 +209,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     getRoles: function getRoles() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles?token=' + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/roles?token=" + localStorage.getItem("api_token")).then(function (response) {
         self.items = response.data;
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({
-          path: '/login'
+          path: "/login"
         });
       });
     }
@@ -300,11 +313,11 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n          (" +
+                            "\n            (" +
                               _vm._s(_vm.dismissCountDown) +
                               ") " +
                               _vm._s(_vm.message) +
-                              "\n        "
+                              "\n          "
                           )
                         ]
                       ),
@@ -327,20 +340,22 @@ var render = function() {
                                 _c(
                                   "td",
                                   [
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "primary" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editRole(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Edit")]
-                                    ),
+                                    _vm.adminName != item.name
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            attrs: { color: "primary" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.editRole(item.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Edit")]
+                                        )
+                                      : _vm._e(),
                                     _vm._v(" "),
-                                    _vm.adminId != item.id
+                                    _vm.adminName != item.name
                                       ? _c(
                                           "CButton",
                                           {

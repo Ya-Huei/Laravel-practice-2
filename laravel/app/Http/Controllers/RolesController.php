@@ -21,7 +21,7 @@ class RolesController extends Controller
         $roles = DB::table('roles')
         ->select('id', 'name', 'updated_at as updated', 'created_at as registered')
         ->get();
-        return response()->json( $roles );
+        return response()->json($roles);
     }
 
     /**
@@ -30,7 +30,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return response()->json( ['status' => 'success'] );  
+        return response()->json(['status' => 'success']);
     }
 
     /**
@@ -47,7 +47,7 @@ class RolesController extends Controller
 
         MenuRoleService::insertRolePermissions($name, $request->input('permissions'));
 
-        return response()->json( ['status' => 'success'] );
+        return response()->json(['status' => 'success']);
     }
 
     /**
@@ -58,20 +58,23 @@ class RolesController extends Controller
     public function show($id)
     {
         $role = Role::where('id', '=', $id)->first();
-        return response()->json( array('name' => $role->name) );
+        return response()->json(array('name' => $role->name));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Role  $role
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        $role = Role::where('id', '=', $id)->first();
+        if ($role->name = "admin") {
+            return response()->json(['status' => '403']);
+        }
+
         $permissions = MenuRoleService::getPermissions($role->name);
 
-        return response()->json( array(
+        return response()->json(array(
             'id' => $role->id,
             'name' => $role->name,
             'permissions' => $permissions
@@ -82,36 +85,35 @@ class RolesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Role  $role
      */
-    public function update(RoleUpdateFormValidation $request, $id)
+    public function update(RoleUpdateFormValidation $request, Role $role)
     {
-        $role = Role::where('id', '=', $id)->first();
-
         MenuRoleService::deleteRolePermissions($role->name);
         MenuRoleService::insertRolePermissions($role->name, $request->input('permissions'));
         
-        return response()->json( ['status' => 'success'] );
+        return response()->json(['status' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Role  $role
      */
-    public function destroy($id, Request $request)
+    public function destroy(Role $role)
     {
-        $role = Role::where('id', '=', $id)->first();
+        if ($role->name = "admin") {
+            return response()->json(['status' => '403']);
+        }
+
         $users = User::role($role->name)->get();
 
-        if(count($users) !== 0){
-            return response()->json( ['status' => 'fail', 'message' => 'Please remove the role of the users who has this role.'] );
+        if (count($users) !== 0) {
+            return response()->json(['status' => 'fail', 'message' => 'Please remove the role of the users who has this role.']);
         }
-        
-        if($role){
-            Menurole::where('role_name', '=', $role->name)->delete();
-            $role->delete();
-        }
-        return response()->json( ['status' => 'success'] );
+
+        Menurole::where('role_name', '=', $role->name)->delete();
+        $role->delete();
+        return response()->json(['status' => 'success']);
     }
 }

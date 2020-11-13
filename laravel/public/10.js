@@ -125,18 +125,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Users',
+  name: "Users",
   data: function data() {
     return {
       items: [],
-      fields: ['id', 'name', 'email', 'roles', 'updated', 'registered', 'operate'],
+      fields: ["id", "name", "email", "roles", "updated", "registered", "operate"],
+      adminName: "admin",
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
       you: null,
-      message: '',
+      message: "",
       showMessage: false,
       dismissSecs: 7,
       dismissCountDown: 0,
@@ -144,14 +154,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   paginationProps: {
-    align: 'center',
+    align: "center",
     doubleArrows: false,
-    previousButtonHtml: 'prev',
-    nextButtonHtml: 'next'
+    previousButtonHtml: "prev",
+    nextButtonHtml: "next"
   },
   methods: {
     getBadge: function getBadge(status) {
-      return status === 'Active' ? 'success' : status === 'Inactive' ? 'secondary' : status === 'Pending' ? 'warning' : status === 'Banned' ? 'danger' : 'primary';
+      return status === "Active" ? "success" : status === "Inactive" ? "secondary" : status === "Pending" ? "warning" : status === "Banned" ? "danger" : "primary";
     },
     editLink: function editLink(id) {
       return "users/".concat(id.toString(), "/edit");
@@ -170,16 +180,28 @@ __webpack_require__.r(__webpack_exports__);
     deleteUser: function deleteUser(id) {
       var self = this;
       var userId = id;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/' + id + '?token=' + localStorage.getItem("api_token"), {
-        _method: 'DELETE'
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/" + id + "?token=" + localStorage.getItem("api_token"), {
+        _method: "DELETE"
       }).then(function (response) {
-        self.message = 'Successfully deleted user.';
+        if (response.data.status == "403") {
+          self.$router.push({
+            path: "/users"
+          });
+          return;
+        }
+
+        if (response.data.status == "success") {
+          self.message = "Successfully deleted user.";
+        } else {
+          self.message = response.data.message;
+        }
+
         self.showAlert();
         self.getUsers();
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({
-          path: '/login'
+          path: "/login"
         });
       });
     },
@@ -191,13 +213,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     getUsers: function getUsers() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users?token=' + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users?token=" + localStorage.getItem("api_token")).then(function (response) {
         self.items = response.data.users;
         self.you = response.data.you;
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({
-          path: '/login'
+          path: "/login"
         });
       });
     }
@@ -297,11 +319,11 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n          (" +
+                            "\n            (" +
                               _vm._s(_vm.dismissCountDown) +
                               ") " +
                               _vm._s(_vm.message) +
-                              "\n        "
+                              "\n          "
                           )
                         ]
                       ),
@@ -324,7 +346,7 @@ var render = function() {
                                 _c(
                                   "td",
                                   [
-                                    _vm.you != item.id
+                                    _vm.adminName != item.name
                                       ? _c(
                                           "CButton",
                                           {
@@ -339,6 +361,7 @@ var render = function() {
                                         )
                                       : _vm._e(),
                                     _vm._v(" "),
+                                    _vm.adminName != item.name &&
                                     _vm.you != item.id
                                       ? _c(
                                           "CButton",

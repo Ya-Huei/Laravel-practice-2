@@ -24,10 +24,10 @@ class UserStoreFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'name'       => 'required|string|between:6,256',
+            'name'       => 'required|string|between:4,256',
             'email'      => 'required|email|max:256',
             'password'   => 'required|string|between:6,32|confirmed',
-            'roles'      => 'required|array'
+            'roles'      => 'nullable|array'
         ];
     }
 }

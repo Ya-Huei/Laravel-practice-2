@@ -6,67 +6,53 @@
           <h4>Edit User</h4>
         </CCardHeader>
         <CCardBody>
-            <span v-if="showMessage">
-            <CAlert
-              v-for="(message) in messages"
-              :key="message"
-              color="danger"
-            >
+          <span v-if="showMessage">
+            <CAlert v-for="message in messages" :key="message" color="danger">
               {{ message }}
             </CAlert>
-            </span>
+          </span>
 
-            <CForm>
-              <CInput
-                label="Name"
-                v-model="user.name"
-                horizontal
-                disabled
-              />
-              <CInput
-                label="Email"
-                v-model="user.email"
-                horizontal
-                disabled
-              />
-              <CInput
-                type="password"
-                description="Please enter password"
-                v-model="user.password"
-                label="Password"
-                horizontal
-              />
-              <CInput
-                type="password"
-                description="Please check password"
-                v-model="user.checkPassword"
-                label="Password Confirmation"
-                horizontal
-              />
+          <CForm>
+            <CInput label="Name" v-model="user.name" horizontal disabled />
+            <CInput label="Email" v-model="user.email" horizontal disabled />
+            <CInput
+              type="password"
+              description="Please enter password"
+              v-model="user.password"
+              label="Password"
+              horizontal
+            />
+            <CInput
+              type="password"
+              description="Please check password"
+              v-model="user.checkPassword"
+              label="Password Confirmation"
+              horizontal
+            />
 
-              <div class="form-group form-row">
-                <CCol tag="label" sm="3" class="col-form-label">
-                  Roles
-                </CCol>
-                <CCol sm="9">
-                  <CInputCheckbox
-                    v-for="optionRole in optionRoles"
-                    :key="optionRole.name"
-                    :label="optionRole.name"
-                    name="selectRoles"
-                    :custom="true"
-                    :inline="true"
-                    :checked="user.roles.includes(optionRole.name)"
-                    @update:checked="selectRoles(optionRole.name)"
-                  />
-                </CCol>
-              </div>
-            </CForm>
-          </CCardBody>
+            <div class="form-group form-row">
+              <CCol tag="label" sm="3" class="col-form-label">
+                Roles
+              </CCol>
+              <CCol sm="9">
+                <CInputCheckbox
+                  v-for="optionRole in optionRoles"
+                  :key="optionRole.name"
+                  :label="optionRole.name"
+                  name="selectRoles"
+                  :custom="true"
+                  :inline="true"
+                  :checked="user.roles.includes(optionRole.name)"
+                  @update:checked="selectRoles(optionRole.name)"
+                />
+              </CCol>
+            </div>
+          </CForm>
+        </CCardBody>
         <CCardFooter class="text-right">
           <CButton :disabled="!isEditedUser" color="primary" @click="update()">
             <span v-if="isEditedUser">Save</span>
-            <CSpinner v-if="!isEditedUser" color="info"  size="sm" />
+            <CSpinner v-if="!isEditedUser" color="info" size="sm" />
           </CButton>
           <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
         </CCardFooter>
@@ -76,81 +62,99 @@
 </template>
 
 <script>
-import axios from 'axios'
-import format from '../mixins/Format.vue'
+import axios from "axios";
+import format from "../mixins/Format.vue";
 export default {
   mixins: [format],
-  name: 'EditUser',
+  name: "EditUser",
   data: () => {
     return {
       user: {
-        name: '',
-        email: '',
-        password: '',
-        checkPassword: '',
+        name: "",
+        email: "",
+        password: "",
+        checkPassword: "",
         roles: [],
       },
       messages: [],
-      horizontal: { label:'col-3', input:'col-9' },
+      horizontal: { label: "col-3", input: "col-9" },
       optionRoles: [],
       isEditedUser: true,
-      showMessage: false
-    }
+      showMessage: false,
+    };
   },
   methods: {
     goBack() {
-      this.$router.go(-1)
+      this.$router.go(-1);
     },
     update() {
-        let self = this;
-        self.isEditedUser = false;
-        axios.post('/api/users/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"),
-        {
-            _method: 'PUT',
+      let self = this;
+      self.isEditedUser = false;
+      axios
+        .post(
+          "/api/users/" +
+            self.$route.params.id +
+            "?token=" +
+            localStorage.getItem("api_token"),
+          {
+            _method: "PUT",
             password: self.user.password,
             password_confirmation: self.user.checkPassword,
             roles: self.user.roles,
+          }
+        )
+        .then(function(response) {
+          self.goBack();
         })
-        .then(function (response) {
-            self.goBack();
-        }).catch(function (error) {
-            self.isEditedUser = true;
-            self.messages = self.formResponseFormat(error);
-            self.showMessage = true;
+        .catch(function(error) {
+          self.isEditedUser = true;
+          self.messages = self.formResponseFormat(error);
+          self.showMessage = true;
         });
     },
-    selectRoles(role){
-      let temp = this.user.roles.indexOf(role); 
+    selectRoles(role) {
+      let temp = this.user.roles.indexOf(role);
       if (temp > -1) {
         this.user.roles.splice(temp, 1);
-      }else{
+      } else {
         this.user.roles.push(role);
       }
     },
   },
-  beforeCreate: function(){
+  beforeCreate: function() {
     let self = this;
-    axios.get('/api/roles?token=' + localStorage.getItem("api_token"))
-    .then(function (response) {
+    axios
+      .get("/api/roles?token=" + localStorage.getItem("api_token"))
+      .then(function(response) {
         self.optionRoles = response.data;
-    }).catch(function (error) {
+      })
+      .catch(function(error) {
         console.log(error);
-        self.$router.push({ path: '/login' });
-    });
+        self.$router.push({ path: "/login" });
+      });
   },
-  mounted: function(){
+  mounted: function() {
     let self = this;
-    axios.get('/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token"))
-    .then(function (response) {
+    axios
+      .get(
+        "/api/users/" +
+          self.$route.params.id +
+          "/edit?token=" +
+          localStorage.getItem("api_token")
+      )
+      .then(function(response) {
+        if (response.data.status == "403") {
+          self.$router.push({ path: "/users" });
+          return;
+        }
         self.user.name = response.data.name;
         self.user.email = response.data.email;
-        self.user.roles = response.data.roles.split(",");
-    }).catch(function (error) {
+        self.user.roles = response.data.menuroles.split(",");
+      })
+      .catch(function(error) {
         console.log(error);
-        self.$router.push({ path: '/login' });
-    });
-  }
-}
-
-
+        self.$router.push({ path: "/login" });
+      });
+  },
+};
 </script>

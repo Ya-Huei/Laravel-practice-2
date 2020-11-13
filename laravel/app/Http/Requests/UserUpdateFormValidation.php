@@ -25,7 +25,7 @@ class UserUpdateFormValidation extends FormRequest
     {
         return [
             'password'   => 'nullable|string|between:6,32|confirmed',
-            'roles'   => 'required|array',
+            'roles'   => 'nullable|array',
         ];
     }
 }
