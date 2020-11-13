@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(Menurole::class, function (Faker $faker) {
-    return [     
-        'role_name' => 'guest',
-        'menus_id'  => factory(App\Models\Menus::class)->create()->id,
+    return [
+        'role_id' => '1',
+        'menu_id'  => factory(App\Models\Menus::class)->create()->id,
     ];
 });

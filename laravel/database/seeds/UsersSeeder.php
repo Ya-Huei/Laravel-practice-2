@@ -20,14 +20,11 @@ class UsersSeeder extends Seeder
 
         $faker = Faker::create();
         /*  insert users   */
-        $user = User::create([ 
+        $user = User::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
-            'email_verified_at' => now(),
             'password' => bcrypt('password'), // password
             'remember_token' => Str::random(10),
-            'menuroles' => 'admin',
-            'status' => 'Active'
         ]);
         $user->assignRole('admin');
     }

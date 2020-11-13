@@ -16,21 +16,21 @@ class MenuController extends Controller
     {
         try {
             $user = auth()->user();
-            if($user && !empty($user)){
-                $roles =  $user->menuroles;
-            }else{
+            if ($user && !empty($user)) {
+                $roles =  $user->getRoleNames();
+            } else {
                 $roles = '';
             }
         } catch (Exception $e) {
             $roles = '';
-        }   
-        if($request->has('menu')){
+        }
+        if ($request->has('menu')) {
             $menuName = $request->input('menu');
-        }else{
+        } else {
             $menuName = 'sidebar menu';
         }
         $menus = new GetSidebarMenu();
-        return response()->json( $menus->get( $roles, $menuName ) );
+        return response()->json($menus->get($roles, $menuName));
     }
 
     
@@ -39,10 +39,9 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAllMenu(){
+    public function getAllMenu()
+    {
         $menus = new GetSidebarMenu();
-        return response()->json( $menus->getAllExceptFormat() );
+        return response()->json($menus->getAllExceptFormat());
     }
-
 }
-

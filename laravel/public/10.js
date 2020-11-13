@@ -160,9 +160,6 @@ __webpack_require__.r(__webpack_exports__);
     nextButtonHtml: "next"
   },
   methods: {
-    getBadge: function getBadge(status) {
-      return status === "Active" ? "success" : status === "Inactive" ? "secondary" : status === "Pending" ? "warning" : status === "Banned" ? "danger" : "primary";
-    },
     editLink: function editLink(id) {
       return "users/".concat(id.toString(), "/edit");
     },
@@ -184,9 +181,6 @@ __webpack_require__.r(__webpack_exports__);
         _method: "DELETE"
       }).then(function (response) {
         if (response.data.status == "403") {
-          self.$router.push({
-            path: "/users"
-          });
           return;
         }
 

@@ -88,17 +88,6 @@ export default {
     nextButtonHtml: "next",
   },
   methods: {
-    getBadge(status) {
-      return status === "Active"
-        ? "success"
-        : status === "Inactive"
-        ? "secondary"
-        : status === "Pending"
-        ? "warning"
-        : status === "Banned"
-        ? "danger"
-        : "primary";
-    },
     editLink(id) {
       return `users/${id.toString()}/edit`;
     },
@@ -121,7 +110,6 @@ export default {
         )
         .then(function(response) {
           if (response.data.status == "403") {
-            self.$router.push({ path: "/users" });
             return;
           }
           if (response.data.status == "success") {

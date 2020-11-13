@@ -149,7 +149,7 @@ export default {
         }
         self.user.name = response.data.name;
         self.user.email = response.data.email;
-        self.user.roles = response.data.menuroles.split(",");
+        self.user.roles = response.data.menuroles;
       })
       .catch(function(error) {
         console.log(error);

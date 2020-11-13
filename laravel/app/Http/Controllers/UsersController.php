@@ -31,9 +31,14 @@ class UsersController extends Controller
     {
         $you = auth()->user()->id;
         $users = DB::table('users')
-        ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles', 'users.updated_at as updated', 'users.created_at as registered')
-        ->whereNull('deleted_at')
-        ->get();
+            ->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('users.id', 'users.name', 'users.email', DB::raw('group_concat(roles.name SEPARATOR ", ") as roles'), 'users.updated_at as updated', 'users.created_at as registered')
+            ->whereNull('deleted_at')
+            ->groupBy('users.name')
+            ->orderBy('id', 'asc')
+            ->get();
+
         return response()->json(compact('users', 'you'));
     }
 
@@ -57,11 +62,8 @@ class UsersController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
-        $user->email_verified_at = now();
         $user->remember_token = Str::random(10);
         $roles = $request->input('roles');
-        $user->menuroles = implode(",", $roles);
-        $user->status = 'Active';
         $user->save();
 
         foreach ($roles as $role) {
@@ -81,10 +83,7 @@ class UsersController extends Controller
         if ($user->name == "admin") {
             return response()->json(['status' => '403']);
         }
-        // $user = DB::table('users')
-        // ->select('users.id', 'users.name', 'users.email', 'users.menuroles as roles')
-        // ->where('users.id', '=', $id)
-        // ->first();
+        $user->menuroles = $user->getRoleNames();
         return response()->json($user);
     }
 
@@ -102,10 +101,9 @@ class UsersController extends Controller
             $user->password  = bcrypt($password);
         }
 
-        $roles = $request->input('roles');
-        $user->menuroles = implode(",", $roles);
         $user->save();
         
+        $roles = $request->input('roles');
         $user->syncRoles($roles);
 
         return response()->json(['status' => 'success']);
@@ -123,6 +121,7 @@ class UsersController extends Controller
             return response()->json(['status' => '403']);
         }
 
+        $user->roles()->detach();
         $user->delete();
         return response()->json(['status' => 'success']);
     }

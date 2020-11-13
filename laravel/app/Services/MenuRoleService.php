@@ -4,27 +4,30 @@ namespace App\Services;
 
 use App\Models\Menurole;
 
-class MenuRoleService{
-
-    public static function insertRolePermissions($role_name, $permissions){
-        foreach($permissions as $item_id){
+class MenuRoleService
+{
+    public static function insertRolePermissions($roleId, $permissions)
+    {
+        foreach ($permissions as $itemId) {
             $menuRole = new Menurole();
-            $menuRole->role_name = $role_name;
-            $menuRole->menus_id = $item_id;
+            $menuRole->role_id = $roleId;
+            $menuRole->menu_id = $itemId;
             $menuRole->save();
         }
     }
 
-    public static function deleteRolePermissions($role_name){
-        Menurole::where('role_name', $role_name)->delete();
+    public static function deleteRolePermissions($roleId)
+    {
+        Menurole::where('role_id', $roleId)->delete();
     }
 
-    public static function getPermissions($role_name){
-        $permissionDetail = Menurole::select('menus_id')->where('role_name', '=', $role_name)->get();
+    public static function getPermissions($roleId)
+    {
+        $permissionDetail = Menurole::select('menu_id')->where('role_id', $roleId)->get();
         $permissions = array();
 
         foreach ($permissionDetail as $key => $value) {
-            array_push($permissions, $value['menus_id']);
+            array_push($permissions, $value['menu_id']);
         }
         
         return $permissions;

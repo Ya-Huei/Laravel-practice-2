@@ -13,10 +13,12 @@ class MenusTableSeeder extends Seeder
     private $joinData = array();
     private $adminRole = null;
 
-    public function join($roles, $menusId){
+    public function join($roles, $menusId)
+    {
         $roles = explode(',', $roles);
-        foreach($roles as $role){
-            array_push($this->joinData, array('role_name' => $role, 'menus_id' => $menusId));
+        foreach ($roles as $role) {
+            $role = Role::where('name', '=', $role)->first();
+            array_push($this->joinData, array('role_id' => $role->id, 'menu_id' => $menusId));
         }
     }
 
@@ -24,19 +26,21 @@ class MenusTableSeeder extends Seeder
         Function assigns menu elements to roles
         Must by use on end of this seeder
     */
-    public function joinAllByTransaction(){
+    public function joinAllByTransaction()
+    {
         DB::beginTransaction();
-        foreach($this->joinData as $data){
+        foreach ($this->joinData as $data) {
             DB::table('menu_role')->insert([
-                'role_name' => $data['role_name'],
-                'menus_id' => $data['menus_id'],
+                'role_id' => $data['role_id'],
+                'menu_id' => $data['menu_id'],
             ]);
         }
         DB::commit();
     }
 
-    public function insertLink($roles, $name, $href, $icon = null){
-        if($this->dropdown === false){
+    public function insertLink($roles, $name, $href, $icon = null)
+    {
+        if ($this->dropdown === false) {
             DB::table('menus')->insert([
                 'slug' => 'link',
                 'name' => $name,
@@ -45,7 +49,7 @@ class MenusTableSeeder extends Seeder
                 'menu_id' => $this->menuId,
                 'sequence' => $this->sequence
             ]);
-        }else{
+        } else {
             DB::table('menus')->insert([
                 'slug' => 'link',
                 'name' => $name,
@@ -60,17 +64,18 @@ class MenusTableSeeder extends Seeder
         $lastId = DB::getPdo()->lastInsertId();
         $this->join($roles, $lastId);
         $permission = Permission::where('name', '=', $name)->get();
-        if(empty($permission)){
+        if (empty($permission)) {
             $permission = Permission::create(['name' => 'visit ' . $name]);
         }
         $roles = explode(',', $roles);
-        if(in_array('admin', $roles)){
+        if (in_array('admin', $roles)) {
             $this->adminRole->givePermissionTo($permission);
         }
         return $lastId;
     }
 
-    public function insertTitle($roles, $name){
+    public function insertTitle($roles, $name)
+    {
         DB::table('menus')->insert([
             'slug' => 'title',
             'name' => $name,
@@ -83,10 +88,11 @@ class MenusTableSeeder extends Seeder
         return $lastId;
     }
 
-    public function beginDropdown($roles, $name, $href='', $icon=''){
-        if(count($this->dropdownId)){
+    public function beginDropdown($roles, $name, $href='', $icon='')
+    {
+        if (count($this->dropdownId)) {
             $parentId = $this->dropdownId[count($this->dropdownId) - 1];
-        }else{
+        } else {
             $parentId = null;
         }
         DB::table('menus')->insert([
@@ -106,9 +112,10 @@ class MenusTableSeeder extends Seeder
         return $lastId;
     }
 
-    public function endDropdown(){
+    public function endDropdown()
+    {
         $this->dropdown = false;
-        array_pop( $this->dropdownId );
+        array_pop($this->dropdownId);
     }
 
     /**
@@ -119,11 +126,11 @@ class MenusTableSeeder extends Seeder
     public function run()
     {
         /* Get roles */
-        $this->adminRole = Role::where('name' , '=' , 'admin' )->first();
+        $this->adminRole = Role::where('name', '=', 'admin')->first();
         $this->menuId = DB::getPdo()->lastInsertId();  //set menuId
         /* guest menu */
-        $this->insertLink('admin', 'Users',    '/users');
-        $this->insertLink('admin', 'Roles',    '/roles');
+        $this->insertLink('admin', 'Users', '/users');
+        $this->insertLink('admin', 'Roles', '/roles');
 
         $this->joinAllByTransaction(); ///   <===== Must by use on end of this seeder
     }

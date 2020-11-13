@@ -101,7 +101,6 @@ export default {
         )
         .then(function(response) {
           if (response.data.status == "403") {
-            self.$router.push({ path: "/roles" });
             return;
           }
           if (response.data.status == "success") {

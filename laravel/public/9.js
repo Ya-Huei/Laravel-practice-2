@@ -180,9 +180,6 @@ __webpack_require__.r(__webpack_exports__);
         _method: "DELETE"
       }).then(function (response) {
         if (response.data.status == "403") {
-          self.$router.push({
-            path: "/roles"
-          });
           return;
         }
 

@@ -45,7 +45,7 @@ class RolesController extends Controller
         $role->name = $name;
         $role->save();
 
-        MenuRoleService::insertRolePermissions($name, $request->input('permissions'));
+        MenuRoleService::insertRolePermissions($role->id, $request->input('permissions'));
 
         return response()->json(['status' => 'success']);
     }
@@ -68,11 +68,11 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        if ($role->name = "admin") {
+        if ($role->name == "admin") {
             return response()->json(['status' => '403']);
         }
 
-        $permissions = MenuRoleService::getPermissions($role->name);
+        $permissions = MenuRoleService::getPermissions($role->id);
 
         return response()->json(array(
             'id' => $role->id,
@@ -89,8 +89,8 @@ class RolesController extends Controller
      */
     public function update(RoleUpdateFormValidation $request, Role $role)
     {
-        MenuRoleService::deleteRolePermissions($role->name);
-        MenuRoleService::insertRolePermissions($role->name, $request->input('permissions'));
+        MenuRoleService::deleteRolePermissions($role->id);
+        MenuRoleService::insertRolePermissions($role->id, $request->input('permissions'));
         
         return response()->json(['status' => 'success']);
     }
@@ -102,17 +102,10 @@ class RolesController extends Controller
      */
     public function destroy(Role $role)
     {
-        if ($role->name = "admin") {
+        if ($role->name == "admin") {
             return response()->json(['status' => '403']);
         }
 
-        $users = User::role($role->name)->get();
-
-        if (count($users) !== 0) {
-            return response()->json(['status' => 'fail', 'message' => 'Please remove the role of the users who has this role.']);
-        }
-
-        Menurole::where('role_name', '=', $role->name)->delete();
         $role->delete();
         return response()->json(['status' => 'success']);
     }
