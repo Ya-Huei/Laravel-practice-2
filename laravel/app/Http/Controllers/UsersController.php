@@ -31,8 +31,8 @@ class UsersController extends Controller
     {
         $you = auth()->user()->id;
         $users = DB::table('users')
-            ->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
-            ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->leftJoin('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
+            ->leftJoin('roles', 'user_has_roles.role_id', '=', 'roles.id')
             ->select('users.id', 'users.name', 'users.email', DB::raw('group_concat(roles.name SEPARATOR ", ") as roles'), 'users.updated_at as updated', 'users.created_at as registered')
             ->whereNull('deleted_at')
             ->groupBy('users.name')

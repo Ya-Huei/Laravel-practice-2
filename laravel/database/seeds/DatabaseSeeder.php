@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-//use database\seeds\NotesTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +12,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call('UsersSeeder');
-        $this->call('MenusTableSeeder');
+        $this->call('PermissionsTableSeeder');
     }
 }
