@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\PermissionUserService;
+use App\Services\UserPermissionService;
 
 use Closure;
 
@@ -23,7 +23,7 @@ class CheckPermission
         }
 
         $path = $this->getPath($request->path());
-        $permissions = PermissionUserService::getUserPermissions($user);
+        $permissions = UserPermissionService::getUserPermissions($user);
 
         if ($this->checkPermission($permissions, $path)) {
             return $next($request);

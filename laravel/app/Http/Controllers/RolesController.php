@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use App\Models\Menurole;
 use App\User;
-use App\Services\MenuRoleService;
+use App\Services\RolePermissionsService;
 use App\Http\Requests\RoleStoreFormValidation;
 use App\Http\Requests\RoleUpdateFormValidation;
 
@@ -45,7 +45,7 @@ class RolesController extends Controller
         $role->name = $name;
         $role->save();
 
-        MenuRoleService::insertRolePermissions($role->id, $request->input('permissions'));
+        RolePermissionsService::insertRolePermissions($role->id, $request->input('permissions'));
 
         return response()->json(['status' => 'success']);
     }
@@ -72,7 +72,7 @@ class RolesController extends Controller
             return response()->json(['status' => '403']);
         }
 
-        $permissions = MenuRoleService::getRolePermissions($role->id);
+        $permissions = RolePermissionsService::getRolePermissions($role->id);
 
         return response()->json(array(
             'id' => $role->id,
@@ -89,8 +89,8 @@ class RolesController extends Controller
      */
     public function update(RoleUpdateFormValidation $request, Role $role)
     {
-        MenuRoleService::deleteRolePermissions($role->id);
-        MenuRoleService::insertRolePermissions($role->id, $request->input('permissions'));
+        RolePermissionsService::deleteRolePermissions($role->id);
+        RolePermissionsService::insertRolePermissions($role->id, $request->input('permissions'));
         
         return response()->json(['status' => 'success']);
     }

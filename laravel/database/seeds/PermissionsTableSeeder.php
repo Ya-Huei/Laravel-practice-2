@@ -1,0 +1,70 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+class PermissionsTableSeeder extends Seeder
+{
+    private $permissionId = null;
+    private $dropdownId = array();
+    private $dropdown = false;
+    private $sequence = 1;
+    private $joinData = array();
+    private $adminRole = null;
+
+    public function join($roles, $permissionsId)
+    {
+        $roles = explode(',', $roles);
+        foreach ($roles as $role) {
+            $role = Role::where('name', '=', $role)->first();
+            array_push($this->joinData, array('role_id' => $role->id, 'permission_id' => $permissionsId));
+        }
+    }
+    
+    /*
+        Function assigns menu elements to roles
+        Must by use on end of this seeder
+    */
+    public function joinAllByTransaction()
+    {
+        DB::beginTransaction();
+        foreach ($this->joinData as $data) {
+            DB::table('role_has_permissions')->insert([
+                'role_id' => $data['role_id'],
+                'permission_id' => $data['permission_id'],
+            ]);
+        }
+        DB::commit();
+    }
+
+    public function insertLink($roles, $name, $href, $icon = null)
+    {
+        DB::table('permissions')->insert([
+            'slug' => 'link',
+            'name' => $name,
+            'icon' => $icon,
+            'href' => $href,
+            'sequence' => $this->sequence
+        ]);
+        $this->sequence++;
+        $lastId = DB::getPdo()->lastInsertId();
+        $this->join($roles, $lastId);
+    }
+
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        /* Get roles */
+        $this->adminRole = Role::where('name', '=', 'admin')->first();
+        /* guest menu */
+        $this->insertLink('admin', 'Users', '/users');
+        $this->insertLink('admin', 'Roles', '/roles');
+
+        $this->joinAllByTransaction(); ///   <===== Must by use on end of this seeder
+    }
+}

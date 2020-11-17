@@ -258,13 +258,13 @@ __webpack_require__.r(__webpack_exports__);
         self.showMessage = true;
       });
     },
-    selectRoles: function selectRoles(menu_id) {
-      var temp = this.role.permissions.indexOf(menu_id);
+    selectRoles: function selectRoles(permission_id) {
+      var temp = this.role.permissions.indexOf(permission_id);
 
       if (temp > -1) {
         this.role.permissions.splice(temp, 1);
       } else {
-        this.role.permissions.push(menu_id);
+        this.role.permissions.push(permission_id);
       }
     }
   },

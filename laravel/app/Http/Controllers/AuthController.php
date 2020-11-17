@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\Services\PermissionUserService;
+use App\Services\UserPermissionService;
 
 class AuthController extends Controller
 {
@@ -59,7 +59,7 @@ class AuthController extends Controller
     private function getDefaultPage()
     {
         $user = auth()->user();
-        $permissions = PermissionUserService::getUserPermissions($user);
+        $permissions = UserPermissionService::getUserPermissions($user);
         foreach ($permissions as $key => $value) {
             return $value['href'];
         }
