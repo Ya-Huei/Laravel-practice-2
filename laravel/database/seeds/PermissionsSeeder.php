@@ -4,14 +4,13 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class PermissionsTableSeeder extends Seeder
+class PermissionsSeeder extends Seeder
 {
     private $permissionId = null;
     private $dropdownId = array();
     private $dropdown = false;
     private $sequence = 1;
     private $joinData = array();
-    private $adminRole = null;
 
     public function join($roles, $permissionsId)
     {
@@ -59,12 +58,9 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        /* Get roles */
-        $this->adminRole = Role::where('name', '=', 'admin')->first();
-        /* guest menu */
         $this->insertLink('admin', 'Users', '/users');
         $this->insertLink('admin', 'Roles', '/roles');
-
-        $this->joinAllByTransaction(); ///   <===== Must by use on end of this seeder
+        $this->insertLink('admin', 'Devices', '/devices');
+        $this->joinAllByTransaction();
     }
 }
