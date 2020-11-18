@@ -17,18 +17,31 @@
             <CInput label="Email" v-model="user.email" horizontal disabled />
             <CInput
               type="password"
-              description="Please enter password"
               v-model="user.password"
               label="Password"
               horizontal
             />
             <CInput
               type="password"
-              description="Please check password"
               v-model="user.checkPassword"
               label="Password Confirmation"
               horizontal
             />
+            <div class="form-row">
+              <CCol col="3">
+                <label class="col-form-label"> Region </label>
+              </CCol>
+              <CCol col="3">
+                <CSelect :options="['台灣', '中國']" />
+              </CCol>
+              <CCol col="3">
+                <CSelect label="" :options="['北區', '南區']" />
+              </CCol>
+              <CCol col="3"
+                ><CSelect label="" :options="['新北市', '台北市']" />
+              </CCol>
+            </div>
+            <CSelect label="Firm" :options="['Coco', 'Jiate']" horizontal />
 
             <div class="form-group form-row">
               <CCol tag="label" sm="3" class="col-form-label">

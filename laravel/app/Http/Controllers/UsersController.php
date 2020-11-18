@@ -87,11 +87,7 @@ class UsersController extends Controller
         }
         $user->menuroles = $user->getRoleNames();
         $roles = RolesService::getAllRoles();
-        $response = [
-            'user' => $user,
-            'roles' => $roles
-        ];
-        return response()->json($response);
+        return response()->json(compact('user', 'roles'));
     }
 
     /**

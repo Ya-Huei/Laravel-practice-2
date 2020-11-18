@@ -19,6 +19,10 @@ const Roles = () => import('@/views/roles/Roles')
 const EditRole = () => import('@/views/roles/EditRole')
 const CreateRole = () => import('@/views/roles/CreateRole')
 
+//Devices
+const Devices = () => import('@/views/devices/Devices')
+const EditDevice = () => import('@/views/devices/EditDevice')
+
 Vue.use(Router)
 
 export default new Router({
@@ -89,6 +93,31 @@ function configRoutes () {
               name: 'Edit Role',
               component: EditRole
             },
+          ]
+        },
+        {
+          path: 'devices',
+          meta: { label: 'Devices'},
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: '',
+              component: Devices,
+            },
+            {
+              path: ':id/edit',
+              meta: { label: 'Edit Device' },
+              name: 'Edit Device',
+              component: EditDevice
+            },
+            // {
+            //   path: ':id/edit',
+            //   meta: { label: 'Edit Role' },
+            //   name: 'Edit Role',
+            //   component: EditRole
+            // },
           ]
         },
       ]

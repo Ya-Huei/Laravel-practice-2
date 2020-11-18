@@ -236,6 +236,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -393,7 +406,6 @@ var render = function() {
                       _c("CInput", {
                         attrs: {
                           type: "password",
-                          description: "Please enter password",
                           label: "Password",
                           horizontal: ""
                         },
@@ -409,7 +421,6 @@ var render = function() {
                       _c("CInput", {
                         attrs: {
                           type: "password",
-                          description: "Please check password",
                           label: "Password Confirmation",
                           horizontal: ""
                         },
@@ -419,6 +430,63 @@ var render = function() {
                             _vm.$set(_vm.user, "checkPassword", $$v)
                           },
                           expression: "user.checkPassword"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-row" },
+                        [
+                          _c("CCol", { attrs: { col: "3" } }, [
+                            _c("label", { staticClass: "col-form-label" }, [
+                              _vm._v(" Region ")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _c("CSelect", {
+                                attrs: { options: ["台灣", "中國"] }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _c("CSelect", {
+                                attrs: { label: "", options: ["北區", "南區"] }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _c("CSelect", {
+                                attrs: {
+                                  label: "",
+                                  options: ["新北市", "台北市"]
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("CSelect", {
+                        attrs: {
+                          label: "Firm",
+                          options: ["Coco", "Jiate"],
+                          horizontal: ""
                         }
                       }),
                       _vm._v(" "),

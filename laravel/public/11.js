@@ -74,9 +74,154 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/Users.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\users\\Users.vue: Unexpected token (72:17)\n\n\u001b[0m \u001b[90m 70 | \u001b[39m        \u001b[32m\"operate\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 71 | \u001b[39m      ]\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 | \u001b[39m      adminName\u001b[33m:\u001b[39m \u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 73 | \u001b[39m      currentPage\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 74 | \u001b[39m      perPage\u001b[33m:\u001b[39m \u001b[35m6\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 75 | \u001b[39m      totalRows\u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8996:20)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseObjectProperty (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9441:101)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:101)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8275:23)\n    at Parser.parseReturnStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10378:28)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10057:21)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseBlock (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Parser.parseFunctionBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9584:24)\n    at Parser.parseArrowExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9525:10)\n    at Parser.parseParenAndDistinguishExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9157:12)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8917:21)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseObjectProperty (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9441:101)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:101)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Users",
+  data: function data() {
+    return {
+      items: [],
+      fields: ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"],
+      adminName: "admin",
+      currentPage: 1,
+      perPage: 6,
+      totalRows: 0,
+      you: null,
+      message: "",
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 0,
+      showDismissibleAlert: false
+    };
+  },
+  paginationProps: {
+    align: "center",
+    doubleArrows: false,
+    previousButtonHtml: "prev",
+    nextButtonHtml: "next"
+  },
+  methods: {
+    editLink: function editLink(id) {
+      return "users/".concat(id.toString(), "/edit");
+    },
+    createUser: function createUser() {
+      this.$router.push({
+        path: "users/create"
+      });
+    },
+    editUser: function editUser(id) {
+      var editLink = this.editLink(id);
+      this.$router.push({
+        path: editLink
+      });
+    },
+    deleteUser: function deleteUser(id) {
+      var self = this;
+      var userId = id;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/" + id + "?token=" + localStorage.getItem("api_token"), {
+        _method: "DELETE"
+      }).then(function (response) {
+        if (response.data.status == "403") {
+          return;
+        }
+
+        if (response.data.status == "success") {
+          self.message = "Successfully deleted user.";
+        } else {
+          self.message = response.data.message;
+        }
+
+        self.showAlert();
+        self.getUsers();
+      })["catch"](function (error) {
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
+      });
+    },
+    countDownChanged: function countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert: function showAlert() {
+      this.dismissCountDown = this.dismissSecs;
+    },
+    getUsers: function getUsers() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.items = response.data.users;
+        self.you = response.data.you;
+      })["catch"](function (error) {
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getUsers();
+  }
+});
 
 /***/ }),
 

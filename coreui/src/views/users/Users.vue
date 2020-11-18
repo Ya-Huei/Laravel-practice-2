@@ -65,6 +65,8 @@ export default {
         "name",
         "email",
         "roles",
+        "region",
+        "firm",
         "updated",
         "registered",
         "operate",

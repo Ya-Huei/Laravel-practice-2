@@ -23,6 +23,6 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::group(['middleware' => 'permissions'], function ($router) {
         Route::resource('users', UsersController::class)->except(['show']);
         Route::resource('roles', RolesController::class)->except(['show']);
-        ;
+        Route::resource('devices', DevicesController::class);
     });
 });

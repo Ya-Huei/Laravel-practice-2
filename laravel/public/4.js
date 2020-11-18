@@ -249,24 +249,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
-  name: 'CreateUser',
+  name: "CreateUser",
   data: function data() {
     return {
       user: {
-        name: '',
-        email: '',
-        password: '',
-        checkPassword: '',
+        name: "",
+        email: "",
+        password: "",
+        checkPassword: "",
         roles: []
       },
       messages: [],
       horizontal: {
-        label: 'col-3',
-        input: 'col-9'
+        label: "col-3",
+        input: "col-9"
       },
       optionRoles: [],
       isCreatedUser: true,
@@ -281,7 +301,7 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       self.isCreatedUser = false;
       self.messages = [];
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users?token=' + localStorage.getItem("api_token"), {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users?token=" + localStorage.getItem("api_token"), {
         name: self.user.name,
         email: self.user.email,
         password: self.user.password,
@@ -366,7 +386,7 @@ var render = function() {
                             { key: message, attrs: { color: "danger" } },
                             [
                               _vm._v(
-                                "\n          " +
+                                "\n            " +
                                   _vm._s(message) +
                                   "\n          "
                               )
@@ -444,6 +464,67 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
+                        { staticClass: "form-row" },
+                        [
+                          _c("CCol", { attrs: { col: "3" } }, [
+                            _c("label", { staticClass: "col-form-label" }, [
+                              _vm._v(" Region ")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _c("CSelect", {
+                                attrs: {
+                                  options: ["台灣", "中國"],
+                                  description: "Select your region"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _c("CSelect", {
+                                attrs: { label: "", options: ["北區", "南區"] }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _c("CSelect", {
+                                attrs: {
+                                  label: "",
+                                  options: ["新北市", "台北市"]
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("CSelect", {
+                        attrs: {
+                          label: "Firm",
+                          options: ["Coco", "Jiate"],
+                          horizontal: "",
+                          description: "Select your firm"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
                         { staticClass: "form-group form-row" },
                         [
                           _c(
@@ -452,11 +533,7 @@ var render = function() {
                               staticClass: "col-form-label",
                               attrs: { tag: "label", sm: "3" }
                             },
-                            [
-                              _vm._v(
-                                "\n                  Roles\n                "
-                              )
-                            ]
+                            [_vm._v("\n              Roles\n            ")]
                           ),
                           _vm._v(" "),
                           _c(
