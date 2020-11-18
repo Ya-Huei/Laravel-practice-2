@@ -22,6 +22,11 @@ class DevicesController extends Controller
             ->select('devices.id', 'devices.serial_no', DB::raw('concat(locations.country, locations.region, locations.city) as region'), 'devices.location', 'firms.name as firm', 'devices.status', 'devices.updated_at as updated', 'devices.created_at as registered')
             ->orderBy('id', 'asc')
             ->get();
+        
+        $defineStatus = Device::getDefineStatus();
+        foreach ($devices as $k => &$v) {
+            $v->status = $defineStatus[$v->status];
+        }
         return response()->json($devices);
     }
 
