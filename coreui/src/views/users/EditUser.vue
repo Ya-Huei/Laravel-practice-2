@@ -121,18 +121,6 @@ export default {
       }
     },
   },
-  beforeCreate: function() {
-    let self = this;
-    axios
-      .get("/api/roles?token=" + localStorage.getItem("api_token"))
-      .then(function(response) {
-        self.optionRoles = response.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-        self.$router.push({ path: "/login" });
-      });
-  },
   mounted: function() {
     let self = this;
     axios
@@ -147,9 +135,10 @@ export default {
           self.$router.push({ path: "/users" });
           return;
         }
-        self.user.name = response.data.name;
-        self.user.email = response.data.email;
-        self.user.roles = response.data.menuroles;
+        self.user.name = response.data.user.name;
+        self.user.email = response.data.user.email;
+        self.user.roles = response.data.user.menuroles;
+        self.optionRoles = response.data.roles;
       })
       .catch(function(error) {
         console.log(error);

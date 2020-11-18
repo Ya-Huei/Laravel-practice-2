@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\UserStoreFormValidation;
 use App\Http\Requests\UserUpdateFormValidation;
 use App\User;
+use App\Services\RolesService;
 
 class UsersController extends Controller
 {
@@ -48,7 +49,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return response()->json(['status' => 'success']);
+        $roles = RolesService::getAllRoles();
+        return response()->json($roles);
     }
 
     /**
@@ -84,7 +86,12 @@ class UsersController extends Controller
             return response()->json(['status' => '403']);
         }
         $user->menuroles = $user->getRoleNames();
-        return response()->json($user);
+        $roles = RolesService::getAllRoles();
+        $response = [
+            'user' => $user,
+            'roles' => $roles
+        ];
+        return response()->json($response);
     }
 
     /**

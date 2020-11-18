@@ -130,16 +130,25 @@ export default {
       }
     },
   },
-  beforeCreate: function(){
+  mounted: function() {
     let self = this;
-    axios.get('/api/roles?token=' + localStorage.getItem("api_token"))
-    .then(function (response) {
+    axios
+      .get(
+        "/api/users/create?token=" +
+          localStorage.getItem("api_token")
+      )
+      .then(function(response) {
+        if (response.data.status == "403") {
+          self.$router.push({ path: "/users" });
+          return;
+        }
         self.optionRoles = response.data;
-    }).catch(function (error) {
+      })
+      .catch(function(error) {
         console.log(error);
-        self.$router.push({ path: '/login' });
-    });
-  }
+        self.$router.push({ path: "/login" });
+      });
+  },
 }
 
 </script>

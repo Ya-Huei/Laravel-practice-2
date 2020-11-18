@@ -305,14 +305,21 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  beforeCreate: function beforeCreate() {
+  mounted: function mounted() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles?token=' + localStorage.getItem("api_token")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/create?token=" + localStorage.getItem("api_token")).then(function (response) {
+      if (response.data.status == "403") {
+        self.$router.push({
+          path: "/users"
+        });
+        return;
+      }
+
       self.optionRoles = response.data;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({
-        path: '/login'
+        path: "/login"
       });
     });
   }

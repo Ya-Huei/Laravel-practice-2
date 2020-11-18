@@ -290,17 +290,6 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  beforeCreate: function beforeCreate() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/roles?token=" + localStorage.getItem("api_token")).then(function (response) {
-      self.optionRoles = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: "/login"
-      });
-    });
-  },
   mounted: function mounted() {
     var self = this;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
@@ -311,9 +300,10 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      self.user.name = response.data.name;
-      self.user.email = response.data.email;
-      self.user.roles = response.data.menuroles;
+      self.user.name = response.data.user.name;
+      self.user.email = response.data.user.email;
+      self.user.roles = response.data.user.menuroles;
+      self.optionRoles = response.data.roles;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Menurole;
 use App\User;
 use App\Services\RolePermissionsService;
+use App\Services\RolesService;
 use App\Http\Requests\RoleStoreFormValidation;
 use App\Http\Requests\RoleUpdateFormValidation;
 
@@ -18,9 +19,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = DB::table('roles')
-        ->select('id', 'name', 'updated_at as updated', 'created_at as registered')
-        ->get();
+        $roles = RolesService::getAllRoles();
         return response()->json($roles);
     }
 
