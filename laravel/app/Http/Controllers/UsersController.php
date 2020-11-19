@@ -31,15 +31,12 @@ class UsersController extends Controller
     public function index()
     {
         $you = auth()->user()->id;
-        $users = DB::table('users')
-            ->leftJoin('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
-            ->leftJoin('roles', 'user_has_roles.role_id', '=', 'roles.id')
-            ->select('users.id', 'users.name', 'users.email', DB::raw('group_concat(roles.name SEPARATOR ", ") as roles'), 'users.updated_at as updated', 'users.created_at as registered')
+        $data = User::with('roles:name', 'location', 'firm:id,name')
             ->whereNull('deleted_at')
-            ->groupBy('users.name')
             ->orderBy('id', 'asc')
             ->get();
 
+        $users = $this->formatUsers($data);
         return response()->json(compact('users', 'you'));
     }
 
@@ -127,5 +124,38 @@ class UsersController extends Controller
         $user->roles()->detach();
         $user->delete();
         return response()->json(['status' => 'success']);
+    }
+
+    private function formatUsers($data)
+    {
+        $users = [];
+        foreach ($data as $item) {
+            $user = [];
+            $user['id'] = $item->id;
+            $user['name'] = $item->name;
+            $user['email'] = $item->email;
+            $user['roles'] = isset($item->roles) ? $this->formatRoles($item->roles) : "";
+            $user['region'] = isset($item->location) ? $this->formatRegion($item->location) : "";
+            $user['firm'] = isset($item->firm->name) ? $item->firm->name : "";
+            $user['updated'] = $item->updated_at;
+            $user['registered'] = $item->created_at;
+            Log::info($user);
+            array_push($users, $user);
+        }
+        return $users;
+    }
+
+    private function formatRoles($roles)
+    {
+        $rolesName = [];
+        foreach ($roles as $role) {
+            array_push($rolesName, $role->name);
+        }
+        return $rolesName;
+    }
+    
+    private function formatRegion($location)
+    {
+        return $location->country . $location->region . $location->city;
     }
 }

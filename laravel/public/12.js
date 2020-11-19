@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[12],{
 
-/***/ "../coreui/src/views/devices/EditDevice.vue":
-/*!**************************************************!*\
-  !*** ../coreui/src/views/devices/EditDevice.vue ***!
-  \**************************************************/
+/***/ "../coreui/src/views/users/Users.vue":
+/*!*******************************************!*\
+  !*** ../coreui/src/views/users/Users.vue ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditDevice.vue?vue&type=template&id=412d9b9c& */ "../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&");
-/* harmony import */ var _EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditDevice.vue?vue&type=script&lang=js& */ "../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=41714d07& */ "../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&");
+/* harmony import */ var _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Users.vue?vue&type=script&lang=js& */ "../coreui/src/views/users/Users.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -20,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -32,97 +32,47 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/devices/EditDevice.vue"
+component.options.__file = "coreui/src/views/users/Users.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&":
-/*!***************************************************************************!*\
-  !*** ../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************/
+/***/ "../coreui/src/views/users/Users.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ../coreui/src/views/users/Users.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditDevice.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&":
-/*!*********************************************************************************!*\
-  !*** ../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c& ***!
-  \*********************************************************************************/
+/***/ "../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&":
+/*!**************************************************************************!*\
+  !*** ../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07& ***!
+  \**************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditDevice.vue?vue&type=template&id=412d9b9c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=template&id=41714d07& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "../coreui/src/views/mixins/Format.vue":
-/*!*********************************************!*\
-  !*** ../coreui/src/views/mixins/Format.vue ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Format.vue?vue&type=script&lang=js& */ "../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-
-
-
-
-/* normalize component */
-
-var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  _Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "coreui/src/views/mixins/Format.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&":
-/*!**********************************************************************!*\
-  !*** ../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Format.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Format_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/Users.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -130,7 +80,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/Format.vue */ "../coreui/src/views/mixins/Format.vue");
 //
 //
 //
@@ -182,131 +131,101 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
-  name: "EditUser",
+  name: "Users",
   data: function data() {
     return {
-      device: [],
-      messages: [],
-      horizontal: {
-        label: "col-3",
-        input: "col-9"
-      },
-      optionPermissions: [],
-      isEditedRole: true,
-      showMessage: false
+      items: [],
+      fields: ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"],
+      adminName: "admin",
+      currentPage: 1,
+      perPage: 6,
+      totalRows: 0,
+      you: null,
+      message: "",
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 0,
+      showDismissibleAlert: false
     };
   },
-  methods: {
-    goBack: function goBack() {
-      this.$router.go(-1);
-    },
-    update: function update() {
-      var self = this;
-      self.isEditedRole = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
-        _method: "PUT",
-        permissions: self.role.permissions
-      }).then(function (response) {
-        self.goBack();
-      })["catch"](function (error) {
-        self.isEditedRole = true;
-        self.messages = self.formResponseFormat(error);
-        self.showMessage = true;
-      });
-    },
-    selectRoles: function selectRoles(permission_id) {
-      var temp = this.role.permissions.indexOf(permission_id);
-
-      if (temp > -1) {
-        this.role.permissions.splice(temp, 1);
-      } else {
-        this.role.permissions.push(permission_id);
-      }
-    }
+  paginationProps: {
+    align: "center",
+    doubleArrows: false,
+    previousButtonHtml: "prev",
+    nextButtonHtml: "next"
   },
-  beforeCreate: function beforeCreate() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/menu/getAllMenu?token=" + localStorage.getItem("api_token")).then(function (response) {
-      self.optionPermissions = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: "/login"
+  methods: {
+    editLink: function editLink(id) {
+      return "users/".concat(id.toString(), "/edit");
+    },
+    createUser: function createUser() {
+      this.$router.push({
+        path: "users/create"
       });
-    });
+    },
+    editUser: function editUser(id) {
+      var editLink = this.editLink(id);
+      this.$router.push({
+        path: editLink
+      });
+    },
+    deleteUser: function deleteUser(id) {
+      var self = this;
+      var userId = id;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/" + id + "?token=" + localStorage.getItem("api_token"), {
+        _method: "DELETE"
+      }).then(function (response) {
+        if (response.data.status == "403") {
+          return;
+        }
+
+        if (response.data.status == "success") {
+          self.message = "Successfully deleted user.";
+        } else {
+          self.message = response.data.message;
+        }
+
+        self.showAlert();
+        self.getUsers();
+      })["catch"](function (error) {
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
+      });
+    },
+    countDownChanged: function countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert: function showAlert() {
+      this.dismissCountDown = this.dismissSecs;
+    },
+    getUsers: function getUsers() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.items = response.data.users;
+        self.you = response.data.you;
+      })["catch"](function (error) {
+        console.log(error); // self.$router.push({ path: "/login" });
+      });
+    }
   },
   mounted: function mounted() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
-      if (response.data.status == "403") {
-        self.$router.push({
-          path: "/devices"
-        });
-        return;
-      }
-
-      self.device = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: "/login"
-      });
-    });
+    this.getUsers();
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  methods: {
-    formResponseFormat: function formResponseFormat(error) {
-      var messages = [];
-
-      if (typeof error.response.data.errors == 'undefined') {
-        messages.push("error");
-        return messages;
-      }
-
-      for (var _i = 0, _Object$entries = Object.entries(error.response.data.errors); _i < _Object$entries.length; _i++) {
-        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-            key = _Object$entries$_i[0],
-            value = _Object$entries$_i[1];
-
-        messages.push(value[0]);
-      }
-
-      return messages;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c& ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07& ***!
+  \********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -323,172 +242,142 @@ var render = function() {
     [
       _c(
         "CCol",
-        { attrs: { col: "12", lg: "12" } },
+        { attrs: { col: "12", xl: "12" } },
         [
           _c(
-            "CCard",
+            "transition",
+            { attrs: { name: "slide" } },
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Edit Device")])]),
-              _vm._v(" "),
               _c(
-                "CCardBody",
+                "CCard",
                 [
-                  _vm.showMessage
-                    ? _c(
-                        "span",
-                        _vm._l(_vm.messages, function(message) {
-                          return _c(
-                            "CAlert",
-                            { key: message, attrs: { color: "danger" } },
-                            [
-                              _vm._v(
-                                "\n            " +
-                                  _vm._s(message) +
-                                  "\n          "
-                              )
-                            ]
-                          )
-                        }),
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
                   _c(
-                    "CForm",
+                    "CCardHeader",
+                    { staticClass: "container-fluid" },
                     [
-                      _c("CInput", {
-                        attrs: {
-                          label: "Serial_no",
-                          horizontal: "",
-                          disabled: ""
-                        },
-                        model: {
-                          value: _vm.device.serial_no,
-                          callback: function($$v) {
-                            _vm.$set(_vm.device, "serial_no", $$v)
-                          },
-                          expression: "device.serial_no"
-                        }
-                      }),
-                      _vm._v(" "),
                       _c(
-                        "div",
-                        { staticClass: "form-row" },
+                        "CRow",
                         [
-                          _c("CCol", { attrs: { col: "3" } }, [
-                            _c("label", { staticClass: "col-form-label" }, [
-                              _vm._v(" Region ")
-                            ])
+                          _c("CCol", { attrs: { col: "6" } }, [
+                            _c("h4", [_vm._v("Users")])
                           ]),
                           _vm._v(" "),
                           _c(
                             "CCol",
-                            { attrs: { col: "3" } },
+                            {
+                              staticClass: "d-flex justify-content-end",
+                              attrs: { col: "6" }
+                            },
                             [
-                              _c("CSelect", {
-                                attrs: { options: ["台灣", "中國"] }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { col: "3" } },
-                            [
-                              _c("CSelect", {
-                                attrs: { label: "", options: ["北區", "南區"] }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { col: "3" } },
-                            [
-                              _c("CSelect", {
-                                attrs: {
-                                  label: "",
-                                  options: ["新北市", "台北市"]
-                                }
-                              })
+                              _c(
+                                "CButton",
+                                {
+                                  attrs: { color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.createUser()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Create User")]
+                              )
                             ],
                             1
                           )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: { label: "Location", horizontal: "" },
-                        model: {
-                          value: _vm.device.location,
-                          callback: function($$v) {
-                            _vm.$set(_vm.device, "location", $$v)
-                          },
-                          expression: "device.location"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CSelect", {
-                        attrs: {
-                          label: "Firm",
-                          options: ["Coco", "Jiate"],
-                          horizontal: ""
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CSelect", {
-                        attrs: {
-                          label: "Status",
-                          options: ["正常", "維修"],
-                          horizontal: ""
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "CCardFooter",
-                { staticClass: "text-right" },
-                [
-                  _c(
-                    "CButton",
-                    {
-                      attrs: { disabled: !_vm.isEditedRole, color: "primary" },
-                      on: {
-                        click: function($event) {
-                          return _vm.update()
-                        }
-                      }
-                    },
-                    [
-                      _vm.isEditedRole
-                        ? _c("span", [_vm._v("Save")])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      !_vm.isEditedRole
-                        ? _c("CSpinner", {
-                            attrs: { color: "info", size: "sm" }
-                          })
-                        : _vm._e()
+                      )
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "CButton",
-                    {
-                      staticClass: "ml-2",
-                      attrs: { color: "danger" },
-                      on: { click: _vm.goBack }
-                    },
-                    [_vm._v("Back")]
+                    "CCardBody",
+                    [
+                      _c(
+                        "CAlert",
+                        {
+                          attrs: {
+                            show: _vm.dismissCountDown,
+                            color: "danger",
+                            fade: ""
+                          },
+                          on: {
+                            "update:show": function($event) {
+                              _vm.dismissCountDown = $event
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n            (" +
+                              _vm._s(_vm.dismissCountDown) +
+                              ") " +
+                              _vm._s(_vm.message) +
+                              "\n          "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("CDataTable", {
+                        attrs: {
+                          hover: "",
+                          striped: "",
+                          items: _vm.items,
+                          fields: _vm.fields,
+                          "items-per-page": 6,
+                          pagination: ""
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "operate",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c(
+                                  "td",
+                                  [
+                                    _vm.adminName != item.name
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            attrs: { color: "primary" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.editUser(item.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Edit")]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.adminName != item.name &&
+                                    _vm.you != item.id
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            staticClass: "ml-1",
+                                            attrs: { color: "danger" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.deleteUser(item.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Delete")]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
                   )
                 ],
                 1

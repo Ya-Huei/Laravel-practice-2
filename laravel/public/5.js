@@ -50,17 +50,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/EditUser.vue":
-/*!**********************************************!*\
-  !*** ../coreui/src/views/users/EditUser.vue ***!
-  \**********************************************/
+/***/ "../coreui/src/views/users/CreateUser.vue":
+/*!************************************************!*\
+  !*** ../coreui/src/views/users/CreateUser.vue ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditUser.vue?vue&type=template&id=5d876b46& */ "../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&");
-/* harmony import */ var _EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditUser.vue?vue&type=script&lang=js& */ "../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&");
+/* harmony import */ var _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateUser.vue?vue&type=template&id=7af63c10& */ "../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&");
+/* harmony import */ var _CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateUser.vue?vue&type=script&lang=js& */ "../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -70,9 +70,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -82,38 +82,38 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/users/EditUser.vue"
+component.options.__file = "coreui/src/views/users/CreateUser.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditUser.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateUser.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&":
-/*!*****************************************************************************!*\
-  !*** ../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46& ***!
-  \*****************************************************************************/
+/***/ "../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&":
+/*!*******************************************************************************!*\
+  !*** ../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10& ***!
+  \*******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditUser.vue?vue&type=template&id=5d876b46& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateUser.vue?vue&type=template&id=7af63c10& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -161,10 +161,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -249,11 +249,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
-  name: "EditUser",
+  name: "CreateUser",
   data: function data() {
     return {
       user: {
@@ -269,7 +289,7 @@ __webpack_require__.r(__webpack_exports__);
         input: "col-9"
       },
       optionRoles: [],
-      isEditedUser: true,
+      isCreatedUser: true,
       showMessage: false
     };
   },
@@ -277,18 +297,20 @@ __webpack_require__.r(__webpack_exports__);
     goBack: function goBack() {
       this.$router.go(-1);
     },
-    update: function update() {
+    store: function store() {
       var self = this;
-      self.isEditedUser = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
-        _method: "PUT",
+      self.isCreatedUser = false;
+      self.messages = [];
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users?token=" + localStorage.getItem("api_token"), {
+        name: self.user.name,
+        email: self.user.email,
         password: self.user.password,
         password_confirmation: self.user.checkPassword,
         roles: self.user.roles
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
-        self.isEditedUser = true;
+        self.isCreatedUser = true;
         self.messages = self.formResponseFormat(error);
         self.showMessage = true;
       });
@@ -305,7 +327,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/create?token=" + localStorage.getItem("api_token")).then(function (response) {
       if (response.data.status == "403") {
         self.$router.push({
           path: "/users"
@@ -313,10 +335,7 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      self.user.name = response.data.user.name;
-      self.user.email = response.data.user.email;
-      self.user.roles = response.data.user.menuroles;
-      self.optionRoles = response.data.roles;
+      self.optionRoles = response.data;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({
@@ -328,10 +347,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10& ***!
+  \*************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -353,7 +372,7 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Edit User")])]),
+              _c("CCardHeader", [_c("h4", [_vm._v("Create User")])]),
               _vm._v(" "),
               _c(
                 "CCardBody",
@@ -382,7 +401,11 @@ var render = function() {
                     "CForm",
                     [
                       _c("CInput", {
-                        attrs: { label: "Name", horizontal: "", disabled: "" },
+                        attrs: {
+                          description: "Enter your name",
+                          label: "Name",
+                          horizontal: ""
+                        },
                         model: {
                           value: _vm.user.name,
                           callback: function($$v) {
@@ -393,7 +416,11 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("CInput", {
-                        attrs: { label: "Email", horizontal: "", disabled: "" },
+                        attrs: {
+                          description: "Enter your email",
+                          label: "Email",
+                          horizontal: ""
+                        },
                         model: {
                           value: _vm.user.email,
                           callback: function($$v) {
@@ -405,8 +432,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("CInput", {
                         attrs: {
-                          type: "password",
+                          description: "Enter your password",
                           label: "Password",
+                          type: "password",
                           horizontal: ""
                         },
                         model: {
@@ -420,8 +448,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("CInput", {
                         attrs: {
-                          type: "password",
+                          description: "Check your password",
                           label: "Password Confirmation",
+                          type: "password",
                           horizontal: ""
                         },
                         model: {
@@ -448,7 +477,10 @@ var render = function() {
                             { attrs: { col: "3" } },
                             [
                               _c("CSelect", {
-                                attrs: { options: ["台灣", "中國"] }
+                                attrs: {
+                                  options: ["台灣", "中國"],
+                                  description: "Select your region"
+                                }
                               })
                             ],
                             1
@@ -486,7 +518,8 @@ var render = function() {
                         attrs: {
                           label: "Firm",
                           options: ["Coco", "Jiate"],
-                          horizontal: ""
+                          horizontal: "",
+                          description: "Select your firm"
                         }
                       }),
                       _vm._v(" "),
@@ -513,10 +546,7 @@ var render = function() {
                                   label: optionRole.name,
                                   name: "selectRoles",
                                   custom: true,
-                                  inline: true,
-                                  checked: _vm.user.roles.includes(
-                                    optionRole.name
-                                  )
+                                  inline: true
                                 },
                                 on: {
                                   "update:checked": function($event) {
@@ -539,24 +569,24 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "CCardFooter",
-                { staticClass: "text-right" },
+                { staticClass: "d-flex justify-content-end" },
                 [
                   _c(
                     "CButton",
                     {
-                      attrs: { disabled: !_vm.isEditedUser, color: "primary" },
+                      attrs: { disabled: !_vm.isCreatedUser, color: "primary" },
                       on: {
                         click: function($event) {
-                          return _vm.update()
+                          return _vm.store()
                         }
                       }
                     },
                     [
-                      _vm.isEditedUser
-                        ? _c("span", [_vm._v("Save")])
+                      _vm.isCreatedUser
+                        ? _c("span", [_vm._v("Create")])
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.isEditedUser
+                      !_vm.isCreatedUser
                         ? _c("CSpinner", {
                             attrs: { color: "info", size: "sm" }
                           })

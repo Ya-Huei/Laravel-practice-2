@@ -8,4 +8,8 @@ class Firm extends Model
 {
     protected $table = 'firms';
     public $timestamps = true;
+
+    public function users(){
+        $this->hasMany('App\User');
+    }
 }
