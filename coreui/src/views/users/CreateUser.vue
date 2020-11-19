@@ -46,20 +46,27 @@
               </CCol>
               <CCol col="3">
                 <CSelect
-                  :options="['台灣', '中國']"
+                  :options="countryOptions"
+                  :value.sync="country"
+                  @change="loadRegions()"
                   description="Select your region"
                 />
               </CCol>
               <CCol col="3">
-                <CSelect label="" :options="['北區', '南區']" />
+                <CSelect
+                  :options="regionOptions"
+                  :value.sync="region"
+                  @change="loadCities()"
+                />
               </CCol>
-              <CCol col="3"
-                ><CSelect label="" :options="['新北市', '台北市']" />
+              <CCol col="3">
+                <CSelect :options="cityOptions" :value.sync="city" />
               </CCol>
             </div>
             <CSelect
               label="Firm"
-              :options="['Coco', 'Jiate']"
+              :options="firmOptions"
+              :value.sync="firm"
               horizontal
               description="Select your firm"
             />
@@ -114,11 +121,31 @@ export default {
       optionRoles: [],
       isCreatedUser: true,
       showMessage: false,
+      countryOptions: [],
+      regionOptions: [],
+      cityOptions: [],
+      firmOptions: [],
+      country: null,
+      region: null,
+      city: null,
+      firm: null,
+      locations: [],
     };
   },
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+    loadRegions() {
+      let self = this;
+      self.regionOptions = self.locations[self.country];
+      self.region = self.regionOptions[0];
+      self.loadCities();
+    },
+    loadCities() {
+      let self = this;
+      self.cityOptions = self.locations[self.country][self.region];
+      self.city = self.cityOptions[0];
     },
     store() {
       let self = this;
@@ -149,22 +176,29 @@ export default {
         this.user.roles.push(role);
       }
     },
+    getInfo() {
+      let self = this;
+      axios
+        .get("/api/users/create?token=" + localStorage.getItem("api_token"))
+        .then(function(response) {
+          if (response.data.status == "403") {
+            self.$router.push({ path: "/users" });
+            return;
+          }
+          self.optionRoles = response.data.roles;
+          self.locations = response.data.locations;
+          self.countryOptions = self.locations.country;
+          self.country = self.countryOptions[0];
+          self.loadRegions();
+          self.firmOptions = response.data.firms;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
   },
   mounted: function() {
-    let self = this;
-    axios
-      .get("/api/users/create?token=" + localStorage.getItem("api_token"))
-      .then(function(response) {
-        if (response.data.status == "403") {
-          self.$router.push({ path: "/users" });
-          return;
-        }
-        self.optionRoles = response.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-        self.$router.push({ path: "/login" });
-      });
+    this.getInfo();
   },
 };
 </script>

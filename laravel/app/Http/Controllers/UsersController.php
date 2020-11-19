@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\UserStoreFormValidation;
 use App\Http\Requests\UserUpdateFormValidation;
 use App\User;
 use App\Services\RolesService;
+use App\Services\LocationsService;
+use App\Services\FirmsService;
 
 class UsersController extends Controller
 {
@@ -47,7 +50,9 @@ class UsersController extends Controller
     public function create()
     {
         $roles = RolesService::getAllRoles();
-        return response()->json($roles);
+        $locations = LocationsService::getLocationsCategory();
+        $firms = FirmsService::getAllFirmsName();
+        return response()->json(compact('roles', 'locations', 'firms'));
     }
 
     /**
@@ -137,8 +142,8 @@ class UsersController extends Controller
             $user['roles'] = isset($item->roles) ? $this->formatRoles($item->roles) : "";
             $user['region'] = isset($item->location) ? $this->formatRegion($item->location) : "";
             $user['firm'] = isset($item->firm->name) ? $item->firm->name : "";
-            $user['updated'] = $item->updated_at;
-            $user['registered'] = $item->created_at;
+            $user['updated'] = $item->updated_at->format('Y-m-d H:i:s');
+            $user['registered'] = $item->created_at->format('Y-m-d H:i:s');
             array_push($users, $user);
         }
         return $users;

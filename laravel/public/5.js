@@ -269,6 +269,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -290,12 +297,32 @@ __webpack_require__.r(__webpack_exports__);
       },
       optionRoles: [],
       isCreatedUser: true,
-      showMessage: false
+      showMessage: false,
+      countryOptions: [],
+      regionOptions: [],
+      cityOptions: [],
+      firmOptions: [],
+      country: null,
+      region: null,
+      city: null,
+      firm: null,
+      locations: []
     };
   },
   methods: {
     goBack: function goBack() {
       this.$router.go(-1);
+    },
+    loadRegions: function loadRegions() {
+      var self = this;
+      self.regionOptions = self.locations[self.country];
+      self.region = self.regionOptions[0];
+      self.loadCities();
+    },
+    loadCities: function loadCities() {
+      var self = this;
+      self.cityOptions = self.locations[self.country][self.region];
+      self.city = self.cityOptions[0];
     },
     store: function store() {
       var self = this;
@@ -323,25 +350,30 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.user.roles.push(role);
       }
+    },
+    getInfo: function getInfo() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/create?token=" + localStorage.getItem("api_token")).then(function (response) {
+        if (response.data.status == "403") {
+          self.$router.push({
+            path: "/users"
+          });
+          return;
+        }
+
+        self.optionRoles = response.data.roles;
+        self.locations = response.data.locations;
+        self.countryOptions = self.locations.country;
+        self.country = self.countryOptions[0];
+        self.loadRegions();
+        self.firmOptions = response.data.firms;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   mounted: function mounted() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/create?token=" + localStorage.getItem("api_token")).then(function (response) {
-      if (response.data.status == "403") {
-        self.$router.push({
-          path: "/users"
-        });
-        return;
-      }
-
-      self.optionRoles = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: "/login"
-      });
-    });
+    this.getInfo();
   }
 });
 
@@ -478,8 +510,17 @@ var render = function() {
                             [
                               _c("CSelect", {
                                 attrs: {
-                                  options: ["台灣", "中國"],
+                                  options: _vm.countryOptions,
+                                  value: _vm.country,
                                   description: "Select your region"
+                                },
+                                on: {
+                                  "update:value": function($event) {
+                                    _vm.country = $event
+                                  },
+                                  change: function($event) {
+                                    return _vm.loadRegions()
+                                  }
                                 }
                               })
                             ],
@@ -491,7 +532,18 @@ var render = function() {
                             { attrs: { col: "3" } },
                             [
                               _c("CSelect", {
-                                attrs: { label: "", options: ["北區", "南區"] }
+                                attrs: {
+                                  options: _vm.regionOptions,
+                                  value: _vm.region
+                                },
+                                on: {
+                                  "update:value": function($event) {
+                                    _vm.region = $event
+                                  },
+                                  change: function($event) {
+                                    return _vm.loadCities()
+                                  }
+                                }
                               })
                             ],
                             1
@@ -503,8 +555,13 @@ var render = function() {
                             [
                               _c("CSelect", {
                                 attrs: {
-                                  label: "",
-                                  options: ["新北市", "台北市"]
+                                  options: _vm.cityOptions,
+                                  value: _vm.city
+                                },
+                                on: {
+                                  "update:value": function($event) {
+                                    _vm.city = $event
+                                  }
                                 }
                               })
                             ],
@@ -517,9 +574,15 @@ var render = function() {
                       _c("CSelect", {
                         attrs: {
                           label: "Firm",
-                          options: ["Coco", "Jiate"],
+                          options: _vm.firmOptions,
+                          value: _vm.firm,
                           horizontal: "",
                           description: "Select your firm"
+                        },
+                        on: {
+                          "update:value": function($event) {
+                            _vm.firm = $event
+                          }
                         }
                       }),
                       _vm._v(" "),

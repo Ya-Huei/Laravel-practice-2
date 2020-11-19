@@ -211,7 +211,10 @@ __webpack_require__.r(__webpack_exports__);
         self.items = response.data.users;
         self.you = response.data.you;
       })["catch"](function (error) {
-        console.log(error); // self.$router.push({ path: "/login" });
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
       });
     }
   },
