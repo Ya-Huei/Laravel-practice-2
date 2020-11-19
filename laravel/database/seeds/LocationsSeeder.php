@@ -7,29 +7,29 @@ class LocationsSeeder extends Seeder
 {
     private $locationLists = [
         [
-            'country' => '台灣',
-            'region' => '北區',
-            'city' => '台北市'
+            'country' => 'Taiwan',
+            'region' => 'North',
+            'city' => 'Taipei'
         ],
         [
-            'country' => '台灣',
-            'region' => '北區',
-            'city' => '新北市'
+            'country' => 'Taiwan',
+            'region' => 'North',
+            'city' => 'NewTaipeiCity'
         ],
         [
-            'country' => '台灣',
-            'region' => '中區',
-            'city' => '台中市'
+            'country' => 'Taiwan',
+            'region' => 'West',
+            'city' => 'Taichung'
         ],
         [
-            'country' => '大陸',
-            'region' => '四川省',
-            'city' => '重慶市'
+            'country' => 'China',
+            'region' => 'Sichuan',
+            'city' => 'Chongqing'
         ],
         [
-            'country' => '大陸',
-            'region' => '黑龍江省',
-            'city' => '哈爾濱市'
+            'country' => 'China',
+            'region' => 'Heilongjiang',
+            'city' => 'Haerbin'
         ],
     ];
     /**

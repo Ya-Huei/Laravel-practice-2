@@ -139,7 +139,6 @@ class UsersController extends Controller
             $user['firm'] = isset($item->firm->name) ? $item->firm->name : "";
             $user['updated'] = $item->updated_at;
             $user['registered'] = $item->created_at;
-            Log::info($user);
             array_push($users, $user);
         }
         return $users;
@@ -156,6 +155,6 @@ class UsersController extends Controller
     
     private function formatRegion($location)
     {
-        return $location->country . $location->region . $location->city;
+        return $location->country . ',' . $location->region . ',' . $location->city;
     }
 }
