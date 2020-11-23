@@ -119,6 +119,56 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "../coreui/src/views/mixins/Location.vue":
+/*!***********************************************!*\
+  !*** ../coreui/src/views/mixins/Location.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Location.vue?vue&type=script&lang=js& */ "../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  _Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "coreui/src/views/mixins/Location.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Location.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js& ***!
@@ -131,6 +181,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/Format.vue */ "../coreui/src/views/mixins/Format.vue");
+/* harmony import */ var _mixins_Location__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/Location */ "../coreui/src/views/mixins/Location.vue");
 //
 //
 //
@@ -182,14 +233,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
+  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_Location__WEBPACK_IMPORTED_MODULE_2__["default"]],
   name: "EditUser",
   data: function data() {
     return {
-      device: [],
+      device: {
+        serial_no: "",
+        address: "",
+        status: "",
+        firm: null
+      },
+      location: {
+        country: null,
+        region: null,
+        city: null
+      },
       messages: [],
       horizontal: {
         label: "col-3",
@@ -197,19 +286,35 @@ __webpack_require__.r(__webpack_exports__);
       },
       optionPermissions: [],
       isEditedRole: true,
-      showMessage: false
+      showMessage: false,
+      showRegion: false,
+      showCity: false,
+      countryOptions: [],
+      regionOptions: [],
+      cityOptions: [],
+      firmOptions: [],
+      statusOptions: [],
+      locations: []
     };
   },
   methods: {
     goBack: function goBack() {
       this.$router.go(-1);
     },
+    loadRegions: function loadRegions() {
+      var self = this;
+      self.loadRegionsList(self);
+    },
+    loadCities: function loadCities() {
+      var self = this;
+      self.loadCitiesList(self);
+    },
     update: function update() {
       var self = this;
       self.isEditedRole = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
-        _method: "PUT",
-        permissions: self.role.permissions
+        _method: "PUT" // permissions: self.role.permissions,
+
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
@@ -218,44 +323,44 @@ __webpack_require__.r(__webpack_exports__);
         self.showMessage = true;
       });
     },
-    selectRoles: function selectRoles(permission_id) {
-      var temp = this.role.permissions.indexOf(permission_id);
+    getInfo: function getInfo() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
+        if (response.data.status == "403") {
+          self.$router.push({
+            path: "/devices"
+          });
+          return;
+        }
 
-      if (temp > -1) {
-        this.role.permissions.splice(temp, 1);
-      } else {
-        this.role.permissions.push(permission_id);
+        self.setDefaultData(response);
+      })["catch"](function (error) {
+        console.log(error); // self.$router.push({ path: "/login" });
+      });
+    },
+    setDefaultData: function setDefaultData(response) {
+      var self = this;
+      self.device.serial_no = response.data.device.serial_no;
+      self.device.address = response.data.device.address;
+      self.locations = response.data.locations;
+      self.countryOptions = self.locations.country;
+      self.firmOptions = response.data.firms;
+      self.statusOptions = Object.values(response.data.status);
+      self.location.country = response.data.device.country;
+
+      if (self.location.country !== "") {
+        self.loadRegions();
+        self.location.region = response.data.device.region;
+        self.loadCities();
+        self.location.city = response.data.device.city;
       }
+
+      self.device.firm = response.data.device.firm;
+      self.device.status = response.data.device.status;
     }
   },
-  beforeCreate: function beforeCreate() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/menu/getAllMenu?token=" + localStorage.getItem("api_token")).then(function (response) {
-      self.optionPermissions = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: "/login"
-      });
-    });
-  },
   mounted: function mounted() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
-      if (response.data.status == "403") {
-        self.$router.push({
-          path: "/devices"
-        });
-        return;
-      }
-
-      self.device = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: "/login"
-      });
-    });
+    this.getInfo();
   }
 });
 
@@ -297,6 +402,40 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }
 
       return messages;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    loadRegionsList: function loadRegionsList(self) {
+      if (self.location.country === "") {
+        self.showRegion = false;
+        self.showCity = false;
+        self.location.region = "";
+        self.location.city = "";
+      } else {
+        self.regionOptions = self.locations[self.location.country]["region"];
+        self.showRegion = true;
+        self.location.region = self.regionOptions[0];
+        this.loadCitiesList(self);
+      }
+    },
+    loadCitiesList: function loadCitiesList(self) {
+      self.showCity = true;
+      self.cityOptions = self.locations[self.location.country][self.location.region]["city"];
+      self.location.city = self.cityOptions[0];
     }
   }
 });
@@ -386,33 +525,77 @@ var render = function() {
                             { attrs: { col: "3" } },
                             [
                               _c("CSelect", {
-                                attrs: { options: ["台灣", "中國"] }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { col: "3" } },
-                            [
-                              _c("CSelect", {
-                                attrs: { label: "", options: ["北區", "南區"] }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { col: "3" } },
-                            [
-                              _c("CSelect", {
                                 attrs: {
-                                  label: "",
-                                  options: ["新北市", "台北市"]
+                                  options: _vm.countryOptions,
+                                  value: _vm.location.country,
+                                  description: "Select your region"
+                                },
+                                on: {
+                                  "update:value": function($event) {
+                                    return _vm.$set(
+                                      _vm.location,
+                                      "country",
+                                      $event
+                                    )
+                                  },
+                                  change: function($event) {
+                                    return _vm.loadRegions()
+                                  }
                                 }
                               })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _vm.showRegion
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.regionOptions,
+                                      value: _vm.location.region
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.location,
+                                          "region",
+                                          $event
+                                        )
+                                      },
+                                      change: function($event) {
+                                        return _vm.loadCities()
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _vm.showCity
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.cityOptions,
+                                      value: _vm.location.city
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.location,
+                                          "city",
+                                          $event
+                                        )
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
                             ],
                             1
                           )
@@ -421,29 +604,43 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("CInput", {
-                        attrs: { label: "Location", horizontal: "" },
+                        attrs: { label: "Address", horizontal: "" },
                         model: {
-                          value: _vm.device.location,
+                          value: _vm.device.address,
                           callback: function($$v) {
-                            _vm.$set(_vm.device, "location", $$v)
+                            _vm.$set(_vm.device, "address", $$v)
                           },
-                          expression: "device.location"
+                          expression: "device.address"
                         }
                       }),
                       _vm._v(" "),
                       _c("CSelect", {
                         attrs: {
                           label: "Firm",
-                          options: ["Coco", "Jiate"],
-                          horizontal: ""
+                          options: _vm.firmOptions,
+                          value: _vm.device.firm,
+                          horizontal: "",
+                          description: "Select your firm"
+                        },
+                        on: {
+                          "update:value": function($event) {
+                            return _vm.$set(_vm.device, "firm", $event)
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("CSelect", {
                         attrs: {
                           label: "Status",
-                          options: ["正常", "維修"],
-                          horizontal: ""
+                          options: _vm.statusOptions,
+                          value: _vm.device.status,
+                          horizontal: "",
+                          description: "Select your status"
+                        },
+                        on: {
+                          "update:value": function($event) {
+                            return _vm.$set(_vm.device, "status", $event)
+                          }
                         }
                       })
                     ],

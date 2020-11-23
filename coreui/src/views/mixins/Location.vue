@@ -2,23 +2,23 @@
 export default {
   methods: {
     loadRegionsList: function(self) {
-      if (self.user.country === "") {
+      if (self.location.country === "") {
         self.showRegion = false;
         self.showCity = false;
-        self.user.region = "";
-        self.user.city = "";
+        self.location.region = "";
+        self.location.city = "";
       } else {
-        self.regionOptions = self.locations[self.user.country]["region"];
+        self.regionOptions = self.locations[self.location.country]["region"];
         self.showRegion = true;
-        self.user.region = self.regionOptions[0];
+        self.location.region = self.regionOptions[0];
         this.loadCitiesList(self);
       }
     },
     loadCitiesList(self) {
       self.showCity = true;
       self.cityOptions =
-        self.locations[self.user.country][self.user.region]["city"];
-      self.user.city = self.cityOptions[0];
+        self.locations[self.location.country][self.location.region]["city"];
+      self.location.city = self.cityOptions[0];
     },
   },
 };

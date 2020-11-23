@@ -34,7 +34,7 @@
               <CCol col="3">
                 <CSelect
                   :options="countryOptions"
-                  :value.sync="user.country"
+                  :value.sync="location.country"
                   @change="loadRegions()"
                   description="Select your region"
                 />
@@ -42,7 +42,7 @@
               <CCol col="3">
                 <CSelect
                   :options="regionOptions"
-                  :value.sync="user.region"
+                  :value.sync="location.region"
                   v-if="showRegion"
                   @change="loadCities()"
                 />
@@ -50,7 +50,7 @@
               <CCol col="3">
                 <CSelect
                   :options="cityOptions"
-                  :value.sync="user.city"
+                  :value.sync="location.city"
                   v-if="showCity"
                 />
               </CCol>
@@ -108,11 +108,13 @@ export default {
         email: "",
         password: "",
         checkPassword: "",
+        firm: null,
+        roles: [],
+      },
+      location: {
         country: null,
         region: null,
         city: null,
-        firm: null,
-        roles: [],
       },
       messages: [],
       horizontal: { label: "col-3", input: "col-9" },
@@ -153,9 +155,9 @@ export default {
             _method: "PUT",
             password: self.user.password,
             password_confirmation: self.user.checkPassword,
-            country: self.user.country,
-            region: self.user.region,
-            city: self.user.city,
+            country: self.location.country,
+            region: self.location.region,
+            city: self.location.city,
             firm: self.user.firm,
             roles: self.user.roles,
           }
@@ -207,12 +209,12 @@ export default {
       self.locations = response.data.locations;
       self.countryOptions = self.locations.country;
       self.firmOptions = response.data.firms;
-      self.user.country = response.data.user.country;
-      if (self.user.country !== "") {
+      self.location.country = response.data.user.country;
+      if (self.location.country !== "") {
         self.loadRegions();
-        self.user.region = response.data.user.region;
+        self.location.region = response.data.user.region;
         self.loadCities();
-        self.user.city = response.data.user.city;
+        self.location.city = response.data.user.city;
       }
       self.user.firm = response.data.user.firm;
     },

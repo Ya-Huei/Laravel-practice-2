@@ -11,7 +11,7 @@ class Device extends Model
 
     protected $appends = ['status'];
 
-    private $statusLists =  [
+    private static $statusLists =  [
         '1' => 'normal',
         '2' => 'repaire',
         '3' => 'under repair',
@@ -20,7 +20,7 @@ class Device extends Model
 
     public function getStatusAttribute()
     {
-        return $this->statusLists[$this->attributes['status']];
+        return self::$statusLists[$this->attributes['status']];
     }
 
     public function location()
@@ -31,5 +31,9 @@ class Device extends Model
     public function firm()
     {
         return $this->belongsTo(Firm::class);
+    }
+
+    public static function getStatusLists(){
+        return self::$statusLists;
     }
 }

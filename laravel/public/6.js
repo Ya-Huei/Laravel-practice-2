@@ -223,22 +223,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     loadRegionsList: function loadRegionsList(self) {
-      if (self.user.country === "") {
+      if (self.location.country === "") {
         self.showRegion = false;
         self.showCity = false;
-        self.user.region = "";
-        self.user.city = "";
+        self.location.region = "";
+        self.location.city = "";
       } else {
-        self.regionOptions = self.locations[self.user.country]["region"];
+        self.regionOptions = self.locations[self.location.country]["region"];
         self.showRegion = true;
-        self.user.region = self.regionOptions[0];
+        self.location.region = self.regionOptions[0];
         this.loadCitiesList(self);
       }
     },
     loadCitiesList: function loadCitiesList(self) {
       self.showCity = true;
-      self.cityOptions = self.locations[self.user.country][self.user.region]["city"];
-      self.user.city = self.cityOptions[0];
+      self.cityOptions = self.locations[self.location.country][self.location.region]["city"];
+      self.location.city = self.cityOptions[0];
     }
   }
 });
@@ -367,11 +367,13 @@ __webpack_require__.r(__webpack_exports__);
         email: "",
         password: "",
         checkPassword: "",
-        country: null,
-        region: null,
-        city: null,
         firm: null,
         roles: []
+      },
+      location: {
+        country: null,
+        region: null,
+        city: null
       },
       messages: [],
       horizontal: {
@@ -409,9 +411,9 @@ __webpack_require__.r(__webpack_exports__);
         _method: "PUT",
         password: self.user.password,
         password_confirmation: self.user.checkPassword,
-        country: self.user.country,
-        region: self.user.region,
-        city: self.user.city,
+        country: self.location.country,
+        region: self.location.region,
+        city: self.location.city,
         firm: self.user.firm,
         roles: self.user.roles
       }).then(function (response) {
@@ -458,13 +460,13 @@ __webpack_require__.r(__webpack_exports__);
       self.locations = response.data.locations;
       self.countryOptions = self.locations.country;
       self.firmOptions = response.data.firms;
-      self.user.country = response.data.user.country;
+      self.location.country = response.data.user.country;
 
-      if (self.user.country !== "") {
+      if (self.location.country !== "") {
         self.loadRegions();
-        self.user.region = response.data.user.region;
+        self.location.region = response.data.user.region;
         self.loadCities();
-        self.user.city = response.data.user.city;
+        self.location.city = response.data.user.city;
       }
 
       self.user.firm = response.data.user.firm;
@@ -599,12 +601,16 @@ var render = function() {
                               _c("CSelect", {
                                 attrs: {
                                   options: _vm.countryOptions,
-                                  value: _vm.user.country,
+                                  value: _vm.location.country,
                                   description: "Select your region"
                                 },
                                 on: {
                                   "update:value": function($event) {
-                                    return _vm.$set(_vm.user, "country", $event)
+                                    return _vm.$set(
+                                      _vm.location,
+                                      "country",
+                                      $event
+                                    )
                                   },
                                   change: function($event) {
                                     return _vm.loadRegions()
@@ -623,12 +629,12 @@ var render = function() {
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.regionOptions,
-                                      value: _vm.user.region
+                                      value: _vm.location.region
                                     },
                                     on: {
                                       "update:value": function($event) {
                                         return _vm.$set(
-                                          _vm.user,
+                                          _vm.location,
                                           "region",
                                           $event
                                         )
@@ -651,12 +657,12 @@ var render = function() {
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.cityOptions,
-                                      value: _vm.user.city
+                                      value: _vm.location.city
                                     },
                                     on: {
                                       "update:value": function($event) {
                                         return _vm.$set(
-                                          _vm.user,
+                                          _vm.location,
                                           "city",
                                           $event
                                         )

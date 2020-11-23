@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Device;
 use App\Services\LocationsService;
+use App\Services\FirmsService;
 
 class DevicesController extends Controller
 {
@@ -62,8 +63,12 @@ class DevicesController extends Controller
      */
     public function edit(Device $device)
     {
-        Log::info('device');
-        return response()->json($device);
+        LocationsService::getLocationInfo($device, $device->location_id);
+        FirmsService::getFirmInfo($device, $device->firm_id);
+        $locations = LocationsService::getLocationsCategory();
+        $firms = FirmsService::getAllFirmsName();
+        $status = Device::getStatusLists();
+        return response()->json(compact('device', 'locations', 'firms', 'status'));
     }
 
     /**

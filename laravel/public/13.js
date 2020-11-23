@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[13],{
 
-/***/ "../coreui/src/views/users/CreateUser.vue":
-/*!************************************************!*\
-  !*** ../coreui/src/views/users/CreateUser.vue ***!
-  \************************************************/
+/***/ "../coreui/src/views/devices/EditDevice.vue":
+/*!**************************************************!*\
+  !*** ../coreui/src/views/devices/EditDevice.vue ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateUser.vue?vue&type=template&id=7af63c10& */ "../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&");
-/* harmony import */ var _CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateUser.vue?vue&type=script&lang=js& */ "../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&");
+/* harmony import */ var _EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditDevice.vue?vue&type=template&id=412d9b9c& */ "../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&");
+/* harmony import */ var _EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditDevice.vue?vue&type=script&lang=js& */ "../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -20,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -32,58 +32,58 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/users/CreateUser.vue"
+component.options.__file = "coreui/src/views/devices/EditDevice.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&":
-/*!*************************************************************************!*\
-  !*** ../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************/
+/***/ "../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateUser.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditDevice.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&":
-/*!*******************************************************************************!*\
-  !*** ../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10& ***!
-  \*******************************************************************************/
+/***/ "../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&":
+/*!*********************************************************************************!*\
+  !*** ../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c& ***!
+  \*********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateUser.vue?vue&type=template&id=7af63c10& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditDevice.vue?vue&type=template&id=412d9b9c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateUser_vue_vue_type_template_id_7af63c10___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDevice_vue_vue_type_template_id_412d9b9c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/CreateUser.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/EditDevice.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\users\\CreateUser.vue: Unexpected token (112:15)\n\n\u001b[0m \u001b[90m 110 | \u001b[39m\u001b[36mimport\u001b[39m axios from \u001b[32m\"axios\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 111 | \u001b[39m\u001b[36mimport\u001b[39m format from \u001b[32m\"../mixins/Format\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 112 | \u001b[39m\u001b[36mimport\u001b[39m location} from \u001b[32m\"../mixins/Location\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 113 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 114 | \u001b[39m  mixins\u001b[33m:\u001b[39m [format\u001b[33m,\u001b[39m location]\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 115 | \u001b[39m  name\u001b[33m:\u001b[39m \u001b[32m\"CreateUser\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.expectContextual (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7739:41)\n    at Parser.parseImport (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11345:12)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10107:27)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseTopLevel (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9940:10)\n    at Parser.parse (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11447:17)\n    at parse (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11483:38)\n    at parser (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:168:34)\n    at normalizeFile (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:102:11)\n    at runSync (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transform.js:34:34\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\devices\\EditDevice.vue: Unexpected token, expected \",\" (176:61)\n\n\u001b[0m \u001b[90m 174 | \u001b[39m      self\u001b[33m.\u001b[39mcountryOptions \u001b[33m=\u001b[39m self\u001b[33m.\u001b[39mlocations\u001b[33m.\u001b[39mcountry\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 175 | \u001b[39m      self\u001b[33m.\u001b[39mfirmOptions \u001b[33m=\u001b[39m response\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mfirms\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 176 | \u001b[39m      self\u001b[33m.\u001b[39mstatusOptions \u001b[33m=\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mvalues(response\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mstatus\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 177 | \u001b[39m      self\u001b[33m.\u001b[39mlocation\u001b[33m.\u001b[39mcountry \u001b[33m=\u001b[39m response\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mdevice\u001b[33m.\u001b[39mcountry\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 178 | \u001b[39m      \u001b[36mif\u001b[39m (self\u001b[33m.\u001b[39mlocation\u001b[33m.\u001b[39mcountry \u001b[33m!==\u001b[39m \u001b[32m\"\"\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 179 | \u001b[39m        self\u001b[33m.\u001b[39mloadRegions()\u001b[33m;\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.expect (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7759:28)\n    at Parser.parseCallExpressionArguments (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8754:14)\n    at Parser.parseSubscript (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8661:29)\n    at Parser.parseSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8577:19)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8566:17)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8362:25)\n    at Parser.parseExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8275:23)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10138:23)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseBlock (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Parser.parseFunctionBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9584:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9554:10)\n    at Parser.parseMethod (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9508:10)\n    at Parser.parseObjectMethod (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9424:19)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:23)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseObjectProperty (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9441:101)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:101)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)");
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/CreateUser.vue?vue&type=template&id=7af63c10& ***!
-  \*************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/EditDevice.vue?vue&type=template&id=412d9b9c& ***!
+  \***************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -105,7 +105,7 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Create User")])]),
+              _c("CCardHeader", [_c("h4", [_vm._v("Edit Device")])]),
               _vm._v(" "),
               _c(
                 "CCardBody",
@@ -135,63 +135,16 @@ var render = function() {
                     [
                       _c("CInput", {
                         attrs: {
-                          description: "Enter your name",
-                          label: "Name",
-                          horizontal: ""
+                          label: "Serial_no",
+                          horizontal: "",
+                          disabled: ""
                         },
                         model: {
-                          value: _vm.user.name,
+                          value: _vm.device.serial_no,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "name", $$v)
+                            _vm.$set(_vm.device, "serial_no", $$v)
                           },
-                          expression: "user.name"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: {
-                          description: "Enter your email",
-                          label: "Email",
-                          horizontal: ""
-                        },
-                        model: {
-                          value: _vm.user.email,
-                          callback: function($$v) {
-                            _vm.$set(_vm.user, "email", $$v)
-                          },
-                          expression: "user.email"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: {
-                          description: "Enter your password",
-                          label: "Password",
-                          type: "password",
-                          horizontal: ""
-                        },
-                        model: {
-                          value: _vm.user.password,
-                          callback: function($$v) {
-                            _vm.$set(_vm.user, "password", $$v)
-                          },
-                          expression: "user.password"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: {
-                          description: "Check your password",
-                          label: "Password Confirmation",
-                          type: "password",
-                          horizontal: ""
-                        },
-                        model: {
-                          value: _vm.user.checkPassword,
-                          callback: function($$v) {
-                            _vm.$set(_vm.user, "checkPassword", $$v)
-                          },
-                          expression: "user.checkPassword"
+                          expression: "device.serial_no"
                         }
                       }),
                       _vm._v(" "),
@@ -212,12 +165,16 @@ var render = function() {
                               _c("CSelect", {
                                 attrs: {
                                   options: _vm.countryOptions,
-                                  value: _vm.user.country,
+                                  value: _vm.location.country,
                                   description: "Select your region"
                                 },
                                 on: {
                                   "update:value": function($event) {
-                                    return _vm.$set(_vm.user, "country", $event)
+                                    return _vm.$set(
+                                      _vm.location,
+                                      "country",
+                                      $event
+                                    )
                                   },
                                   change: function($event) {
                                     return _vm.loadRegions()
@@ -236,12 +193,12 @@ var render = function() {
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.regionOptions,
-                                      value: _vm.user.region
+                                      value: _vm.location.region
                                     },
                                     on: {
                                       "update:value": function($event) {
                                         return _vm.$set(
-                                          _vm.user,
+                                          _vm.location,
                                           "region",
                                           $event
                                         )
@@ -264,12 +221,12 @@ var render = function() {
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.cityOptions,
-                                      value: _vm.user.city
+                                      value: _vm.location.city
                                     },
                                     on: {
                                       "update:value": function($event) {
                                         return _vm.$set(
-                                          _vm.user,
+                                          _vm.location,
                                           "city",
                                           $event
                                         )
@@ -284,58 +241,46 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
+                      _c("CInput", {
+                        attrs: { label: "Location", horizontal: "" },
+                        model: {
+                          value: _vm.device.location,
+                          callback: function($$v) {
+                            _vm.$set(_vm.device, "location", $$v)
+                          },
+                          expression: "device.location"
+                        }
+                      }),
+                      _vm._v(" "),
                       _c("CSelect", {
                         attrs: {
                           label: "Firm",
                           options: _vm.firmOptions,
-                          value: _vm.user.firm,
+                          value: _vm.device.firm,
                           horizontal: "",
                           description: "Select your firm"
                         },
                         on: {
                           "update:value": function($event) {
-                            return _vm.$set(_vm.user, "firm", $event)
+                            return _vm.$set(_vm.device, "firm", $event)
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group form-row" },
-                        [
-                          _c(
-                            "CCol",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { tag: "label", sm: "3" }
-                            },
-                            [_vm._v("\n              Roles\n            ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { sm: "9" } },
-                            _vm._l(_vm.roleOptions, function(optionRole) {
-                              return _c("CInputCheckbox", {
-                                key: optionRole.name,
-                                attrs: {
-                                  label: optionRole.name,
-                                  name: "selectRoles",
-                                  custom: true,
-                                  inline: true
-                                },
-                                on: {
-                                  "update:checked": function($event) {
-                                    return _vm.selectRoles(optionRole.name)
-                                  }
-                                }
-                              })
-                            }),
-                            1
-                          )
-                        ],
-                        1
-                      )
+                      _c("CSelect", {
+                        attrs: {
+                          label: "Status",
+                          options: _vm.statusOptions,
+                          value: _vm.device.status,
+                          horizontal: "",
+                          description: "Select your status"
+                        },
+                        on: {
+                          "update:value": function($event) {
+                            return _vm.$set(_vm.device, "status", $event)
+                          }
+                        }
+                      })
                     ],
                     1
                   )
@@ -345,24 +290,24 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "CCardFooter",
-                { staticClass: "d-flex justify-content-end" },
+                { staticClass: "text-right" },
                 [
                   _c(
                     "CButton",
                     {
-                      attrs: { disabled: !_vm.isCreatedUser, color: "primary" },
+                      attrs: { disabled: !_vm.isEditedRole, color: "primary" },
                       on: {
                         click: function($event) {
-                          return _vm.store()
+                          return _vm.update()
                         }
                       }
                     },
                     [
-                      _vm.isCreatedUser
-                        ? _c("span", [_vm._v("Create")])
+                      _vm.isEditedRole
+                        ? _c("span", [_vm._v("Save")])
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.isCreatedUser
+                      !_vm.isEditedRole
                         ? _c("CSpinner", {
                             attrs: { color: "info", size: "sm" }
                           })

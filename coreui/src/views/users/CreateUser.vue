@@ -47,7 +47,7 @@
               <CCol col="3">
                 <CSelect
                   :options="countryOptions"
-                  :value.sync="user.country"
+                  :value.sync="location.country"
                   @change="loadRegions()"
                   description="Select your region"
                 />
@@ -55,7 +55,7 @@
               <CCol col="3">
                 <CSelect
                   :options="regionOptions"
-                  :value.sync="user.region"
+                  :value.sync="location.region"
                   v-if="showRegion"
                   @change="loadCities()"
                 />
@@ -63,7 +63,7 @@
               <CCol col="3">
                 <CSelect
                   :options="cityOptions"
-                  :value.sync="user.city"
+                  :value.sync="location.city"
                   v-if="showCity"
                 />
               </CCol>
@@ -120,11 +120,13 @@ export default {
         email: "",
         password: "",
         checkPassword: "",
+        firm: null,
+        roles: [],
+      },
+      location: {
         country: null,
         region: null,
         city: null,
-        firm: null,
-        roles: [],
       },
       messages: [],
       horizontal: { label: "col-3", input: "col-9" },
@@ -162,9 +164,9 @@ export default {
           email: self.user.email,
           password: self.user.password,
           password_confirmation: self.user.checkPassword,
-          country: self.user.country,
-          region: self.user.region,
-          city: self.user.city,
+          country: self.location.country,
+          region: self.location.region,
+          city: self.location.city,
           firm: self.user.firm,
           roles: self.user.roles,
         })
