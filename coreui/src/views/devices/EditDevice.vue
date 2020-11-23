@@ -134,7 +134,12 @@ export default {
             localStorage.getItem("api_token"),
           {
             _method: "PUT",
-            // permissions: self.role.permissions,
+            country: self.location.country,
+            region: self.location.region,
+            city: self.location.city,
+            address:self.device.address,
+            firm: self.device.firm,
+            status: self.device.status,
           }
         )
         .then(function(response) {

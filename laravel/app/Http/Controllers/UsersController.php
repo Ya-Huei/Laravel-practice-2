@@ -127,18 +127,10 @@ class UsersController extends Controller
         $country = $request->input('country');
         $region = $request->input('region');
         $city = $request->input('city');
-        if (!empty($country)) {
-            $user->location_id = LocationsService::getLocationId($country, $region, $city);
-        } else {
-            $user->location_id = null;
-        }
+        $user->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
 
         $firmName = $request->input('firm');
-        if (!empty($firmName)) {
-            $user->firm_id = FirmsService::getFirmId($firmName);
-        } else {
-            $user->firm_id = null;
-        }
+        $user->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
 
         $user->save();
         

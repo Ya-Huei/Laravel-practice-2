@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Device;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
+use App\Http\Requests\DeviceUpdateFormValidation;
 
 class DevicesController extends Controller
 {
@@ -78,9 +79,24 @@ class DevicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DeviceUpdateFormValidation $request, Device $device)
     {
-        //
+        $country = $request->input('country');
+        $region = $request->input('region');
+        $city = $request->input('city');
+        $device->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
+
+        $firmName = $request->input('firm');
+        $device->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
+
+        $device->address = $request->input('address');
+
+        $device->status = array_search($request->input('status'), Device::getStatusLists());
+        
+        $device->save();
+
+
+        return response()->json(['status' => 'success']);
     }
 
     /**

@@ -313,8 +313,13 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       self.isEditedRole = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
-        _method: "PUT" // permissions: self.role.permissions,
-
+        _method: "PUT",
+        country: self.location.country,
+        region: self.location.region,
+        city: self.location.city,
+        address: self.device.address,
+        firm: self.device.firm,
+        status: self.device.status
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
