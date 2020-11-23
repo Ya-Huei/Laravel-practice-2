@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Http\Requests\UserStoreFormValidation;
 use App\Http\Requests\UserUpdateFormValidation;
 use App\User;
+use App\Models\Location;
+use App\Models\Firm;
 use App\Services\RolesService;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
@@ -67,12 +69,23 @@ class UsersController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->remember_token = Str::random(10);
-        $roles = $request->input('roles');
-        $user->save();
 
-        foreach ($roles as $role) {
-            $user->assignRole($role);
+        $country = $request->input('country');
+        $region = $request->input('region');
+        $city = $request->input('city');
+        if (!empty($country)) {
+            $user->location_id = LocationsService::getLocationId($country, $region, $city);
         }
+
+        $firmName = $request->input('firm');
+        if (!empty($firmName)) {
+            $user->firm_id = FirmsService::getFirmId($firmName);
+        }
+        
+        $user->save();
+        $roles = $request->input('roles');
+        $user->assignRole($roles);
+
         return response()->json(['status' => 'success']);
     }
 
@@ -88,8 +101,13 @@ class UsersController extends Controller
             return response()->json(['status' => '403']);
         }
         $user->menuroles = $user->getRoleNames();
+        LocationsService::getLocationInfo($user, $user->location_id);
+        FirmsService::getFirmInfo($user, $user->firm_id);
         $roles = RolesService::getAllRoles();
-        return response()->json(compact('user', 'roles'));
+        $locations = LocationsService::getLocationsCategory();
+        $firms = FirmsService::getAllFirmsName();
+
+        return response()->json(compact('user', 'roles', 'locations', 'firms'));
     }
 
     /**
@@ -104,6 +122,22 @@ class UsersController extends Controller
         $password = $request->input('password');
         if (isset($password) && $password != "") {
             $user->password  = bcrypt($password);
+        }
+
+        $country = $request->input('country');
+        $region = $request->input('region');
+        $city = $request->input('city');
+        if (!empty($country)) {
+            $user->location_id = LocationsService::getLocationId($country, $region, $city);
+        } else {
+            $user->location_id = null;
+        }
+
+        $firmName = $request->input('firm');
+        if (!empty($firmName)) {
+            $user->firm_id = FirmsService::getFirmId($firmName);
+        } else {
+            $user->firm_id = null;
         }
 
         $user->save();

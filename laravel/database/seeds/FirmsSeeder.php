@@ -10,7 +10,7 @@ class FirmsSeeder extends Seeder
             'name' => 'CoCo'
         ],
         [
-            'name' => 'Jiete'
+            'name' => 'Jiate'
         ]
     ];
     /**

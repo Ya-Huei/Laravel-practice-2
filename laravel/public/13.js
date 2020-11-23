@@ -76,7 +76,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: default */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\users\\CreateUser.vue: Unexpected token, expected \",\" (194:38)\n\n\u001b[0m \u001b[90m 192 | \u001b[39m          self\u001b[33m.\u001b[39mloadRegions()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 193 | \u001b[39m          self\u001b[33m.\u001b[39mfirmOptions \u001b[33m=\u001b[39m response\u001b[33m.\u001b[39mdata\u001b[33m.\u001b[39mfirms\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 194 | \u001b[39m          console\u001b[33m.\u001b[39mlog(self\u001b[33m.\u001b[39mfirmOptions\u001b[35m.0\u001b[39m\u001b[33m.\u001b[39mname)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 195 | \u001b[39m        })\u001b[0m\n\u001b[0m \u001b[90m 196 | \u001b[39m        \u001b[33m.\u001b[39m\u001b[36mcatch\u001b[39m(\u001b[36mfunction\u001b[39m(error) {\u001b[0m\n\u001b[0m \u001b[90m 197 | \u001b[39m          console\u001b[33m.\u001b[39mlog(error)\u001b[33m;\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.expect (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7759:28)\n    at Parser.parseCallExpressionArguments (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8754:14)\n    at Parser.parseSubscript (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8661:29)\n    at Parser.parseSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8577:19)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8566:17)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8275:23)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10138:23)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseBlock (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Parser.parseFunctionBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9584:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9554:10)\n    at C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10717:12\n    at Parser.withTopicForbiddingContext (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9884:14)\n    at Parser.parseFunction (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10716:10)\n    at Parser.parseFunctionExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9032:17)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8945:21)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseExprListItem (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9659:18)\n    at Parser.parseCallExpressionArguments (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8774:22)\n    at Parser.parseSubscript (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8661:29)\n    at Parser.parseSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8577:19)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8566:17)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)");
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\users\\CreateUser.vue: Unexpected token (112:15)\n\n\u001b[0m \u001b[90m 110 | \u001b[39m\u001b[36mimport\u001b[39m axios from \u001b[32m\"axios\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 111 | \u001b[39m\u001b[36mimport\u001b[39m format from \u001b[32m\"../mixins/Format\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 112 | \u001b[39m\u001b[36mimport\u001b[39m location} from \u001b[32m\"../mixins/Location\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 113 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 114 | \u001b[39m  mixins\u001b[33m:\u001b[39m [format\u001b[33m,\u001b[39m location]\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 115 | \u001b[39m  name\u001b[33m:\u001b[39m \u001b[32m\"CreateUser\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.expectContextual (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7739:41)\n    at Parser.parseImport (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11345:12)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10107:27)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseTopLevel (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9940:10)\n    at Parser.parse (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11447:17)\n    at parse (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11483:38)\n    at parser (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:168:34)\n    at normalizeFile (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:102:11)\n    at runSync (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transform.js:34:34\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
 
 /***/ }),
 
@@ -212,12 +212,12 @@ var render = function() {
                               _c("CSelect", {
                                 attrs: {
                                   options: _vm.countryOptions,
-                                  value: _vm.country,
+                                  value: _vm.user.country,
                                   description: "Select your region"
                                 },
                                 on: {
                                   "update:value": function($event) {
-                                    _vm.country = $event
+                                    return _vm.$set(_vm.user, "country", $event)
                                   },
                                   change: function($event) {
                                     return _vm.loadRegions()
@@ -232,20 +232,26 @@ var render = function() {
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _c("CSelect", {
-                                attrs: {
-                                  options: _vm.regionOptions,
-                                  value: _vm.region
-                                },
-                                on: {
-                                  "update:value": function($event) {
-                                    _vm.region = $event
-                                  },
-                                  change: function($event) {
-                                    return _vm.loadCities()
-                                  }
-                                }
-                              })
+                              _vm.showRegion
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.regionOptions,
+                                      value: _vm.user.region
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.user,
+                                          "region",
+                                          $event
+                                        )
+                                      },
+                                      change: function($event) {
+                                        return _vm.loadCities()
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
                             ],
                             1
                           ),
@@ -254,17 +260,23 @@ var render = function() {
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _c("CSelect", {
-                                attrs: {
-                                  options: _vm.cityOptions,
-                                  value: _vm.city
-                                },
-                                on: {
-                                  "update:value": function($event) {
-                                    _vm.city = $event
-                                  }
-                                }
-                              })
+                              _vm.showCity
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.cityOptions,
+                                      value: _vm.user.city
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.user,
+                                          "city",
+                                          $event
+                                        )
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
                             ],
                             1
                           )
@@ -275,14 +287,14 @@ var render = function() {
                       _c("CSelect", {
                         attrs: {
                           label: "Firm",
-                          options: _vm.firmOptions.name,
-                          value: _vm.firm,
+                          options: _vm.firmOptions,
+                          value: _vm.user.firm,
                           horizontal: "",
                           description: "Select your firm"
                         },
                         on: {
                           "update:value": function($event) {
-                            _vm.firm = $event
+                            return _vm.$set(_vm.user, "firm", $event)
                           }
                         }
                       }),
@@ -303,7 +315,7 @@ var render = function() {
                           _c(
                             "CCol",
                             { attrs: { sm: "9" } },
-                            _vm._l(_vm.optionRoles, function(optionRole) {
+                            _vm._l(_vm.roleOptions, function(optionRole) {
                               return _c("CInputCheckbox", {
                                 key: optionRole.name,
                                 attrs: {

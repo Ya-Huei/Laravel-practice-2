@@ -47,7 +47,7 @@
               <CCol col="3">
                 <CSelect
                   :options="countryOptions"
-                  :value.sync="country"
+                  :value.sync="user.country"
                   @change="loadRegions()"
                   description="Select your region"
                 />
@@ -55,18 +55,23 @@
               <CCol col="3">
                 <CSelect
                   :options="regionOptions"
-                  :value.sync="region"
+                  :value.sync="user.region"
+                  v-if="showRegion"
                   @change="loadCities()"
                 />
               </CCol>
               <CCol col="3">
-                <CSelect :options="cityOptions" :value.sync="city" />
+                <CSelect
+                  :options="cityOptions"
+                  :value.sync="user.city"
+                  v-if="showCity"
+                />
               </CCol>
             </div>
             <CSelect
               label="Firm"
               :options="firmOptions"
-              :value.sync="firm"
+              :value.sync="user.firm"
               horizontal
               description="Select your firm"
             />
@@ -77,7 +82,7 @@
               </CCol>
               <CCol sm="9">
                 <CInputCheckbox
-                  v-for="optionRole in optionRoles"
+                  v-for="optionRole in roleOptions"
                   :key="optionRole.name"
                   :label="optionRole.name"
                   name="selectRoles"
@@ -103,9 +108,10 @@
 
 <script>
 import axios from "axios";
-import format from "../mixins/Format.vue";
+import format from "../mixins/Format";
+import location from "../mixins/Location";
 export default {
-  mixins: [format],
+  mixins: [format, location],
   name: "CreateUser",
   data: () => {
     return {
@@ -114,21 +120,23 @@ export default {
         email: "",
         password: "",
         checkPassword: "",
+        country: null,
+        region: null,
+        city: null,
+        firm: null,
         roles: [],
       },
       messages: [],
       horizontal: { label: "col-3", input: "col-9" },
-      optionRoles: [],
+      roleOptions: [],
       isCreatedUser: true,
       showMessage: false,
+      showRegion: false,
+      showCity: false,
       countryOptions: [],
       regionOptions: [],
       cityOptions: [],
       firmOptions: [],
-      country: null,
-      region: null,
-      city: null,
-      firm: null,
       locations: [],
     };
   },
@@ -138,14 +146,11 @@ export default {
     },
     loadRegions() {
       let self = this;
-      self.regionOptions = self.locations[self.country];
-      self.region = self.regionOptions[0];
-      self.loadCities();
+      self.loadRegionsList(self);
     },
     loadCities() {
       let self = this;
-      self.cityOptions = self.locations[self.country][self.region];
-      self.city = self.cityOptions[0];
+      self.loadCitiesList(self);
     },
     store() {
       let self = this;
@@ -157,6 +162,10 @@ export default {
           email: self.user.email,
           password: self.user.password,
           password_confirmation: self.user.checkPassword,
+          country: self.user.country,
+          region: self.user.region,
+          city: self.user.city,
+          firm: self.user.firm,
           roles: self.user.roles,
         })
         .then(function(response) {
@@ -185,16 +194,18 @@ export default {
             self.$router.push({ path: "/users" });
             return;
           }
-          self.optionRoles = response.data.roles;
-          self.locations = response.data.locations;
-          self.countryOptions = self.locations.country;
-          self.country = self.countryOptions[0];
-          self.loadRegions();
-          self.firmOptions = response.data.firms;
+          self.setDefaultData(response);
         })
         .catch(function(error) {
           console.log(error);
         });
+    },
+    setDefaultData(response) {
+      let self = this;
+      self.roleOptions = response.data.roles;
+      self.locations = response.data.locations;
+      self.countryOptions = self.locations.country;
+      self.firmOptions = response.data.firms;
     },
   },
   mounted: function() {

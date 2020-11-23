@@ -27,6 +27,10 @@ class UserStoreFormValidation extends FormRequest
             'name'       => 'required|string|between:4,256',
             'email'      => 'required|email|max:256',
             'password'   => 'required|string|between:6,32|confirmed',
+            'country'    => 'required_with_all:region,city|string',
+            'region'     => 'required_with_all:country,city|string',
+            'city'       => 'required_with_all:country,region|string',
+            'firm'       => 'nullable|string',
             'roles'      => 'nullable|array'
         ];
     }
