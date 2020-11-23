@@ -10,6 +10,10 @@ class Location extends Model
     public $timestamps = false;
 
     public function users(){
-        $this->hasMany(User::class);
+        $this->hasMany('App\User');
+    }
+
+    public function devices(){
+        $this->hasMany(Device::class);
     }
 }

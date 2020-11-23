@@ -9,14 +9,27 @@ class Device extends Model
     protected $table = 'devices';
     public $timestamps = true;
 
-    public static function getDefineStatus()
+    protected $appends = ['status'];
+
+    private $statusLists =  [
+        '1' => 'normal',
+        '2' => 'repaire',
+        '3' => 'under repair',
+        '4' => 'no use',
+    ];
+
+    public function getStatusAttribute()
     {
-        $statusLists = [
-            '1' => 'normal',
-            '2' => 'repaire',
-            '3' => 'under repair',
-            '4' => 'no use',
-        ];
-        return $statusLists;
+        return $this->statusLists[$this->attributes['status']];
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function firm()
+    {
+        return $this->belongsTo(Firm::class);
     }
 }

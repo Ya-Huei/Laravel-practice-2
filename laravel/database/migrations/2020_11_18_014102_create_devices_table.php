@@ -17,7 +17,7 @@ class CreateDevicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('serial_no');
             $table->integer('status');
-            $table->string('location')->nullable();
+            $table->string('address')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
             $table->unsignedBigInteger('firm_id')->nullable();
             $table->timestamps();

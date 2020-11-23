@@ -18,22 +18,28 @@ class LocationsService
         return $result;
     }
 
-    public static function category(&$result, $value){
+    private static function category(&$result, $value)
+    {
         $country = $value->country;
-        if(!in_array($country, $result['country'])){
+        if (!in_array($country, $result['country'])) {
             array_push($result['country'], $country);
             $result[$country] = [];
         }
 
         $region = $value->region;
-        if(!in_array($region, $result[$country])){
+        if (!in_array($region, $result[$country])) {
             array_push($result[$country], $region);
             $result[$country][$region] = [];
         }
 
         $city = $value->city;
-        if(!in_array($city, $result[$country][$region])){
+        if (!in_array($city, $result[$country][$region])) {
             array_push($result[$country][$region], $city);
         }
+    }
+
+    public static function format($location)
+    {
+        return $location->country . ' ' . $location->region . ' ' . $location->city;
     }
 }

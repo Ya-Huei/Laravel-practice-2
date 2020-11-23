@@ -12,4 +12,8 @@ class Firm extends Model
     public function users(){
         $this->hasMany('App\User');
     }
+
+    public function devices(){
+        $this->hasMany(Device::class);
+    }
 }

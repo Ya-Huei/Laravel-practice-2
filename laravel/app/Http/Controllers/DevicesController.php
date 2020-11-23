@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Device;
+use App\Services\LocationsService;
 
 class DevicesController extends Controller
 {
@@ -16,17 +17,8 @@ class DevicesController extends Controller
      */
     public function index()
     {
-        $devices = DB::table('devices')
-            ->leftJoin('locations', 'locations.id', '=', 'devices.location_id')
-            ->leftJoin('firms', 'firms.id', '=', 'devices.firm_id')
-            ->select('devices.id', 'devices.serial_no', DB::raw('concat(locations.country, locations.region, locations.city) as region'), 'devices.location', 'firms.name as firm', 'devices.status', 'devices.updated_at as updated', 'devices.created_at as registered')
-            ->orderBy('id', 'asc')
-            ->get();
-        
-        $defineStatus = Device::getDefineStatus();
-        foreach ($devices as $k => &$v) {
-            $v->status = $defineStatus[$v->status];
-        }
+        $data = Device::with('location', 'firm')->orderBy('id', 'asc')->get();
+        $devices = $this->formatDevices($data);
         return response()->json($devices);
     }
 
@@ -95,5 +87,23 @@ class DevicesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function formatDevices($data)
+    {
+        $devices = [];
+        foreach ($data as $item) {
+            $device = [];
+            $device['id'] = $item->id;
+            $device['serial_no'] = $item->serial_no;
+            $device['region'] = isset($item->location) ? LocationsService::format($item->location) : "";
+            $device['address'] = $item->address;
+            $device['firm'] = isset($item->firm->name) ? $item->firm->name : "";
+            $device['status'] = $item->status;
+            $device['updated'] = $item->updated_at->format('Y-m-d H:i:s');
+            $device['registered'] = $item->created_at->format('Y-m-d H:i:s');
+            array_push($devices, $device);
+        }
+        return $devices;
     }
 }

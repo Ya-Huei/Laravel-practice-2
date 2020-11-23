@@ -140,7 +140,7 @@ class UsersController extends Controller
             $user['name'] = $item->name;
             $user['email'] = $item->email;
             $user['roles'] = isset($item->roles) ? $this->formatRoles($item->roles) : "";
-            $user['region'] = isset($item->location) ? $this->formatRegion($item->location) : "";
+            $user['region'] = isset($item->location) ? LocationsService::format($item->location) : "";
             $user['firm'] = isset($item->firm->name) ? $item->firm->name : "";
             $user['updated'] = $item->updated_at->format('Y-m-d H:i:s');
             $user['registered'] = $item->created_at->format('Y-m-d H:i:s');
@@ -156,10 +156,5 @@ class UsersController extends Controller
             array_push($rolesName, $role->name);
         }
         return $rolesName;
-    }
-    
-    private function formatRegion($location)
-    {
-        return $location->country . ',' . $location->region . ',' . $location->city;
     }
 }

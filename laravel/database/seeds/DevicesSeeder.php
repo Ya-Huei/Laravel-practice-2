@@ -9,42 +9,42 @@ class DevicesSeeder extends Seeder
         [
             'serial_no' => '10000001A',
             'status' => '1',
-            'location' => 'Daan',
+            'address' => 'Daan',
             'location_id' => '1',
             'firm_id' => '1',
         ],
         [
             'serial_no' => '10000002A',
             'status' => '1',
-            'location' => 'Zhonghe',
+            'address' => 'Zhonghe',
             'location_id' => '2',
             'firm_id' => '1',
         ],
         [
             'serial_no' => '10000003A',
             'status' => '1',
-            'location' => 'Daan',
+            'address' => 'Daan',
             'location_id' => '1',
             'firm_id' => '2',
         ],
         [
             'serial_no' => '10000004A',
             'status' => '1',
-            'location' => 'Zhonghe',
+            'address' => 'Zhonghe',
             'location_id' => '2',
             'firm_id' => '2',
         ],
         [
             'serial_no' => '10000005A',
             'status' => '1',
-            'location' => 'Sichuan',
+            'address' => 'Sichuan',
             'location_id' => '4',
             'firm_id' => '1',
         ],
         [
             'serial_no' => '10000006A',
             'status' => '1',
-            'location' => 'Haerbin',
+            'address' => 'Haerbin',
             'location_id' => '5',
             'firm_id' => '1',
         ],
@@ -61,7 +61,7 @@ class DevicesSeeder extends Seeder
             $device = new Device();
             $device->serial_no = $item['serial_no'];
             $device->status = $item['status'];
-            $device->location = $item['location'];
+            $device->address = $item['address'];
             $device->location_id = $item['location_id'];
             $device->firm_id = $item['firm_id'];
             $device->save();

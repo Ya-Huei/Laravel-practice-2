@@ -72,7 +72,7 @@ export default {
         "id",
         "serial_no",
         "region",
-        "location",
+        "address",
         "firm",
         "status",
         "registered",
