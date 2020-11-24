@@ -120,28 +120,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Devices",
@@ -163,18 +141,12 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  paginationProps: {
-    align: "center",
-    doubleArrows: false,
-    previousButtonHtml: "prev",
-    nextButtonHtml: "next"
-  },
   methods: {
     editLink: function editLink(id) {
       return "devices/".concat(id.toString(), "/edit");
     },
     repairDevice: function repairDevice(id) {
-      console.log(id + " should be repaired!!!"); // this.$router.push({ path: "roles/create" });
+      console.log(id + " should be repaired!!!");
     },
     editDevice: function editDevice(id) {
       var editLink = this.editLink(id);
@@ -182,33 +154,6 @@ __webpack_require__.r(__webpack_exports__);
         path: editLink
       });
     },
-    // deleteRole(id) {
-    //   let self = this;
-    //   let userId = id;
-    //   axios
-    //     .post(
-    //       "/api/roles/" + id + "?token=" + localStorage.getItem("api_token"),
-    //       {
-    //         _method: "DELETE",
-    //       }
-    //     )
-    //     .then(function(response) {
-    //       if (response.data.status == "403") {
-    //         return;
-    //       }
-    //       if (response.data.status == "success") {
-    //         self.message = "Successfully deleted role.";
-    //       } else {
-    //         self.message = response.data.message;
-    //       }
-    //       self.showAlert();
-    //       self.getRoles();
-    //     })
-    //     .catch(function(error) {
-    //       console.log(error);
-    //       self.$router.push({ path: "/login" });
-    //     });
-    // },
     countDownChanged: function countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown;
     },
@@ -263,94 +208,7 @@ var render = function() {
               _c(
                 "CCard",
                 [
-                  _c(
-                    "CCardHeader",
-                    [
-                      _c(
-                        "CRow",
-                        [
-                          _c(
-                            "CCol",
-                            { attrs: { col: "5" } },
-                            [
-                              _c("CInput", {
-                                staticClass: "mb-2",
-                                attrs: { label: "Serial_no", horizontal: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { col: "5" } },
-                            [
-                              _c("CInput", {
-                                staticClass: "mb-2",
-                                attrs: { label: "Region", horizontal: "" }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "CRow",
-                        [
-                          _c(
-                            "CCol",
-                            { attrs: { col: "5" } },
-                            [
-                              _c("CInput", {
-                                staticClass: "mb-0",
-                                attrs: { label: "Firm", horizontal: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { col: "5" } },
-                            [
-                              _c("CInput", {
-                                staticClass: "mb-0",
-                                attrs: { label: "Status", horizontal: "" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            {
-                              staticClass: "d-flex justify-content-end",
-                              attrs: { col: "2" }
-                            },
-                            [
-                              _c(
-                                "CButton",
-                                {
-                                  attrs: { color: "success" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.editDevice(_vm.item.id)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Search")]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
+                  _c("CCardHeader", [_c("h4", [_vm._v("Devices")])]),
                   _vm._v(" "),
                   _c(
                     "CCardBody",
@@ -387,6 +245,7 @@ var render = function() {
                           items: _vm.items,
                           fields: _vm.fields,
                           "items-per-page": 6,
+                          tableFilter: { external: false, lazy: false },
                           pagination: ""
                         },
                         scopedSlots: _vm._u([

@@ -152,12 +152,6 @@ __webpack_require__.r(__webpack_exports__);
       showDismissibleAlert: false
     };
   },
-  paginationProps: {
-    align: "center",
-    doubleArrows: false,
-    previousButtonHtml: "prev",
-    nextButtonHtml: "next"
-  },
   methods: {
     editLink: function editLink(id) {
       return "roles/".concat(id.toString(), "/edit");

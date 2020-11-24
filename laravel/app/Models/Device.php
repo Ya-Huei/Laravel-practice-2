@@ -13,7 +13,7 @@ class Device extends Model
 
     private static $statusLists =  [
         '1' => 'normal',
-        '2' => 'repaire',
+        '2' => 'repair',
         '3' => 'under repair',
         '4' => 'no use',
     ];
