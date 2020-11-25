@@ -14,8 +14,20 @@ class CreateRepairRecordsTable extends Migration
     public function up()
     {
         Schema::create('repair_records', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('device_id');
+            $table->string('reason');
+            $table->string('worker');
+            $table->unsignedBigInteger('status_id');
             $table->timestamps();
+
+            $table->foreign('device_id')
+            ->references('id')
+            ->on('devices');
+
+            $table->foreign('status_id')
+            ->references('id')
+            ->on('statuses');
         });
     }
 

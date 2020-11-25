@@ -7,11 +7,14 @@ class FirmsSeeder extends Seeder
 {
     private $firmLists = [
         [
-            'name' => 'CoCo'
+            'name' => 'COCO'
         ],
         [
-            'name' => 'Jiate'
-        ]
+            'name' => 'JIATE'
+        ],
+        [
+            'name' => 'MACU'
+        ],
     ];
     /**
      * Run the database seeds.

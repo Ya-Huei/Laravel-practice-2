@@ -14,7 +14,8 @@ class CreateFirmwareTable extends Migration
     public function up()
     {
         Schema::create('firmware', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('version');
             $table->timestamps();
         });
     }

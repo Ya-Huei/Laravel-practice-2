@@ -14,8 +14,15 @@ class CreateOtaRecordsTable extends Migration
     public function up()
     {
         Schema::create('ota_records', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('device_id');
+            $table->integer('type');
+            $table->string('version');
             $table->timestamps();
+
+            $table->foreign('device_id')
+            ->references('id')
+            ->on('devices');
         });
     }
 

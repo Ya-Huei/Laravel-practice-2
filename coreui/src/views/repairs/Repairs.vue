@@ -4,7 +4,7 @@
       <transition name="slide">
         <CCard>
           <CCardHeader>
-            <h4>Devices</h4>
+            <h4>Repairs</h4>
           </CCardHeader>
           <CCardBody>
             <CAlert :show.sync="dismissCountDown" color="danger" fade>
@@ -42,7 +42,7 @@
 import axios from "axios";
 
 export default {
-  name: "Devices",
+  name: "Repairs",
   data: () => {
     return {
       items: [],

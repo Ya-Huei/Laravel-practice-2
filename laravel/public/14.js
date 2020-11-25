@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Devices",
+  name: "Repairs",
   data: function data() {
     return {
       items: [],
@@ -208,7 +208,7 @@ var render = function() {
               _c(
                 "CCard",
                 [
-                  _c("CCardHeader", [_c("h4", [_vm._v("Devices")])]),
+                  _c("CCardHeader", [_c("h4", [_vm._v("Repairs")])]),
                   _vm._v(" "),
                   _c(
                     "CCardBody",
