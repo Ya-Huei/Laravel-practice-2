@@ -35,6 +35,7 @@ const Recipes = () => import('@/views/recipes/Recipes')
 
 //RepairRecords
 const Repairs = () => import('@/views/repairs/Repairs')
+const EditRepair = () => import('@/views/repairs/EditRepair')
 
 Vue.use(Router)
 
@@ -201,12 +202,12 @@ function configRoutes () {
               path: '',
               component: Repairs,
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
+            {
+              path: ':id/edit',
+              meta: { label: 'Edit Repair' },
+              name: 'Edit Repair',
+              component: EditRepair
+            },
           ]
         },
       ]

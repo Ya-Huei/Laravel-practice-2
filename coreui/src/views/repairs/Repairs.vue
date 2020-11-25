@@ -17,7 +17,6 @@
               :items="items"
               :fields="fields"
               :items-per-page="6"
-              :tableFilter='{ external: false, lazy: false }'
               pagination
             >
               <template #operate="{item}">
@@ -46,9 +45,8 @@ export default {
       fields: [
         "id",
         "serial_no",
-        "region",
-        "address",
-        "firm",
+        "reason",
+        "worker",
         "status",
         "registered",
         "updated",
@@ -67,10 +65,7 @@ export default {
   },
   methods: {
     editLink(id) {
-      return `devices/${id.toString()}/edit`;
-    },
-    repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+      return `repairs/${id.toString()}/edit`;
     },
     editDevice(id) {
       const editLink = this.editLink(id);
@@ -82,10 +77,10 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
-    getDevices() {
+    getRepairs() {
       let self = this;
       axios
-        .get("/api/devices?token=" + localStorage.getItem("api_token"))
+        .get("/api/repairs?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
           self.items = response.data;
         })
@@ -96,7 +91,7 @@ export default {
     },
   },
   mounted: function() {
-    this.getDevices();
+    this.getRepairs();
   },
 };
 </script>

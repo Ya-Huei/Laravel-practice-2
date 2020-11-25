@@ -134,7 +134,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      fields: ["id", "serial_no", "region", "address", "firm", "status", "enabled", "registered", "updated", "operate"],
+      fields: ["serial_no", "region", "address", "firm", "status", "enabled", "registered", "updated", "operate"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,

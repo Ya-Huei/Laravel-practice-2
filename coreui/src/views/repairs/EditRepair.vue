@@ -3,7 +3,7 @@
     <CCol col="12" lg="12">
       <CCard>
         <CCardHeader>
-          <h4>Repair Device</h4>
+          <h4>Edit Repair</h4>
         </CCardHeader>
         <CCardBody>
           <span v-if="showMessage">
@@ -19,16 +19,24 @@
               disabled
             />
             <CTextarea label="Reason" v-model="reason" rows="5" horizontal />
+            <CInput
+              label="Worker"
+              v-model="device.serial_no"
+              horizontal
+            />
+            <CSelect
+              label="Status"
+              :options="statusOptions"
+              :value.sync="device.status"
+              horizontal
+              description="Select your status"
+            />
           </CForm>
         </CCardBody>
         <CCardFooter class="text-right">
-          <CButton
-            :disabled="!isRepairedDevice"
-            color="primary"
-            @click="update()"
-          >
-            <span v-if="isRepairedDevice">Save</span>
-            <CSpinner v-if="!isRepairedDevice" color="info" size="sm" />
+          <CButton :disabled="!isEditedDevice" color="primary" @click="update()">
+            <span v-if="isEditedDevice">Save</span>
+            <CSpinner v-if="!isEditedDevice" color="info" size="sm" />
           </CButton>
           <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
         </CCardFooter>
@@ -40,6 +48,7 @@
 <script>
 import axios from "axios";
 import format from "../mixins/Format.vue";
+import location from "../mixins/Location";
 export default {
   mixins: [format, location],
   name: "EditUser",
@@ -47,22 +56,45 @@ export default {
     return {
       device: {
         serial_no: "",
+        address: "",
+        status: "",
+        firm: null,
       },
-      reason: "",
+      location: {
+        country: null,
+        region: null,
+        city: null,
+      },
       messages: [],
       horizontal: { label: "col-3", input: "col-9" },
       optionPermissions: [],
-      isRepairedDevice: true,
+      isEditedDevice: true,
       showMessage: false,
+      showRegion: false,
+      showCity: false,
+      countryOptions: [],
+      regionOptions: [],
+      cityOptions: [],
+      firmOptions: [],
+      statusOptions: [],
+      locations: [],
     };
   },
   methods: {
     goBack() {
       this.$router.go(-1);
     },
+    loadRegions() {
+      let self = this;
+      self.loadRegionsList(self);
+    },
+    loadCities() {
+      let self = this;
+      self.loadCitiesList(self);
+    },
     update() {
       let self = this;
-      self.isRepairedDevice = false;
+      self.isEditedDevice = false;
       axios
         .post(
           "/api/devices/" +
@@ -72,13 +104,18 @@ export default {
           {
             _method: "PUT",
             country: self.location.country,
+            region: self.location.region,
+            city: self.location.city,
+            address:self.device.address,
+            firm: self.device.firm,
+            status: self.device.status,
           }
         )
         .then(function(response) {
           self.goBack();
         })
         .catch(function(error) {
-          self.isRepairedDevice = true;
+          self.isEditedDevice = true;
           self.messages = self.formResponseFormat(error);
           self.showMessage = true;
         });
@@ -107,6 +144,20 @@ export default {
     setDefaultData(response) {
       let self = this;
       self.device.serial_no = response.data.device.serial_no;
+      self.device.address = response.data.device.address;
+      self.locations = response.data.locations;
+      self.countryOptions = self.locations.country;
+      self.firmOptions = response.data.firms;
+      self.statusOptions = response.data.status;
+      self.location.country = response.data.device.country;
+      if (self.location.country !== "") {
+        self.loadRegions();
+        self.location.region = response.data.device.region;
+        self.loadCities();
+        self.location.city = response.data.device.city;
+      }
+      self.device.firm = response.data.device.firm;
+      self.device.status = response.data.device.status;
     },
   },
   mounted: function() {

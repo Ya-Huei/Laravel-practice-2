@@ -116,14 +116,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Repairs",
   data: function data() {
     return {
       items: [],
-      fields: ["id", "serial_no", "region", "address", "firm", "status", "registered", "updated", "operate"],
+      fields: ["id", "serial_no", "reason", "worker", "status", "registered", "updated", "operate"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
@@ -140,10 +139,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     editLink: function editLink(id) {
-      return "devices/".concat(id.toString(), "/edit");
-    },
-    repairDevice: function repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+      return "repairs/".concat(id.toString(), "/edit");
     },
     editDevice: function editDevice(id) {
       var editLink = this.editLink(id);
@@ -157,9 +153,9 @@ __webpack_require__.r(__webpack_exports__);
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
-    getDevices: function getDevices() {
+    getRepairs: function getRepairs() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/repairs?token=" + localStorage.getItem("api_token")).then(function (response) {
         self.items = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -170,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getDevices();
+    this.getRepairs();
   }
 });
 
@@ -242,7 +238,6 @@ var render = function() {
                           items: _vm.items,
                           fields: _vm.fields,
                           "items-per-page": 6,
-                          tableFilter: { external: false, lazy: false },
                           pagination: ""
                         },
                         scopedSlots: _vm._u([

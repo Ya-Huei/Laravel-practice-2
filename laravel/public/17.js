@@ -119,56 +119,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../coreui/src/views/mixins/Location.vue":
-/*!***********************************************!*\
-  !*** ../coreui/src/views/mixins/Location.vue ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Location.vue?vue&type=script&lang=js& */ "../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-
-
-
-
-/* normalize component */
-
-var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  _Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "coreui/src/views/mixins/Location.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Location.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Location_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js& ***!
@@ -181,7 +131,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/Format.vue */ "../coreui/src/views/mixins/Format.vue");
-/* harmony import */ var _mixins_Location__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/Location */ "../coreui/src/views/mixins/Location.vue");
 //
 //
 //
@@ -221,11 +170,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_Location__WEBPACK_IMPORTED_MODULE_2__["default"]],
+  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"], location],
   name: "EditUser",
   data: function data() {
     return {
@@ -246,14 +194,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     goBack: function goBack() {
       this.$router.go(-1);
-    },
-    loadRegions: function loadRegions() {
-      var self = this;
-      self.loadRegionsList(self);
-    },
-    loadCities: function loadCities() {
-      var self = this;
-      self.loadCitiesList(self);
     },
     update: function update() {
       var self = this;
@@ -335,40 +275,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }
 
       return messages;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/mixins/Location.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  methods: {
-    loadRegionsList: function loadRegionsList(self) {
-      if (self.location.country === "") {
-        self.showRegion = false;
-        self.showCity = false;
-        self.location.region = "";
-        self.location.city = "";
-      } else {
-        self.regionOptions = self.locations[self.location.country]["region"];
-        self.showRegion = true;
-        self.location.region = self.regionOptions[0];
-        this.loadCitiesList(self);
-      }
-    },
-    loadCitiesList: function loadCitiesList(self) {
-      self.showCity = true;
-      self.cityOptions = self.locations[self.location.country][self.location.region]["city"];
-      self.location.city = self.cityOptions[0];
     }
   }
 });

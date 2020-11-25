@@ -4,7 +4,16 @@
       <transition name="slide">
         <CCard>
           <CCardHeader>
-            <h4>Devices</h4>
+            <CRow>
+              <CCol col="6">
+                <h4>OTA Records</h4>
+              </CCol>
+              <CCol col="6" class="d-flex justify-content-end">
+                <CButton color="primary" @click="createUser()"
+                  >OTA Update</CButton
+                >
+              </CCol>
+            </CRow>
           </CCardHeader>
           <CCardBody>
             <CAlert :show.sync="dismissCountDown" color="danger" fade>
@@ -17,17 +26,18 @@
               :items="items"
               :fields="fields"
               :items-per-page="6"
-              :tableFilter='{ external: false, lazy: false }'
-              pagination
             >
-              <template #operate="{item}">
+              <template #status="{item}">
                 <td>
-                  <CButton color="primary" @click="editDevice(item.id)"
-                    >Edit</CButton
-                  >
-                  <CButton color="danger" @click="repairDevice(item.id)"
-                    >Repair</CButton
-                  >
+                  <CBadge :color="item.status.class">{{
+                    item.status.name
+                  }}</CBadge>
+                </td>
+              </template>
+
+              <template #operate="{item}">
+                <td class="d-flex justify-content-center">
+                  <CInputCheckbox> </CInputCheckbox>
                 </td>
               </template>
             </CDataTable>
@@ -46,17 +56,7 @@ export default {
   data: () => {
     return {
       items: [],
-      fields: [
-        "id",
-        "serial_no",
-        "region",
-        "address",
-        "firm",
-        "status",
-        "registered",
-        "updated",
-        "operate",
-      ],
+      fields: ["operate", "serial_no", "region", "address", "firm", "status"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,

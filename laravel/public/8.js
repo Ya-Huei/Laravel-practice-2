@@ -115,54 +115,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Firmware",
   data: function data() {
     return {
       items: [],
-      fields: ["id", "serial_no", "region", "address", "firm", "status", "registered", "updated", "operate"],
+      fields: ["id", "version", "registered"],
       currentPage: 1,
       perPage: 6,
-      totalRows: 0,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      horizontal: {
-        label: "col-4",
-        input: "col-8"
-      }
+      totalRows: 0
     };
   },
   methods: {
-    editLink: function editLink(id) {
-      return "devices/".concat(id.toString(), "/edit");
-    },
-    repairDevice: function repairDevice(id) {
-      console.log(id + " should be repaired!!!");
-    },
-    editDevice: function editDevice(id) {
-      var editLink = this.editLink(id);
-      this.$router.push({
-        path: editLink
-      });
-    },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert: function showAlert() {
-      this.dismissCountDown = this.dismissSecs;
-    },
-    getDevices: function getDevices() {
+    getFirmware: function getFirmware() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/firmware?token=" + localStorage.getItem("api_token")).then(function (response) {
         self.items = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -173,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getDevices();
+    this.getFirmware();
   }
 });
 
@@ -208,36 +176,11 @@ var render = function() {
               _c(
                 "CCard",
                 [
-                  _c("CCardHeader", [_c("h4", [_vm._v("Devices")])]),
+                  _c("CCardHeader", [_c("h4", [_vm._v("Firmware")])]),
                   _vm._v(" "),
                   _c(
                     "CCardBody",
                     [
-                      _c(
-                        "CAlert",
-                        {
-                          attrs: {
-                            show: _vm.dismissCountDown,
-                            color: "danger",
-                            fade: ""
-                          },
-                          on: {
-                            "update:show": function($event) {
-                              _vm.dismissCountDown = $event
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n            (" +
-                              _vm._s(_vm.dismissCountDown) +
-                              ") " +
-                              _vm._s(_vm.message) +
-                              "\n          "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
                       _c("CDataTable", {
                         attrs: {
                           hover: "",
@@ -245,7 +188,6 @@ var render = function() {
                           items: _vm.items,
                           fields: _vm.fields,
                           "items-per-page": 6,
-                          tableFilter: { external: false, lazy: false },
                           pagination: ""
                         },
                         scopedSlots: _vm._u([

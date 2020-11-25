@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RepairRecord;
 
 class RepairsController extends Controller
 {
@@ -13,7 +14,9 @@ class RepairsController extends Controller
      */
     public function index()
     {
-        //
+        $repairs = RepairRecord::orderBy('id', 'desc')->get();
+        // $repairs = $this->formatrepairs($data);
+        return response()->json($repairs);
     }
 
     /**

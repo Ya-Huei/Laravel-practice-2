@@ -55,7 +55,6 @@ export default {
     return {
       items: [],
       fields: [
-        "id",
         "serial_no",
         "region",
         "address",

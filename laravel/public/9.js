@@ -120,13 +120,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Devices",
   data: function data() {
     return {
       items: [],
-      fields: ["id", "serial_no", "region", "address", "firm", "status", "registered", "updated", "operate"],
+      fields: ["operate", "serial_no", "region", "address", "firm", "status"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
@@ -208,7 +218,44 @@ var render = function() {
               _c(
                 "CCard",
                 [
-                  _c("CCardHeader", [_c("h4", [_vm._v("Devices")])]),
+                  _c(
+                    "CCardHeader",
+                    [
+                      _c(
+                        "CRow",
+                        [
+                          _c("CCol", { attrs: { col: "6" } }, [
+                            _c("h4", [_vm._v("OTA Records")])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            {
+                              staticClass: "d-flex justify-content-end",
+                              attrs: { col: "6" }
+                            },
+                            [
+                              _c(
+                                "CButton",
+                                {
+                                  attrs: { color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.createUser()
+                                    }
+                                  }
+                                },
+                                [_vm._v("OTA Update")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
                     "CCardBody",
@@ -244,13 +291,11 @@ var render = function() {
                           striped: "",
                           items: _vm.items,
                           fields: _vm.fields,
-                          "items-per-page": 6,
-                          tableFilter: { external: false, lazy: false },
-                          pagination: ""
+                          "items-per-page": 6
                         },
                         scopedSlots: _vm._u([
                           {
-                            key: "operate",
+                            key: "status",
                             fn: function(ref) {
                               var item = ref.item
                               return [
@@ -258,31 +303,27 @@ var render = function() {
                                   "td",
                                   [
                                     _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "primary" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editDevice(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Edit")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "danger" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.repairDevice(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Repair")]
+                                      "CBadge",
+                                      { attrs: { color: item.status.class } },
+                                      [_vm._v(_vm._s(item.status.name))]
                                     )
                                   ],
+                                  1
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "operate",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "d-flex justify-content-center"
+                                  },
+                                  [_c("CInputCheckbox")],
                                   1
                                 )
                               ]
