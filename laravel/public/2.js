@@ -340,7 +340,10 @@ __webpack_require__.r(__webpack_exports__);
 
         self.setDefaultData(response);
       })["catch"](function (error) {
-        console.log(error); // self.$router.push({ path: "/login" });
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
       });
     },
     setDefaultData: function setDefaultData(response) {

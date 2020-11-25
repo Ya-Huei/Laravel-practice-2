@@ -169,7 +169,7 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
-          // self.$router.push({ path: "/login" });
+          self.$router.push({ path: "/login" });
         });
     },
     setDefaultData(response) {

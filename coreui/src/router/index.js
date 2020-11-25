@@ -23,6 +23,18 @@ const CreateRole = () => import('@/views/roles/CreateRole')
 const Devices = () => import('@/views/devices/Devices')
 const EditDevice = () => import('@/views/devices/EditDevice')
 
+//Firmware
+const Firmware = () => import('@/views/firmware/Firmware')
+
+//OtaRecords
+const Ota = () => import('@/views/ota/Ota')
+
+//Recipes
+const Recipes = () => import('@/views/recipes/Recipes')
+
+//RepairRecords
+const Repairs = () => import('@/views/repairs/Repairs')
+
 Vue.use(Router)
 
 export default new Router({
@@ -111,6 +123,82 @@ function configRoutes () {
               meta: { label: 'Edit Device' },
               name: 'Edit Device',
               component: EditDevice
+            },
+            // {
+            //   path: ':id/edit',
+            //   meta: { label: 'Edit Role' },
+            //   name: 'Edit Role',
+            //   component: EditRole
+            // },
+          ]
+        },
+        {
+          path: 'firmware',
+          meta: { label: 'Firmware'},
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: '',
+              component: Firmware,
+            },
+            // {
+            //   path: ':id/edit',
+            //   meta: { label: 'Edit Role' },
+            //   name: 'Edit Role',
+            //   component: EditRole
+            // },
+          ]
+        },
+        {
+          path: 'ota',
+          meta: { label: 'ota'},
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: '',
+              component: Ota,
+            },
+            // {
+            //   path: ':id/edit',
+            //   meta: { label: 'Edit Role' },
+            //   name: 'Edit Role',
+            //   component: EditRole
+            // },
+          ]
+        },
+        {
+          path: 'recipes',
+          meta: { label: 'recipes'},
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: '',
+              component: Recipes,
+            },
+            // {
+            //   path: ':id/edit',
+            //   meta: { label: 'Edit Role' },
+            //   name: 'Edit Role',
+            //   component: EditRole
+            // },
+          ]
+        },
+        {
+          path: 'repairs',
+          meta: { label: 'repairs'},
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: '',
+              component: Repairs,
             },
             // {
             //   path: ':id/edit',
