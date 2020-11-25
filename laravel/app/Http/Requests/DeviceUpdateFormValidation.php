@@ -24,7 +24,7 @@ class DeviceUpdateFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'country'    => 'required_with_all:region,city',
+            'country'    => 'required_with_all:region,city|required_if:status,Enable',
             'region'     => 'required_with_all:country,city',
             'city'       => 'required_with_all:country,region',
             'address'    => 'nullable|string|between:0,255',

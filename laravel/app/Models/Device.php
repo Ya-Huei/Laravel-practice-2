@@ -9,19 +9,7 @@ class Device extends Model
     protected $table = 'devices';
     public $timestamps = true;
 
-    protected $appends = ['status'];
-
-    private static $statusLists =  [
-        '1' => 'normal',
-        '2' => 'repair',
-        '3' => 'under repair',
-        '4' => 'no use',
-    ];
-
-    public function getStatusAttribute()
-    {
-        return self::$statusLists[$this->attributes['status']];
-    }
+    protected $dates = ['enabled_at'];
 
     public function location()
     {
@@ -33,7 +21,8 @@ class Device extends Model
         return $this->belongsTo(Firm::class);
     }
 
-    public static function getStatusLists(){
-        return self::$statusLists;
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 }

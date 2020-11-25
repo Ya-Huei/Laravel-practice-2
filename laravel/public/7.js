@@ -120,13 +120,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Devices",
   data: function data() {
     return {
       items: [],
-      fields: ["id", "serial_no", "region", "address", "firm", "status", "registered", "updated", "operate"],
+      fields: ["id", "serial_no", "region", "address", "firm", "status", "enabled", "registered", "updated", "operate"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
@@ -145,8 +153,14 @@ __webpack_require__.r(__webpack_exports__);
     editLink: function editLink(id) {
       return "devices/".concat(id.toString(), "/edit");
     },
+    repairLink: function repairLink(id) {
+      return "devices/".concat(id.toString(), "/repair");
+    },
     repairDevice: function repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+      var repairLink = this.repairLink(id);
+      this.$router.push({
+        path: repairLink
+      });
     },
     editDevice: function editDevice(id) {
       var editLink = this.editLink(id);
@@ -249,6 +263,25 @@ var render = function() {
                           pagination: ""
                         },
                         scopedSlots: _vm._u([
+                          {
+                            key: "status",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c(
+                                  "td",
+                                  [
+                                    _c(
+                                      "CBadge",
+                                      { attrs: { color: item.status.class } },
+                                      [_vm._v(_vm._s(item.status.name))]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          },
                           {
                             key: "operate",
                             fn: function(ref) {

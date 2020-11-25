@@ -117,9 +117,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Repairs",
@@ -268,19 +265,6 @@ var render = function() {
                                         }
                                       },
                                       [_vm._v("Edit")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "danger" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.repairDevice(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Repair")]
                                     )
                                   ],
                                   1

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Device;
+use App\Models\Status;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
+use App\Services\StatusesService;
 use App\Http\Requests\DeviceUpdateFormValidation;
 
 class DevicesController extends Controller
@@ -19,7 +21,7 @@ class DevicesController extends Controller
      */
     public function index()
     {
-        $data = Device::with('location', 'firm')->orderBy('id', 'asc')->get();
+        $data = Device::with('location', 'firm', 'status')->orderBy('id', 'asc')->get();
         $devices = $this->formatDevices($data);
         return response()->json($devices);
     }
@@ -66,9 +68,10 @@ class DevicesController extends Controller
     {
         LocationsService::getLocationInfo($device, $device->location_id);
         FirmsService::getFirmInfo($device, $device->firm_id);
+        StatusesService::getStatusInfo($device, $device->status_id);
         $locations = LocationsService::getLocationsCategory();
         $firms = FirmsService::getAllFirmsName();
-        $status = Device::getStatusLists();
+        $status = StatusesService::getAllStatusesName();
         return response()->json(compact('device', 'locations', 'firms', 'status'));
     }
 
@@ -91,10 +94,14 @@ class DevicesController extends Controller
 
         $device->address = $request->input('address');
 
-        $device->status = array_search($request->input('status'), Device::getStatusLists());
-        
-        $device->save();
+        $status = $request->input('status');
+        $device->status_id = StatusesService::getStatusId($status);
 
+        if($status == "Enable" && !isset($device->enabled_at)){
+            $device->enabled_at = now();
+        }
+
+        $device->save();
 
         return response()->json(['status' => 'success']);
     }
@@ -121,8 +128,9 @@ class DevicesController extends Controller
             $device['address'] = $item->address;
             $device['firm'] = isset($item->firm->name) ? $item->firm->name : "";
             $device['status'] = $item->status;
-            $device['updated'] = $item->updated_at->format('Y-m-d H:i:s');
-            $device['registered'] = $item->created_at->format('Y-m-d H:i:s');
+            $device['enabled'] = isset($item->enabled_at) ? $item->enabled_at->format('Y-m-d H:i:s') : "";
+            $device['updated'] = isset($item->updated_at) ? $item->updated_at->format('Y-m-d H:i:s') : "";
+            $device['registered'] = isset($item->created_at) ? $item->created_at->format('Y-m-d H:i:s') : "";
             array_push($devices, $device);
         }
         return $devices;

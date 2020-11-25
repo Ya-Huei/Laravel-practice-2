@@ -22,6 +22,7 @@ const CreateRole = () => import('@/views/roles/CreateRole')
 //Devices
 const Devices = () => import('@/views/devices/Devices')
 const EditDevice = () => import('@/views/devices/EditDevice')
+const RepairDevice = () => import('@/views/devices/RepairDevice')
 
 //Firmware
 const Firmware = () => import('@/views/firmware/Firmware')
@@ -124,12 +125,12 @@ function configRoutes () {
               name: 'Edit Device',
               component: EditDevice
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
+            {
+              path: ':id/repair',
+              meta: { label: 'Repair Device' },
+              name: 'Repair Device',
+              component: RepairDevice
+            },
           ]
         },
         {

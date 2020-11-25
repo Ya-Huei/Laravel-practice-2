@@ -20,7 +20,7 @@ class CreateDevicesTable extends Migration
             $table->string('address')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
             $table->unsignedBigInteger('firm_id')->nullable();
-            $table->timestamp('enabled_at');
+            $table->timestamp('enabled_at')->nullable();
             $table->timestamps();
 
             $table->foreign('location_id')

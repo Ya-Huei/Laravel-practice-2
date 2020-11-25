@@ -17,9 +17,17 @@
               :items="items"
               :fields="fields"
               :items-per-page="6"
-              :tableFilter='{ external: false, lazy: false }'
+              :tableFilter="{ external: false, lazy: false }"
               pagination
             >
+              <template #status="{item}">
+                <td>
+                  <CBadge :color="item.status.class">{{
+                    item.status.name
+                  }}</CBadge>
+                </td>
+              </template>
+
               <template #operate="{item}">
                 <td>
                   <CButton color="primary" @click="editDevice(item.id)"
@@ -53,6 +61,7 @@ export default {
         "address",
         "firm",
         "status",
+        "enabled",
         "registered",
         "updated",
         "operate",
@@ -72,8 +81,12 @@ export default {
     editLink(id) {
       return `devices/${id.toString()}/edit`;
     },
+    repairLink(id){
+      return `devices/${id.toString()}/repair`;
+    },
     repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+      const repairLink = this.repairLink(id);
+      this.$router.push({ path: repairLink });
     },
     editDevice(id) {
       const editLink = this.editLink(id);

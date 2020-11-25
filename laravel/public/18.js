@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
-/***/ "../coreui/src/views/users/EditUser.vue":
-/*!**********************************************!*\
-  !*** ../coreui/src/views/users/EditUser.vue ***!
-  \**********************************************/
+/***/ "../coreui/src/views/devices/RepairDevice.vue":
+/*!****************************************************!*\
+  !*** ../coreui/src/views/devices/RepairDevice.vue ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditUser.vue?vue&type=template&id=5d876b46& */ "../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&");
-/* harmony import */ var _EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditUser.vue?vue&type=script&lang=js& */ "../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&");
+/* harmony import */ var _RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RepairDevice.vue?vue&type=template&id=7b60945f& */ "../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&");
+/* harmony import */ var _RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RepairDevice.vue?vue&type=script&lang=js& */ "../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -20,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -32,221 +32,58 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/users/EditUser.vue"
+component.options.__file = "coreui/src/views/devices/RepairDevice.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditUser.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./RepairDevice.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&":
-/*!*****************************************************************************!*\
-  !*** ../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46& ***!
-  \*****************************************************************************/
+/***/ "../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&":
+/*!***********************************************************************************!*\
+  !*** ../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f& ***!
+  \***********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditUser.vue?vue&type=template&id=5d876b46& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./RepairDevice.vue?vue&type=template&id=7b60945f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_5d876b46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/EditUser.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "../coreui/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/icons */ "../coreui/node_modules/@coreui/icons/js/index.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'EditUser',
-  data: function data() {
-    return {
-      user: {
-        name: '',
-        email: '',
-        password: '',
-        roles: []
-      },
-      showMessage: false,
-      message: '',
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      show: true,
-      horizontal: {
-        label: 'col-3',
-        input: 'col-9'
-      },
-      optionRoles: [],
-      isEditedUser: true
-    };
-  },
-  methods: {
-    goBack: function goBack() {
-      this.$router.go(-1);
-    },
-    update: function update() {
-      var self = this;
-      self.isEditedUser = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/' + self.$route.params.id + '?token=' + localStorage.getItem("api_token"), {
-        _method: 'PUT',
-        password: self.user.password,
-        roles: self.user.roles
-      }).then(function (response) {
-        self.goBack();
-      })["catch"](function (error) {
-        self.isEditedUser = true;
-        self.message = error;
-        self.showAlert();
-      });
-    },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert: function showAlert() {
-      this.dismissCountDown = this.dismissSecs;
-    },
-    selectRoles: function selectRoles(role) {
-      var temp = this.user.roles.indexOf(role);
-
-      if (temp > -1) {
-        this.user.roles.splice(temp, 1);
-      } else {
-        this.user.roles.push(role);
-      }
-    }
-  },
-  beforeCreate: function beforeCreate() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/roles?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.optionRoles = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: '/login'
-      });
-    });
-  },
-  mounted: function mounted() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/users/' + self.$route.params.id + '/edit?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.user.name = response.data.name;
-      self.user.email = response.data.email;
-      self.user.roles = response.data.roles.split(",");
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: '/login'
-      });
-    });
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\devices\\RepairDevice.vue: Unexpected token, expected \",\" (49:6)\n\n\u001b[0m \u001b[90m 47 | \u001b[39m      }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 48 | \u001b[39m      reason\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 49 | \u001b[39m      messages\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 50 | \u001b[39m      horizontal\u001b[33m:\u001b[39m { label\u001b[33m:\u001b[39m \u001b[32m\"col-3\"\u001b[39m\u001b[33m,\u001b[39m input\u001b[33m:\u001b[39m \u001b[32m\"col-9\"\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 51 | \u001b[39m      optionPermissions\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 52 | \u001b[39m      isEditedRole\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.expect (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7759:28)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9305:14)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8275:23)\n    at Parser.parseReturnStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10378:28)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10057:21)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseBlock (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Parser.parseFunctionBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9584:24)\n    at Parser.parseArrowExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9525:10)\n    at Parser.parseParenAndDistinguishExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9157:12)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8917:21)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseObjectProperty (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9441:101)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:101)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)");
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/EditUser.vue?vue&type=template&id=5d876b46& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f& ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -268,126 +105,59 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Edit User")])]),
+              _c("CCardHeader", [_c("h4", [_vm._v("Repair Device")])]),
               _vm._v(" "),
               _c(
                 "CCardBody",
                 [
+                  _vm.showMessage
+                    ? _c(
+                        "span",
+                        _vm._l(_vm.messages, function(message) {
+                          return _c(
+                            "CAlert",
+                            { key: message, attrs: { color: "danger" } },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(message) +
+                                  "\n          "
+                              )
+                            ]
+                          )
+                        }),
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c(
                     "CForm",
                     [
-                      _c(
-                        "CAlert",
-                        {
-                          attrs: {
-                            show: _vm.dismissCountDown,
-                            color: "primary",
-                            fade: ""
-                          },
-                          on: {
-                            "update:show": function($event) {
-                              _vm.dismissCountDown = $event
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n            (" +
-                              _vm._s(_vm.dismissCountDown) +
-                              ") " +
-                              _vm._s(_vm.message) +
-                              "\n          "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: { label: "Name", horizontal: "", disabled: "" },
-                        model: {
-                          value: _vm.user.name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.user, "name", $$v)
-                          },
-                          expression: "user.name"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("CInput", {
-                        attrs: { label: "Email", horizontal: "", disabled: "" },
-                        model: {
-                          value: _vm.user.email,
-                          callback: function($$v) {
-                            _vm.$set(_vm.user, "email", $$v)
-                          },
-                          expression: "user.email"
-                        }
-                      }),
-                      _vm._v(" "),
                       _c("CInput", {
                         attrs: {
-                          type: "password",
-                          description: "Please enter password",
-                          label: "Password",
-                          horizontal: ""
+                          label: "Serial_no",
+                          horizontal: "",
+                          disabled: ""
                         },
                         model: {
-                          value: _vm.user.password,
+                          value: _vm.device.serial_no,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "password", $$v)
+                            _vm.$set(_vm.device, "serial_no", $$v)
                           },
-                          expression: "user.password"
+                          expression: "device.serial_no"
                         }
                       }),
                       _vm._v(" "),
                       _c("CInput", {
-                        attrs: {
-                          type: "password",
-                          description: "Please check password",
-                          label: "Check Password",
-                          horizontal: ""
+                        attrs: { label: "Reason", horizontal: "" },
+                        model: {
+                          value: _vm.reason,
+                          callback: function($$v) {
+                            _vm.reason = $$v
+                          },
+                          expression: "reason"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group form-row" },
-                        [
-                          _c(
-                            "CCol",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { tag: "label", sm: "3" }
-                            },
-                            [_vm._v("\n                Roles\n              ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { sm: "9" } },
-                            _vm._l(_vm.optionRoles, function(optionRole) {
-                              return _c("CInputCheckbox", {
-                                key: optionRole.name,
-                                attrs: {
-                                  label: optionRole.name,
-                                  name: "selectRoles",
-                                  custom: true,
-                                  inline: true,
-                                  checked: _vm.user.roles.includes(
-                                    optionRole.name
-                                  )
-                                },
-                                on: {
-                                  "update:checked": function($event) {
-                                    return _vm.selectRoles(optionRole.name)
-                                  }
-                                }
-                              })
-                            }),
-                            1
-                          )
-                        ],
-                        1
-                      )
+                      })
                     ],
                     1
                   )
@@ -402,7 +172,7 @@ var render = function() {
                   _c(
                     "CButton",
                     {
-                      attrs: { disabled: !_vm.isEditedUser, color: "primary" },
+                      attrs: { disabled: !_vm.isEditedRole, color: "primary" },
                       on: {
                         click: function($event) {
                           return _vm.update()
@@ -410,11 +180,11 @@ var render = function() {
                       }
                     },
                     [
-                      _vm.isEditedUser
+                      _vm.isEditedRole
                         ? _c("span", [_vm._v("Save")])
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.isEditedUser
+                      !_vm.isEditedRole
                         ? _c("CSpinner", {
                             attrs: { color: "info", size: "sm" }
                           })

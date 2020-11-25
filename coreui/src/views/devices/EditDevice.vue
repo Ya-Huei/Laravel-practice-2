@@ -65,9 +65,9 @@
           </CForm>
         </CCardBody>
         <CCardFooter class="text-right">
-          <CButton :disabled="!isEditedRole" color="primary" @click="update()">
-            <span v-if="isEditedRole">Save</span>
-            <CSpinner v-if="!isEditedRole" color="info" size="sm" />
+          <CButton :disabled="!isEditedDevice" color="primary" @click="update()">
+            <span v-if="isEditedDevice">Save</span>
+            <CSpinner v-if="!isEditedDevice" color="info" size="sm" />
           </CButton>
           <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
         </CCardFooter>
@@ -99,7 +99,7 @@ export default {
       messages: [],
       horizontal: { label: "col-3", input: "col-9" },
       optionPermissions: [],
-      isEditedRole: true,
+      isEditedDevice: true,
       showMessage: false,
       showRegion: false,
       showCity: false,
@@ -125,7 +125,7 @@ export default {
     },
     update() {
       let self = this;
-      self.isEditedRole = false;
+      self.isEditedDevice = false;
       axios
         .post(
           "/api/devices/" +
@@ -146,7 +146,7 @@ export default {
           self.goBack();
         })
         .catch(function(error) {
-          self.isEditedRole = true;
+          self.isEditedDevice = true;
           self.messages = self.formResponseFormat(error);
           self.showMessage = true;
         });
@@ -179,7 +179,7 @@ export default {
       self.locations = response.data.locations;
       self.countryOptions = self.locations.country;
       self.firmOptions = response.data.firms;
-      self.statusOptions = Object.values(response.data.status);
+      self.statusOptions = response.data.status;
       self.location.country = response.data.device.country;
       if (self.location.country !== "") {
         self.loadRegions();

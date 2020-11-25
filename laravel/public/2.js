@@ -285,7 +285,7 @@ __webpack_require__.r(__webpack_exports__);
         input: "col-9"
       },
       optionPermissions: [],
-      isEditedRole: true,
+      isEditedDevice: true,
       showMessage: false,
       showRegion: false,
       showCity: false,
@@ -311,7 +311,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     update: function update() {
       var self = this;
-      self.isEditedRole = false;
+      self.isEditedDevice = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
         _method: "PUT",
         country: self.location.country,
@@ -323,7 +323,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
-        self.isEditedRole = true;
+        self.isEditedDevice = true;
         self.messages = self.formResponseFormat(error);
         self.showMessage = true;
       });
@@ -353,7 +353,7 @@ __webpack_require__.r(__webpack_exports__);
       self.locations = response.data.locations;
       self.countryOptions = self.locations.country;
       self.firmOptions = response.data.firms;
-      self.statusOptions = Object.values(response.data.status);
+      self.statusOptions = response.data.status;
       self.location.country = response.data.device.country;
 
       if (self.location.country !== "") {
@@ -665,7 +665,10 @@ var render = function() {
                   _c(
                     "CButton",
                     {
-                      attrs: { disabled: !_vm.isEditedRole, color: "primary" },
+                      attrs: {
+                        disabled: !_vm.isEditedDevice,
+                        color: "primary"
+                      },
                       on: {
                         click: function($event) {
                           return _vm.update()
@@ -673,11 +676,11 @@ var render = function() {
                       }
                     },
                     [
-                      _vm.isEditedRole
+                      _vm.isEditedDevice
                         ? _c("span", [_vm._v("Save")])
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.isEditedRole
+                      !_vm.isEditedDevice
                         ? _c("CSpinner", {
                             attrs: { color: "info", size: "sm" }
                           })

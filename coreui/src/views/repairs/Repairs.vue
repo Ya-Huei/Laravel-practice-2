@@ -25,9 +25,6 @@
                   <CButton color="primary" @click="editDevice(item.id)"
                     >Edit</CButton
                   >
-                  <CButton color="danger" @click="repairDevice(item.id)"
-                    >Repair</CButton
-                  >
                 </td>
               </template>
             </CDataTable>

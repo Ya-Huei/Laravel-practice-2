@@ -62,7 +62,7 @@ class PermissionsSeeder extends Seeder
         $this->insertLink('admin', 'Roles', '/roles');
         $this->insertLink('admin', 'Devices', '/devices');
         $this->insertLink('admin', 'Repairs', '/repairs');
-        $this->insertLink('admin', 'Ota', '/ota');
+        $this->insertLink('admin', 'OTA', '/ota');
         $this->insertLink('admin', 'Recipes', '/recipes');
         $this->insertLink('admin', 'Firmware', '/firmware');
         $this->joinAllByTransaction();
