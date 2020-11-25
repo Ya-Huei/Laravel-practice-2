@@ -65,6 +65,8 @@ export default {
         "name",
         "email",
         "roles",
+        "region",
+        "firm",
         "updated",
         "registered",
         "operate",
@@ -80,12 +82,6 @@ export default {
       dismissCountDown: 0,
       showDismissibleAlert: false,
     };
-  },
-  paginationProps: {
-    align: "center",
-    doubleArrows: false,
-    previousButtonHtml: "prev",
-    nextButtonHtml: "next",
   },
   methods: {
     editLink(id) {

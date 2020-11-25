@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\UserPermissionService;
-use App\Models\Permissions;
+use App\Models\Permission;
 use App\MenuBuilder\RenderFromDatabaseData;
 
 class MenuController extends Controller
@@ -40,7 +40,7 @@ class MenuController extends Controller
      */
     public function getAllMenu()
     {
-        $permissions = Permissions::select('permissions.*')->orderBy('permissions.sequence', 'asc')->get();
+        $permissions = Permission::select('permissions.*')->orderBy('permissions.sequence', 'asc')->get();
         return response()->json($permissions);
     }
 }

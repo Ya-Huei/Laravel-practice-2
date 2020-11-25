@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\UserStoreFormValidation;
 use App\Http\Requests\UserUpdateFormValidation;
 use App\User;
+use App\Models\Location;
+use App\Models\Firm;
 use App\Services\RolesService;
+use App\Services\LocationsService;
+use App\Services\FirmsService;
 
 class UsersController extends Controller
 {
@@ -31,15 +36,12 @@ class UsersController extends Controller
     public function index()
     {
         $you = auth()->user()->id;
-        $users = DB::table('users')
-            ->leftJoin('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
-            ->leftJoin('roles', 'user_has_roles.role_id', '=', 'roles.id')
-            ->select('users.id', 'users.name', 'users.email', DB::raw('group_concat(roles.name SEPARATOR ", ") as roles'), 'users.updated_at as updated', 'users.created_at as registered')
+        $data = User::with('roles:name', 'location', 'firm:id,name')
             ->whereNull('deleted_at')
-            ->groupBy('users.name')
             ->orderBy('id', 'asc')
             ->get();
 
+        $users = $this->formatUsers($data);
         return response()->json(compact('users', 'you'));
     }
 
@@ -50,7 +52,9 @@ class UsersController extends Controller
     public function create()
     {
         $roles = RolesService::getAllRoles();
-        return response()->json($roles);
+        $locations = LocationsService::getLocationsCategory();
+        $firms = FirmsService::getAllFirmsName();
+        return response()->json(compact('roles', 'locations', 'firms'));
     }
 
     /**
@@ -65,12 +69,23 @@ class UsersController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->remember_token = Str::random(10);
-        $roles = $request->input('roles');
-        $user->save();
 
-        foreach ($roles as $role) {
-            $user->assignRole($role);
+        $country = $request->input('country');
+        $region = $request->input('region');
+        $city = $request->input('city');
+        if (!empty($country)) {
+            $user->location_id = LocationsService::getLocationId($country, $region, $city);
         }
+
+        $firmName = $request->input('firm');
+        if (!empty($firmName)) {
+            $user->firm_id = FirmsService::getFirmId($firmName);
+        }
+        
+        $user->save();
+        $roles = $request->input('roles');
+        $user->assignRole($roles);
+
         return response()->json(['status' => 'success']);
     }
 
@@ -86,12 +101,13 @@ class UsersController extends Controller
             return response()->json(['status' => '403']);
         }
         $user->menuroles = $user->getRoleNames();
+        LocationsService::getLocationInfo($user, $user->location_id);
+        FirmsService::getFirmInfo($user, $user->firm_id);
         $roles = RolesService::getAllRoles();
-        $response = [
-            'user' => $user,
-            'roles' => $roles
-        ];
-        return response()->json($response);
+        $locations = LocationsService::getLocationsCategory();
+        $firms = FirmsService::getAllFirmsName();
+
+        return response()->json(compact('user', 'roles', 'locations', 'firms'));
     }
 
     /**
@@ -107,6 +123,14 @@ class UsersController extends Controller
         if (isset($password) && $password != "") {
             $user->password  = bcrypt($password);
         }
+
+        $country = $request->input('country');
+        $region = $request->input('region');
+        $city = $request->input('city');
+        $user->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
+
+        $firmName = $request->input('firm');
+        $user->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
 
         $user->save();
         
@@ -131,5 +155,32 @@ class UsersController extends Controller
         $user->roles()->detach();
         $user->delete();
         return response()->json(['status' => 'success']);
+    }
+
+    private function formatUsers($data)
+    {
+        $users = [];
+        foreach ($data as $item) {
+            $user = [];
+            $user['id'] = $item->id;
+            $user['name'] = $item->name;
+            $user['email'] = $item->email;
+            $user['roles'] = isset($item->roles) ? $this->formatRoles($item->roles) : "";
+            $user['region'] = isset($item->location) ? LocationsService::format($item->location) : "";
+            $user['firm'] = isset($item->firm->name) ? $item->firm->name : "";
+            $user['updated'] = $item->updated_at->format('Y-m-d H:i:s');
+            $user['registered'] = $item->created_at->format('Y-m-d H:i:s');
+            array_push($users, $user);
+        }
+        return $users;
+    }
+
+    private function formatRoles($roles)
+    {
+        $rolesName = [];
+        foreach ($roles as $role) {
+            array_push($rolesName, $role->name);
+        }
+        return $rolesName;
     }
 }

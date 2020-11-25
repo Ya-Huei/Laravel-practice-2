@@ -25,7 +25,11 @@ class UserUpdateFormValidation extends FormRequest
     {
         return [
             'password'   => 'nullable|string|between:6,32|confirmed',
-            'roles'   => 'nullable|array',
+            'country'    => 'required_with_all:region,city',
+            'region'     => 'required_with_all:country,city',
+            'city'       => 'required_with_all:country,region',
+            'firm'       => 'nullable|string',
+            'roles'      => 'nullable|array',
         ];
     }
 }

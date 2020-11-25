@@ -14,7 +14,7 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
     use SoftDeletes;
     use HasRoles;
- 
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -64,4 +64,14 @@ class User extends Authenticatable implements JWTSubject
     ];
     
     protected $guard_name = 'api';
+
+    public function location()
+    {
+        return $this->belongsTo('App\Models\Location');
+    }
+
+    public function firm()
+    {
+        return $this->belongsTo('App\Models\Firm');
+    }
 }

@@ -72,12 +72,6 @@ export default {
       showDismissibleAlert: false,
     };
   },
-  paginationProps: {
-    align: "center",
-    doubleArrows: false,
-    previousButtonHtml: "prev",
-    nextButtonHtml: "next",
-  },
   methods: {
     editLink(id) {
       return `roles/${id.toString()}/edit`;
