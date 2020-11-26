@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[15],{
 
-/***/ "../coreui/src/views/roles/Roles.vue":
-/*!*******************************************!*\
-  !*** ../coreui/src/views/roles/Roles.vue ***!
-  \*******************************************/
+/***/ "../coreui/src/views/recipes/Recipes.vue":
+/*!***********************************************!*\
+  !*** ../coreui/src/views/recipes/Recipes.vue ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Roles_vue_vue_type_template_id_647b649e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Roles.vue?vue&type=template&id=647b649e& */ "../coreui/src/views/roles/Roles.vue?vue&type=template&id=647b649e&");
-/* harmony import */ var _Roles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Roles.vue?vue&type=script&lang=js& */ "../coreui/src/views/roles/Roles.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Recipes_vue_vue_type_template_id_056bf701___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Recipes.vue?vue&type=template&id=056bf701& */ "../coreui/src/views/recipes/Recipes.vue?vue&type=template&id=056bf701&");
+/* harmony import */ var _Recipes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Recipes.vue?vue&type=script&lang=js& */ "../coreui/src/views/recipes/Recipes.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -20,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Roles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Roles_vue_vue_type_template_id_647b649e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Roles_vue_vue_type_template_id_647b649e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Recipes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Recipes_vue_vue_type_template_id_056bf701___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Recipes_vue_vue_type_template_id_056bf701___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -32,47 +32,47 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/roles/Roles.vue"
+component.options.__file = "coreui/src/views/recipes/Recipes.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/roles/Roles.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ../coreui/src/views/roles/Roles.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
+/***/ "../coreui/src/views/recipes/Recipes.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ../coreui/src/views/recipes/Recipes.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Roles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Roles.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/Roles.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Roles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Recipes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Recipes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/Recipes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Recipes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/roles/Roles.vue?vue&type=template&id=647b649e&":
-/*!**************************************************************************!*\
-  !*** ../coreui/src/views/roles/Roles.vue?vue&type=template&id=647b649e& ***!
-  \**************************************************************************/
+/***/ "../coreui/src/views/recipes/Recipes.vue?vue&type=template&id=056bf701&":
+/*!******************************************************************************!*\
+  !*** ../coreui/src/views/recipes/Recipes.vue?vue&type=template&id=056bf701& ***!
+  \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Roles_vue_vue_type_template_id_647b649e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Roles.vue?vue&type=template&id=647b649e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/Roles.vue?vue&type=template&id=647b649e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Roles_vue_vue_type_template_id_647b649e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Recipes_vue_vue_type_template_id_056bf701___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Recipes.vue?vue&type=template&id=056bf701& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/Recipes.vue?vue&type=template&id=056bf701&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Recipes_vue_vue_type_template_id_056bf701___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Roles_vue_vue_type_template_id_647b649e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Recipes_vue_vue_type_template_id_056bf701___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/Roles.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/Roles.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/Recipes.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/Recipes.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -120,76 +120,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Roles",
+  name: "Devices",
   data: function data() {
     return {
       items: [],
-      fields: ["id", "name", "updated", "registered", "operate"],
+      fields: ["id", "serial_no", "region", "address", "firm", "status", "registered", "updated", "operate"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      adminName: "admin",
       message: "",
       showMessage: false,
       dismissSecs: 7,
       dismissCountDown: 0,
-      showDismissibleAlert: false
+      showDismissibleAlert: false,
+      horizontal: {
+        label: "col-4",
+        input: "col-8"
+      }
     };
   },
   methods: {
     editLink: function editLink(id) {
-      return "roles/".concat(id.toString(), "/edit");
+      return "devices/".concat(id.toString(), "/edit");
     },
-    createRole: function createRole() {
-      this.$router.push({
-        path: "roles/create"
-      });
+    repairDevice: function repairDevice(id) {
+      console.log(id + " should be repaired!!!");
     },
-    editRole: function editRole(id) {
+    editDevice: function editDevice(id) {
       var editLink = this.editLink(id);
       this.$router.push({
         path: editLink
-      });
-    },
-    deleteRole: function deleteRole(id) {
-      var self = this;
-      var userId = id;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/roles/" + id + "?token=" + localStorage.getItem("api_token"), {
-        _method: "DELETE"
-      }).then(function (response) {
-        if (response.data.status == "403") {
-          return;
-        }
-
-        if (response.data.status == "success") {
-          self.message = "Successfully deleted role.";
-        } else {
-          self.message = response.data.message;
-        }
-
-        self.showAlert();
-        self.getRoles();
-      })["catch"](function (error) {
-        console.log(error);
-        self.$router.push({
-          path: "/login"
-        });
       });
     },
     countDownChanged: function countDownChanged(dismissCountDown) {
@@ -198,9 +160,9 @@ __webpack_require__.r(__webpack_exports__);
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
-    getRoles: function getRoles() {
+    getDevices: function getDevices() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/roles?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices?token=" + localStorage.getItem("api_token")).then(function (response) {
         self.items = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -211,16 +173,16 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getRoles();
+    this.getDevices();
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/roles/Roles.vue?vue&type=template&id=647b649e&":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/roles/Roles.vue?vue&type=template&id=647b649e& ***!
-  \********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/Recipes.vue?vue&type=template&id=056bf701&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/Recipes.vue?vue&type=template&id=056bf701& ***!
+  \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -246,44 +208,7 @@ var render = function() {
               _c(
                 "CCard",
                 [
-                  _c(
-                    "CCardHeader",
-                    [
-                      _c(
-                        "CRow",
-                        [
-                          _c("CCol", { attrs: { col: "6" } }, [
-                            _c("h4", [_vm._v("Roles")])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            {
-                              staticClass: "d-flex justify-content-end",
-                              attrs: { col: "6" }
-                            },
-                            [
-                              _c(
-                                "CButton",
-                                {
-                                  attrs: { color: "primary" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.createRole()
-                                    }
-                                  }
-                                },
-                                [_vm._v("Create Role")]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
+                  _c("CCardHeader", [_c("h4", [_vm._v("Devices")])]),
                   _vm._v(" "),
                   _c(
                     "CCardBody",
@@ -320,6 +245,7 @@ var render = function() {
                           items: _vm.items,
                           fields: _vm.fields,
                           "items-per-page": 6,
+                          tableFilter: { external: false, lazy: false },
                           pagination: ""
                         },
                         scopedSlots: _vm._u([
@@ -331,36 +257,31 @@ var render = function() {
                                 _c(
                                   "td",
                                   [
-                                    _vm.adminName != item.name
-                                      ? _c(
-                                          "CButton",
-                                          {
-                                            attrs: { color: "primary" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.editRole(item.id)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Edit")]
-                                        )
-                                      : _vm._e(),
+                                    _c(
+                                      "CButton",
+                                      {
+                                        attrs: { color: "primary" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editDevice(item.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Edit")]
+                                    ),
                                     _vm._v(" "),
-                                    _vm.adminName != item.name
-                                      ? _c(
-                                          "CButton",
-                                          {
-                                            staticClass: "ml-1",
-                                            attrs: { color: "danger" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.deleteRole(item.id)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Delete")]
-                                        )
-                                      : _vm._e()
+                                    _c(
+                                      "CButton",
+                                      {
+                                        attrs: { color: "danger" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.repairDevice(item.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Repair")]
+                                    )
                                   ],
                                   1
                                 )

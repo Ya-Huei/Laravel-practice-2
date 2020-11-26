@@ -24,7 +24,7 @@ class StatusesSeeder extends Seeder
         ],
         [
             'class' => 'secondary',
-            'name' => 'idle', //閒置、停用
+            'name' => 'Idle', //閒置、停用
         ],
     ];
 

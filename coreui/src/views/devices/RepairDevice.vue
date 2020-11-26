@@ -46,6 +46,7 @@ export default {
   data: () => {
     return {
       device: {
+        id: "",
         serial_no: "",
       },
       reason: "",
@@ -67,11 +68,12 @@ export default {
         .post(
           "/api/devices/" +
             self.$route.params.id +
-            "?token=" +
+            "/saveRepair?token=" +
             localStorage.getItem("api_token"),
           {
-            _method: "PUT",
-            country: self.location.country,
+            _method: "POST",
+            device_id: self.device.id,
+            reason: self.reason,
           }
         )
         .then(function(response) {
@@ -89,7 +91,7 @@ export default {
         .get(
           "/api/devices/" +
             self.$route.params.id +
-            "/edit?token=" +
+            "/repair?token=" +
             localStorage.getItem("api_token")
         )
         .then(function(response) {
@@ -106,7 +108,8 @@ export default {
     },
     setDefaultData(response) {
       let self = this;
-      self.device.serial_no = response.data.device.serial_no;
+      self.device.id = response.data.id;
+      self.device.serial_no = response.data.serial_no;
     },
   },
   mounted: function() {

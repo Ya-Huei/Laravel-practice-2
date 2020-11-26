@@ -7,10 +7,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Device;
 use App\Models\Status;
+use App\Models\RepairRecord;
+use App\Enums\Statuses;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
 use App\Services\StatusesService;
 use App\Http\Requests\DeviceUpdateFormValidation;
+use App\Http\Requests\DeviceSaveRepairFormValidation;
 
 class DevicesController extends Controller
 {
@@ -97,7 +100,7 @@ class DevicesController extends Controller
         $status = $request->input('status');
         $device->status_id = StatusesService::getStatusId($status);
 
-        if($status == "Enable" && !isset($device->enabled_at)){
+        if ($status == "Enable" && !isset($device->enabled_at)) {
             $device->enabled_at = now();
         }
 
@@ -134,5 +137,27 @@ class DevicesController extends Controller
             array_push($devices, $device);
         }
         return $devices;
+    }
+
+    public function repair($id)
+    {
+        $device = Device::where('id', $id)->first();
+        return response()->json($device);
+    }
+
+    public function saveRepair(DeviceSaveRepairFormValidation $request)
+    {
+        $device_id = $request->device_id;
+        $record = new RepairRecord();
+        $record->device_id = $device_id;
+        $record->reason = $request->reason;
+        $record->status_id = Statuses::REPAIR;
+        $record->save();
+
+        $device = Device::where('id', $device_id)->first();
+        $device->status_id = Statuses::REPAIR;
+        $device->save();
+
+        return response()->json(['status' => 'success']);
     }
 }

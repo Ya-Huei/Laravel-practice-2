@@ -29,7 +29,7 @@ class DeviceUpdateFormValidation extends FormRequest
             'city'       => 'required_with_all:country,region',
             'address'    => 'nullable|string|between:0,255',
             'firm'       => 'nullable|string',
-            'status'     => 'string',
+            'status'     => 'required|string',
         ];
     }
 }
