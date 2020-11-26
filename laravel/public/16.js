@@ -116,6 +116,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Repairs",
@@ -241,6 +249,25 @@ var render = function() {
                           pagination: ""
                         },
                         scopedSlots: _vm._u([
+                          {
+                            key: "status",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c(
+                                  "td",
+                                  [
+                                    _c(
+                                      "CBadge",
+                                      { attrs: { color: item.status.class } },
+                                      [_vm._v(_vm._s(item.status.name))]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          },
                           {
                             key: "operate",
                             fn: function(ref) {

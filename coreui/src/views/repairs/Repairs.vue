@@ -19,6 +19,14 @@
               :items-per-page="6"
               pagination
             >
+              <template #status="{item}">
+                <td>
+                  <CBadge :color="item.status.class">{{
+                    item.status.name
+                  }}</CBadge>
+                </td>
+              </template>
+
               <template #operate="{item}">
                 <td>
                   <CButton color="primary" @click="editDevice(item.id)"

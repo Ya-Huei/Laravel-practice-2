@@ -13,4 +13,9 @@ class Status extends Model
     {
         $this->hasMany(Device::class);
     }
+
+    public function repairRecords()
+    {
+        $this->hasMany(RepairRecord::class);
+    }
 }

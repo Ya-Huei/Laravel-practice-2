@@ -25,4 +25,9 @@ class Device extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function repairRecords()
+    {
+        $this->hasMany(RepairRecord::class);
+    }
 }

@@ -305,6 +305,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -314,15 +319,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       device: {
-        serial_no: "",
-        address: "",
-        status: "",
-        firm: null
+        id: "",
+        serial_no: ""
       },
-      location: {
-        country: null,
-        region: null,
-        city: null
+      repair: {
+        reason: "",
+        worker: "",
+        status: ""
       },
       messages: [],
       horizontal: {
@@ -330,16 +333,9 @@ __webpack_require__.r(__webpack_exports__);
         input: "col-9"
       },
       optionPermissions: [],
-      isEditedDevice: true,
+      isEditedRepair: true,
       showMessage: false,
-      showRegion: false,
-      showCity: false,
-      countryOptions: [],
-      regionOptions: [],
-      cityOptions: [],
-      firmOptions: [],
-      statusOptions: [],
-      locations: []
+      statusOptions: []
     };
   },
   methods: {
@@ -356,26 +352,24 @@ __webpack_require__.r(__webpack_exports__);
     },
     update: function update() {
       var self = this;
-      self.isEditedDevice = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
+      self.isEditedRepair = false;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/repairs/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
         _method: "PUT",
-        country: self.location.country,
-        region: self.location.region,
-        city: self.location.city,
-        address: self.device.address,
-        firm: self.device.firm,
-        status: self.device.status
+        device_id: self.device.id,
+        reason: self.repair.reason,
+        worker: self.repair.worker,
+        status: self.repair.status
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
-        self.isEditedDevice = true;
+        self.isEditedRepair = true;
         self.messages = self.formResponseFormat(error);
         self.showMessage = true;
       });
     },
     getInfo: function getInfo() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/repairs/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
         if (response.data.status == "403") {
           self.$router.push({
             path: "/devices"
@@ -393,23 +387,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     setDefaultData: function setDefaultData(response) {
       var self = this;
+      self.device.id = response.data.device.id;
       self.device.serial_no = response.data.device.serial_no;
-      self.device.address = response.data.device.address;
-      self.locations = response.data.locations;
-      self.countryOptions = self.locations.country;
-      self.firmOptions = response.data.firms;
       self.statusOptions = response.data.status;
-      self.location.country = response.data.device.country;
-
-      if (self.location.country !== "") {
-        self.loadRegions();
-        self.location.region = response.data.device.region;
-        self.loadCities();
-        self.location.city = response.data.device.city;
-      }
-
-      self.device.firm = response.data.device.firm;
-      self.device.status = response.data.device.status;
+      self.repair.reason = response.data.repair.reason;
+      self.repair.status = response.data.repair.status;
     }
   },
   mounted: function mounted() {
@@ -490,22 +472,22 @@ var render = function() {
                       _c("CTextarea", {
                         attrs: { label: "Reason", rows: "5", horizontal: "" },
                         model: {
-                          value: _vm.reason,
+                          value: _vm.repair.reason,
                           callback: function($$v) {
-                            _vm.reason = $$v
+                            _vm.$set(_vm.repair, "reason", $$v)
                           },
-                          expression: "reason"
+                          expression: "repair.reason"
                         }
                       }),
                       _vm._v(" "),
                       _c("CInput", {
                         attrs: { label: "Worker", horizontal: "" },
                         model: {
-                          value: _vm.device.serial_no,
+                          value: _vm.repair.worker,
                           callback: function($$v) {
-                            _vm.$set(_vm.device, "serial_no", $$v)
+                            _vm.$set(_vm.repair, "worker", $$v)
                           },
-                          expression: "device.serial_no"
+                          expression: "repair.worker"
                         }
                       }),
                       _vm._v(" "),
@@ -513,13 +495,13 @@ var render = function() {
                         attrs: {
                           label: "Status",
                           options: _vm.statusOptions,
-                          value: _vm.device.status,
+                          value: _vm.repair.status,
                           horizontal: "",
                           description: "Select your status"
                         },
                         on: {
                           "update:value": function($event) {
-                            return _vm.$set(_vm.device, "status", $event)
+                            return _vm.$set(_vm.repair, "status", $event)
                           }
                         }
                       })
@@ -538,7 +520,7 @@ var render = function() {
                     "CButton",
                     {
                       attrs: {
-                        disabled: !_vm.isEditedDevice,
+                        disabled: !_vm.isEditedRepair,
                         color: "primary"
                       },
                       on: {
@@ -548,11 +530,11 @@ var render = function() {
                       }
                     },
                     [
-                      _vm.isEditedDevice
+                      _vm.isEditedRepair
                         ? _c("span", [_vm._v("Save")])
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.isEditedDevice
+                      !_vm.isEditedRepair
                         ? _c("CSpinner", {
                             attrs: { color: "info", size: "sm" }
                           })
