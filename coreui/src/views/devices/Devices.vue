@@ -7,10 +7,6 @@
             <h4>Devices</h4>
           </CCardHeader>
           <CCardBody>
-            <CAlert :show.sync="dismissCountDown" color="danger" fade>
-              ({{ dismissCountDown }}) {{ message }}
-            </CAlert>
-
             <CDataTable
               hover
               striped
@@ -68,11 +64,6 @@ export default {
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
       horizontal: { label: "col-4", input: "col-8" },
     };
   },

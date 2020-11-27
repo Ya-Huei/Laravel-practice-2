@@ -29,6 +29,8 @@ const Firmware = () => import('@/views/firmware/Firmware')
 
 //OtaRecords
 const Ota = () => import('@/views/ota/Ota')
+const ShowOta = () => import('@/views/ota/ShowOta')
+const UpdateOta = () => import('@/views/ota/UpdateOta')
 
 //Recipes
 const Recipes = () => import('@/views/recipes/Recipes')
@@ -155,7 +157,7 @@ function configRoutes () {
         },
         {
           path: 'ota',
-          meta: { label: 'ota'},
+          meta: { label: 'Ota'},
           component: {
             render (c) { return c('router-view') }
           },
@@ -164,17 +166,23 @@ function configRoutes () {
               path: '',
               component: Ota,
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
+            {
+              path: ':id/show',
+              meta: { label: 'Show Ota' },
+              name: 'Show Ota',
+              component: ShowOta,
+            },
+            {
+              path: 'update',
+              meta: { label: 'Update Ota' },
+              name: 'Update Ota',
+              component: UpdateOta,
+            },
           ]
         },
         {
           path: 'recipes',
-          meta: { label: 'recipes'},
+          meta: { label: 'Recipes'},
           component: {
             render (c) { return c('router-view') }
           },
@@ -193,7 +201,7 @@ function configRoutes () {
         },
         {
           path: 'repairs',
-          meta: { label: 'repairs'},
+          meta: { label: 'Repairs'},
           component: {
             render (c) { return c('router-view') }
           },

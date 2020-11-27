@@ -6,21 +6,21 @@ use App\Models\Status;
 
 class StatusesService
 {
-    public static function getAllStatusesName()
+    public static function getStatusesNameByType($type)
     {
         $result = [];
         $defaultOption = "";
         array_push($result, $defaultOption);
-        $statuses = Status::select('name')->get();
+        $statuses = Status::select('name')->where('type', $type)->get();
         foreach ($statuses as $item) {
             array_push($result, $item->name);
         }
         return $result;
     }
 
-    public static function getStatusId($statusName)
+    public static function getStatusId($statusName, $type)
     {
-        $status = Status::where('name', $statusName)->first();
+        $status = Status::where('name', $statusName)->where('type', $type)->first();
         return $status->id;
     }
 

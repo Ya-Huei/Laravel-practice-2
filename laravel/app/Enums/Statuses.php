@@ -9,4 +9,7 @@ abstract class Statuses
     const REPAIR = 3;
     const FAULT = 4;
     const IDLE = 5;
+    const UPDATING = 6;
+    const SUCCESS = 7;
+    const FAIL = 8;
 }

@@ -223,7 +223,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
-  name: "EditUser",
+  name: "EditRole",
   data: function data() {
     return {
       role: {

@@ -129,22 +129,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Devices",
+  name: "Ota",
   data: function data() {
     return {
       items: [],
-      fields: ["operate", "serial_no", "region", "address", "firm", "status"],
+      fields: ["id", "serial_no", "type", "type_id", "status", "registered", "updated", "operate"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
       horizontal: {
         label: "col-4",
         input: "col-8"
@@ -152,38 +146,31 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    editLink: function editLink(id) {
-      return "devices/".concat(id.toString(), "/edit");
+    otaLink: function otaLink(id) {
+      return "ota/".concat(id.toString(), "/show");
     },
-    repairDevice: function repairDevice(id) {
-      console.log(id + " should be repaired!!!");
-    },
-    editDevice: function editDevice(id) {
-      var editLink = this.editLink(id);
+    showOta: function showOta(id) {
+      var otaLink = this.otaLink(id);
       this.$router.push({
-        path: editLink
+        path: otaLink
       });
     },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
+    otaUpdate: function otaUpdate() {
+      this.$router.push({
+        path: "ota/update"
+      });
     },
-    showAlert: function showAlert() {
-      this.dismissCountDown = this.dismissSecs;
-    },
-    getDevices: function getDevices() {
+    getOta: function getOta() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/ota?token=" + localStorage.getItem("api_token")).then(function (response) {
         self.items = response.data;
       })["catch"](function (error) {
-        console.log(error);
-        self.$router.push({
-          path: "/login"
-        });
+        console.log(error); // self.$router.push({ path: "/login" });
       });
     }
   },
   mounted: function mounted() {
-    this.getDevices();
+    this.getOta();
   }
 });
 
@@ -241,7 +228,7 @@ var render = function() {
                                   attrs: { color: "primary" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.createUser()
+                                      return _vm.otaUpdate()
                                     }
                                   }
                                 },
@@ -260,38 +247,14 @@ var render = function() {
                   _c(
                     "CCardBody",
                     [
-                      _c(
-                        "CAlert",
-                        {
-                          attrs: {
-                            show: _vm.dismissCountDown,
-                            color: "danger",
-                            fade: ""
-                          },
-                          on: {
-                            "update:show": function($event) {
-                              _vm.dismissCountDown = $event
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n            (" +
-                              _vm._s(_vm.dismissCountDown) +
-                              ") " +
-                              _vm._s(_vm.message) +
-                              "\n          "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
                       _c("CDataTable", {
                         attrs: {
                           hover: "",
                           striped: "",
                           items: _vm.items,
                           fields: _vm.fields,
-                          "items-per-page": 6
+                          "items-per-page": 6,
+                          pagination: ""
                         },
                         scopedSlots: _vm._u([
                           {
@@ -320,10 +283,20 @@ var render = function() {
                               return [
                                 _c(
                                   "td",
-                                  {
-                                    staticClass: "d-flex justify-content-center"
-                                  },
-                                  [_c("CInputCheckbox")],
+                                  [
+                                    _c(
+                                      "CButton",
+                                      {
+                                        attrs: { color: "primary" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.showOta(item.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Detail")]
+                                    )
+                                  ],
                                   1
                                 )
                               ]

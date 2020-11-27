@@ -131,9 +131,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Users",
@@ -146,10 +143,6 @@ __webpack_require__.r(__webpack_exports__);
       perPage: 6,
       totalRows: 0,
       you: null,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
       showDismissibleAlert: false
     };
   },
@@ -291,31 +284,6 @@ var render = function() {
                   _c(
                     "CCardBody",
                     [
-                      _c(
-                        "CAlert",
-                        {
-                          attrs: {
-                            show: _vm.dismissCountDown,
-                            color: "danger",
-                            fade: ""
-                          },
-                          on: {
-                            "update:show": function($event) {
-                              _vm.dismissCountDown = $event
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n            (" +
-                              _vm._s(_vm.dismissCountDown) +
-                              ") " +
-                              _vm._s(_vm.message) +
-                              "\n          "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
                       _c("CDataTable", {
                         attrs: {
                           hover: "",

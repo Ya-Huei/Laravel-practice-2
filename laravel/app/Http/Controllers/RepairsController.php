@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Device;
 use App\Models\RepairRecord;
+use App\Enums\StatusTypes;
 use App\Services\StatusesService;
 use App\Http\Requests\RepairUpdateFormValidation;
 
@@ -24,38 +25,6 @@ class RepairsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -65,7 +34,7 @@ class RepairsController extends Controller
     {
         $device = Device::where("id", $repair->device_id)->first();
         StatusesService::getStatusInfo($repair, $repair->status_id);
-        $status = StatusesService::getAllStatusesName();
+        $status = StatusesService::getStatusesNameByType(StatusTypes::DEVICE);
         return response()->json(compact('repair', 'device', 'status'));
     }
 
@@ -82,7 +51,7 @@ class RepairsController extends Controller
         $repair->worker = $request->input('worker');
 
         $status = $request->input('status');
-        $status_id = StatusesService::getStatusId($status);
+        $status_id = StatusesService::getStatusId($status, StatusTypes::DEVICE);
         $repair->status_id = $status_id;
         $repair->save();
 
@@ -92,17 +61,6 @@ class RepairsController extends Controller
         $device->save();
 
         return response()->json(['status' => 'success']);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     private function formatRepairs($data)

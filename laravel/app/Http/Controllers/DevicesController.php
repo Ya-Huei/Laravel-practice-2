@@ -9,9 +9,11 @@ use App\Models\Device;
 use App\Models\Status;
 use App\Models\RepairRecord;
 use App\Enums\Statuses;
+use App\Enums\StatusTypes;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
 use App\Services\StatusesService;
+use App\Services\DevicesService;
 use App\Http\Requests\DeviceUpdateFormValidation;
 use App\Http\Requests\DeviceSaveRepairFormValidation;
 
@@ -24,8 +26,7 @@ class DevicesController extends Controller
      */
     public function index()
     {
-        $data = Device::with('location', 'firm', 'status')->orderBy('id', 'asc')->get();
-        $devices = $this->formatDevices($data);
+        $devices = DevicesService::getDeviceInfo();
         return response()->json($devices);
     }
 
@@ -74,7 +75,7 @@ class DevicesController extends Controller
         StatusesService::getStatusInfo($device, $device->status_id);
         $locations = LocationsService::getLocationsCategory();
         $firms = FirmsService::getAllFirmsName();
-        $status = StatusesService::getAllStatusesName();
+        $status = StatusesService::getStatusesNameByType(StatusTypes::DEVICE);
         return response()->json(compact('device', 'locations', 'firms', 'status'));
     }
 
@@ -98,7 +99,7 @@ class DevicesController extends Controller
         $device->address = $request->input('address');
 
         $status = $request->input('status');
-        $device->status_id = StatusesService::getStatusId($status);
+        $device->status_id = StatusesService::getStatusId($status, StatusTypes::DEVICE);
 
         if ($status == "Enable" && !isset($device->enabled_at)) {
             $device->enabled_at = now();
@@ -118,25 +119,6 @@ class DevicesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    private function formatDevices($data)
-    {
-        $devices = [];
-        foreach ($data as $item) {
-            $device = [];
-            $device['id'] = $item->id;
-            $device['serial_no'] = $item->serial_no;
-            $device['region'] = isset($item->location) ? LocationsService::format($item->location) : "";
-            $device['address'] = $item->address;
-            $device['firm'] = isset($item->firm->name) ? $item->firm->name : "";
-            $device['status'] = $item->status;
-            $device['enabled'] = isset($item->enabled_at) ? $item->enabled_at->format('Y-m-d H:i:s') : "";
-            $device['updated'] = isset($item->updated_at) ? $item->updated_at->format('Y-m-d H:i:s') : "";
-            $device['registered'] = isset($item->created_at) ? $item->created_at->format('Y-m-d H:i:s') : "";
-            array_push($devices, $device);
-        }
-        return $devices;
     }
 
     public function repair($id)

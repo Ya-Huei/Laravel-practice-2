@@ -9,22 +9,26 @@ class OtaRecordsSeeder extends Seeder
         [
             'device_id' => '1',
             'type' => '1',
-            'version' => '1'
+            'type_id' => '1',
+            'status_id' => '6'
         ],
         [
             'device_id' => '2',
             'type' => '1',
-            'version' => '1'
+            'type_id' => '1',
+            'status_id' => '6'
         ],
         [
             'device_id' => '1',
             'type' => '1',
-            'version' => '2'
+            'type_id' => '2',
+            'status_id' => '7'
         ],
         [
             'device_id' => '1',
             'type' => '2',
-            'version' => '1'
+            'type_id' => '1',
+            'status_id' => '8'
         ],
     ];
 
@@ -39,7 +43,8 @@ class OtaRecordsSeeder extends Seeder
             $otaRecords = new OtaRecord();
             $otaRecords->device_id = $item['device_id'];
             $otaRecords->type = $item['type'];
-            $otaRecords->version = $item['version'];
+            $otaRecords->type_id = $item['type_id'];
+            $otaRecords->status_id = $item['status_id'];
             $otaRecords->save();
         }
     }

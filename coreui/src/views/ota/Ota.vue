@@ -9,23 +9,20 @@
                 <h4>OTA Records</h4>
               </CCol>
               <CCol col="6" class="d-flex justify-content-end">
-                <CButton color="primary" @click="createUser()"
+                <CButton color="primary" @click="otaUpdate()"
                   >OTA Update</CButton
                 >
               </CCol>
             </CRow>
           </CCardHeader>
           <CCardBody>
-            <CAlert :show.sync="dismissCountDown" color="danger" fade>
-              ({{ dismissCountDown }}) {{ message }}
-            </CAlert>
-
             <CDataTable
               hover
               striped
               :items="items"
               :fields="fields"
               :items-per-page="6"
+              pagination
             >
               <template #status="{item}">
                 <td>
@@ -36,8 +33,10 @@
               </template>
 
               <template #operate="{item}">
-                <td class="d-flex justify-content-center">
-                  <CInputCheckbox> </CInputCheckbox>
+                <td>
+                  <CButton color="primary" @click="showOta(item.id)"
+                    >Detail</CButton
+                  >
                 </td>
               </template>
             </CDataTable>
@@ -52,54 +51,52 @@
 import axios from "axios";
 
 export default {
-  name: "Devices",
+  name: "Ota",
   data: () => {
     return {
       items: [],
-      fields: ["operate", "serial_no", "region", "address", "firm", "status"],
+      fields: [
+        "id",
+        "serial_no",
+        "type",
+        "type_id",
+        "status",
+        "registered",
+        "updated",
+        "operate",
+      ],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
       horizontal: { label: "col-4", input: "col-8" },
     };
   },
   methods: {
-    editLink(id) {
-      return `devices/${id.toString()}/edit`;
+    otaLink(id) {
+      return `ota/${id.toString()}/show`;
     },
-    repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+    showOta(id) {
+      const otaLink = this.otaLink(id);
+      this.$router.push({ path: otaLink });
     },
-    editDevice(id) {
-      const editLink = this.editLink(id);
-      this.$router.push({ path: editLink });
+    otaUpdate(){
+       this.$router.push({ path: `ota/update` });
     },
-    countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert() {
-      this.dismissCountDown = this.dismissSecs;
-    },
-    getDevices() {
+    getOta() {
       let self = this;
       axios
-        .get("/api/devices?token=" + localStorage.getItem("api_token"))
+        .get("/api/ota?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
           self.items = response.data;
         })
         .catch(function(error) {
           console.log(error);
-          self.$router.push({ path: "/login" });
+          // self.$router.push({ path: "/login" });
         });
     },
   },
   mounted: function() {
-    this.getDevices();
+    this.getOta();
   },
 };
 </script>

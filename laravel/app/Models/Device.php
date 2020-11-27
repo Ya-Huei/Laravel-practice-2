@@ -30,4 +30,9 @@ class Device extends Model
     {
         $this->hasMany(RepairRecord::class);
     }
+
+    public function otaRecords()
+    {
+        $this->hasMany(OtaRecord::class);
+    }
 }

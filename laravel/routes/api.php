@@ -27,6 +27,8 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('devices/{id}/saveRepair', 'DevicesController@saveRepair');
         Route::resource('devices', DevicesController::class)->except(['create', 'store', 'show', 'destroy']);
         Route::resource('firmware', FirmWareController::class);
+        Route::get('ota/getOtaUpdateInfo', 'OtaController@getOtaUpdateInfo');
+        Route::post('ota/saveOtaUpdate', 'OtaController@saveOtaUpdate');
         Route::resource('ota', OtaController::class);
         Route::resource('recipes', RecipesController::class);
         Route::resource('repairs', RepairsController::class);
