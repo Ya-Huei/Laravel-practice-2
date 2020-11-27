@@ -249,6 +249,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -293,6 +300,13 @@ __webpack_require__.r(__webpack_exports__);
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    selectAll: function selectAll() {
+      var self = this;
+
+      for (var i in self.items) {
+        self.checked(self.items[i].id);
+      }
+    },
     checked: function checked(id) {
       var self = this;
       var temp = self.select.indexOf(id);
@@ -327,7 +341,10 @@ __webpack_require__.r(__webpack_exports__);
         self.recipe = response.data.recipe;
         self.detailOptions = self.firmware;
       })["catch"](function (error) {
-        console.log(error); //   self.$router.push({ path: "/login" });
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
       });
     }
   },
@@ -430,6 +447,20 @@ var render = function() {
                               _c(
                                 "CButton",
                                 {
+                                  staticClass: "mr-2",
+                                  attrs: { color: "secondary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.selectAll()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Select All\n              ")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "CButton",
+                                {
                                   attrs: {
                                     disabled: !_vm.isUpdateOta,
                                     color: "primary"
@@ -526,7 +557,10 @@ var render = function() {
                                     _c(
                                       "CInputCheckbox",
                                       {
-                                        attrs: { color: "primary" },
+                                        attrs: {
+                                          color: "primary",
+                                          checked: _vm.select.includes(item.id)
+                                        },
                                         on: {
                                           "update:checked": function($event) {
                                             return _vm.checked(item.id)

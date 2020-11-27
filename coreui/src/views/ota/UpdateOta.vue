@@ -25,6 +25,12 @@
               /></CCol>
               <CCol col="2" class="d-flex justify-content-end">
                 <CButton
+                  color="secondary"
+                  @click="selectAll()"
+                  class="mr-2"
+                  >Select All
+                </CButton>
+                <CButton
                   :disabled="!isUpdateOta"
                   color="primary"
                   @click="update()"
@@ -61,6 +67,7 @@
                 <td>
                   <CInputCheckbox
                     color="primary"
+                    :checked="select.includes(item.id)"
                     @update:checked="checked(item.id)"
                     >Edit</CInputCheckbox
                   >
@@ -116,6 +123,12 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    selectAll() {
+      let self = this;
+      for (let i in self.items) {
+        self.checked(self.items[i].id);
+      }
+    },
     checked(id) {
       let self = this;
       let temp = self.select.indexOf(id);
@@ -161,7 +174,7 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
-          //   self.$router.push({ path: "/login" });
+            self.$router.push({ path: "/login" });
         });
     },
   },
