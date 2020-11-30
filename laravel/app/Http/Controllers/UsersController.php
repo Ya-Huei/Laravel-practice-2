@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\UserStoreFormValidation;
 use App\Http\Requests\UserUpdateFormValidation;
+use App\Http\Requests\UserDestroyFormValidation;
 use App\User;
 use App\Models\Location;
 use App\Models\Firm;
@@ -65,29 +66,25 @@ class UsersController extends Controller
      */
     public function store(UserStoreFormValidation $request)
     {
+        $validatedData = $request->validated();
+
         $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = bcrypt($validatedData['password']);
         $user->remember_token = Str::random(10);
 
-        $country = $request->input('country');
-        $region = $request->input('region');
-        $city = $request->input('city');
-        if (!empty($country)) {
-            $user->location_id = LocationsService::getLocationId($country, $region, $city);
+        if (!empty($validatedData['country'])) {
+            $user->location_id = LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']);
         }
 
-        $firmName = $request->input('firm');
-        $user->firm_id = auth()->user()->firm_id;
-
-        if (!empty($firmName) && empty($user->firm_id)) {
-            $user->firm_id = FirmsService::getFirmId($firmName);
+        if (isset($validatedData['firm'])) {
+            $user->firm_id = FirmsService::getFirmId($validatedData['firm']);
         }
         
         $user->save();
-        $roles = $request->input('roles');
-        $user->assignRole($roles);
+
+        $user->assignRole($validatedData['roles']);
 
         return response()->json(['status' => 'success']);
     }
@@ -122,25 +119,19 @@ class UsersController extends Controller
      */
     public function update(UserUpdateFormValidation $request, User $user)
     {
-        $password = $request->input('password');
-        if (isset($password) && $password != "") {
-            $user->password  = bcrypt($password);
+        $validatedData = $request->validated();
+        if (isset($validatedData['password']) && $validatedData['password'] != "") {
+            $user->password  = bcrypt($validatedData['password']);
         }
 
-        $country = $request->input('country');
-        $region = $request->input('region');
-        $city = $request->input('city');
-        $user->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
+        $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
 
-        $firmName = $request->input('firm');
-        if (empty(auth()->user()->firm_id)) {
-            $user->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
+        if (isset($validatedData['firm'])) {
+            $user->firm_id = FirmsService::getFirmId($validatedData['firm']);
         }
 
         $user->save();
-        
-        $roles = $request->input('roles');
-        $user->syncRoles($roles);
+        $user->syncRoles($validatedData['roles']);
 
         return response()->json(['status' => 'success']);
     }
@@ -151,18 +142,11 @@ class UsersController extends Controller
      * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(UserDestroyFormValidation $request, User $user)
     {
-        if ($user->name == "admin") {
-            return response()->json(['status' => '403']);
-        }
-
-        if (empty(auth()->user()->firm_id) || auth()->user()->firm_id == $user->firm_id) {
-            $user->roles()->detach();
-            $user->delete();
-            return response()->json(['status' => 'success']);
-        }
-        return response()->json(['status' => '403']);
+        $user->roles()->detach();
+        $user->delete();
+        return response()->json(['status' => 'success']);
     }
 
     private function formatUsers($data)

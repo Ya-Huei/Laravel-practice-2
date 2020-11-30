@@ -88,9 +88,6 @@ export default {
           }
         )
         .then(function(response) {
-          if (response.data.status == "403") {
-            return;
-          }
           if (response.data.status == "success") {
             self.message = "Successfully deleted user.";
           } else {

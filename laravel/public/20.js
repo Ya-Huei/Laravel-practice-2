@@ -167,10 +167,6 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/" + id + "?token=" + localStorage.getItem("api_token"), {
         _method: "DELETE"
       }).then(function (response) {
-        if (response.data.status == "403") {
-          return;
-        }
-
         if (response.data.status == "success") {
           self.message = "Successfully deleted user.";
         } else {

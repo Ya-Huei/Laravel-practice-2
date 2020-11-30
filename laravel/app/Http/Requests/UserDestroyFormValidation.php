@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateFormValidation extends FormRequest
+class UserDestroyFormValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,6 +19,10 @@ class UserUpdateFormValidation extends FormRequest
         if (auth()->user()->firm_id === $this->user->firm_id) {
             return true;
         }
+        if ($this->user->name == "admin") {
+            return false;
+        }
+        
         return false;
     }
 
@@ -29,18 +33,8 @@ class UserUpdateFormValidation extends FormRequest
      */
     public function rules()
     {
-        $rule = [
-            'password'   => 'nullable|string|between:6,32|confirmed',
-            'country'    => 'required_with_all:region,city',
-            'region'     => 'required_with_all:country,city',
-            'city'       => 'required_with_all:country,region',
-            'roles'      => 'nullable|array',
+        return [
+            //
         ];
-
-        if (auth()->user()->hasRole('admin')) {
-            $rule += ['firm'       => 'nullable|string'];
-        }
-
-        return $rule;
     }
 }
