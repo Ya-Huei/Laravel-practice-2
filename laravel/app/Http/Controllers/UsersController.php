@@ -133,7 +133,7 @@ class UsersController extends Controller
         $user->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
 
         $firmName = $request->input('firm');
-        if(empty(auth()->user()->firm_id)){
+        if (empty(auth()->user()->firm_id)) {
             $user->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
         }
 
@@ -157,9 +157,12 @@ class UsersController extends Controller
             return response()->json(['status' => '403']);
         }
 
-        $user->roles()->detach();
-        $user->delete();
-        return response()->json(['status' => 'success']);
+        if (empty(auth()->user()->firm_id) || auth()->user()->firm_id == $user->firm_id) {
+            $user->roles()->detach();
+            $user->delete();
+            return response()->json(['status' => 'success']);
+        }
+        return response()->json(['status' => '403']);
     }
 
     private function formatUsers($data)
