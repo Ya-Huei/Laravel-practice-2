@@ -5,7 +5,7 @@
         <CCard>
           <CCardHeader>
             <CRow>
-              <CCol col="5">
+              <CCol col="4">
                 <CSelect
                   label="Type"
                   :options="otaOptions"
@@ -15,7 +15,7 @@
                   class="mb-0"
                 />
               </CCol>
-              <CCol col="5"
+              <CCol col="4"
                 ><CSelect
                   label="Name"
                   :options="detailOptions"
@@ -23,10 +23,11 @@
                   horizontal
                   class="mb-0"
               /></CCol>
-              <CCol col="2" class="d-flex justify-content-end">
+              <CCol col="4" class="d-flex justify-content-end">
                 <CButton
                   color="secondary"
-                  @click="selectAll()"
+                  @click="checkedAll()"
+                  v-model="selectAll"
                   class="mr-2"
                   >Select All
                 </CButton>
@@ -54,6 +55,7 @@
               :fields="fields"
               :items-per-page="6"
               :tableFilter="{ external: false, lazy: false }"
+              @filtered-items-change="setFilterItem"
             >
               <template #status="{item}">
                 <td>
@@ -103,9 +105,16 @@ export default {
       firmware: [],
       recipe: [],
       select: [],
+      selectAll: false,
+      filterItem:[]
     };
   },
   methods: {
+    setFilterItem(value){
+      let self = this;
+      self.selectAll = false;
+      self.filterItem = value;
+    },
     goBack() {
       this.$router.go(-1);
     },
@@ -123,10 +132,15 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
-    selectAll() {
+    checkedAll() {
       let self = this;
-      for (let i in self.items) {
-        self.checked(self.items[i].id);
+      self.selectAll = !self.selectAll;
+      if (self.selectAll) {
+        for (let i in self.filterItem) {
+          self.select.push(self.filterItem[i].id);
+        }
+      } else {
+        self.select = [];
       }
     },
     checked(id) {
@@ -174,7 +188,7 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
-            self.$router.push({ path: "/login" });
+          self.$router.push({ path: "/login" });
         });
     },
   },
