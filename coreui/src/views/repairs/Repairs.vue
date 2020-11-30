@@ -4,7 +4,7 @@
       <transition name="slide">
         <CCard>
           <CCardHeader>
-            <h4>Devices</h4>
+            <h4>Repairs</h4>
           </CCardHeader>
           <CCardBody>
             <CAlert :show.sync="dismissCountDown" color="danger" fade>
@@ -17,16 +17,20 @@
               :items="items"
               :fields="fields"
               :items-per-page="6"
-              :tableFilter='{ external: false, lazy: false }'
               pagination
             >
+              <template #status="{item}">
+                <td>
+                  <CBadge :color="item.status.class">{{
+                    item.status.name
+                  }}</CBadge>
+                </td>
+              </template>
+
               <template #operate="{item}">
                 <td>
                   <CButton color="primary" @click="editDevice(item.id)"
                     >Edit</CButton
-                  >
-                  <CButton color="danger" @click="repairDevice(item.id)"
-                    >Repair</CButton
                   >
                 </td>
               </template>
@@ -42,16 +46,15 @@
 import axios from "axios";
 
 export default {
-  name: "Devices",
+  name: "Repairs",
   data: () => {
     return {
       items: [],
       fields: [
         "id",
         "serial_no",
-        "region",
-        "address",
-        "firm",
+        "reason",
+        "worker",
         "status",
         "registered",
         "updated",
@@ -70,10 +73,7 @@ export default {
   },
   methods: {
     editLink(id) {
-      return `devices/${id.toString()}/edit`;
-    },
-    repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+      return `repairs/${id.toString()}/edit`;
     },
     editDevice(id) {
       const editLink = this.editLink(id);
@@ -85,10 +85,10 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
-    getDevices() {
+    getRepairs() {
       let self = this;
       axios
-        .get("/api/devices?token=" + localStorage.getItem("api_token"))
+        .get("/api/repairs?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
           self.items = response.data;
         })
@@ -99,7 +99,7 @@ export default {
     },
   },
   mounted: function() {
-    this.getDevices();
+    this.getRepairs();
   },
 };
 </script>

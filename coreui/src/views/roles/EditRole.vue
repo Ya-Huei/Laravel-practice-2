@@ -49,7 +49,7 @@ import axios from "axios";
 import format from "../mixins/Format.vue";
 export default {
   mixins: [format],
-  name: "EditUser",
+  name: "EditRole",
   data: () => {
     return {
       role: {

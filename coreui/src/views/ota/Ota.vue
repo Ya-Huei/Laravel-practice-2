@@ -4,29 +4,38 @@
       <transition name="slide">
         <CCard>
           <CCardHeader>
-            <h4>Devices</h4>
+            <CRow>
+              <CCol col="6">
+                <h4>OTA Records</h4>
+              </CCol>
+              <CCol col="6" class="d-flex justify-content-end">
+                <CButton color="primary" @click="otaUpdate()"
+                  >OTA Update</CButton
+                >
+              </CCol>
+            </CRow>
           </CCardHeader>
           <CCardBody>
-            <CAlert :show.sync="dismissCountDown" color="danger" fade>
-              ({{ dismissCountDown }}) {{ message }}
-            </CAlert>
-
             <CDataTable
               hover
               striped
               :items="items"
               :fields="fields"
               :items-per-page="6"
-              :tableFilter='{ external: false, lazy: false }'
               pagination
             >
+              <template #status="{item}">
+                <td>
+                  <CBadge :color="item.status.class">{{
+                    item.status.name
+                  }}</CBadge>
+                </td>
+              </template>
+
               <template #operate="{item}">
                 <td>
-                  <CButton color="primary" @click="editDevice(item.id)"
-                    >Edit</CButton
-                  >
-                  <CButton color="danger" @click="repairDevice(item.id)"
-                    >Repair</CButton
+                  <CButton color="primary" @click="showOta(item.id)"
+                    >Detail</CButton
                   >
                 </td>
               </template>
@@ -42,16 +51,15 @@
 import axios from "axios";
 
 export default {
-  name: "Devices",
+  name: "Ota",
   data: () => {
     return {
       items: [],
       fields: [
         "id",
         "serial_no",
-        "region",
-        "address",
-        "firm",
+        "type",
+        "type_id",
         "status",
         "registered",
         "updated",
@@ -60,46 +68,35 @@ export default {
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
       horizontal: { label: "col-4", input: "col-8" },
     };
   },
   methods: {
-    editLink(id) {
-      return `devices/${id.toString()}/edit`;
+    otaLink(id) {
+      return `ota/${id.toString()}/show`;
     },
-    repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+    showOta(id) {
+      const otaLink = this.otaLink(id);
+      this.$router.push({ path: otaLink });
     },
-    editDevice(id) {
-      const editLink = this.editLink(id);
-      this.$router.push({ path: editLink });
+    otaUpdate(){
+       this.$router.push({ path: `ota/update` });
     },
-    countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert() {
-      this.dismissCountDown = this.dismissSecs;
-    },
-    getDevices() {
+    getOta() {
       let self = this;
       axios
-        .get("/api/devices?token=" + localStorage.getItem("api_token"))
+        .get("/api/ota?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
           self.items = response.data;
         })
         .catch(function(error) {
           console.log(error);
-          self.$router.push({ path: "/login" });
+          // self.$router.push({ path: "/login" });
         });
     },
   },
   mounted: function() {
-    this.getDevices();
+    this.getOta();
   },
 };
 </script>

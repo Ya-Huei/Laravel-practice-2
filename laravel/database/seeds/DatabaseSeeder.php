@@ -16,6 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call('LocationsSeeder');
         $this->call('FirmsSeeder');
         $this->call('UsersSeeder');
+        $this->call('StatusesSeeder');
         $this->call('DevicesSeeder');
+        $this->call('FirmwareSeeder');
+        $this->call('RecipesSeeder');
+        $this->call('OtaRecordsSeeder');
+        $this->call('RepairRecordsSeeder');
     }
 }

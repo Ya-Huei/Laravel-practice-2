@@ -9,11 +9,13 @@ class Location extends Model
     protected $table = 'locations';
     public $timestamps = false;
 
-    public function users(){
+    public function users()
+    {
         $this->hasMany('App\User');
     }
 
-    public function devices(){
+    public function devices()
+    {
         $this->hasMany(Device::class);
     }
 }

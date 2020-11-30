@@ -16,9 +16,6 @@
             </CRow>
           </CCardHeader>
           <CCardBody>
-            <CAlert :show.sync="dismissCountDown" color="danger" fade>
-              ({{ dismissCountDown }}) {{ message }}
-            </CAlert>
             <CDataTable
               hover
               striped
@@ -65,10 +62,6 @@ export default {
       perPage: 6,
       totalRows: 0,
       adminName: "admin",
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
       showDismissibleAlert: false,
     };
   },

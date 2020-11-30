@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Device;
+use App\Models\Status;
+use App\Models\RepairRecord;
+use App\Enums\Statuses;
+use App\Enums\StatusTypes;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
+use App\Services\StatusesService;
+use App\Services\DevicesService;
 use App\Http\Requests\DeviceUpdateFormValidation;
+use App\Http\Requests\DeviceSaveRepairFormValidation;
 
 class DevicesController extends Controller
 {
@@ -19,8 +26,7 @@ class DevicesController extends Controller
      */
     public function index()
     {
-        $data = Device::with('location', 'firm')->orderBy('id', 'asc')->get();
-        $devices = $this->formatDevices($data);
+        $devices = DevicesService::getDeviceInfo();
         return response()->json($devices);
     }
 
@@ -66,9 +72,10 @@ class DevicesController extends Controller
     {
         LocationsService::getLocationInfo($device, $device->location_id);
         FirmsService::getFirmInfo($device, $device->firm_id);
+        StatusesService::getStatusInfo($device, $device->status_id);
         $locations = LocationsService::getLocationsCategory();
         $firms = FirmsService::getAllFirmsName();
-        $status = Device::getStatusLists();
+        $status = StatusesService::getStatusesNameByType(StatusTypes::DEVICE);
         return response()->json(compact('device', 'locations', 'firms', 'status'));
     }
 
@@ -91,10 +98,14 @@ class DevicesController extends Controller
 
         $device->address = $request->input('address');
 
-        $device->status = array_search($request->input('status'), Device::getStatusLists());
-        
-        $device->save();
+        $status = $request->input('status');
+        $device->status_id = StatusesService::getStatusId($status, StatusTypes::DEVICE);
 
+        if ($status == "Enable" && !isset($device->enabled_at)) {
+            $device->enabled_at = now();
+        }
+
+        $device->save();
 
         return response()->json(['status' => 'success']);
     }
@@ -110,21 +121,25 @@ class DevicesController extends Controller
         //
     }
 
-    private function formatDevices($data)
+    public function repair($id)
     {
-        $devices = [];
-        foreach ($data as $item) {
-            $device = [];
-            $device['id'] = $item->id;
-            $device['serial_no'] = $item->serial_no;
-            $device['region'] = isset($item->location) ? LocationsService::format($item->location) : "";
-            $device['address'] = $item->address;
-            $device['firm'] = isset($item->firm->name) ? $item->firm->name : "";
-            $device['status'] = $item->status;
-            $device['updated'] = $item->updated_at->format('Y-m-d H:i:s');
-            $device['registered'] = $item->created_at->format('Y-m-d H:i:s');
-            array_push($devices, $device);
-        }
-        return $devices;
+        $device = Device::where('id', $id)->first();
+        return response()->json($device);
+    }
+
+    public function saveRepair(DeviceSaveRepairFormValidation $request)
+    {
+        $device_id = $request->device_id;
+        $record = new RepairRecord();
+        $record->device_id = $device_id;
+        $record->reason = $request->reason;
+        $record->status_id = Statuses::REPAIR;
+        $record->save();
+
+        $device = Device::where('id', $device_id)->first();
+        $device->status_id = Statuses::REPAIR;
+        $device->save();
+
+        return response()->json(['status' => 'success']);
     }
 }

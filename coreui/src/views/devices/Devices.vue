@@ -7,19 +7,23 @@
             <h4>Devices</h4>
           </CCardHeader>
           <CCardBody>
-            <CAlert :show.sync="dismissCountDown" color="danger" fade>
-              ({{ dismissCountDown }}) {{ message }}
-            </CAlert>
-
             <CDataTable
               hover
               striped
               :items="items"
               :fields="fields"
               :items-per-page="6"
-              :tableFilter='{ external: false, lazy: false }'
+              :tableFilter="{ external: false, lazy: false }"
               pagination
             >
+              <template #status="{item}">
+                <td>
+                  <CBadge :color="item.status.class">{{
+                    item.status.name
+                  }}</CBadge>
+                </td>
+              </template>
+
               <template #operate="{item}">
                 <td>
                   <CButton color="primary" @click="editDevice(item.id)"
@@ -47,12 +51,12 @@ export default {
     return {
       items: [],
       fields: [
-        "id",
         "serial_no",
         "region",
         "address",
         "firm",
         "status",
+        "enabled",
         "registered",
         "updated",
         "operate",
@@ -60,11 +64,6 @@ export default {
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
       horizontal: { label: "col-4", input: "col-8" },
     };
   },
@@ -72,8 +71,12 @@ export default {
     editLink(id) {
       return `devices/${id.toString()}/edit`;
     },
+    repairLink(id){
+      return `devices/${id.toString()}/repair`;
+    },
     repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+      const repairLink = this.repairLink(id);
+      this.$router.push({ path: repairLink });
     },
     editDevice(id) {
       const editLink = this.editLink(id);

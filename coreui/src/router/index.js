@@ -22,18 +22,22 @@ const CreateRole = () => import('@/views/roles/CreateRole')
 //Devices
 const Devices = () => import('@/views/devices/Devices')
 const EditDevice = () => import('@/views/devices/EditDevice')
+const RepairDevice = () => import('@/views/devices/RepairDevice')
 
 //Firmware
 const Firmware = () => import('@/views/firmware/Firmware')
 
 //OtaRecords
 const Ota = () => import('@/views/ota/Ota')
+const ShowOta = () => import('@/views/ota/ShowOta')
+const UpdateOta = () => import('@/views/ota/UpdateOta')
 
 //Recipes
 const Recipes = () => import('@/views/recipes/Recipes')
 
 //RepairRecords
 const Repairs = () => import('@/views/repairs/Repairs')
+const EditRepair = () => import('@/views/repairs/EditRepair')
 
 Vue.use(Router)
 
@@ -124,12 +128,12 @@ function configRoutes () {
               name: 'Edit Device',
               component: EditDevice
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
+            {
+              path: ':id/repair',
+              meta: { label: 'Repair Device' },
+              name: 'Repair Device',
+              component: RepairDevice
+            },
           ]
         },
         {
@@ -153,7 +157,7 @@ function configRoutes () {
         },
         {
           path: 'ota',
-          meta: { label: 'ota'},
+          meta: { label: 'Ota'},
           component: {
             render (c) { return c('router-view') }
           },
@@ -162,17 +166,23 @@ function configRoutes () {
               path: '',
               component: Ota,
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
+            {
+              path: ':id/show',
+              meta: { label: 'Show Ota' },
+              name: 'Show Ota',
+              component: ShowOta,
+            },
+            {
+              path: 'update',
+              meta: { label: 'Update Ota' },
+              name: 'Update Ota',
+              component: UpdateOta,
+            },
           ]
         },
         {
           path: 'recipes',
-          meta: { label: 'recipes'},
+          meta: { label: 'Recipes'},
           component: {
             render (c) { return c('router-view') }
           },
@@ -191,7 +201,7 @@ function configRoutes () {
         },
         {
           path: 'repairs',
-          meta: { label: 'repairs'},
+          meta: { label: 'Repairs'},
           component: {
             render (c) { return c('router-view') }
           },
@@ -200,12 +210,12 @@ function configRoutes () {
               path: '',
               component: Repairs,
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
+            {
+              path: ':id/edit',
+              meta: { label: 'Edit Repair' },
+              name: 'Edit Repair',
+              component: EditRepair
+            },
           ]
         },
       ]
