@@ -266,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      fields: ["operate", "serial_no", "region", "address", "firm", "status"],
+      fields: [],
       messages: [],
       horizontal: {
         label: "col-4",
@@ -354,6 +354,14 @@ __webpack_require__.r(__webpack_exports__);
         self.firmware = response.data.firmware;
         self.recipe = response.data.recipe;
         self.detailOptions = self.firmware;
+
+        if (self.role === "admin") {
+          self.fields = ["operate", "serial_no", "region", "address", "firm", "status"];
+        } else if (self.role === "firm") {
+          self.fields = ["operate", "serial_no", "region", "address", "status"];
+        } else {
+          self.fields = ["operate", "serial_no", "address", "status"];
+        }
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({

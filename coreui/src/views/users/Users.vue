@@ -57,17 +57,7 @@ export default {
   data: () => {
     return {
       items: [],
-      fields: [
-        "id",
-        "name",
-        "email",
-        "roles",
-        "region",
-        "firm",
-        "updated",
-        "registered",
-        "operate",
-      ],
+      fields: [],
       adminName: "admin",
       currentPage: 1,
       perPage: 6,
@@ -120,11 +110,39 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    getFields() {
+      let self = this;
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = [
+          "id",
+          "name",
+          "email",
+          "roles",
+          "region",
+          "updated",
+          "registered",
+          "operate",
+        ];
+      } else {
+        self.fields = [
+          "id",
+          "name",
+          "email",
+          "roles",
+          "region",
+          "firm",
+          "updated",
+          "registered",
+          "operate",
+        ];
+      }
+    },
     getUsers() {
       let self = this;
       axios
         .get("/api/users?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
+          self.getFields();
           self.items = response.data.users;
           self.you = response.data.you;
         })

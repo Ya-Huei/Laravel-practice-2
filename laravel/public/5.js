@@ -354,6 +354,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -389,7 +390,8 @@ __webpack_require__.r(__webpack_exports__);
       regionOptions: [],
       cityOptions: [],
       firmOptions: [],
-      locations: []
+      locations: [],
+      showFirmSelection: true
     };
   },
   methods: {
@@ -470,6 +472,10 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       self.user.firm = response.data.user.firm;
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.showFirmSelection = false;
+      }
     }
   },
   mounted: function mounted() {
@@ -677,20 +683,22 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("CSelect", {
-                        attrs: {
-                          label: "Firm",
-                          options: _vm.firmOptions,
-                          value: _vm.user.firm,
-                          horizontal: "",
-                          description: "Select your firm"
-                        },
-                        on: {
-                          "update:value": function($event) {
-                            return _vm.$set(_vm.user, "firm", $event)
-                          }
-                        }
-                      }),
+                      _vm.showFirmSelection
+                        ? _c("CSelect", {
+                            attrs: {
+                              label: "Firm",
+                              options: _vm.firmOptions,
+                              value: _vm.user.firm,
+                              horizontal: "",
+                              description: "Select your firm"
+                            },
+                            on: {
+                              "update:value": function($event) {
+                                return _vm.$set(_vm.user, "firm", $event)
+                              }
+                            }
+                          })
+                        : _vm._e(),
                       _vm._v(" "),
                       _c(
                         "div",

@@ -37,6 +37,9 @@ class AuthController extends Controller
         $response = [
             'default_page'  => $this->getDefaultPage(),
             'access_token' => $token,
+            'user_name' => auth()->user()->name,
+            'user_firm' => auth()->user()->firm_id,
+            'user_location' => auth()->user()->location_id,
             'token_type' => 'bearer',
             'expires_in' => Auth::factory()->getTTL() * 60
         ];

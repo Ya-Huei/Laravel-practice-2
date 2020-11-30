@@ -15,7 +15,8 @@
     </CHeaderBrand>
 
     <CMenu/>
-
+    <CHeaderNav class="mr-2">Hello, {{loginUser}}</CHeaderNav>
+    
     <CHeaderNav class="mr-4">
       <CHeaderNavItem class="mx-2">
         <CHeaderNavLink  @click.native="logout()">
@@ -35,6 +36,11 @@ import CMenu from './Menu'
 
 export default {
   name: 'TheHeader',
+  data: () => {
+    return {
+      loginUser: "",
+    };
+  },
   components: {
     CMenu
   },
@@ -48,6 +54,9 @@ export default {
         console.log(error); 
       });
     }
-  }
+  },
+  mounted: function() {
+    this.loginUser = localStorage.getItem("user_name");
+  },
 }
 </script>

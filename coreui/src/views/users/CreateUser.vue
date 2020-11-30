@@ -74,6 +74,7 @@
               :value.sync="user.firm"
               horizontal
               description="Select your firm"
+              v-if="showFirmSelection"
             />
 
             <div class="form-group form-row">
@@ -140,6 +141,7 @@ export default {
       cityOptions: [],
       firmOptions: [],
       locations: [],
+      showFirmSelection: true,
     };
   },
   methods: {
@@ -208,6 +210,9 @@ export default {
       self.locations = response.data.locations;
       self.countryOptions = self.locations.country;
       self.firmOptions = response.data.firms;
+      if(localStorage.getItem("user_firm") !== "null"){
+        self.showFirmSelection = false;
+      }
     },
   },
   mounted: function() {

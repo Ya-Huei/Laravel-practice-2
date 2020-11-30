@@ -137,7 +137,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      fields: ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"],
+      fields: [],
       adminName: "admin",
       currentPage: 1,
       perPage: 6,
@@ -192,9 +192,19 @@ __webpack_require__.r(__webpack_exports__);
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    getFields: function getFields() {
+      var self = this;
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = ["id", "name", "email", "roles", "region", "updated", "registered", "operate"];
+      } else {
+        self.fields = ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"];
+      }
+    },
     getUsers: function getUsers() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.getFields();
         self.items = response.data.users;
         self.you = response.data.you;
       })["catch"](function (error) {

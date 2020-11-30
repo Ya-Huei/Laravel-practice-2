@@ -39,6 +39,7 @@ class UsersController extends Controller
         $data = User::with('roles:name', 'location', 'firm:id,name')
             ->whereNull('deleted_at')
             ->orderBy('id', 'asc')
+            ->ofFirmId(auth()->user()->firm_id)
             ->get();
 
         $users = $this->formatUsers($data);
@@ -78,7 +79,9 @@ class UsersController extends Controller
         }
 
         $firmName = $request->input('firm');
-        if (!empty($firmName)) {
+        $user->firm_id = auth()->user()->firm_id;
+
+        if (!empty($firmName) && empty($user->firm_id)) {
             $user->firm_id = FirmsService::getFirmId($firmName);
         }
         
@@ -130,7 +133,9 @@ class UsersController extends Controller
         $user->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
 
         $firmName = $request->input('firm');
-        $user->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
+        if(empty(auth()->user()->firm_id)){
+            $user->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
+        }
 
         $user->save();
         

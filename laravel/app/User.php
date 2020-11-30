@@ -74,4 +74,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo('App\Models\Firm');
     }
+
+    public function scopeOfFirmId($query, $firmId)
+    {
+        if($firmId !== null){
+            return $query->where('firm_id', $firmId);
+        }
+    }
 }

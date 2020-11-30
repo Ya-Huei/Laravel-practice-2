@@ -615,10 +615,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TheHeader',
+  data: function data() {
+    return {
+      loginUser: ""
+    };
+  },
   components: {
     CMenu: _Menu__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
@@ -633,6 +639,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     }
+  },
+  mounted: function mounted() {
+    this.loginUser = localStorage.getItem("user_name");
   }
 });
 
@@ -1076,6 +1085,10 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("CMenu"),
+      _vm._v(" "),
+      _c("CHeaderNav", { staticClass: "mr-2" }, [
+        _vm._v("Hello, " + _vm._s(_vm.loginUser))
+      ]),
       _vm._v(" "),
       _c(
         "CHeaderNav",
