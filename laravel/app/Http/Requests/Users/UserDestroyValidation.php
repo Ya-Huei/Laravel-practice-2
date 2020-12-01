@@ -26,9 +26,6 @@ class UserDestroyValidation extends FormRequest
             $this->user->hasRole(RoleNames::LOCATION)) {
             return true;
         }
-        if (auth()->user()->id === $this->user->id) {
-            return true;
-        }
         
         return false;
     }
