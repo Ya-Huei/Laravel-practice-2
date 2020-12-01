@@ -124,6 +124,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Devices",
@@ -168,11 +171,17 @@ __webpack_require__.r(__webpack_exports__);
     getFields: function getFields() {
       var self = this;
 
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = ["serial_no", "address", "status", "enabled", "registered", "updated", "operate"];
+        return false;
+      }
+
       if (localStorage.getItem("user_firm") !== "null") {
         self.fields = ["serial_no", "region", "address", "status", "enabled", "registered", "updated", "operate"];
-      } else {
-        self.fields = ["serial_no", "region", "address", "firm", "status", "enabled", "registered", "updated", "operate"];
+        return false;
       }
+
+      self.fields = ["serial_no", "region", "address", "firm", "status", "enabled", "registered", "updated", "operate"];
     },
     getDevices: function getDevices() {
       var self = this;

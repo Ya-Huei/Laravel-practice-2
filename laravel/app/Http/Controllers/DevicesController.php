@@ -59,11 +59,16 @@ class DevicesController extends Controller
     public function update(DeviceUpdateFormValidation $request, Device $device)
     {
         $validatedData = $request->validated();
-        if (!empty($validatedData['country'])) {
-            $device->location_id = LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']);
+
+        if (array_key_exists("country", $validatedData)) {
+            if (!empty($validatedData['country'])) {
+                $device->location_id = LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']);
+            } else {
+                $device->location_id = null;
+            }
         }
 
-        if (isset($validatedData['firm'])) {
+        if (array_key_exists("firm", $validatedData)) {
             $device->firm_id = FirmsService::getFirmId($validatedData['firm']);
         }
 
@@ -86,15 +91,15 @@ class DevicesController extends Controller
 
     public function saveRepair(DeviceSaveRepairFormValidation $request, Device $device)
     {
-            $device->status_id = Statuses::REPAIR;
-            $device->save();
+        $device->status_id = Statuses::REPAIR;
+        $device->save();
     
-            $record = new RepairRecord();
-            $record->device_id = $device->id;
-            $record->reason = $request->reason;
-            $record->status_id = Statuses::REPAIR;
-            $record->save();
+        $record = new RepairRecord();
+        $record->device_id = $device->id;
+        $record->reason = $request->reason;
+        $record->status_id = Statuses::REPAIR;
+        $record->save();
     
-            return response()->json(['status' => 'success']);
+        return response()->json(['status' => 'success']);
     }
 }

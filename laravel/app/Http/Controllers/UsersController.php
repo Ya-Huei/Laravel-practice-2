@@ -77,31 +77,30 @@ class UsersController extends Controller
         $user->password = bcrypt($validatedData['password']);
         $user->remember_token = Str::random(10);
 
-        if (isset($validatedData['country'])) {
-            if (!empty($validatedData['country'])) {
-                $user->location_id = LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']);
-            }
+        if (array_key_exists("country", $validatedData)) {
+            $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
         } else {
             $user->location_id = auth()->user()->location_id;
         }
 
-        if (isset($validatedData['firm'])) {
-            $user->firm_id = FirmsService::getFirmId($validatedData['firm']);
+        if (array_key_exists("firm", $validatedData)) {
+            $user->firm_id = !empty($validatedData['firm']) ? FirmsService::getFirmId($validatedData['firm']) : null;
         } else {
             $user->firm_id = auth()->user()->firm_id;
         }
         
         $user->save();
 
-        if (isset($validatedData['roles'])) {
-            if (($key = array_search(RoleNames::ADMIN, $validatedData['roles'])) !== false) {
-                unset($validatedData['roles'][$key]);
+        if (array_key_exists($validatedData['roles'])) {
+            if (!empty($validatedData['roles'])) {
+                if (($key = array_search(RoleNames::ADMIN, $validatedData['roles'])) !== false) {
+                    unset($validatedData['roles'][$key]);
+                }
+                $user->assignRole($validatedData['roles']);
             }
-            $user->assignRole($validatedData['roles']);
         } else {
             $user->assignRole(auth()->user()->roles()->get());
         }
-        
 
         return response()->json(['status' => 'success']);
     }
@@ -134,16 +133,16 @@ class UsersController extends Controller
     public function update(UserUpdateFormValidation $request, User $user)
     {
         $validatedData = $request->validated();
-        if (isset($validatedData['password']) && $validatedData['password'] != "") {
+        if (isset($validatedData['password'])) {
             $user->password  = bcrypt($validatedData['password']);
         }
 
-        if (isset($validatedData['country'])) {
+        if (array_key_exists("country", $validatedData)) {
             $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
         }
 
-        if (isset($validatedData['firm'])) {
-            $user->firm_id = FirmsService::getFirmId($validatedData['firm']);
+        if (array_key_exists("firm", $validatedData)) {
+            $user->firm_id = !empty($validatedData['firm']) ? FirmsService::getFirmId($validatedData['firm']) : null;
         }
 
         $user->save();

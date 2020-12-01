@@ -20,7 +20,9 @@
             />
             <div class="form-row">
               <CCol col="3">
-                <label class="col-form-label"> Region </label>
+                <label class="col-form-label" v-if="showRegionSelection">
+                  Region
+                </label>
               </CCol>
               <CCol col="3">
                 <CSelect
@@ -28,13 +30,14 @@
                   :value.sync="location.country"
                   @change="loadRegions()"
                   description="Select your region"
+                  v-if="showRegionSelection"
                 />
               </CCol>
               <CCol col="3">
                 <CSelect
                   :options="regionOptions"
                   :value.sync="location.region"
-                  v-if="showRegion"
+                  v-if="showRegionSelection && showRegion"
                   @change="loadCities()"
                 />
               </CCol>
@@ -42,7 +45,7 @@
                 <CSelect
                   :options="cityOptions"
                   :value.sync="location.city"
-                  v-if="showCity"
+                  v-if="showRegionSelection && showCity"
                 />
               </CCol>
             </div>
@@ -114,7 +117,8 @@ export default {
       firmOptions: [],
       statusOptions: [],
       locations: [],
-      showFirmSelection: true,
+      showRegionSelection: false,
+      showFirmSelection: false,
     };
   },
   methods: {
@@ -195,8 +199,12 @@ export default {
       }
       self.device.firm = response.data.device.firm;
       self.device.status = response.data.device.status;
-      if (localStorage.getItem("user_firm") !== "null") {
-        self.showFirmSelection = false;
+      if (localStorage.getItem("user_firm") === "null") {
+        self.showFirmSelection = true;
+      }
+      if (localStorage.getItem("user_location") === "null") {
+        self.showRoleSelection = true;
+        self.showRegionSelection = true;
       }
     },
   },

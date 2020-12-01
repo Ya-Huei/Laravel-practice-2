@@ -265,6 +265,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -300,7 +303,8 @@ __webpack_require__.r(__webpack_exports__);
       firmOptions: [],
       statusOptions: [],
       locations: [],
-      showFirmSelection: true
+      showRegionSelection: false,
+      showFirmSelection: false
     };
   },
   methods: {
@@ -372,8 +376,13 @@ __webpack_require__.r(__webpack_exports__);
       self.device.firm = response.data.device.firm;
       self.device.status = response.data.device.status;
 
-      if (localStorage.getItem("user_firm") !== "null") {
-        self.showFirmSelection = false;
+      if (localStorage.getItem("user_firm") === "null") {
+        self.showFirmSelection = true;
+      }
+
+      if (localStorage.getItem("user_location") === "null") {
+        self.showRoleSelection = true;
+        self.showRegionSelection = true;
       }
     }
   },
@@ -533,34 +542,40 @@ var render = function() {
                         { staticClass: "form-row" },
                         [
                           _c("CCol", { attrs: { col: "3" } }, [
-                            _c("label", { staticClass: "col-form-label" }, [
-                              _vm._v(" Region ")
-                            ])
+                            _vm.showRegionSelection
+                              ? _c("label", { staticClass: "col-form-label" }, [
+                                  _vm._v(
+                                    "\n                Region\n              "
+                                  )
+                                ])
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c(
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _c("CSelect", {
-                                attrs: {
-                                  options: _vm.countryOptions,
-                                  value: _vm.location.country,
-                                  description: "Select your region"
-                                },
-                                on: {
-                                  "update:value": function($event) {
-                                    return _vm.$set(
-                                      _vm.location,
-                                      "country",
-                                      $event
-                                    )
-                                  },
-                                  change: function($event) {
-                                    return _vm.loadRegions()
-                                  }
-                                }
-                              })
+                              _vm.showRegionSelection
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.countryOptions,
+                                      value: _vm.location.country,
+                                      description: "Select your region"
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.location,
+                                          "country",
+                                          $event
+                                        )
+                                      },
+                                      change: function($event) {
+                                        return _vm.loadRegions()
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
                             ],
                             1
                           ),
@@ -569,7 +584,7 @@ var render = function() {
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _vm.showRegion
+                              _vm.showRegionSelection && _vm.showRegion
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.regionOptions,
@@ -597,7 +612,7 @@ var render = function() {
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _vm.showCity
+                              _vm.showRegionSelection && _vm.showCity
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.cityOptions,

@@ -4,6 +4,7 @@ namespace App\Http\Requests\Devices;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Enums\Statuses;
+use App\Enums\RoleNames;
 
 class DeviceSaveRepairFormValidation extends FormRequest
 {
@@ -17,13 +18,18 @@ class DeviceSaveRepairFormValidation extends FormRequest
         if ($this->device->status_id === Statuses::REPAIR) {
             return false;
         }
-        if (auth()->user()->hasRole('admin')) {
+        if (auth()->user()->hasRole(RoleNames::ADMIN)) {
             return true;
         }
-        if (auth()->user()->firm_id === $this->device->firm_id) {
+        if (auth()->user()->hasRole(RoleNames::FIRM) &&
+            auth()->user()->firm_id === $this->device->firm_id) {
             return true;
         }
-
+        if (auth()->user()->hasRole(RoleNames::LOCATION) &&
+            auth()->user()->firm_id === $this->device->firm_id &&
+            auth()->user()->location_id === $this->device->location_id) {
+            return true;
+        }
         return false;
     }
 

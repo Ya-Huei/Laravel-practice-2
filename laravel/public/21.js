@@ -1,16 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[21],{
 
-/***/ "../coreui/src/views/users/Users.vue":
-/*!*******************************************!*\
-  !*** ../coreui/src/views/users/Users.vue ***!
-  \*******************************************/
+/***/ "../coreui/src/views/devices/Devices.vue":
+/*!***********************************************!*\
+  !*** ../coreui/src/views/devices/Devices.vue ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=41714d07& */ "../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&");
-/* harmony import */ var _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Users.vue?vue&type=script&lang=js& */ "../coreui/src/views/users/Users.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Devices_vue_vue_type_template_id_5f732771___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Devices.vue?vue&type=template&id=5f732771& */ "../coreui/src/views/devices/Devices.vue?vue&type=template&id=5f732771&");
+/* harmony import */ var _Devices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Devices.vue?vue&type=script&lang=js& */ "../coreui/src/views/devices/Devices.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -20,9 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Devices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Devices_vue_vue_type_template_id_5f732771___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Devices_vue_vue_type_template_id_5f732771___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -32,58 +32,58 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/users/Users.vue"
+component.options.__file = "coreui/src/views/devices/Devices.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/Users.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ../coreui/src/views/users/Users.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
+/***/ "../coreui/src/views/devices/Devices.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ../coreui/src/views/devices/Devices.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Devices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Devices.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/Devices.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Devices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&":
-/*!**************************************************************************!*\
-  !*** ../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07& ***!
-  \**************************************************************************/
+/***/ "../coreui/src/views/devices/Devices.vue?vue&type=template&id=5f732771&":
+/*!******************************************************************************!*\
+  !*** ../coreui/src/views/devices/Devices.vue?vue&type=template&id=5f732771& ***!
+  \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=template&id=41714d07& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Devices_vue_vue_type_template_id_5f732771___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./Devices.vue?vue&type=template&id=5f732771& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/Devices.vue?vue&type=template&id=5f732771&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Devices_vue_vue_type_template_id_5f732771___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_41714d07___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_Devices_vue_vue_type_template_id_5f732771___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/Users.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/Devices.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/Devices.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\users\\Users.vue: Unexpected token, expected \";\" (124:15)\n\n\u001b[0m \u001b[90m 122 | \u001b[39m        ]\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 123 | \u001b[39m        self\u001b[33m.\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 | \u001b[39m        \u001b[36mreturn\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 | \u001b[39m      }\u001b[0m\n\u001b[0m \u001b[90m 126 | \u001b[39m      \u001b[36mif\u001b[39m (localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m\"user_firm\"\u001b[39m) \u001b[33m!==\u001b[39m \u001b[32m\"null\"\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 127 | \u001b[39m        self\u001b[33m.\u001b[39mfields \u001b[33m=\u001b[39m [\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.semicolon (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7755:40)\n    at Parser.parseExpressionStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10544:10)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10143:19)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseBlock (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10085:21)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseIfStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10363:28)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10054:21)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseBlock (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10556:10)\n    at Parser.parseFunctionBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9584:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9554:10)\n    at Parser.parseMethod (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9508:10)\n    at Parser.parseObjectMethod (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9424:19)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:23)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)\n    at Parser.parseMaybeUnary (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8536:21)\n    at Parser.parseExprOps (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8402:23)\n    at Parser.parseMaybeConditional (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8375:23)\n    at Parser.parseMaybeAssign (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8325:21)\n    at Parser.parseObjectProperty (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9441:101)\n    at Parser.parseObjPropValue (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9466:101)\n    at Parser.parseObjectMember (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9390:10)\n    at Parser.parseObj (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9314:25)\n    at Parser.parseExprAtom (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8939:28)\n    at Parser.parseExprSubscripts (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:8556:23)");
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel-project\\wantBoCloud\\coreui\\src\\views\\devices\\Devices.vue: Unexpected token, expected \";\" (137:3)\n\n\u001b[0m \u001b[90m 135 | \u001b[39m        })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 136 | \u001b[39m    }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 137 | \u001b[39m  }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 138 | \u001b[39m  mounted\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m() {\u001b[0m\n\u001b[0m \u001b[90m 139 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgetDevices()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 140 | \u001b[39m  }\u001b[33m,\u001b[39m\u001b[0m\n    at Parser.raise (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:6420:17)\n    at Parser.unexpected (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7773:16)\n    at Parser.semicolon (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:7755:40)\n    at Parser.parseExportDefaultExpression (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11188:12)\n    at Parser.parseExport (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11088:31)\n    at Parser.parseStatementContent (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10113:27)\n    at Parser.parseStatement (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10009:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10585:25)\n    at Parser.parseBlockBody (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:10572:10)\n    at Parser.parseTopLevel (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:9940:10)\n    at Parser.parse (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11447:17)\n    at parse (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\parser\\lib\\index.js:11483:38)\n    at parser (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:168:34)\n    at normalizeFile (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:102:11)\n    at runSync (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\index.js:44:43)\n    at runAsync (C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transformation\\index.js:35:14)\n    at C:\\laravel-project\\wantBoCloud\\laravel\\node_modules\\@babel\\core\\lib\\transform.js:34:34\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07&":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/users/Users.vue?vue&type=template&id=41714d07& ***!
-  \********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/Devices.vue?vue&type=template&id=5f732771&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/Devices.vue?vue&type=template&id=5f732771& ***!
+  \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -109,45 +109,7 @@ var render = function() {
               _c(
                 "CCard",
                 [
-                  _c(
-                    "CCardHeader",
-                    { staticClass: "container-fluid" },
-                    [
-                      _c(
-                        "CRow",
-                        [
-                          _c("CCol", { attrs: { col: "6" } }, [
-                            _c("h4", [_vm._v("Users")])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            {
-                              staticClass: "d-flex justify-content-end",
-                              attrs: { col: "6" }
-                            },
-                            [
-                              _c(
-                                "CButton",
-                                {
-                                  attrs: { color: "primary" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.createUser()
-                                    }
-                                  }
-                                },
-                                [_vm._v("Create User")]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
+                  _c("CCardHeader", [_c("h4", [_vm._v("Devices")])]),
                   _vm._v(" "),
                   _c(
                     "CCardBody",
@@ -159,9 +121,29 @@ var render = function() {
                           items: _vm.items,
                           fields: _vm.fields,
                           "items-per-page": 6,
+                          tableFilter: { external: false, lazy: false },
                           pagination: ""
                         },
                         scopedSlots: _vm._u([
+                          {
+                            key: "status",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c(
+                                  "td",
+                                  [
+                                    _c(
+                                      "CBadge",
+                                      { attrs: { color: item.status.class } },
+                                      [_vm._v(_vm._s(item.status.name))]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          },
                           {
                             key: "operate",
                             fn: function(ref) {
@@ -170,35 +152,31 @@ var render = function() {
                                 _c(
                                   "td",
                                   [
-                                    _vm.adminName != item.name
-                                      ? _c(
-                                          "CButton",
-                                          {
-                                            attrs: { color: "primary" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.editUser(item.id)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Edit")]
-                                        )
-                                      : _vm._e(),
+                                    _c(
+                                      "CButton",
+                                      {
+                                        attrs: { color: "primary" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editDevice(item.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Edit")]
+                                    ),
                                     _vm._v(" "),
-                                    _vm.adminName != item.name &&
-                                    _vm.you.roles != _vm.you.roles
+                                    item.status.name != "Repair"
                                       ? _c(
                                           "CButton",
                                           {
-                                            staticClass: "ml-1",
                                             attrs: { color: "danger" },
                                             on: {
                                               click: function($event) {
-                                                return _vm.deleteUser(item.id)
+                                                return _vm.repairDevice(item.id)
                                               }
                                             }
                                           },
-                                          [_vm._v("Delete")]
+                                          [_vm._v("Repair")]
                                         )
                                       : _vm._e()
                                   ],

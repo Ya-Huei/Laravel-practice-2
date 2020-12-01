@@ -29,7 +29,10 @@
                   <CButton color="primary" @click="editDevice(item.id)"
                     >Edit</CButton
                   >
-                  <CButton color="danger" @click="repairDevice(item.id)" v-if="item.status.name != 'Repair'"
+                  <CButton
+                    color="danger"
+                    @click="repairDevice(item.id)"
+                    v-if="item.status.name != 'Repair'"
                     >Repair</CButton
                   >
                 </td>
@@ -80,6 +83,19 @@ export default {
     },
     getFields() {
       let self = this;
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = [
+          "serial_no",
+          "address",
+          "status",
+          "enabled",
+          "registered",
+          "updated",
+          "operate",
+        ];
+        return false;
+      }
+
       if (localStorage.getItem("user_firm") !== "null") {
         self.fields = [
           "serial_no",
@@ -91,19 +107,20 @@ export default {
           "updated",
           "operate",
         ];
-      } else {
-        self.fields = [
-          "serial_no",
-          "region",
-          "address",
-          "firm",
-          "status",
-          "enabled",
-          "registered",
-          "updated",
-          "operate",
-        ];
+        return false;
       }
+
+      self.fields = [
+        "serial_no",
+        "region",
+        "address",
+        "firm",
+        "status",
+        "enabled",
+        "registered",
+        "updated",
+        "operate",
+      ];
     },
     getDevices() {
       let self = this;
