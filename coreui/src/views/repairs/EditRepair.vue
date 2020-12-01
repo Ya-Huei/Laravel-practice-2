@@ -60,7 +60,6 @@ export default {
   data: () => {
     return {
       device: {
-        id: "",
         serial_no: "",
       },
       repair: {
@@ -99,7 +98,6 @@ export default {
             localStorage.getItem("api_token"),
           {
             _method: "PUT",
-            device_id: self.device.id,
             reason: self.repair.reason,
             worker: self.repair.worker,
             status: self.repair.status,
@@ -124,10 +122,6 @@ export default {
             localStorage.getItem("api_token")
         )
         .then(function(response) {
-          if (response.data.status == "403") {
-            self.$router.push({ path: "/devices" });
-            return;
-          }
           self.setDefaultData(response);
         })
         .catch(function(error) {
@@ -137,7 +131,6 @@ export default {
     },
     setDefaultData(response) {
       let self = this;
-      self.device.id = response.data.device.id;
       self.device.serial_no = response.data.device.serial_no;
       self.statusOptions = response.data.status;
       self.repair.reason = response.data.repair.reason;

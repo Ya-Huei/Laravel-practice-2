@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Repairs;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,6 @@ class RepairUpdateFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'device_id' => 'required|integer',
             'reason' => 'required|string',
             'worker' => 'nullable|string',
             'status' => 'required|string',

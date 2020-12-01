@@ -319,7 +319,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       device: {
-        id: "",
         serial_no: ""
       },
       repair: {
@@ -355,7 +354,6 @@ __webpack_require__.r(__webpack_exports__);
       self.isEditedRepair = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/repairs/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
         _method: "PUT",
-        device_id: self.device.id,
         reason: self.repair.reason,
         worker: self.repair.worker,
         status: self.repair.status
@@ -370,13 +368,6 @@ __webpack_require__.r(__webpack_exports__);
     getInfo: function getInfo() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/repairs/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
-        if (response.data.status == "403") {
-          self.$router.push({
-            path: "/devices"
-          });
-          return;
-        }
-
         self.setDefaultData(response);
       })["catch"](function (error) {
         console.log(error);
@@ -387,7 +378,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     setDefaultData: function setDefaultData(response) {
       var self = this;
-      self.device.id = response.data.device.id;
       self.device.serial_no = response.data.device.serial_no;
       self.statusOptions = response.data.status;
       self.repair.reason = response.data.repair.reason;

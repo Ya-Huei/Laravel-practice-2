@@ -18,4 +18,13 @@ class RepairRecord extends Model
     {
         return $this->belongsTo(Status::class);
     }
+    
+    public function scopeOfFirmId($query, $firmId)
+    {
+        if ($firmId !== null) {
+            return $query->whereHas('device', function ($query) use ($firmId) {
+                $query->where('firm_id', $firmId);
+            });
+        }
+    }
 }
