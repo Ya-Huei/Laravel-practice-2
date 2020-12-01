@@ -93,7 +93,7 @@ export default {
   data: () => {
     return {
       items: [],
-      fields: ["operate", "serial_no", "region", "address", "firm", "status"],
+      fields: [],
       messages: [],
       horizontal: { label: "col-4", input: "col-8" },
       isUpdateOta: true,
@@ -106,11 +106,11 @@ export default {
       recipe: [],
       select: [],
       selectAll: false,
-      filterItem:[]
+      filterItem: [],
     };
   },
   methods: {
-    setFilterItem(value){
+    setFilterItem(value) {
       let self = this;
       self.selectAll = false;
       self.filterItem = value;
@@ -157,7 +157,7 @@ export default {
       self.isUpdateOta = false;
       axios
         .post(
-          "/api/ota/saveOtaUpdate?token=" + localStorage.getItem("api_token"),
+          "/api/otas/saveOtaUpdate?token=" + localStorage.getItem("api_token"),
           {
             _method: "POST",
             type: self.ota,
@@ -174,13 +174,30 @@ export default {
           self.showMessage = true;
         });
     },
+    getFields() {
+      let self = this;
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = ["operate", "serial_no", "region", "address", "status"];
+      } else {
+        self.fields = [
+          "operate",
+          "serial_no",
+          "region",
+          "address",
+          "firm",
+          "status",
+        ];
+      }
+    },
     getInfo() {
       let self = this;
       axios
         .get(
-          "/api/ota/getOtaUpdateInfo?token=" + localStorage.getItem("api_token")
+          "/api/otas/getOtaUpdateInfo?token=" +
+            localStorage.getItem("api_token")
         )
         .then(function(response) {
+          self.getFields();
           self.items = response.data.devices;
           self.firmware = response.data.firmware;
           self.recipe = response.data.recipe;

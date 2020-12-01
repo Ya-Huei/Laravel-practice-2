@@ -20,7 +20,7 @@ class RepairsController extends Controller
      */
     public function index()
     {
-        $data = RepairRecord::ofFirmId(auth()->user()->firm_id)->with('device', 'status')->orderBy('id', 'desc')->get();
+        $data = RepairRecord::with('device', 'status')->orderBy('id', 'desc')->ofFirmId(auth()->user()->firm_id)->get();
         $repairs = $this->formatRepairs($data);
         return response()->json($repairs);
     }

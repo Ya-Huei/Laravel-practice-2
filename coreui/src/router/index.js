@@ -156,7 +156,7 @@ function configRoutes () {
           ]
         },
         {
-          path: 'ota',
+          path: 'otas',
           meta: { label: 'Ota'},
           component: {
             render (c) { return c('router-view') }

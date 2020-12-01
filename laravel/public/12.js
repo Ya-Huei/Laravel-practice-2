@@ -147,7 +147,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     otaLink: function otaLink(id) {
-      return "ota/".concat(id.toString(), "/show");
+      return "otas/".concat(id.toString(), "/show");
     },
     showOta: function showOta(id) {
       var otaLink = this.otaLink(id);
@@ -157,15 +157,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     otaUpdate: function otaUpdate() {
       this.$router.push({
-        path: "ota/update"
+        path: "otas/update"
       });
     },
     getOta: function getOta() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/ota?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/otas?token=" + localStorage.getItem("api_token")).then(function (response) {
         self.items = response.data;
       })["catch"](function (error) {
-        console.log(error); // self.$router.push({ path: "/login" });
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
       });
     }
   },

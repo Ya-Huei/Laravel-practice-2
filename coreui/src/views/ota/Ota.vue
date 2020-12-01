@@ -73,25 +73,25 @@ export default {
   },
   methods: {
     otaLink(id) {
-      return `ota/${id.toString()}/show`;
+      return `otas/${id.toString()}/show`;
     },
     showOta(id) {
       const otaLink = this.otaLink(id);
       this.$router.push({ path: otaLink });
     },
-    otaUpdate(){
-       this.$router.push({ path: `ota/update` });
+    otaUpdate() {
+      this.$router.push({ path: `otas/update` });
     },
     getOta() {
       let self = this;
       axios
-        .get("/api/ota?token=" + localStorage.getItem("api_token"))
+        .get("/api/otas?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
           self.items = response.data;
         })
         .catch(function(error) {
           console.log(error);
-          // self.$router.push({ path: "/login" });
+          self.$router.push({ path: "/login" });
         });
     },
   },

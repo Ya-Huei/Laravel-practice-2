@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Log;
 use App\Models\OtaRecord;
 use App\Models\Firmware;
 use App\Models\Recipe;
+use App\Models\Device;
 use App\Enums\Statuses;
 use App\Enums\OtaTypes;
 use App\Services\DevicesService;
 use App\Services\FirmwareService;
 use App\Services\RecipesService;
-use App\Http\Requests\DeviceUpdateOtaFormValidation;
+use App\Http\Requests\Otas\OtaShowValidation;
+use App\Http\Requests\Otas\DeviceUpdateOtaFormValidation;
 
 class OtaController extends Controller
 {
@@ -23,30 +25,9 @@ class OtaController extends Controller
      */
     public function index()
     {
-        $data = OtaRecord::with('device', 'status')->orderBy('id', 'desc')->get();
+        $data = OtaRecord::with('device', 'status')->orderBy('id', 'desc')->ofFirmId(auth()->user()->firm_id)->get();
         $ota = $this->formatOta($data);
         return response()->json($ota);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -55,47 +36,15 @@ class OtaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(OtaShowValidation $request, OtaRecord $ota)
     {
-        $ota = OtaRecord::with('device', 'status')->where('id', $id)->first();
+        $ota->status = $ota->status;
+        $ota->device = $ota->device;
         $this->getTypeIdDetail($ota);
         $ota->updated = isset($ota->updated_at) ? $ota->updated_at->format('Y-m-d H:i:s') : "";
         $ota->registered = isset($ota->created_at) ? $ota->created_at->format('Y-m-d H:i:s') : "";
+        
         return response()->json($ota);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     private function formatOta($data)
@@ -141,6 +90,10 @@ class OtaController extends Controller
         $type = OtaRecord::getDefineTypeKey($request->type);
         $type_id = $this->getTypeId($request->type, $request->name);
         foreach ($request->devices as $key => $value) {
+            $firm_id = Device::where('id', $value)->first()->firm_id;
+            if ($firm_id !== auth()->user()->firm_id) {
+                continue;
+            }
             $record = new OtaRecord();
             $record->device_id = $value;
             $record->type = $type;

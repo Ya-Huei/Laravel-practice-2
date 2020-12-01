@@ -36,4 +36,13 @@ class OtaRecord extends Model
     {
         return array_search($value, self::$typeLists);
     }
+
+    public function scopeOfFirmId($query, $firmId)
+    {
+        if ($firmId !== null) {
+            return $query->whereHas('device', function ($query) use ($firmId) {
+                $query->where('firm_id', $firmId);
+            });
+        }
+    }
 }
