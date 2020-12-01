@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Http\Requests\UserStoreFormValidation;
-use App\Http\Requests\UserUpdateFormValidation;
-use App\Http\Requests\UserDestroyFormValidation;
+use App\Http\Requests\Users\UserStoreFormValidation;
+use App\Http\Requests\Users\UserUpdateFormValidation;
+use App\Http\Requests\Users\UserEditValidation;
+use App\Http\Requests\Users\UserDestroyValidation;
 use App\User;
 use App\Models\Location;
 use App\Models\Firm;
@@ -80,6 +81,8 @@ class UsersController extends Controller
 
         if (isset($validatedData['firm'])) {
             $user->firm_id = FirmsService::getFirmId($validatedData['firm']);
+        } else {
+            $user->firm_id = auth()->user()->firm_id;
         }
         
         $user->save();
@@ -95,11 +98,8 @@ class UsersController extends Controller
      * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(UserEditValidation $request, User $user)
     {
-        if ($user->name == "admin") {
-            return response()->json(['status' => '403']);
-        }
         $user->menuroles = $user->getRoleNames();
         LocationsService::getLocationInfo($user, $user->location_id);
         FirmsService::getFirmInfo($user, $user->firm_id);
@@ -142,7 +142,7 @@ class UsersController extends Controller
      * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserDestroyFormValidation $request, User $user)
+    public function destroy(UserDestroyValidation $request, User $user)
     {
         $user->roles()->detach();
         $user->delete();

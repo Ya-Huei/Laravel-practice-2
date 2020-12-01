@@ -65,6 +65,20 @@ class PermissionsSeeder extends Seeder
         $this->insertLink('admin', 'OTA', '/ota');
         $this->insertLink('admin', 'Recipes', '/recipes');
         $this->insertLink('admin', 'Firmware', '/firmware');
+        $this->insertLink('firm owner', 'Users', '/users');
+        $this->insertLink('firm owner', 'Roles', '/roles');
+        $this->insertLink('firm owner', 'Devices', '/devices');
+        $this->insertLink('firm owner', 'Repairs', '/repairs');
+        $this->insertLink('firm owner', 'OTA', '/ota');
+        $this->insertLink('firm owner', 'Recipes', '/recipes');
+        $this->insertLink('firm owner', 'Firmware', '/firmware');
+        $this->insertLink('location owner', 'Users', '/users');
+        $this->insertLink('location owner', 'Roles', '/roles');
+        $this->insertLink('location owner', 'Devices', '/devices');
+        $this->insertLink('location owner', 'Repairs', '/repairs');
+        $this->insertLink('location owner', 'OTA', '/ota');
+        $this->insertLink('location owner', 'Recipes', '/recipes');
+        $this->insertLink('location owner', 'Firmware', '/firmware');
         $this->joinAllByTransaction();
     }
 }

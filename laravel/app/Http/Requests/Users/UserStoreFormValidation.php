@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateFormValidation extends FormRequest
+class UserStoreFormValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,13 +13,7 @@ class UserUpdateFormValidation extends FormRequest
      */
     public function authorize()
     {
-        if (auth()->user()->hasRole('admin')) {
-            return true;
-        }
-        if (auth()->user()->firm_id === $this->user->firm_id) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     /**
@@ -30,7 +24,9 @@ class UserUpdateFormValidation extends FormRequest
     public function rules()
     {
         $rule = [
-            'password'   => 'nullable|string|between:6,32|confirmed',
+            'name'       => 'required|string|between:4,256',
+            'email'      => 'required|email|max:256',
+            'password'   => 'required|string|between:6,32|confirmed',
             'country'    => 'required_with_all:region,city',
             'region'     => 'required_with_all:country,city',
             'city'       => 'required_with_all:country,region',
@@ -38,7 +34,7 @@ class UserUpdateFormValidation extends FormRequest
         ];
 
         if (auth()->user()->hasRole('admin')) {
-            $rule += ['firm'       => 'nullable|string'];
+            $rule += ['firm' => 'nullable|string'];
         }
 
         return $rule;

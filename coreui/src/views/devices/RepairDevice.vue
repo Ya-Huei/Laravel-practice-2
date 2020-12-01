@@ -46,7 +46,6 @@ export default {
   data: () => {
     return {
       device: {
-        id: "",
         serial_no: "",
       },
       reason: "",
@@ -72,7 +71,6 @@ export default {
             localStorage.getItem("api_token"),
           {
             _method: "POST",
-            device_id: self.device.id,
             reason: self.reason,
           }
         )
@@ -95,10 +93,6 @@ export default {
             localStorage.getItem("api_token")
         )
         .then(function(response) {
-          if (response.data.status == "403") {
-            self.$router.push({ path: "/devices" });
-            return;
-          }
           self.setDefaultData(response);
         })
         .catch(function(error) {
@@ -108,7 +102,6 @@ export default {
     },
     setDefaultData(response) {
       let self = this;
-      self.device.id = response.data.id;
       self.device.serial_no = response.data.serial_no;
     },
   },

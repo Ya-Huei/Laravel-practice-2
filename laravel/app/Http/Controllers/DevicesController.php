@@ -14,8 +14,10 @@ use App\Services\LocationsService;
 use App\Services\FirmsService;
 use App\Services\StatusesService;
 use App\Services\DevicesService;
-use App\Http\Requests\DeviceUpdateFormValidation;
-use App\Http\Requests\DeviceSaveRepairFormValidation;
+use App\Http\Requests\Devices\DeviceEditValidation;
+use App\Http\Requests\Devices\DeviceUpdateFormValidation;
+use App\Http\Requests\Devices\DeviceRepairValidation;
+use App\Http\Requests\Devices\DeviceSaveRepairFormValidation;
 
 class DevicesController extends Controller
 {
@@ -31,44 +33,12 @@ class DevicesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Device $device)
+    public function edit(DeviceEditValidation $request, Device $device)
     {
         LocationsService::getLocationInfo($device, $device->location_id);
         FirmsService::getFirmInfo($device, $device->firm_id);
@@ -88,20 +58,19 @@ class DevicesController extends Controller
      */
     public function update(DeviceUpdateFormValidation $request, Device $device)
     {
-        $country = $request->input('country');
-        $region = $request->input('region');
-        $city = $request->input('city');
-        $device->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
+        $validatedData = $request->validated();
+        if (!empty($validatedData['country'])) {
+            $device->location_id = LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']);
+        }
 
-        $firmName = $request->input('firm');
-        $device->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
+        if (isset($validatedData['firm'])) {
+            $device->firm_id = FirmsService::getFirmId($validatedData['firm']);
+        }
 
-        $device->address = $request->input('address');
+        $device->address = $validatedData['address'];
+        $device->status_id = StatusesService::getStatusId($validatedData['status'], StatusTypes::DEVICE);
 
-        $status = $request->input('status');
-        $device->status_id = StatusesService::getStatusId($status, StatusTypes::DEVICE);
-
-        if ($status == "Enable" && !isset($device->enabled_at)) {
+        if ($device->status_id == Statuses::ENABLE && !isset($device->enabled_at)) {
             $device->enabled_at = now();
         }
 
@@ -110,36 +79,22 @@ class DevicesController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function repair(DeviceRepairValidation $request, Device $device)
     {
-        //
-    }
-
-    public function repair($id)
-    {
-        $device = Device::where('id', $id)->first();
         return response()->json($device);
     }
 
-    public function saveRepair(DeviceSaveRepairFormValidation $request)
+    public function saveRepair(DeviceSaveRepairFormValidation $request, Device $device)
     {
-        $device_id = $request->device_id;
-        $record = new RepairRecord();
-        $record->device_id = $device_id;
-        $record->reason = $request->reason;
-        $record->status_id = Statuses::REPAIR;
-        $record->save();
-
-        $device = Device::where('id', $device_id)->first();
-        $device->status_id = Statuses::REPAIR;
-        $device->save();
-
-        return response()->json(['status' => 'success']);
+            $device->status_id = Statuses::REPAIR;
+            $device->save();
+    
+            $record = new RepairRecord();
+            $record->device_id = $device->id;
+            $record->reason = $request->reason;
+            $record->status_id = Statuses::REPAIR;
+            $record->save();
+    
+            return response()->json(['status' => 'success']);
     }
 }

@@ -54,6 +54,7 @@
               :value.sync="device.firm"
               horizontal
               description="Select your firm"
+              v-if="showFirmSelection"
             />
             <CSelect
               label="Status"
@@ -65,7 +66,11 @@
           </CForm>
         </CCardBody>
         <CCardFooter class="text-right">
-          <CButton :disabled="!isEditedDevice" color="primary" @click="update()">
+          <CButton
+            :disabled="!isEditedDevice"
+            color="primary"
+            @click="update()"
+          >
             <span v-if="isEditedDevice">Save</span>
             <CSpinner v-if="!isEditedDevice" color="info" size="sm" />
           </CButton>
@@ -109,6 +114,7 @@ export default {
       firmOptions: [],
       statusOptions: [],
       locations: [],
+      showFirmSelection: true,
     };
   },
   methods: {
@@ -137,7 +143,7 @@ export default {
             country: self.location.country,
             region: self.location.region,
             city: self.location.city,
-            address:self.device.address,
+            address: self.device.address,
             firm: self.device.firm,
             status: self.device.status,
           }
@@ -189,6 +195,9 @@ export default {
       }
       self.device.firm = response.data.device.firm;
       self.device.status = response.data.device.status;
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.showFirmSelection = false;
+      }
     },
   },
   mounted: function() {

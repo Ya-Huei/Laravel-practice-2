@@ -8,6 +8,12 @@ class RolesSeeder extends Seeder
     private $roleLists = [
         [
             'name' => 'admin',
+        ],
+        [
+            'name' => 'firm owner',
+        ],
+        [
+            'name' => 'location owner',
         ]
     ];
 

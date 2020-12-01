@@ -191,10 +191,6 @@ export default {
             localStorage.getItem("api_token")
         )
         .then(function(response) {
-          if (response.data.status == "403") {
-            self.$router.push({ path: "/users" });
-            return;
-          }
           self.setDefaultData(response);
         })
         .catch(function(error) {
@@ -219,7 +215,7 @@ export default {
         self.location.city = response.data.user.city;
       }
       self.user.firm = response.data.user.firm;
-      if(localStorage.getItem("user_firm") !== "null"){
+      if (localStorage.getItem("user_firm") !== "null") {
         self.showFirmSelection = false;
       }
     },

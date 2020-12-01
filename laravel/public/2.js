@@ -260,6 +260,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -294,7 +299,8 @@ __webpack_require__.r(__webpack_exports__);
       cityOptions: [],
       firmOptions: [],
       statusOptions: [],
-      locations: []
+      locations: [],
+      showFirmSelection: true
     };
   },
   methods: {
@@ -365,6 +371,10 @@ __webpack_require__.r(__webpack_exports__);
 
       self.device.firm = response.data.device.firm;
       self.device.status = response.data.device.status;
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.showFirmSelection = false;
+      }
     }
   },
   mounted: function mounted() {
@@ -622,20 +632,22 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("CSelect", {
-                        attrs: {
-                          label: "Firm",
-                          options: _vm.firmOptions,
-                          value: _vm.device.firm,
-                          horizontal: "",
-                          description: "Select your firm"
-                        },
-                        on: {
-                          "update:value": function($event) {
-                            return _vm.$set(_vm.device, "firm", $event)
-                          }
-                        }
-                      }),
+                      _vm.showFirmSelection
+                        ? _c("CSelect", {
+                            attrs: {
+                              label: "Firm",
+                              options: _vm.firmOptions,
+                              value: _vm.device.firm,
+                              horizontal: "",
+                              description: "Select your firm"
+                            },
+                            on: {
+                              "update:value": function($event) {
+                                return _vm.$set(_vm.device, "firm", $event)
+                              }
+                            }
+                          })
+                        : _vm._e(),
                       _vm._v(" "),
                       _c("CSelect", {
                         attrs: {

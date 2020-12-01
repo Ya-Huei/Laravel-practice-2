@@ -23,8 +23,8 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::group(['middleware' => 'permissions'], function ($router) {
         Route::resource('users', UsersController::class)->except(['show']);
         Route::resource('roles', RolesController::class)->except(['show']);
-        Route::get('devices/{id}/repair', 'DevicesController@repair');
-        Route::post('devices/{id}/saveRepair', 'DevicesController@saveRepair');
+        Route::get('devices/{device}/repair', 'DevicesController@repair');
+        Route::post('devices/{device}/saveRepair', 'DevicesController@saveRepair');
         Route::resource('devices', DevicesController::class)->except(['create', 'store', 'show', 'destroy']);
         Route::resource('firmware', FirmWareController::class);
         Route::get('ota/getOtaUpdateInfo', 'OtaController@getOtaUpdateInfo');

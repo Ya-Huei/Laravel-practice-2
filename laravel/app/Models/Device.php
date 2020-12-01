@@ -35,4 +35,11 @@ class Device extends Model
     {
         $this->hasMany(OtaRecord::class);
     }
+
+    public function scopeOfFirmId($query, $firmId)
+    {
+        if($firmId !== null){
+            return $query->where('firm_id', $firmId);
+        }
+    }
 }

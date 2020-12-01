@@ -12,12 +12,14 @@ class UsersSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => 'password',
+            'role' => 'admin',
         ],
         [
             'name' => 'coco',
             'email' => 'coco@coco.com',
             'password' => 'password',
             'firm_id' => '1',
+            'role' => 'firm owner',
         ],
         [
             'name' => 'coco north',
@@ -25,6 +27,7 @@ class UsersSeeder extends Seeder
             'password' => 'password',
             'location_id' => '1',
             'firm_id' => '1',
+            'role' => 'location owner',
         ],
         [
             'name' => 'coco north2',
@@ -32,12 +35,14 @@ class UsersSeeder extends Seeder
             'password' => 'password',
             'location_id' => '2',
             'firm_id' => '1',
+            'role' => 'location owner',
         ],
         [
             'name' => 'jiate',
             'email' => 'jiate@jiate.com',
             'password' => 'password',
             'firm_id' => '2',
+            'role' => 'firm owner',
         ],
         [
             'name' => 'jiate north',
@@ -45,6 +50,7 @@ class UsersSeeder extends Seeder
             'password' => 'password',
             'location_id' => '1',
             'firm_id' => '2',
+            'role' => 'location owner',
         ],
     ];
     /**
@@ -67,7 +73,7 @@ class UsersSeeder extends Seeder
                 $user->firm_id = $item['firm_id'];
             }
             $user->save();
-            $user->assignRole('admin');
+            $user->assignRole($item['role']);
         }
     }
 }
