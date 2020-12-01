@@ -29,7 +29,9 @@
             />
             <div class="form-row">
               <CCol col="3">
-                <label class="col-form-label"> Region </label>
+                <label class="col-form-label" v-if="showRegionSelection">
+                  Region
+                </label>
               </CCol>
               <CCol col="3">
                 <CSelect
@@ -37,13 +39,14 @@
                   :value.sync="location.country"
                   @change="loadRegions()"
                   description="Select your region"
+                  v-if="showRegionSelection"
                 />
               </CCol>
               <CCol col="3">
                 <CSelect
                   :options="regionOptions"
                   :value.sync="location.region"
-                  v-if="showRegion"
+                  v-if="showRegionSelection && showRegion"
                   @change="loadCities()"
                 />
               </CCol>
@@ -51,7 +54,7 @@
                 <CSelect
                   :options="cityOptions"
                   :value.sync="location.city"
-                  v-if="showCity"
+                  v-if="showRegionSelection && showCity"
                 />
               </CCol>
             </div>
@@ -65,7 +68,12 @@
             />
 
             <div class="form-group form-row">
-              <CCol tag="label" sm="3" class="col-form-label">
+              <CCol
+                tag="label"
+                sm="3"
+                class="col-form-label"
+                v-if="showRoleSelection"
+              >
                 Roles
               </CCol>
               <CCol sm="9">
@@ -78,6 +86,7 @@
                   :inline="true"
                   :checked="user.roles.includes(optionRole.name)"
                   @update:checked="selectRoles(optionRole.name)"
+                  v-if="showRoleSelection"
                 />
               </CCol>
             </div>
@@ -129,7 +138,9 @@ export default {
       cityOptions: [],
       firmOptions: [],
       locations: [],
-      showFirmSelection: true,
+      showRoleSelection: false,
+      showFirmSelection: false,
+      showRegionSelection: false,
     };
   },
   methods: {
@@ -215,8 +226,12 @@ export default {
         self.location.city = response.data.user.city;
       }
       self.user.firm = response.data.user.firm;
-      if (localStorage.getItem("user_firm") !== "null") {
-        self.showFirmSelection = false;
+      if (localStorage.getItem("user_firm") === "null") {
+        self.showFirmSelection = true;
+      }
+      if (localStorage.getItem("user_location") === "null") {
+        self.showRoleSelection = true;
+        self.showRegionSelection = true;
       }
     },
   },

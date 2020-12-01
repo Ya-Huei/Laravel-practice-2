@@ -6,7 +6,7 @@ use App\Models\Firm;
 
 class FirmsService
 {
-    public static function getAllFirmsName()
+    public static function getFirmsOptions()
     {
         $result = [];
         $defaultOption = "";

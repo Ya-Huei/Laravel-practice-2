@@ -27,13 +27,25 @@
               <template #operate="{item}">
                 <td>
                   <CButton
-                    v-if="adminName != item.name"
+                    v-if="
+                      adminName != item.name &&
+                        (highestRole == 'admin' ||
+                          (highestRole == 'firm owner' &&
+                            highestRole != item.roles) ||
+                          you == item.id)
+                    "
                     color="primary"
                     @click="editUser(item.id)"
                     >Edit</CButton
                   >
                   <CButton
-                    v-if="adminName != item.name && you != item.id"
+                    v-if="
+                      adminName != item.name &&
+                        (highestRole == 'admin' ||
+                          (highestRole == 'firm owner' &&
+                            highestRole != item.roles)) &&
+                        you != item.id
+                    "
                     color="danger"
                     class="ml-1"
                     @click="deleteUser(item.id)"
@@ -64,6 +76,7 @@ export default {
       totalRows: 0,
       you: null,
       showDismissibleAlert: false,
+      highestRole: "",
     };
   },
   methods: {
@@ -109,6 +122,18 @@ export default {
     },
     getFields() {
       let self = this;
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = [
+          "id",
+          "name",
+          "email",
+          "roles",
+          "updated",
+          "registered",
+          "operate",
+        ];
+        return false;
+      }
       if (localStorage.getItem("user_firm") !== "null") {
         self.fields = [
           "id",
@@ -120,19 +145,21 @@ export default {
           "registered",
           "operate",
         ];
-      } else {
-        self.fields = [
-          "id",
-          "name",
-          "email",
-          "roles",
-          "region",
-          "firm",
-          "updated",
-          "registered",
-          "operate",
-        ];
+        self.highestRole = "firm owner";
+        return false;
       }
+      self.fields = [
+        "id",
+        "name",
+        "email",
+        "roles",
+        "region",
+        "firm",
+        "updated",
+        "registered",
+        "operate",
+      ];
+      self.highestRole = "admin";
     },
     getUsers() {
       let self = this;

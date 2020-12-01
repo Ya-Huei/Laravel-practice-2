@@ -33,7 +33,8 @@ class OtaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  OtaShowValidation  $request
+     * @param  OtaRecord  $ota
      * @return \Illuminate\Http\Response
      */
     public function show(OtaShowValidation $request, OtaRecord $ota)

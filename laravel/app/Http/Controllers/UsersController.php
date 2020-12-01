@@ -13,6 +13,7 @@ use App\Http\Requests\Users\UserDestroyValidation;
 use App\User;
 use App\Models\Location;
 use App\Models\Firm;
+use App\Enums\RoleNames;
 use App\Services\RolesService;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
@@ -42,6 +43,7 @@ class UsersController extends Controller
             ->whereNull('deleted_at')
             ->orderBy('id', 'asc')
             ->ofFirmId(auth()->user()->firm_id)
+            ->ofLocationId(auth()->user()->location_id)
             ->get();
 
         $users = $this->formatUsers($data);
@@ -54,9 +56,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = RolesService::getAllRoles();
-        $locations = LocationsService::getLocationsCategory();
-        $firms = FirmsService::getAllFirmsName();
+        $roles = RolesService::getRolesOptions();
+        $locations = LocationsService::getLocationsOptions();
+        $firms = FirmsService::getFirmsOptions();
         return response()->json(compact('roles', 'locations', 'firms'));
     }
 
@@ -75,8 +77,12 @@ class UsersController extends Controller
         $user->password = bcrypt($validatedData['password']);
         $user->remember_token = Str::random(10);
 
-        if (!empty($validatedData['country'])) {
-            $user->location_id = LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']);
+        if (isset($validatedData['country'])) {
+            if (!empty($validatedData['country'])) {
+                $user->location_id = LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']);
+            }
+        } else {
+            $user->location_id = auth()->user()->location_id;
         }
 
         if (isset($validatedData['firm'])) {
@@ -87,7 +93,15 @@ class UsersController extends Controller
         
         $user->save();
 
-        $user->assignRole($validatedData['roles']);
+        if (isset($validatedData['roles'])) {
+            if (($key = array_search(RoleNames::ADMIN, $validatedData['roles'])) !== false) {
+                unset($validatedData['roles'][$key]);
+            }
+            $user->assignRole($validatedData['roles']);
+        } else {
+            $user->assignRole(auth()->user()->roles()->get());
+        }
+        
 
         return response()->json(['status' => 'success']);
     }
@@ -103,9 +117,9 @@ class UsersController extends Controller
         $user->menuroles = $user->getRoleNames();
         LocationsService::getLocationInfo($user, $user->location_id);
         FirmsService::getFirmInfo($user, $user->firm_id);
-        $roles = RolesService::getAllRoles();
-        $locations = LocationsService::getLocationsCategory();
-        $firms = FirmsService::getAllFirmsName();
+        $roles = RolesService::getRolesOptions();
+        $locations = LocationsService::getLocationsOptions();
+        $firms = FirmsService::getFirmsOptions();
 
         return response()->json(compact('user', 'roles', 'locations', 'firms'));
     }
@@ -124,7 +138,9 @@ class UsersController extends Controller
             $user->password  = bcrypt($validatedData['password']);
         }
 
-        $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
+        if (isset($validatedData['country'])) {
+            $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
+        }
 
         if (isset($validatedData['firm'])) {
             $user->firm_id = FirmsService::getFirmId($validatedData['firm']);

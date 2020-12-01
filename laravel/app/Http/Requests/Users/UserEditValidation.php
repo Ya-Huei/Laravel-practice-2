@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Enums\RoleNames;
 
 class UserEditValidation extends FormRequest
 {
@@ -16,10 +17,16 @@ class UserEditValidation extends FormRequest
         if ($this->user->name == "admin") {
             return false;
         }
-        if (auth()->user()->hasRole('admin')) {
+        if (auth()->user()->hasRole(RoleNames::ADMIN)) {
             return true;
         }
-        if (auth()->user()->firm_id === $this->user->firm_id) {
+        if (auth()->user()->hasRole(RoleNames::FIRM) &&
+            !$this->user->hasRole(RoleNames::FIRM) &&
+            auth()->user()->firm_id === $this->user->firm_id &&
+            $this->user->hasRole(RoleNames::LOCATION)) {
+            return true;
+        }
+        if (auth()->user()->id === $this->user->id) {
             return true;
         }
         

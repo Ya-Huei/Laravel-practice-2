@@ -81,4 +81,11 @@ class User extends Authenticatable implements JWTSubject
             return $query->where('firm_id', $firmId);
         }
     }
+
+    public function scopeOfLocationId($query, $locationId)
+    {
+        if ($locationId !== null) {
+            return $query->where('location_id', $locationId);
+        }
+    }
 }

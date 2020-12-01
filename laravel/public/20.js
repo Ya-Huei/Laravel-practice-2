@@ -131,6 +131,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Users",
@@ -143,7 +155,8 @@ __webpack_require__.r(__webpack_exports__);
       perPage: 6,
       totalRows: 0,
       you: null,
-      showDismissibleAlert: false
+      showDismissibleAlert: false,
+      highestRole: ""
     };
   },
   methods: {
@@ -191,11 +204,19 @@ __webpack_require__.r(__webpack_exports__);
     getFields: function getFields() {
       var self = this;
 
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = ["id", "name", "email", "roles", "updated", "registered", "operate"];
+        return false;
+      }
+
       if (localStorage.getItem("user_firm") !== "null") {
         self.fields = ["id", "name", "email", "roles", "region", "updated", "registered", "operate"];
-      } else {
-        self.fields = ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"];
+        self.highestRole = "firm owner";
+        return false;
       }
+
+      self.fields = ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"];
+      self.highestRole = "admin";
     },
     getUsers: function getUsers() {
       var self = this;
@@ -308,7 +329,11 @@ var render = function() {
                                 _c(
                                   "td",
                                   [
-                                    _vm.adminName != item.name
+                                    _vm.adminName != item.name &&
+                                    (_vm.highestRole == "admin" ||
+                                      (_vm.highestRole == "firm owner" &&
+                                        _vm.highestRole != item.roles) ||
+                                      _vm.you == item.id)
                                       ? _c(
                                           "CButton",
                                           {
@@ -324,6 +349,9 @@ var render = function() {
                                       : _vm._e(),
                                     _vm._v(" "),
                                     _vm.adminName != item.name &&
+                                    (_vm.highestRole == "admin" ||
+                                      (_vm.highestRole == "firm owner" &&
+                                        _vm.highestRole != item.roles)) &&
                                     _vm.you != item.id
                                       ? _c(
                                           "CButton",

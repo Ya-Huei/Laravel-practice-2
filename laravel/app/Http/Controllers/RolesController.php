@@ -19,7 +19,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = RolesService::getAllRoles();
+        $roles = Role::select('id', 'name', 'updated_at as updated', 'created_at as registered')->get();
         return response()->json($roles);
     }
 

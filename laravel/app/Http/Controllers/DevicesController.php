@@ -43,9 +43,9 @@ class DevicesController extends Controller
         LocationsService::getLocationInfo($device, $device->location_id);
         FirmsService::getFirmInfo($device, $device->firm_id);
         StatusesService::getStatusInfo($device, $device->status_id);
-        $locations = LocationsService::getLocationsCategory();
-        $firms = FirmsService::getAllFirmsName();
-        $status = StatusesService::getStatusesNameByType(StatusTypes::DEVICE);
+        $locations = LocationsService::getLocationsOptions();
+        $firms = FirmsService::getFirmsOptions();
+        $status = StatusesService::getStatusesOptions(StatusTypes::DEVICE);
         return response()->json(compact('device', 'locations', 'firms', 'status'));
     }
 

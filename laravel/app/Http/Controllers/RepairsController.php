@@ -35,7 +35,7 @@ class RepairsController extends Controller
     {
         $device = $repair->device()->first();
         StatusesService::getStatusInfo($repair, $repair->status_id);
-        $status = StatusesService::getStatusesNameByType(StatusTypes::DEVICE);
+        $status = StatusesService::getStatusesOptions(StatusTypes::DEVICE);
         return response()->json(compact('repair', 'device', 'status'));
     }
 
