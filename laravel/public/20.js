@@ -131,19 +131,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Users",
   data: function data() {
     return {
       items: [],
-      fields: ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"],
+      fields: [],
       adminName: "admin",
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
       you: null,
-      showDismissibleAlert: false
+      showDismissibleAlert: false,
+      highestRole: ""
     };
   },
   methods: {
@@ -167,10 +180,6 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/" + id + "?token=" + localStorage.getItem("api_token"), {
         _method: "DELETE"
       }).then(function (response) {
-        if (response.data.status == "403") {
-          return;
-        }
-
         if (response.data.status == "success") {
           self.message = "Successfully deleted user.";
         } else {
@@ -192,9 +201,27 @@ __webpack_require__.r(__webpack_exports__);
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    getFields: function getFields() {
+      var self = this;
+
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = ["id", "name", "email", "roles", "updated", "registered", "operate"];
+        return false;
+      }
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = ["id", "name", "email", "roles", "region", "updated", "registered", "operate"];
+        self.highestRole = "firm owner";
+        return false;
+      }
+
+      self.fields = ["id", "name", "email", "roles", "region", "firm", "updated", "registered", "operate"];
+      self.highestRole = "admin";
+    },
     getUsers: function getUsers() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.getFields();
         self.items = response.data.users;
         self.you = response.data.you;
       })["catch"](function (error) {
@@ -302,7 +329,11 @@ var render = function() {
                                 _c(
                                   "td",
                                   [
-                                    _vm.adminName != item.name
+                                    _vm.adminName != item.name &&
+                                    (_vm.highestRole == "admin" ||
+                                      (_vm.highestRole == "firm owner" &&
+                                        _vm.highestRole != item.roles) ||
+                                      _vm.you == item.id)
                                       ? _c(
                                           "CButton",
                                           {
@@ -318,6 +349,9 @@ var render = function() {
                                       : _vm._e(),
                                     _vm._v(" "),
                                     _vm.adminName != item.name &&
+                                    (_vm.highestRole == "admin" ||
+                                      (_vm.highestRole == "firm owner" &&
+                                        _vm.highestRole != item.roles)) &&
                                     _vm.you != item.id
                                       ? _c(
                                           "CButton",

@@ -124,13 +124,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Devices",
   data: function data() {
     return {
       items: [],
-      fields: ["serial_no", "region", "address", "firm", "status", "enabled", "registered", "updated", "operate"],
+      fields: [],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
@@ -165,9 +168,25 @@ __webpack_require__.r(__webpack_exports__);
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    getFields: function getFields() {
+      var self = this;
+
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = ["serial_no", "address", "status", "enabled", "registered", "updated", "operate"];
+        return false;
+      }
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = ["serial_no", "region", "address", "status", "enabled", "registered", "updated", "operate"];
+        return false;
+      }
+
+      self.fields = ["serial_no", "region", "address", "firm", "status", "enabled", "registered", "updated", "operate"];
+    },
     getDevices: function getDevices() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.getFields();
         self.items = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -269,18 +288,20 @@ var render = function() {
                                       [_vm._v("Edit")]
                                     ),
                                     _vm._v(" "),
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "danger" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.repairDevice(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Repair")]
-                                    )
+                                    item.status.name != "Repair"
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            attrs: { color: "danger" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.repairDevice(item.id)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Repair")]
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )

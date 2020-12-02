@@ -27,13 +27,25 @@
               <template #operate="{item}">
                 <td>
                   <CButton
-                    v-if="adminName != item.name"
+                    v-if="
+                      adminName != item.name &&
+                        (highestRole == 'admin' ||
+                          (highestRole == 'firm owner' &&
+                            highestRole != item.roles) ||
+                          you == item.id)
+                    "
                     color="primary"
                     @click="editUser(item.id)"
                     >Edit</CButton
                   >
                   <CButton
-                    v-if="adminName != item.name && you != item.id"
+                    v-if="
+                      adminName != item.name &&
+                        (highestRole == 'admin' ||
+                          (highestRole == 'firm owner' &&
+                            highestRole != item.roles)) &&
+                        you != item.id
+                    "
                     color="danger"
                     class="ml-1"
                     @click="deleteUser(item.id)"
@@ -57,23 +69,14 @@ export default {
   data: () => {
     return {
       items: [],
-      fields: [
-        "id",
-        "name",
-        "email",
-        "roles",
-        "region",
-        "firm",
-        "updated",
-        "registered",
-        "operate",
-      ],
+      fields: [],
       adminName: "admin",
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
       you: null,
       showDismissibleAlert: false,
+      highestRole: "",
     };
   },
   methods: {
@@ -98,9 +101,6 @@ export default {
           }
         )
         .then(function(response) {
-          if (response.data.status == "403") {
-            return;
-          }
           if (response.data.status == "success") {
             self.message = "Successfully deleted user.";
           } else {
@@ -120,11 +120,53 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    getFields() {
+      let self = this;
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = [
+          "id",
+          "name",
+          "email",
+          "roles",
+          "updated",
+          "registered",
+          "operate",
+        ];
+        return false;
+      }
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = [
+          "id",
+          "name",
+          "email",
+          "roles",
+          "region",
+          "updated",
+          "registered",
+          "operate",
+        ];
+        self.highestRole = "firm owner";
+        return false;
+      }
+      self.fields = [
+        "id",
+        "name",
+        "email",
+        "roles",
+        "region",
+        "firm",
+        "updated",
+        "registered",
+        "operate",
+      ];
+      self.highestRole = "admin";
+    },
     getUsers() {
       let self = this;
       axios
         .get("/api/users?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
+          self.getFields();
           self.items = response.data.users;
           self.you = response.data.you;
         })

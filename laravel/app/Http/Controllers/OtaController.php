@@ -7,12 +7,15 @@ use Illuminate\Support\Facades\Log;
 use App\Models\OtaRecord;
 use App\Models\Firmware;
 use App\Models\Recipe;
+use App\Models\Device;
 use App\Enums\Statuses;
 use App\Enums\OtaTypes;
+use App\Enums\RoleNames;
 use App\Services\DevicesService;
 use App\Services\FirmwareService;
 use App\Services\RecipesService;
-use App\Http\Requests\DeviceUpdateOtaFormValidation;
+use App\Http\Requests\Otas\OtaShowValidation;
+use App\Http\Requests\Otas\DeviceUpdateOtaFormValidation;
 
 class OtaController extends Controller
 {
@@ -23,79 +26,27 @@ class OtaController extends Controller
      */
     public function index()
     {
-        $data = OtaRecord::with('device', 'status')->orderBy('id', 'desc')->get();
+        $data = OtaRecord::with('device', 'status')->orderBy('id', 'desc')->ofFirmId(auth()->user()->firm_id)->ofLocationId(auth()->user()->location_id)->get();
         $ota = $this->formatOta($data);
         return response()->json($ota);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  OtaShowValidation  $request
+     * @param  OtaRecord  $ota
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(OtaShowValidation $request, OtaRecord $ota)
     {
-        $ota = OtaRecord::with('device', 'status')->where('id', $id)->first();
+        $ota->status = $ota->status;
+        $ota->device = $ota->device;
         $this->getTypeIdDetail($ota);
         $ota->updated = isset($ota->updated_at) ? $ota->updated_at->format('Y-m-d H:i:s') : "";
         $ota->registered = isset($ota->created_at) ? $ota->created_at->format('Y-m-d H:i:s') : "";
+        
         return response()->json($ota);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     private function formatOta($data)
@@ -139,12 +90,16 @@ class OtaController extends Controller
     public function saveOtaUpdate(DeviceUpdateOtaFormValidation $request)
     {
         $type = OtaRecord::getDefineTypeKey($request->type);
-        $type_id = $this->getTypeId($request->type, $request->name);
+        $typeId = $this->getTypeId($request->type, $request->name);
         foreach ($request->devices as $key => $value) {
+            $deviceInfo = Device::where('id', $value)->first();
+            if (!$this->checkAuth($deviceInfo)) {
+                continue;
+            }
             $record = new OtaRecord();
             $record->device_id = $value;
             $record->type = $type;
-            $record->type_id = $type_id;
+            $record->type_id = $typeId;
             $record->status_id = Statuses::UPDATING;
             $record->save();
         }
@@ -163,5 +118,22 @@ class OtaController extends Controller
                 break;
         }
         return $result_id;
+    }
+
+    private function checkAuth($device)
+    {
+        if (auth()->user()->hasRole(RoleNames::ADMIN)) {
+            return true;
+        }
+        if (auth()->user()->hasRole(RoleNames::FIRM) &&
+            auth()->user()->firm_id === $device->firm_id) {
+            return true;
+        }
+        if (auth()->user()->hasRole(RoleNames::LOCATION) &&
+            auth()->user()->firm_id === $device->firm_id &&
+            auth()->user()->location_id === $device->location_id) {
+            return true;
+        }
+        return false;
     }
 }

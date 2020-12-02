@@ -99,18 +99,6 @@ export default {
       }
     },
   },
-  beforeCreate: function() {
-    let self = this;
-    axios
-      .get("/api/menu/getAllMenu?token=" + localStorage.getItem("api_token"))
-      .then(function(response) {
-        self.optionPermissions = response.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-        self.$router.push({ path: "/login" });
-      });
-  },
   mounted: function() {
     let self = this;
     axios
@@ -121,12 +109,9 @@ export default {
           localStorage.getItem("api_token")
       )
       .then(function(response) {
-        if (response.data.status == "403") {
-          self.$router.push({ path: "/roles" });
-          return;
-        }
         self.role.name = response.data.name;
-        self.role.permissions = response.data.permissions;
+        self.role.permissions = response.data.user_permissions;
+        self.optionPermissions = response.data.permissions;
       })
       .catch(function(error) {
         console.log(error);

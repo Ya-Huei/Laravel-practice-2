@@ -178,7 +178,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       device: {
-        id: "",
         serial_no: ""
       },
       reason: "",
@@ -201,7 +200,6 @@ __webpack_require__.r(__webpack_exports__);
       self.isRepairedDevice = false;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "/saveRepair?token=" + localStorage.getItem("api_token"), {
         _method: "POST",
-        device_id: self.device.id,
         reason: self.reason
       }).then(function (response) {
         self.goBack();
@@ -214,13 +212,6 @@ __webpack_require__.r(__webpack_exports__);
     getInfo: function getInfo() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/repair?token=" + localStorage.getItem("api_token")).then(function (response) {
-        if (response.data.status == "403") {
-          self.$router.push({
-            path: "/devices"
-          });
-          return;
-        }
-
         self.setDefaultData(response);
       })["catch"](function (error) {
         console.log(error);
@@ -231,7 +222,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     setDefaultData: function setDefaultData(response) {
       var self = this;
-      self.device.id = response.data.id;
       self.device.serial_no = response.data.serial_no;
     }
   },

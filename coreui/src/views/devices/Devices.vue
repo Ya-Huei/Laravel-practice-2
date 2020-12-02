@@ -29,7 +29,10 @@
                   <CButton color="primary" @click="editDevice(item.id)"
                     >Edit</CButton
                   >
-                  <CButton color="danger" @click="repairDevice(item.id)"
+                  <CButton
+                    color="danger"
+                    @click="repairDevice(item.id)"
+                    v-if="item.status.name != 'Repair'"
                     >Repair</CButton
                   >
                 </td>
@@ -50,17 +53,7 @@ export default {
   data: () => {
     return {
       items: [],
-      fields: [
-        "serial_no",
-        "region",
-        "address",
-        "firm",
-        "status",
-        "enabled",
-        "registered",
-        "updated",
-        "operate",
-      ],
+      fields: [],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
@@ -71,7 +64,7 @@ export default {
     editLink(id) {
       return `devices/${id.toString()}/edit`;
     },
-    repairLink(id){
+    repairLink(id) {
       return `devices/${id.toString()}/repair`;
     },
     repairDevice(id) {
@@ -88,11 +81,53 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
+    getFields() {
+      let self = this;
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = [
+          "serial_no",
+          "address",
+          "status",
+          "enabled",
+          "registered",
+          "updated",
+          "operate",
+        ];
+        return false;
+      }
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = [
+          "serial_no",
+          "region",
+          "address",
+          "status",
+          "enabled",
+          "registered",
+          "updated",
+          "operate",
+        ];
+        return false;
+      }
+
+      self.fields = [
+        "serial_no",
+        "region",
+        "address",
+        "firm",
+        "status",
+        "enabled",
+        "registered",
+        "updated",
+        "operate",
+      ];
+    },
     getDevices() {
       let self = this;
       axios
         .get("/api/devices?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
+          self.getFields();
           self.items = response.data;
         })
         .catch(function(error) {

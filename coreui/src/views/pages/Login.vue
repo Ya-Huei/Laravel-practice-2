@@ -67,6 +67,9 @@ export default {
           self.email = "";
           self.password = "";
           localStorage.setItem("api_token", response.data.access_token);
+          localStorage.setItem("user_name", response.data.user_name);
+          localStorage.setItem("user_firm", response.data.user_firm);
+          localStorage.setItem("user_location", response.data.user_location);
           self.$router.push({ path: response.data.default_page });
         })
         .catch(function(error) {

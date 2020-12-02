@@ -42,9 +42,9 @@ export default {
       let self = this;
       axios
         .get(
-          "/api/ota/" +
+          "/api/otas/" +
             self.$route.params.id +
-            "show?token=" +
+            "?token=" +
             localStorage.getItem("api_token")
         )
         .then(function(response) {
@@ -52,7 +52,7 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
-          //   self.$router.push({ path: "/login" });
+          self.$router.push({ path: "/login" });
         });
     },
   },

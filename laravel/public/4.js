@@ -366,6 +366,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -401,7 +411,10 @@ __webpack_require__.r(__webpack_exports__);
       regionOptions: [],
       cityOptions: [],
       firmOptions: [],
-      locations: []
+      locations: [],
+      showRoleSelection: false,
+      showFirmSelection: false,
+      showRegionSelection: false
     };
   },
   methods: {
@@ -450,16 +463,12 @@ __webpack_require__.r(__webpack_exports__);
     getInfo: function getInfo() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/create?token=" + localStorage.getItem("api_token")).then(function (response) {
-        if (response.data.status == "403") {
-          self.$router.push({
-            path: "/users"
-          });
-          return;
-        }
-
         self.setDefaultData(response);
       })["catch"](function (error) {
         console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
       });
     },
     setDefaultData: function setDefaultData(response) {
@@ -468,6 +477,15 @@ __webpack_require__.r(__webpack_exports__);
       self.locations = response.data.locations;
       self.countryOptions = self.locations.country;
       self.firmOptions = response.data.firms;
+
+      if (localStorage.getItem("user_firm") === "null") {
+        self.showFirmSelection = true;
+      }
+
+      if (localStorage.getItem("user_location") === "null") {
+        self.showRoleSelection = true;
+        self.showRegionSelection = true;
+      }
     }
   },
   mounted: function mounted() {
@@ -597,34 +615,40 @@ var render = function() {
                         { staticClass: "form-row" },
                         [
                           _c("CCol", { attrs: { col: "3" } }, [
-                            _c("label", { staticClass: "col-form-label" }, [
-                              _vm._v(" Region ")
-                            ])
+                            _vm.showRegionSelection
+                              ? _c("label", { staticClass: "col-form-label" }, [
+                                  _vm._v(
+                                    "\n                Region\n              "
+                                  )
+                                ])
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c(
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _c("CSelect", {
-                                attrs: {
-                                  options: _vm.countryOptions,
-                                  value: _vm.location.country,
-                                  description: "Select your region"
-                                },
-                                on: {
-                                  "update:value": function($event) {
-                                    return _vm.$set(
-                                      _vm.location,
-                                      "country",
-                                      $event
-                                    )
-                                  },
-                                  change: function($event) {
-                                    return _vm.loadRegions()
-                                  }
-                                }
-                              })
+                              _vm.showRegionSelection
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.countryOptions,
+                                      value: _vm.location.country,
+                                      description: "Select your region"
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.location,
+                                          "country",
+                                          $event
+                                        )
+                                      },
+                                      change: function($event) {
+                                        return _vm.loadRegions()
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
                             ],
                             1
                           ),
@@ -633,7 +657,7 @@ var render = function() {
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _vm.showRegion
+                              _vm.showRegionSelection && _vm.showRegion
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.regionOptions,
@@ -661,7 +685,7 @@ var render = function() {
                             "CCol",
                             { attrs: { col: "3" } },
                             [
-                              _vm.showCity
+                              _vm.showRegionSelection && _vm.showCity
                                 ? _c("CSelect", {
                                     attrs: {
                                       options: _vm.cityOptions,
@@ -685,52 +709,58 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("CSelect", {
-                        attrs: {
-                          label: "Firm",
-                          options: _vm.firmOptions,
-                          value: _vm.user.firm,
-                          horizontal: "",
-                          description: "Select your firm"
-                        },
-                        on: {
-                          "update:value": function($event) {
-                            return _vm.$set(_vm.user, "firm", $event)
-                          }
-                        }
-                      }),
+                      _vm.showFirmSelection
+                        ? _c("CSelect", {
+                            attrs: {
+                              label: "Firm",
+                              options: _vm.firmOptions,
+                              value: _vm.user.firm,
+                              horizontal: "",
+                              description: "Select your firm"
+                            },
+                            on: {
+                              "update:value": function($event) {
+                                return _vm.$set(_vm.user, "firm", $event)
+                              }
+                            }
+                          })
+                        : _vm._e(),
                       _vm._v(" "),
                       _c(
                         "div",
                         { staticClass: "form-group form-row" },
                         [
-                          _c(
-                            "CCol",
-                            {
-                              staticClass: "col-form-label",
-                              attrs: { tag: "label", sm: "3" }
-                            },
-                            [_vm._v("\n              Roles\n            ")]
-                          ),
+                          _vm.showRoleSelection
+                            ? _c(
+                                "CCol",
+                                {
+                                  staticClass: "col-form-label",
+                                  attrs: { tag: "label", sm: "3" }
+                                },
+                                [_vm._v("\n              Roles\n            ")]
+                              )
+                            : _vm._e(),
                           _vm._v(" "),
                           _c(
                             "CCol",
                             { attrs: { sm: "9" } },
                             _vm._l(_vm.roleOptions, function(optionRole) {
-                              return _c("CInputCheckbox", {
-                                key: optionRole.name,
-                                attrs: {
-                                  label: optionRole.name,
-                                  name: "selectRoles",
-                                  custom: true,
-                                  inline: true
-                                },
-                                on: {
-                                  "update:checked": function($event) {
-                                    return _vm.selectRoles(optionRole.name)
-                                  }
-                                }
-                              })
+                              return _vm.showRoleSelection
+                                ? _c("CInputCheckbox", {
+                                    key: optionRole.name,
+                                    attrs: {
+                                      label: optionRole.name,
+                                      name: "selectRoles",
+                                      custom: true,
+                                      inline: true
+                                    },
+                                    on: {
+                                      "update:checked": function($event) {
+                                        return _vm.selectRoles(optionRole.name)
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
                             }),
                             1
                           )

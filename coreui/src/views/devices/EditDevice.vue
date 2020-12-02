@@ -20,7 +20,9 @@
             />
             <div class="form-row">
               <CCol col="3">
-                <label class="col-form-label"> Region </label>
+                <label class="col-form-label" v-if="showRegionSelection">
+                  Region
+                </label>
               </CCol>
               <CCol col="3">
                 <CSelect
@@ -28,13 +30,14 @@
                   :value.sync="location.country"
                   @change="loadRegions()"
                   description="Select your region"
+                  v-if="showRegionSelection"
                 />
               </CCol>
               <CCol col="3">
                 <CSelect
                   :options="regionOptions"
                   :value.sync="location.region"
-                  v-if="showRegion"
+                  v-if="showRegionSelection && showRegion"
                   @change="loadCities()"
                 />
               </CCol>
@@ -42,7 +45,7 @@
                 <CSelect
                   :options="cityOptions"
                   :value.sync="location.city"
-                  v-if="showCity"
+                  v-if="showRegionSelection && showCity"
                 />
               </CCol>
             </div>
@@ -54,6 +57,7 @@
               :value.sync="device.firm"
               horizontal
               description="Select your firm"
+              v-if="showFirmSelection"
             />
             <CSelect
               label="Status"
@@ -65,7 +69,11 @@
           </CForm>
         </CCardBody>
         <CCardFooter class="text-right">
-          <CButton :disabled="!isEditedDevice" color="primary" @click="update()">
+          <CButton
+            :disabled="!isEditedDevice"
+            color="primary"
+            @click="update()"
+          >
             <span v-if="isEditedDevice">Save</span>
             <CSpinner v-if="!isEditedDevice" color="info" size="sm" />
           </CButton>
@@ -109,6 +117,8 @@ export default {
       firmOptions: [],
       statusOptions: [],
       locations: [],
+      showRegionSelection: false,
+      showFirmSelection: false,
     };
   },
   methods: {
@@ -137,7 +147,7 @@ export default {
             country: self.location.country,
             region: self.location.region,
             city: self.location.city,
-            address:self.device.address,
+            address: self.device.address,
             firm: self.device.firm,
             status: self.device.status,
           }
@@ -189,6 +199,13 @@ export default {
       }
       self.device.firm = response.data.device.firm;
       self.device.status = response.data.device.status;
+      if (localStorage.getItem("user_firm") === "null") {
+        self.showFirmSelection = true;
+      }
+      if (localStorage.getItem("user_location") === "null") {
+        self.showRoleSelection = true;
+        self.showRegionSelection = true;
+      }
     },
   },
   mounted: function() {

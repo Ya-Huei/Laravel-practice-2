@@ -8,7 +8,7 @@ class DevicesService
 {
     public static function getDeviceInfo()
     {
-        $data = Device::with('location', 'firm', 'status')->orderBy('id', 'asc')->get();
+        $data = Device::with('location', 'firm', 'status')->orderBy('id', 'asc')->ofFirmId(auth()->user()->firm_id)->ofLocationId(auth()->user()->location_id)->get();
         $devices = self::formatDevices($data);
         return $devices;
     }

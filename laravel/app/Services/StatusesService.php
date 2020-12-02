@@ -6,7 +6,7 @@ use App\Models\Status;
 
 class StatusesService
 {
-    public static function getStatusesNameByType($type)
+    public static function getStatusesOptions($type)
     {
         $result = [];
         $defaultOption = "";

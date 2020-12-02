@@ -268,29 +268,12 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  beforeCreate: function beforeCreate() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/menu/getAllMenu?token=" + localStorage.getItem("api_token")).then(function (response) {
-      self.optionPermissions = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: "/login"
-      });
-    });
-  },
   mounted: function mounted() {
     var self = this;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/roles/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
-      if (response.data.status == "403") {
-        self.$router.push({
-          path: "/roles"
-        });
-        return;
-      }
-
       self.role.name = response.data.name;
-      self.role.permissions = response.data.permissions;
+      self.role.permissions = response.data.user_permissions;
+      self.optionPermissions = response.data.permissions;
     })["catch"](function (error) {
       console.log(error);
       self.$router.push({

@@ -266,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      fields: ["operate", "serial_no", "region", "address", "firm", "status"],
+      fields: [],
       messages: [],
       horizontal: {
         label: "col-4",
@@ -334,11 +334,13 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var self = this;
       self.isUpdateOta = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/ota/saveOtaUpdate?token=" + localStorage.getItem("api_token"), {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/otas/saveOtaUpdate?token=" + localStorage.getItem("api_token"), {
         _method: "POST",
         type: self.ota,
         name: self.detail,
-        devices: self.select
+        devices: self.select.sort(function (a, b) {
+          return a - b;
+        })
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
@@ -347,9 +349,25 @@ __webpack_require__.r(__webpack_exports__);
         self.showMessage = true;
       });
     },
+    getFields: function getFields() {
+      var self = this;
+
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = ["operate", "serial_no", "address", "status"];
+        return false;
+      }
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = ["operate", "serial_no", "region", "address", "status"];
+        return false;
+      }
+
+      self.fields = ["operate", "serial_no", "region", "address", "firm", "status"];
+    },
     getInfo: function getInfo() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/ota/getOtaUpdateInfo?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/otas/getOtaUpdateInfo?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.getFields();
         self.items = response.data.devices;
         self.firmware = response.data.firmware;
         self.recipe = response.data.recipe;

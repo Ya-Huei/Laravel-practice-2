@@ -6,11 +6,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Http\Requests\UserStoreFormValidation;
-use App\Http\Requests\UserUpdateFormValidation;
+use App\Http\Requests\Users\UserStoreFormValidation;
+use App\Http\Requests\Users\UserUpdateFormValidation;
+use App\Http\Requests\Users\UserEditValidation;
+use App\Http\Requests\Users\UserDestroyValidation;
 use App\User;
 use App\Models\Location;
 use App\Models\Firm;
+use App\Enums\RoleNames;
 use App\Services\RolesService;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
@@ -39,6 +42,8 @@ class UsersController extends Controller
         $data = User::with('roles:name', 'location', 'firm:id,name')
             ->whereNull('deleted_at')
             ->orderBy('id', 'asc')
+            ->ofFirmId(auth()->user()->firm_id)
+            ->ofLocationId(auth()->user()->location_id)
             ->get();
 
         $users = $this->formatUsers($data);
@@ -51,9 +56,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = RolesService::getAllRoles();
-        $locations = LocationsService::getLocationsCategory();
-        $firms = FirmsService::getAllFirmsName();
+        $roles = RolesService::getRolesOptions();
+        $locations = LocationsService::getLocationsOptions();
+        $firms = FirmsService::getFirmsOptions();
         return response()->json(compact('roles', 'locations', 'firms'));
     }
 
@@ -64,27 +69,38 @@ class UsersController extends Controller
      */
     public function store(UserStoreFormValidation $request)
     {
+        $validatedData = $request->validated();
+
         $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = bcrypt($validatedData['password']);
         $user->remember_token = Str::random(10);
 
-        $country = $request->input('country');
-        $region = $request->input('region');
-        $city = $request->input('city');
-        if (!empty($country)) {
-            $user->location_id = LocationsService::getLocationId($country, $region, $city);
+        if (array_key_exists("country", $validatedData)) {
+            $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
+        } else {
+            $user->location_id = auth()->user()->location_id;
         }
 
-        $firmName = $request->input('firm');
-        if (!empty($firmName)) {
-            $user->firm_id = FirmsService::getFirmId($firmName);
+        if (array_key_exists("firm", $validatedData)) {
+            $user->firm_id = !empty($validatedData['firm']) ? FirmsService::getFirmId($validatedData['firm']) : null;
+        } else {
+            $user->firm_id = auth()->user()->firm_id;
         }
         
         $user->save();
-        $roles = $request->input('roles');
-        $user->assignRole($roles);
+
+        if (array_key_exists("roles", $validatedData)) {
+            if (!empty($validatedData['roles'])) {
+                if (($key = array_search(RoleNames::ADMIN, $validatedData['roles'])) !== false) {
+                    unset($validatedData['roles'][$key]);
+                }
+                $user->assignRole($validatedData['roles']);
+            }
+        } else {
+            $user->assignRole(auth()->user()->roles()->get());
+        }
 
         return response()->json(['status' => 'success']);
     }
@@ -95,17 +111,14 @@ class UsersController extends Controller
      * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(UserEditValidation $request, User $user)
     {
-        if ($user->name == "admin") {
-            return response()->json(['status' => '403']);
-        }
         $user->menuroles = $user->getRoleNames();
         LocationsService::getLocationInfo($user, $user->location_id);
         FirmsService::getFirmInfo($user, $user->firm_id);
-        $roles = RolesService::getAllRoles();
-        $locations = LocationsService::getLocationsCategory();
-        $firms = FirmsService::getAllFirmsName();
+        $roles = RolesService::getRolesOptions();
+        $locations = LocationsService::getLocationsOptions();
+        $firms = FirmsService::getFirmsOptions();
 
         return response()->json(compact('user', 'roles', 'locations', 'firms'));
     }
@@ -119,23 +132,21 @@ class UsersController extends Controller
      */
     public function update(UserUpdateFormValidation $request, User $user)
     {
-        $password = $request->input('password');
-        if (isset($password) && $password != "") {
-            $user->password  = bcrypt($password);
+        $validatedData = $request->validated();
+        if (isset($validatedData['password'])) {
+            $user->password  = bcrypt($validatedData['password']);
         }
 
-        $country = $request->input('country');
-        $region = $request->input('region');
-        $city = $request->input('city');
-        $user->location_id = !empty($country) ? LocationsService::getLocationId($country, $region, $city) : null;
+        if (array_key_exists("country", $validatedData)) {
+            $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
+        }
 
-        $firmName = $request->input('firm');
-        $user->firm_id = !empty($firmName) ? FirmsService::getFirmId($firmName) : null;
+        if (array_key_exists("firm", $validatedData)) {
+            $user->firm_id = !empty($validatedData['firm']) ? FirmsService::getFirmId($validatedData['firm']) : null;
+        }
 
         $user->save();
-        
-        $roles = $request->input('roles');
-        $user->syncRoles($roles);
+        $user->syncRoles($validatedData['roles']);
 
         return response()->json(['status' => 'success']);
     }
@@ -146,12 +157,8 @@ class UsersController extends Controller
      * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(UserDestroyValidation $request, User $user)
     {
-        if ($user->name == "admin") {
-            return response()->json(['status' => '403']);
-        }
-
         $user->roles()->detach();
         $user->delete();
         return response()->json(['status' => 'success']);

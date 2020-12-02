@@ -19,4 +19,15 @@ class UserPermissionService
             ->orderBy('permissions.sequence', 'asc')->get();
         return $permissions;
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function getAllPermission()
+    {
+        $permissions = Permission::orderBy('sequence', 'asc')->get();
+        return $permissions;
+    }
 }

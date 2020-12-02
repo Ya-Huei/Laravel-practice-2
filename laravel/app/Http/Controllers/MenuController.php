@@ -31,16 +31,4 @@ class MenuController extends Controller
         $rfd = new RenderFromDatabaseData;
         return response()->json($rfd->render($permissions));
     }
-
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getAllMenu()
-    {
-        $permissions = Permission::select('permissions.*')->orderBy('permissions.sequence', 'asc')->get();
-        return response()->json($permissions);
-    }
 }

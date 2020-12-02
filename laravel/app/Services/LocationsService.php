@@ -6,7 +6,7 @@ use App\Models\Location;
 
 class LocationsService
 {
-    public static function getLocationsCategory()
+    public static function getLocationsOptions()
     {
         $result = [];
         $result['country'] = [];

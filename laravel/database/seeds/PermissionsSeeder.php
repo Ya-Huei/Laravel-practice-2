@@ -58,13 +58,13 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
-        $this->insertLink('admin', 'Users', '/users');
-        $this->insertLink('admin', 'Roles', '/roles');
-        $this->insertLink('admin', 'Devices', '/devices');
-        $this->insertLink('admin', 'Repairs', '/repairs');
-        $this->insertLink('admin', 'OTA', '/ota');
-        $this->insertLink('admin', 'Recipes', '/recipes');
-        $this->insertLink('admin', 'Firmware', '/firmware');
+        $this->insertLink('admin,firm owner,location owner', 'Users', '/users');
+        $this->insertLink('admin,firm owner,location owner', 'Roles', '/roles');
+        $this->insertLink('admin,firm owner,location owner', 'Devices', '/devices');
+        $this->insertLink('admin,firm owner,location owner', 'Repairs', '/repairs');
+        $this->insertLink('admin,firm owner,location owner', 'OTA', '/otas');
+        $this->insertLink('admin,firm owner,location owner', 'Recipes', '/recipes');
+        $this->insertLink('admin,firm owner,location owner', 'Firmware', '/firmware');
         $this->joinAllByTransaction();
     }
 }
