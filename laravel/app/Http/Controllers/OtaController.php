@@ -10,6 +10,7 @@ use App\Models\Recipe;
 use App\Models\Device;
 use App\Enums\Statuses;
 use App\Enums\OtaTypes;
+use App\Enums\RoleNames;
 use App\Services\DevicesService;
 use App\Services\FirmwareService;
 use App\Services\RecipesService;
@@ -25,7 +26,7 @@ class OtaController extends Controller
      */
     public function index()
     {
-        $data = OtaRecord::with('device', 'status')->orderBy('id', 'desc')->ofFirmId(auth()->user()->firm_id)->get();
+        $data = OtaRecord::with('device', 'status')->orderBy('id', 'desc')->ofFirmId(auth()->user()->firm_id)->ofLocationId(auth()->user()->location_id)->get();
         $ota = $this->formatOta($data);
         return response()->json($ota);
     }
@@ -89,16 +90,16 @@ class OtaController extends Controller
     public function saveOtaUpdate(DeviceUpdateOtaFormValidation $request)
     {
         $type = OtaRecord::getDefineTypeKey($request->type);
-        $type_id = $this->getTypeId($request->type, $request->name);
+        $typeId = $this->getTypeId($request->type, $request->name);
         foreach ($request->devices as $key => $value) {
-            $firm_id = Device::where('id', $value)->first()->firm_id;
-            if ($firm_id !== auth()->user()->firm_id) {
+            $deviceInfo = Device::where('id', $value)->first();
+            if (!$this->checkAuth($deviceInfo)) {
                 continue;
             }
             $record = new OtaRecord();
             $record->device_id = $value;
             $record->type = $type;
-            $record->type_id = $type_id;
+            $record->type_id = $typeId;
             $record->status_id = Statuses::UPDATING;
             $record->save();
         }
@@ -117,5 +118,22 @@ class OtaController extends Controller
                 break;
         }
         return $result_id;
+    }
+
+    private function checkAuth($device)
+    {
+        if (auth()->user()->hasRole(RoleNames::ADMIN)) {
+            return true;
+        }
+        if (auth()->user()->hasRole(RoleNames::FIRM) &&
+            auth()->user()->firm_id === $device->firm_id) {
+            return true;
+        }
+        if (auth()->user()->hasRole(RoleNames::LOCATION) &&
+            auth()->user()->firm_id === $device->firm_id &&
+            auth()->user()->location_id === $device->location_id) {
+            return true;
+        }
+        return false;
     }
 }

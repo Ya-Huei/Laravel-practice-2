@@ -162,7 +162,9 @@ export default {
             _method: "POST",
             type: self.ota,
             name: self.detail,
-            devices: self.select,
+            devices: self.select.sort(function(a, b) {
+              return a - b;
+            }),
           }
         )
         .then(function(response) {
@@ -176,18 +178,22 @@ export default {
     },
     getFields() {
       let self = this;
+      if (localStorage.getItem("user_location") !== "null") {
+        self.fields = ["operate", "serial_no", "address", "status"];
+        return false;
+      }
       if (localStorage.getItem("user_firm") !== "null") {
         self.fields = ["operate", "serial_no", "region", "address", "status"];
-      } else {
-        self.fields = [
-          "operate",
-          "serial_no",
-          "region",
-          "address",
-          "firm",
-          "status",
-        ];
+        return false;
       }
+      self.fields = [
+        "operate",
+        "serial_no",
+        "region",
+        "address",
+        "firm",
+        "status",
+      ];
     },
     getInfo() {
       let self = this;
