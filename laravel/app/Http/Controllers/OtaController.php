@@ -16,6 +16,8 @@ use App\Services\FirmwareService;
 use App\Services\RecipesService;
 use App\Http\Requests\Otas\OtaShowValidation;
 use App\Http\Requests\Otas\DeviceUpdateOtaFormValidation;
+use App\Http\Resources\OtaRecord as OtaRecordResource;
+use App\Http\Resources\OtaRecordCollection;
 
 class OtaController extends Controller
 {
@@ -27,7 +29,7 @@ class OtaController extends Controller
     public function index()
     {
         $data = OtaRecord::with('device', 'status')->orderBy('id', 'desc')->ofFirmId(auth()->user()->firm_id)->ofLocationId(auth()->user()->location_id)->get();
-        $ota = $this->formatOta($data);
+        $ota = new OtaRecordCollection($data);
         return response()->json($ota);
     }
 
@@ -43,28 +45,9 @@ class OtaController extends Controller
         $ota->status = $ota->status;
         $ota->device = $ota->device;
         $this->getTypeIdDetail($ota);
-        $ota->updated = isset($ota->updated_at) ? $ota->updated_at->format('Y-m-d H:i:s') : "";
-        $ota->registered = isset($ota->created_at) ? $ota->created_at->format('Y-m-d H:i:s') : "";
-        
+        $ota->updated = $ota->updated_at->format('Y-m-d H:i:s');
+        $ota->registered = $ota->created_at->format('Y-m-d H:i:s');
         return response()->json($ota);
-    }
-
-    private function formatOta($data)
-    {
-        $ota = [];
-        foreach ($data as $item) {
-            $tmp = [];
-            $tmp['id'] = $item->id;
-            $tmp['serial_no'] = $item->device->serial_no;
-            $tmp['type'] = $item->type;
-            $tmp['type_id'] = $item->type_id;
-            $tmp['status'] = $item->status;
-            $tmp['updated'] = isset($item->updated_at) ? $item->updated_at->format('Y-m-d H:i:s') : "";
-            $tmp['registered'] = isset($item->created_at) ? $item->created_at->format('Y-m-d H:i:s') : "";
-            array_push($ota, $tmp);
-        }
-
-        return $ota;
     }
 
     private function getTypeIdDetail(&$ota)
