@@ -27,7 +27,7 @@ class UserPermissionService
      */
     public static function getAllPermission()
     {
-        $permissions = Permission::orderBy('sequence', 'asc')->groupBy('name')->get();
+        $permissions = Permission::orderBy('sequence', 'asc')->get();
         return $permissions;
     }
 }
