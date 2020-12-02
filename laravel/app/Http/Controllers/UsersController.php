@@ -10,6 +10,7 @@ use App\Http\Requests\Users\UserStoreFormValidation;
 use App\Http\Requests\Users\UserUpdateFormValidation;
 use App\Http\Requests\Users\UserEditValidation;
 use App\Http\Requests\Users\UserDestroyValidation;
+use App\Http\Resources\UserCollection;
 use App\User;
 use App\Models\Location;
 use App\Models\Firm;
@@ -46,7 +47,7 @@ class UsersController extends Controller
             ->ofLocationId(auth()->user()->location_id)
             ->get();
 
-        $users = $this->formatUsers($data);
+        $users = new UserCollection($data);
         return response()->json(compact('users', 'you'));
     }
 
@@ -162,32 +163,5 @@ class UsersController extends Controller
         $user->roles()->detach();
         $user->delete();
         return response()->json(['status' => 'success']);
-    }
-
-    private function formatUsers($data)
-    {
-        $users = [];
-        foreach ($data as $item) {
-            $user = [];
-            $user['id'] = $item->id;
-            $user['name'] = $item->name;
-            $user['email'] = $item->email;
-            $user['roles'] = isset($item->roles) ? $this->formatRoles($item->roles) : "";
-            $user['region'] = isset($item->location) ? LocationsService::format($item->location) : "";
-            $user['firm'] = isset($item->firm->name) ? $item->firm->name : "";
-            $user['updated'] = $item->updated_at->format('Y-m-d H:i:s');
-            $user['registered'] = $item->created_at->format('Y-m-d H:i:s');
-            array_push($users, $user);
-        }
-        return $users;
-    }
-
-    private function formatRoles($roles)
-    {
-        $rolesName = [];
-        foreach ($roles as $role) {
-            array_push($rolesName, $role->name);
-        }
-        return $rolesName;
     }
 }
