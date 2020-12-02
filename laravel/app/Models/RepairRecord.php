@@ -27,4 +27,13 @@ class RepairRecord extends Model
             });
         }
     }
+
+    public function scopeOfLocationId($query, $locationId)
+    {
+        if ($locationId !== null) {
+            return $query->whereHas('device', function ($query) use ($locationId) {
+                $query->where('location_id', $locationId);
+            });
+        }
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Repairs;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Enums\RoleNames;
 
 class RepairUpdateFormValidation extends FormRequest
 {
@@ -13,7 +14,18 @@ class RepairUpdateFormValidation extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if (auth()->user()->hasRole(RoleNames::ADMIN)) {
+            return true;
+        }
+        if (auth()->user()->hasRole(RoleNames::FIRM) &&
+            auth()->user()->firm_id === $this->repair->device->firm_id) {
+            return true;
+        }
+        if (auth()->user()->hasRole(RoleNames::LOCATION) &&
+            auth()->user()->firm_id === $this->repair->device->firm_id &&
+            auth()->user()->location_id === $this->repair->device->location_id) {
+            return true;
+        }
     }
 
     /**
