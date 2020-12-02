@@ -8,7 +8,7 @@ class RolesService
 {
     public static function getRolesOptions()
     {
-        $roles = Role::select('id', 'name', 'updated_at as updated', 'created_at as registered')->where("name", "!=", "admin")
+        $roles = Role::select('id', 'name')->where("name", "!=", "admin")
         ->get();
         return $roles;
     }

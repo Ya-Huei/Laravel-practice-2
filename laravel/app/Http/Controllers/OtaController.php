@@ -82,8 +82,8 @@ class OtaController extends Controller
     public function getOtaUpdateInfo()
     {
         $devices = DevicesService::getDeviceInfo();
-        $firmware = FirmwareService::getAllFirmwareVersion();
-        $recipe = RecipesService::getAllRecipe();
+        $firmware = FirmwareService::getFirmwareOptions();
+        $recipe = RecipesService::getRecipesOptions();
         return response()->json(compact('devices', 'firmware', 'recipe'));
     }
 

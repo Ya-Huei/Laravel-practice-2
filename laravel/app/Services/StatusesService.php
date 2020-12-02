@@ -8,13 +8,9 @@ class StatusesService
 {
     public static function getStatusesOptions($type)
     {
-        $result = [];
-        $defaultOption = "";
-        array_push($result, $defaultOption);
         $statuses = Status::select('name')->where('type', $type)->get();
-        foreach ($statuses as $item) {
-            array_push($result, $item->name);
-        }
+        $result = $statuses->pluck("name")->toArray();
+        array_unshift($result, "");
         return $result;
     }
 

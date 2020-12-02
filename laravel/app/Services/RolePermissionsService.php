@@ -24,12 +24,6 @@ class RolePermissionsService
     public static function getRolePermissions($roleId)
     {
         $permissionDetail = RoleHasPermissions::select('permission_id')->where('role_id', $roleId)->get();
-        $permissions = array();
-
-        foreach ($permissionDetail as $key => $value) {
-            array_push($permissions, $value['permission_id']);
-        }
-        
-        return $permissions;
+        return $permissionDetail->pluck("permission_id");
     }
 }
