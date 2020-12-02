@@ -58,27 +58,13 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
-        $this->insertLink('admin', 'Users', '/users');
-        $this->insertLink('admin', 'Roles', '/roles');
-        $this->insertLink('admin', 'Devices', '/devices');
-        $this->insertLink('admin', 'Repairs', '/repairs');
-        $this->insertLink('admin', 'OTA', '/otas');
-        $this->insertLink('admin', 'Recipes', '/recipes');
-        $this->insertLink('admin', 'Firmware', '/firmware');
-        $this->insertLink('firm owner', 'Users', '/users');
-        $this->insertLink('firm owner', 'Roles', '/roles');
-        $this->insertLink('firm owner', 'Devices', '/devices');
-        $this->insertLink('firm owner', 'Repairs', '/repairs');
-        $this->insertLink('firm owner', 'OTA', '/otas');
-        $this->insertLink('firm owner', 'Recipes', '/recipes');
-        $this->insertLink('firm owner', 'Firmware', '/firmware');
-        $this->insertLink('location owner', 'Users', '/users');
-        $this->insertLink('location owner', 'Roles', '/roles');
-        $this->insertLink('location owner', 'Devices', '/devices');
-        $this->insertLink('location owner', 'Repairs', '/repairs');
-        $this->insertLink('location owner', 'OTA', '/otas');
-        $this->insertLink('location owner', 'Recipes', '/recipes');
-        $this->insertLink('location owner', 'Firmware', '/firmware');
+        $this->insertLink('admin,firm owner,location owner', 'Users', '/users');
+        $this->insertLink('admin,firm owner,location owner', 'Roles', '/roles');
+        $this->insertLink('admin,firm owner,location owner', 'Devices', '/devices');
+        $this->insertLink('admin,firm owner,location owner', 'Repairs', '/repairs');
+        $this->insertLink('admin,firm owner,location owner', 'OTA', '/otas');
+        $this->insertLink('admin,firm owner,location owner', 'Recipes', '/recipes');
+        $this->insertLink('admin,firm owner,location owner', 'Firmware', '/firmware');
         $this->joinAllByTransaction();
     }
 }

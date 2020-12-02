@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Models\Menurole;
 use App\User;
 use App\Services\RolePermissionsService;
 use App\Services\RolesService;
+use App\Services\UserPermissionService;
 use App\Http\Requests\RoleStoreFormValidation;
 use App\Http\Requests\RoleUpdateFormValidation;
 
@@ -29,7 +31,8 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return response()->json(['status' => 'success']);
+        $permissions = UserPermissionService::getAllPermission();
+        return response()->json($permissions);
     }
 
     /**
@@ -50,17 +53,6 @@ class RolesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     */
-    public function show($id)
-    {
-        $role = Role::where('id', '=', $id)->first();
-        return response()->json(array('name' => $role->name));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  Role  $role
@@ -70,13 +62,14 @@ class RolesController extends Controller
         if ($role->name == "admin") {
             return response()->json(['status' => '403']);
         }
-
-        $permissions = RolePermissionsService::getRolePermissions($role->id);
+        $permissions = UserPermissionService::getAllPermission();
+        $userPermissions = RolePermissionsService::getRolePermissions($role->id);
 
         return response()->json(array(
             'id' => $role->id,
             'name' => $role->name,
-            'permissions' => $permissions
+            'permissions' => $permissions,
+            'user_permissions' => $userPermissions,
         ));
     }
 

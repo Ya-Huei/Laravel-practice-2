@@ -205,14 +205,11 @@ export default {
       axios
         .get("/api/users/create?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
-          if (response.data.status == "403") {
-            self.$router.push({ path: "/users" });
-            return;
-          }
           self.setDefaultData(response);
         })
         .catch(function(error) {
           console.log(error);
+          self.$router.push({ path: "/login" });
         });
     },
     setDefaultData(response) {

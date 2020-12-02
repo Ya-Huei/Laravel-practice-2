@@ -91,7 +91,7 @@ class UsersController extends Controller
         
         $user->save();
 
-        if (array_key_exists($validatedData['roles'])) {
+        if (array_key_exists("roles", $validatedData)) {
             if (!empty($validatedData['roles'])) {
                 if (($key = array_search(RoleNames::ADMIN, $validatedData['roles'])) !== false) {
                     unset($validatedData['roles'][$key]);

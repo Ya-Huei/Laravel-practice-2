@@ -463,16 +463,12 @@ __webpack_require__.r(__webpack_exports__);
     getInfo: function getInfo() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/users/create?token=" + localStorage.getItem("api_token")).then(function (response) {
-        if (response.data.status == "403") {
-          self.$router.push({
-            path: "/users"
-          });
-          return;
-        }
-
         self.setDefaultData(response);
       })["catch"](function (error) {
         console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
       });
     },
     setDefaultData: function setDefaultData(response) {

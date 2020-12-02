@@ -223,25 +223,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
-  name: 'CreateRole',
+  name: "CreateRole",
   data: function data() {
     return {
       role: {
-        name: '',
+        name: "",
         permissions: []
       },
       messages: [],
       horizontal: {
-        label: 'col-3',
-        input: 'col-9'
+        label: "col-3",
+        input: "col-9"
       },
       optionPermissions: [],
       isCreatedRole: true,
@@ -255,7 +251,7 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var self = this;
       self.isCreatedRole = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/roles?token=' + localStorage.getItem("api_token"), {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/roles?token=" + localStorage.getItem("api_token"), {
         name: self.role.name,
         permissions: self.role.permissions
       }).then(function (response) {
@@ -274,18 +270,21 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.role.permissions.push(permission);
       }
+    },
+    getInfo: function getInfo() {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/roles/create?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.optionPermissions = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
+      });
     }
   },
-  beforeCreate: function beforeCreate() {
-    var self = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/menu/getAllMenu?token=' + localStorage.getItem("api_token")).then(function (response) {
-      self.optionPermissions = response.data;
-    })["catch"](function (error) {
-      console.log(error);
-      self.$router.push({
-        path: '/login'
-      });
-    });
+  mounted: function mounted() {
+    this.getInfo();
   }
 });
 
@@ -330,7 +329,9 @@ var render = function() {
                             { key: message, attrs: { color: "danger" } },
                             [
                               _vm._v(
-                                "\n          " + _vm._s(message) + "\n        "
+                                "\n            " +
+                                  _vm._s(message) +
+                                  "\n          "
                               )
                             ]
                           )
@@ -369,7 +370,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                  Permissions\n                "
+                                "\n              Permissions\n            "
                               )
                             ]
                           ),
