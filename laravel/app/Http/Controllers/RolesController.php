@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Spatie\Permission\Models\Role;
+use App\Http\Requests\Roles\RoleStoreFormValidation;
+use App\Http\Requests\Roles\RoleUpdateFormValidation;
 use App\Models\Menurole;
-use App\User;
 use App\Services\RolePermissionsService;
 use App\Services\RolesService;
 use App\Services\UserPermissionService;
-use App\Http\Requests\Roles\RoleStoreFormValidation;
-use App\Http\Requests\Roles\RoleUpdateFormValidation;
+use App\User;
 
 class RolesController extends Controller
 {

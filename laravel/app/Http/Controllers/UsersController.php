@@ -6,18 +6,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Enums\RoleNames;
 use App\Http\Requests\Users\UserStoreFormValidation;
 use App\Http\Requests\Users\UserUpdateFormValidation;
 use App\Http\Requests\Users\UserEditValidation;
 use App\Http\Requests\Users\UserDestroyValidation;
 use App\Http\Resources\UserCollection;
-use App\User;
 use App\Models\Location;
 use App\Models\Firm;
-use App\Enums\RoleNames;
 use App\Services\RolesService;
 use App\Services\LocationsService;
 use App\Services\FirmsService;
+use App\User;
 
 class UsersController extends Controller
 {
