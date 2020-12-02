@@ -11,8 +11,8 @@ use App\User;
 use App\Services\RolePermissionsService;
 use App\Services\RolesService;
 use App\Services\UserPermissionService;
-use App\Http\Requests\RoleStoreFormValidation;
-use App\Http\Requests\RoleUpdateFormValidation;
+use App\Http\Requests\Roles\RoleStoreFormValidation;
+use App\Http\Requests\Roles\RoleUpdateFormValidation;
 
 class RolesController extends Controller
 {
