@@ -58,18 +58,20 @@ class OtaController extends Controller
     {
         $type = OtaRecord::getDefineTypeKey($request->type);
         $typeId = $this->getTypeId($request->type, $request->name);
-        foreach ($request->devices as $key => $value) {
-            $deviceInfo = Device::where('id', $value)->first();
-            if (!$this->checkAuth($deviceInfo)) {
-                continue;
-            }
-            $record = new OtaRecord();
-            $record->device_id = $value;
-            $record->type = $type;
-            $record->type_id = $typeId;
-            $record->status_id = Statuses::UPDATING;
-            $record->save();
+        $allowDevice = Device::select('id')->ofFirmId(auth()->user()->firm_id)->ofLocationId(auth()->user()->location_id)->whereIn('id', $request->devices)->orderBy('id', 'asc')->get();
+        $records = [];
+        foreach ($allowDevice as $key => $value) {
+            $record = [];
+            $record['device_id'] = $value->id;
+            $record['type'] = $type;
+            $record['type_id'] = $typeId;
+            $record['status_id'] = Statuses::UPDATING;
+            $record['created_at'] = now();
+            $record['updated_at'] = now();
+            array_push($records, $record);
         }
+
+        OtaRecord::insert($records);
         return response()->json(['status' => 'success']);
     }
 
@@ -85,22 +87,5 @@ class OtaController extends Controller
                 break;
         }
         return $result_id;
-    }
-
-    private function checkAuth($device)
-    {
-        if (auth()->user()->hasRole(RoleNames::ADMIN)) {
-            return true;
-        }
-        if (auth()->user()->hasRole(RoleNames::FIRM) &&
-            auth()->user()->firm_id === $device->firm_id) {
-            return true;
-        }
-        if (auth()->user()->hasRole(RoleNames::LOCATION) &&
-            auth()->user()->firm_id === $device->firm_id &&
-            auth()->user()->location_id === $device->location_id) {
-            return true;
-        }
-        return false;
     }
 }
