@@ -8,12 +8,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use SoftDeletes;
     use HasRoles;
+    use HasFactory;
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

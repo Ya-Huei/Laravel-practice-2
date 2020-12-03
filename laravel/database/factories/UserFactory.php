@@ -1,26 +1,45 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
+
 use App\User;
-use Faker\Generator as Faker;
+use App\Models\Firm;
+use App\Models\Location;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = User::class;
 
-$factory->define(User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $firms = [];
+        $locations = [];
+        if (rand() % 4 > 0) {
+            $firms = Firm::pluck('id')->toArray();
+            if (rand() % 4 > 0) {
+                $locations = Location::pluck('id')->toArray();
+            }
+        }
+
+        return [
+        'name' => $this->faker->name,
+        'email' => $this->faker->unique()->safeEmail,
+        'password' => bcrypt('password'),
         'remember_token' => Str::random(10),
+        'firm_id' =>  $this->faker->randomElement($firms),
+        'location_id' =>  $this->faker->randomElement($locations),
     ];
-});
+    }
+}
