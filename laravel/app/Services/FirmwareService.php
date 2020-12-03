@@ -6,15 +6,11 @@ use App\Models\Firmware;
 
 class FirmwareService
 {
-    public static function getAllFirmwareVersion()
+    public static function getFirmwareOptions()
     {
-        $result = [];
-        $defaultOption = "";
-        array_push($result, $defaultOption);
         $firmware = Firmware::select('version')->get();
-        foreach ($firmware as $item) {
-            array_push($result, $item->version);
-        }
+        $result = $firmware->pluck("version")->toArray();
+        array_unshift($result, "");
         return $result;
     }
 

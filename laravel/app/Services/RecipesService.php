@@ -6,15 +6,11 @@ use App\Models\Recipe;
 
 class RecipesService
 {
-    public static function getAllRecipe()
+    public static function getRecipesOptions()
     {
-        $result = [];
-        $defaultOption = "";
-        array_push($result, $defaultOption);
         $recipes = Recipe::select('recipe')->get();
-        foreach ($recipes as $item) {
-            array_push($result, $item->recipe);
-        }
+        $result = $recipes->pluck("recipe")->toArray();
+        array_unshift($result, "");
         return $result;
     }
 

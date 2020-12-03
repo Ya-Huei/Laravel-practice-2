@@ -162,9 +162,7 @@ export default {
             _method: "POST",
             type: self.ota,
             name: self.detail,
-            devices: self.select.sort(function(a, b) {
-              return a - b;
-            }),
+            devices: self.select,
           }
         )
         .then(function(response) {

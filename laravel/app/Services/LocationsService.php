@@ -42,7 +42,10 @@ class LocationsService
 
     public static function format($location)
     {
-        return $location->country . ' ' . $location->region . ' ' . $location->city;
+        if (isset($location)) {
+            return $location->country . ' ' . $location->region . ' ' . $location->city;
+        }
+        return "";
     }
 
     public static function getLocationId($country, $region, $city)

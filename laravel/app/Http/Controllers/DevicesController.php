@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Models\Device;
-use App\Models\Status;
-use App\Models\RepairRecord;
 use App\Enums\Statuses;
 use App\Enums\StatusTypes;
-use App\Services\LocationsService;
-use App\Services\FirmsService;
-use App\Services\StatusesService;
-use App\Services\DevicesService;
 use App\Http\Requests\Devices\DeviceEditValidation;
 use App\Http\Requests\Devices\DeviceUpdateFormValidation;
 use App\Http\Requests\Devices\DeviceRepairValidation;
 use App\Http\Requests\Devices\DeviceSaveRepairFormValidation;
+use App\Models\Device;
+use App\Models\Status;
+use App\Models\RepairRecord;
+use App\Services\LocationsService;
+use App\Services\FirmsService;
+use App\Services\StatusesService;
+use App\Services\DevicesService;
+
 
 class DevicesController extends Controller
 {

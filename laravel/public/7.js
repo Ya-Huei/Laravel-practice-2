@@ -338,9 +338,7 @@ __webpack_require__.r(__webpack_exports__);
         _method: "POST",
         type: self.ota,
         name: self.detail,
-        devices: self.select.sort(function (a, b) {
-          return a - b;
-        })
+        devices: self.select
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {

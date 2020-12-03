@@ -8,13 +8,9 @@ class FirmsService
 {
     public static function getFirmsOptions()
     {
-        $result = [];
-        $defaultOption = "";
-        array_push($result, $defaultOption);
         $firms = Firm::select('name')->get();
-        foreach ($firms as $item) {
-            array_push($result, $item->name);
-        }
+        $result = $firms->pluck("name")->toArray();
+        array_unshift($result, "");
         return $result;
     }
 
