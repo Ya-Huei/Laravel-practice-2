@@ -108,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       item: {
         id: "",
-        device: "",
+        serial_no: "",
         type: "",
         detail: "",
         status: "",
@@ -161,9 +161,7 @@ var render = function() {
       _vm._v(" "),
       _c("CCardBody", [
         _c("p", [
-          _c("strong", [
-            _vm._v("serial_no:" + _vm._s(_vm.item.device.serial_no))
-          ])
+          _c("strong", [_vm._v("serial_no:" + _vm._s(_vm.item.serial_no))])
         ]),
         _vm._v(" "),
         _c("p", [_vm._v("type: " + _vm._s(_vm.item.type))]),

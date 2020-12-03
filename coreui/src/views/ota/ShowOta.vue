@@ -5,7 +5,7 @@
     </CCardHeader>
     <CCardBody>
       <p>
-        <strong>serial_no:{{ item.device.serial_no }}</strong>
+        <strong>serial_no:{{ item.serial_no }}</strong>
       </p>
       <p>type: {{ item.type }}</p>
       <p>detail: {{ item.detail }}</p>
@@ -28,7 +28,7 @@ export default {
     return {
       item: {
         id: "",
-        device: "",
+        serial_no: "",
         type: "",
         detail: "",
         status: "",

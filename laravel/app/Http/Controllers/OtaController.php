@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\OtaRecord;
-use App\Models\Firmware;
-use App\Models\Recipe;
-use App\Models\Device;
-use App\Enums\Statuses;
 use App\Enums\OtaTypes;
 use App\Enums\RoleNames;
+use App\Enums\Statuses;
+use App\Http\Requests\Otas\DeviceUpdateOtaFormValidation;
+use App\Http\Requests\Otas\OtaShowValidation;
+use App\Http\Resources\OtaRecord as OtaRecordResource;
+use App\Http\Resources\OtaRecordCollection;
+use App\Http\Resources\ShowOtaRecord;
+use App\Models\Device;
+use App\Models\Firmware;
+use App\Models\OtaRecord;
+use App\Models\Recipe;
 use App\Services\DevicesService;
 use App\Services\FirmwareService;
 use App\Services\RecipesService;
-use App\Http\Requests\Otas\OtaShowValidation;
-use App\Http\Requests\Otas\DeviceUpdateOtaFormValidation;
-use App\Http\Resources\OtaRecord as OtaRecordResource;
-use App\Http\Resources\OtaRecordCollection;
 
 class OtaController extends Controller
 {
@@ -42,24 +43,7 @@ class OtaController extends Controller
      */
     public function show(OtaShowValidation $request, OtaRecord $ota)
     {
-        $ota->status = $ota->status;
-        $ota->device = $ota->device;
-        $this->getTypeIdDetail($ota);
-        $ota->updated = $ota->updated_at->format('Y-m-d H:i:s');
-        $ota->registered = $ota->created_at->format('Y-m-d H:i:s');
-        return response()->json($ota);
-    }
-
-    private function getTypeIdDetail(&$ota)
-    {
-        switch ($ota->type) {
-            case OtaTypes::FIRMWARE:
-                $ota->detail = FirmwareService::getFirmwareInfo($ota->type_id)->version;
-                break;
-            case OtaTypes::RECIPE:
-                $ota->detail = RecipesService::geRecipeInfo($ota->type_id)->recipe;
-                break;
-        }
+        return response()->json(new ShowOtaRecord($ota));
     }
 
     public function getOtaUpdateInfo()
