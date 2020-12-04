@@ -2,20 +2,20 @@
 
 namespace Database\Factories;
 
-use App\User;
+use App\Models\Device;
 use App\Models\Firm;
 use App\Models\Location;
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class DeviceFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Device::class;
 
     /**
      * Define the model's default state.
@@ -32,14 +32,14 @@ class UserFactory extends Factory
                 $locations = Location::pluck('id')->toArray();
             }
         }
+        $statuses = Status::where('type', 'device')->pluck('id')->toArray();
 
         return [
-        'name' => $this->faker->name,
-        'email' => $this->faker->unique()->safeEmail,
-        'password' => bcrypt('password'),
-        'remember_token' => Str::random(10),
-        'firm_id' =>  $this->faker->randomElement($firms),
-        'location_id' =>  $this->faker->randomElement($locations),
-    ];
+            'serial_no' => $this->faker->unique()->numerify('##########A'),
+            'status_id' => $this->faker->randomElement($statuses),
+            'address' => $this->faker->address,
+            'location_id' =>  $this->faker->randomElement($locations),
+            'firm_id' =>  $this->faker->randomElement($firms),
+        ];
     }
 }

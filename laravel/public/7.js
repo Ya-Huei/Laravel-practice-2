@@ -258,6 +258,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -561,6 +562,7 @@ var render = function() {
                           items: _vm.items,
                           fields: _vm.fields,
                           "items-per-page": 6,
+                          pagination: "",
                           tableFilter: { external: false, lazy: false }
                         },
                         on: { "filtered-items-change": _vm.setFilterItem },

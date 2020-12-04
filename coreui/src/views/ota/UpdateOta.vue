@@ -54,6 +54,7 @@
               :items="items"
               :fields="fields"
               :items-per-page="6"
+              pagination
               :tableFilter="{ external: false, lazy: false }"
               @filtered-items-change="setFilterItem"
             >
