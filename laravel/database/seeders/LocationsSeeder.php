@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Location;
 
@@ -39,12 +41,6 @@ class LocationsSeeder extends Seeder
      */
     public function run()
     {
-        foreach ($this->locationLists as $item) {
-            $location = new Location();
-            $location->country = $item['country'];
-            $location->region = $item['region'];
-            $location->city = $item['city'];
-            $location->save();
-        }
+        Location::insert($this->locationLists);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Recipe;
 
@@ -7,9 +9,12 @@ class RecipesSeeder extends Seeder
 {
     private $recipeLists = [
         [
-            'water' => '300',
-            'temperature' => '100',
-            'time' => '200',
+            'recipe' => '3,30,1,0,0,4,100,2,0,0',
+            'firm_id' => '1',
+        ],
+        [
+            'recipe' => '3,30,1,0,0,6,100,2,0,0',
+            'firm_id' => '2',
         ],
     ];
 
@@ -22,7 +27,8 @@ class RecipesSeeder extends Seeder
     {
         foreach ($this->recipeLists as $item) {
             $recipe = new Recipe();
-            $recipe->recipe = json_encode($item);
+            $recipe->recipe = $item['recipe'];
+            $recipe->firm_id = $item['firm_id'];
             $recipe->save();
         }
     }
