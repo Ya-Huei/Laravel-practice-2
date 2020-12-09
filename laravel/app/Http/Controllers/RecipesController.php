@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Recipe;
+use App\Http\Resources\RecipeCollection;
 
 class RecipesController extends Controller
 {
@@ -13,7 +15,13 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        //
+        $data = Recipe::with('firm')
+            ->orderBy('id', 'asc')
+            ->ofFirmId(auth()->user()->firm_id)
+            ->get();
+
+        $users = new RecipeCollection($data);
+        return response()->json($users);
     }
 
     /**

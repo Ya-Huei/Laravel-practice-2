@@ -4,29 +4,38 @@
       <transition name="slide">
         <CCard>
           <CCardHeader>
-            <h4>Devices</h4>
+            <CRow>
+              <CCol col="6">
+                <h4>Recipes</h4>
+              </CCol>
+              <CCol col="6" class="d-flex justify-content-end">
+                <CButton color="primary" @click="createRecipe()"
+                  >Create Recipe</CButton
+                >
+              </CCol>
+            </CRow>
           </CCardHeader>
           <CCardBody>
-            <CAlert :show.sync="dismissCountDown" color="danger" fade>
-              ({{ dismissCountDown }}) {{ message }}
-            </CAlert>
-
             <CDataTable
               hover
               striped
               :items="items"
               :fields="fields"
               :items-per-page="6"
-              :tableFilter='{ external: false, lazy: false }'
               pagination
             >
               <template #operate="{item}">
                 <td>
-                  <CButton color="primary" @click="editDevice(item.id)"
+                  <CButton color="primary" @click="editRecipe(item.id)"
                     >Edit</CButton
                   >
-                  <CButton color="danger" @click="repairDevice(item.id)"
-                    >Repair</CButton
+                  <CButton color="primary" @click="showRecipe(item.id)"
+                    >Detail</CButton
+                  >
+                  <CButton
+                    color="success"
+                    @click="exportRecipe(item.recipe, item.name)"
+                    >Export</CButton
                   >
                 </td>
               </template>
@@ -42,53 +51,50 @@
 import axios from "axios";
 
 export default {
-  name: "Devices",
+  name: "Recipes",
   data: () => {
     return {
       items: [],
-      fields: [
-        "id",
-        "serial_no",
-        "region",
-        "address",
-        "firm",
-        "status",
-        "registered",
-        "updated",
-        "operate",
-      ],
+      fields: ["id", "firm", "name", "registered", "updated", "operate"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
-      message: "",
-      showMessage: false,
-      dismissSecs: 7,
-      dismissCountDown: 0,
-      showDismissibleAlert: false,
-      horizontal: { label: "col-4", input: "col-8" },
     };
   },
   methods: {
+    exportRecipe(data, name) {
+      let fileName = name + "_recipe.csv";
+      let blob = new Blob([data], {
+        type: "application/octet-stream",
+      });
+      var href = URL.createObjectURL(blob);
+      var link = document.createElement("a");
+      document.body.appendChild(link);
+      link.href = href;
+      link.download = fileName;
+      link.click();
+    },
     editLink(id) {
-      return `devices/${id.toString()}/edit`;
+      return `recipes/${id.toString()}/edit`;
     },
-    repairDevice(id) {
-      console.log(id + " should be repaired!!!");
+    showLink(id) {
+      return `recipes/${id.toString()}/show`;
     },
-    editDevice(id) {
+    showRecipe(id) {
+      const showLink = this.showLink(id);
+      this.$router.push({ path: showLink });
+    },
+    editRecipe(id) {
       const editLink = this.editLink(id);
       this.$router.push({ path: editLink });
     },
-    countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert() {
-      this.dismissCountDown = this.dismissSecs;
+    createRecipe() {
+      this.$router.push({ path: `recipes/create` });
     },
     getDevices() {
       let self = this;
       axios
-        .get("/api/devices?token=" + localStorage.getItem("api_token"))
+        .get("/api/recipes?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
           self.items = response.data;
         })

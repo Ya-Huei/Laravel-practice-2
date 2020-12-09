@@ -19,4 +19,8 @@ class Firm extends Model
     public function devices(){
         $this->hasMany(Device::class);
     }
+
+    public function recipes(){
+        $this->hasMany(Recipe::class);
+    }
 }

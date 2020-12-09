@@ -34,6 +34,9 @@ const UpdateOta = () => import('@/views/ota/UpdateOta')
 
 //Recipes
 const Recipes = () => import('@/views/recipes/Recipes')
+const CreateRecipe = () => import('@/views/recipes/CreateRecipe')
+const EditRecipe = () => import('@/views/recipes/EditRecipe')
+const ShowRecipe = () => import('@/views/recipes/ShowRecipe')
 
 //RepairRecords
 const Repairs = () => import('@/views/repairs/Repairs')
@@ -147,12 +150,6 @@ function configRoutes () {
               path: '',
               component: Firmware,
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
           ]
         },
         {
@@ -191,12 +188,24 @@ function configRoutes () {
               path: '',
               component: Recipes,
             },
-            // {
-            //   path: ':id/edit',
-            //   meta: { label: 'Edit Role' },
-            //   name: 'Edit Role',
-            //   component: EditRole
-            // },
+            {
+              path: 'create',
+              meta: { label: 'Create Recipe' },
+              name: 'Create Recipe',
+              component: CreateRecipe
+            },
+            {
+              path: ':id/edit',
+              meta: { label: 'Edit Recipe' },
+              name: 'Edit Recipe',
+              component: EditRecipe
+            },
+            {
+              path: ':id/show',
+              meta: { label: 'Show Recipe' },
+              name: 'Show Recipe',
+              component: ShowRecipe,
+            },
           ]
         },
         {

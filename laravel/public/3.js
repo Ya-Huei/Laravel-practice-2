@@ -100,17 +100,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../coreui/src/views/repairs/EditRepair.vue":
+/***/ "../coreui/src/views/recipes/EditRecipe.vue":
 /*!**************************************************!*\
-  !*** ../coreui/src/views/repairs/EditRepair.vue ***!
+  !*** ../coreui/src/views/recipes/EditRecipe.vue ***!
   \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditRepair_vue_vue_type_template_id_742a46ec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditRepair.vue?vue&type=template&id=742a46ec& */ "../coreui/src/views/repairs/EditRepair.vue?vue&type=template&id=742a46ec&");
-/* harmony import */ var _EditRepair_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditRepair.vue?vue&type=script&lang=js& */ "../coreui/src/views/repairs/EditRepair.vue?vue&type=script&lang=js&");
+/* harmony import */ var _EditRecipe_vue_vue_type_template_id_23603e0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditRecipe.vue?vue&type=template&id=23603e0c& */ "../coreui/src/views/recipes/EditRecipe.vue?vue&type=template&id=23603e0c&");
+/* harmony import */ var _EditRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditRecipe.vue?vue&type=script&lang=js& */ "../coreui/src/views/recipes/EditRecipe.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -120,9 +120,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _EditRepair_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditRepair_vue_vue_type_template_id_742a46ec___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditRepair_vue_vue_type_template_id_742a46ec___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _EditRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditRecipe_vue_vue_type_template_id_23603e0c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditRecipe_vue_vue_type_template_id_23603e0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -132,38 +132,38 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/repairs/EditRepair.vue"
+component.options.__file = "coreui/src/views/recipes/EditRecipe.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/repairs/EditRepair.vue?vue&type=script&lang=js&":
+/***/ "../coreui/src/views/recipes/EditRecipe.vue?vue&type=script&lang=js&":
 /*!***************************************************************************!*\
-  !*** ../coreui/src/views/repairs/EditRepair.vue?vue&type=script&lang=js& ***!
+  !*** ../coreui/src/views/recipes/EditRecipe.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRepair_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditRepair.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/repairs/EditRepair.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRepair_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditRecipe.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/EditRecipe.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/repairs/EditRepair.vue?vue&type=template&id=742a46ec&":
+/***/ "../coreui/src/views/recipes/EditRecipe.vue?vue&type=template&id=23603e0c&":
 /*!*********************************************************************************!*\
-  !*** ../coreui/src/views/repairs/EditRepair.vue?vue&type=template&id=742a46ec& ***!
+  !*** ../coreui/src/views/recipes/EditRecipe.vue?vue&type=template&id=23603e0c& ***!
   \*********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRepair_vue_vue_type_template_id_742a46ec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditRepair.vue?vue&type=template&id=742a46ec& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/repairs/EditRepair.vue?vue&type=template&id=742a46ec&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRepair_vue_vue_type_template_id_742a46ec___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRecipe_vue_vue_type_template_id_23603e0c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./EditRecipe.vue?vue&type=template&id=23603e0c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/EditRecipe.vue?vue&type=template&id=23603e0c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRecipe_vue_vue_type_template_id_23603e0c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRepair_vue_vue_type_template_id_742a46ec___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRecipe_vue_vue_type_template_id_23603e0c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -245,9 +245,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/repairs/EditRepair.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/EditRecipe.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/repairs/EditRepair.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/EditRecipe.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -310,6 +310,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -319,12 +353,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       device: {
-        serial_no: ""
+        serial_no: "",
+        address: "",
+        status: "",
+        firm: null
       },
-      repair: {
-        reason: "",
-        worker: "",
-        status: ""
+      location: {
+        country: null,
+        region: null,
+        city: null
       },
       messages: [],
       horizontal: {
@@ -332,9 +369,18 @@ __webpack_require__.r(__webpack_exports__);
         input: "col-9"
       },
       optionPermissions: [],
-      isEditedRepair: true,
+      isEditedDevice: true,
       showMessage: false,
-      statusOptions: []
+      showRegion: false,
+      showCity: false,
+      countryOptions: [],
+      regionOptions: [],
+      cityOptions: [],
+      firmOptions: [],
+      statusOptions: [],
+      locations: [],
+      showRegionSelection: false,
+      showFirmSelection: false
     };
   },
   methods: {
@@ -351,23 +397,33 @@ __webpack_require__.r(__webpack_exports__);
     },
     update: function update() {
       var self = this;
-      self.isEditedRepair = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/repairs/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
+      self.isEditedDevice = false;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "?token=" + localStorage.getItem("api_token"), {
         _method: "PUT",
-        reason: self.repair.reason,
-        worker: self.repair.worker,
-        status: self.repair.status
+        country: self.location.country,
+        region: self.location.region,
+        city: self.location.city,
+        address: self.device.address,
+        firm: self.device.firm,
+        status: self.device.status
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
-        self.isEditedRepair = true;
+        self.isEditedDevice = true;
         self.messages = self.formResponseFormat(error);
         self.showMessage = true;
       });
     },
     getInfo: function getInfo() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/repairs/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
+        if (response.data.status == "403") {
+          self.$router.push({
+            path: "/devices"
+          });
+          return;
+        }
+
         self.setDefaultData(response);
       })["catch"](function (error) {
         console.log(error);
@@ -379,9 +435,31 @@ __webpack_require__.r(__webpack_exports__);
     setDefaultData: function setDefaultData(response) {
       var self = this;
       self.device.serial_no = response.data.device.serial_no;
+      self.device.address = response.data.device.address;
+      self.locations = response.data.locations;
+      self.countryOptions = self.locations.country;
+      self.firmOptions = response.data.firms;
       self.statusOptions = response.data.status;
-      self.repair.reason = response.data.repair.reason;
-      self.repair.status = response.data.repair.status;
+      self.location.country = response.data.device.country;
+
+      if (self.location.country !== "") {
+        self.loadRegions();
+        self.location.region = response.data.device.region;
+        self.loadCities();
+        self.location.city = response.data.device.city;
+      }
+
+      self.device.firm = response.data.device.firm;
+      self.device.status = response.data.device.status;
+
+      if (localStorage.getItem("user_firm") === "null") {
+        self.showFirmSelection = true;
+      }
+
+      if (localStorage.getItem("user_location") === "null") {
+        self.showRoleSelection = true;
+        self.showRegionSelection = true;
+      }
     }
   },
   mounted: function mounted() {
@@ -391,9 +469,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/repairs/EditRepair.vue?vue&type=template&id=742a46ec&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/EditRecipe.vue?vue&type=template&id=23603e0c&":
 /*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/repairs/EditRepair.vue?vue&type=template&id=742a46ec& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/EditRecipe.vue?vue&type=template&id=23603e0c& ***!
   \***************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -416,7 +494,7 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Edit Repair")])]),
+              _c("CCardHeader", [_c("h4", [_vm._v("Edit Device")])]),
               _vm._v(" "),
               _c(
                 "CCardBody",
@@ -459,39 +537,144 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("CTextarea", {
-                        attrs: { label: "Reason", rows: "5", horizontal: "" },
+                      _c(
+                        "div",
+                        { staticClass: "form-row" },
+                        [
+                          _c("CCol", { attrs: { col: "3" } }, [
+                            _vm.showRegionSelection
+                              ? _c("label", { staticClass: "col-form-label" }, [
+                                  _vm._v(
+                                    "\n                Region\n              "
+                                  )
+                                ])
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _vm.showRegionSelection
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.countryOptions,
+                                      value: _vm.location.country,
+                                      description: "Select your region"
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.location,
+                                          "country",
+                                          $event
+                                        )
+                                      },
+                                      change: function($event) {
+                                        return _vm.loadRegions()
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _vm.showRegionSelection && _vm.showRegion
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.regionOptions,
+                                      value: _vm.location.region
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.location,
+                                          "region",
+                                          $event
+                                        )
+                                      },
+                                      change: function($event) {
+                                        return _vm.loadCities()
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "CCol",
+                            { attrs: { col: "3" } },
+                            [
+                              _vm.showRegionSelection && _vm.showCity
+                                ? _c("CSelect", {
+                                    attrs: {
+                                      options: _vm.cityOptions,
+                                      value: _vm.location.city
+                                    },
+                                    on: {
+                                      "update:value": function($event) {
+                                        return _vm.$set(
+                                          _vm.location,
+                                          "city",
+                                          $event
+                                        )
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("CInput", {
+                        attrs: { label: "Address", horizontal: "" },
                         model: {
-                          value: _vm.repair.reason,
+                          value: _vm.device.address,
                           callback: function($$v) {
-                            _vm.$set(_vm.repair, "reason", $$v)
+                            _vm.$set(_vm.device, "address", $$v)
                           },
-                          expression: "repair.reason"
+                          expression: "device.address"
                         }
                       }),
                       _vm._v(" "),
-                      _c("CInput", {
-                        attrs: { label: "Worker", horizontal: "" },
-                        model: {
-                          value: _vm.repair.worker,
-                          callback: function($$v) {
-                            _vm.$set(_vm.repair, "worker", $$v)
-                          },
-                          expression: "repair.worker"
-                        }
-                      }),
+                      _vm.showFirmSelection
+                        ? _c("CSelect", {
+                            attrs: {
+                              label: "Firm",
+                              options: _vm.firmOptions,
+                              value: _vm.device.firm,
+                              horizontal: "",
+                              description: "Select your firm"
+                            },
+                            on: {
+                              "update:value": function($event) {
+                                return _vm.$set(_vm.device, "firm", $event)
+                              }
+                            }
+                          })
+                        : _vm._e(),
                       _vm._v(" "),
                       _c("CSelect", {
                         attrs: {
                           label: "Status",
                           options: _vm.statusOptions,
-                          value: _vm.repair.status,
+                          value: _vm.device.status,
                           horizontal: "",
                           description: "Select your status"
                         },
                         on: {
                           "update:value": function($event) {
-                            return _vm.$set(_vm.repair, "status", $event)
+                            return _vm.$set(_vm.device, "status", $event)
                           }
                         }
                       })
@@ -510,7 +693,7 @@ var render = function() {
                     "CButton",
                     {
                       attrs: {
-                        disabled: !_vm.isEditedRepair,
+                        disabled: !_vm.isEditedDevice,
                         color: "primary"
                       },
                       on: {
@@ -520,11 +703,11 @@ var render = function() {
                       }
                     },
                     [
-                      _vm.isEditedRepair
+                      _vm.isEditedDevice
                         ? _c("span", [_vm._v("Save")])
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.isEditedRepair
+                      !_vm.isEditedDevice
                         ? _c("CSpinner", {
                             attrs: { color: "info", size: "sm" }
                           })
