@@ -28,8 +28,8 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::resource('firmware', FirmWareController::class);
         Route::get('otas/getOtaUpdateInfo', 'OtaController@getOtaUpdateInfo');
         Route::post('otas/saveOtaUpdate', 'OtaController@saveOtaUpdate');
-        Route::resource('otas', OtaController::class)->only(['index', 'show']);
-        Route::resource('recipes', RecipesController::class);
-        Route::resource('repairs', RepairsController::class);
+        Route::resource('otas', OtaController::class)->only(['index']);
+        Route::resource('recipes', RecipesController::class)->except(['show', 'destroy']);
+        Route::resource('repairs', RepairsController::class)->only(['index', 'edit', 'update']);;
     });
 });

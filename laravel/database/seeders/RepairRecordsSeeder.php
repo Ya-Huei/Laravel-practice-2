@@ -1,11 +1,12 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\RepairRecord;
 
 class RepairRecordsSeeder extends Seeder
 {
-
     private $repairLists = [
         [
             'device_id' => '1',

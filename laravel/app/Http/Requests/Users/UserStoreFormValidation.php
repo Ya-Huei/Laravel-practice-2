@@ -49,7 +49,7 @@ class UserStoreFormValidation extends FormRequest
             'country'    => 'required_with_all:region,city',
             'region'     => 'required_with_all:country,city',
             'city'       => 'required_with_all:country,region',
-            'firm'       => 'nullable|string',
+            'firm'       => 'nullable|integer',
             'roles'      => 'nullable|array',
         ];
     }

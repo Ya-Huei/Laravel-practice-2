@@ -225,7 +225,7 @@ export default {
         self.loadCities();
         self.location.city = response.data.user.city;
       }
-      self.user.firm = response.data.user.firm;
+      self.user.firm = response.data.user.firm_id;
       if (localStorage.getItem("user_firm") === "null") {
         self.showFirmSelection = true;
       }

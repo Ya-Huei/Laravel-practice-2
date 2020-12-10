@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Status;
 
@@ -55,12 +57,6 @@ class StatusesSeeder extends Seeder
      */
     public function run()
     {
-        foreach ($this->statusLists as $item) {
-            $status = new Status();
-            $status->class = $item['class'];
-            $status->type = $item['type'];
-            $status->name = $item['name'];
-            $status->save();
-        }
+        Status::insert($this->statusLists);
     }
 }

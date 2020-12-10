@@ -38,7 +38,7 @@ class RepairUpdateFormValidation extends FormRequest
         return [
             'reason' => 'required|string',
             'worker' => 'nullable|string',
-            'status' => 'required|string',
+            'status' => 'required|integer',
         ];
     }
 }

@@ -8,16 +8,14 @@ class FirmwareService
 {
     public static function getFirmwareOptions()
     {
-        $firmware = Firmware::select('version')->get();
-        $result = $firmware->pluck("version")->toArray();
-        array_unshift($result, "");
-        return $result;
-    }
+        $firmware = Firmware::all()->toArray();
+        $result = [];
 
-    public static function getFirmwareId($version)
-    {
-        $firmware = Firmware::where('version', $version)->first();
-        return $firmware->id;
+        foreach ($firmware as $key => $value) {
+            $result[$key]['value'] = $value['id'];
+            $result[$key]['label'] = $value['version'];
+        }
+        return $result;
     }
 
     public static function getFirmwareInfo($firmware_id)

@@ -99,10 +99,16 @@ export default {
       horizontal: { label: "col-4", input: "col-8" },
       isUpdateOta: true,
       showMessage: false,
-      otaOptions: ["firmware", "recipe"],
+      otaOptions: [
+        { value: "1", label: "firmware" },
+        {
+          value: "2",
+          label: "recipe",
+        },
+      ],
       detailOptions: [],
-      ota: "firmware",
-      detail: "",
+      ota: "1",
+      detail: "1",
       firmware: [],
       recipe: [],
       select: [],
@@ -121,11 +127,12 @@ export default {
     },
     loadDetail() {
       let self = this;
-      if (self.ota == "firmware") {
+      if (self.ota == "1") {
         self.detailOptions = self.firmware;
-      } else if (self.ota == "recipe") {
+      } else if (self.ota == "2") {
         self.detailOptions = self.recipe;
       }
+      self.detail = self.detailOptions[0].value;
     },
     countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown;
@@ -207,6 +214,7 @@ export default {
           self.firmware = response.data.firmware;
           self.recipe = response.data.recipe;
           self.detailOptions = self.firmware;
+          self.detail = self.detailOptions[0].value;
         })
         .catch(function(error) {
           console.log(error);

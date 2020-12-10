@@ -19,7 +19,6 @@ use App\Services\FirmsService;
 use App\Services\StatusesService;
 use App\Services\DevicesService;
 
-
 class DevicesController extends Controller
 {
     /**
@@ -42,8 +41,6 @@ class DevicesController extends Controller
     public function edit(DeviceEditValidation $request, Device $device)
     {
         LocationsService::getLocationInfo($device, $device->location_id);
-        FirmsService::getFirmInfo($device, $device->firm_id);
-        StatusesService::getStatusInfo($device, $device->status_id);
         $locations = LocationsService::getLocationsOptions();
         $firms = FirmsService::getFirmsOptions();
         $status = StatusesService::getStatusesOptions(StatusTypes::DEVICE);
@@ -69,12 +66,16 @@ class DevicesController extends Controller
             }
         }
 
-        if (array_key_exists("firm", $validatedData)) {
-            $device->firm_id = FirmsService::getFirmId($validatedData['firm']);
+        if (array_key_exists("firm", $validatedData) && isset($validatedData['firm'])) {
+            if ($validatedData['firm'] === "0") {
+                $device->firm_id = null;
+            } else {
+                $device->firm_id = $validatedData['firm'];
+            }
         }
 
         $device->address = $validatedData['address'];
-        $device->status_id = StatusesService::getStatusId($validatedData['status'], StatusTypes::DEVICE);
+        $device->status_id = $validatedData['status'];
 
         if ($device->status_id == Statuses::ENABLE && !isset($device->enabled_at)) {
             $device->enabled_at = now();
