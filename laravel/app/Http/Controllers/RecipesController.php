@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Recipe;
+use App\Http\Requests\Recipes\RecipeStoreFormValidation;
 use App\Http\Resources\RecipeCollection;
+use Illuminate\Support\Facades\Log;
+use App\Models\Recipe;
+use App\Services\RecipeStepService;
+use App\Services\RecipeActionService;
 
 class RecipesController extends Controller
 {
@@ -31,7 +35,9 @@ class RecipesController extends Controller
      */
     public function create()
     {
-        //
+        $steps = RecipeStepService::getRecipeStepOptions();
+        $actions = RecipeActionService::getRecipeActionOptions();
+        return response()->json(compact('steps', 'actions'));
     }
 
     /**
@@ -40,9 +46,26 @@ class RecipesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RecipeStoreFormValidation $request)
     {
-        //
+        $recipeStep = [];
+        foreach ($request->recipes as $key => $value) {
+            isset($value['step']) ? array_push($recipeStep, intval($value['step'])) : array_push($recipeStep, 0);
+            isset($value['para']) ? array_push($recipeStep, $value['para']) : array_push($recipeStep, 0);
+            isset($value['act1']) ? array_push($recipeStep, $value['act1']) : array_push($recipeStep, 0);
+            isset($value['act2']) ? array_push($recipeStep, $value['act2']) : array_push($recipeStep, 0);
+            isset($value['act3']) ? array_push($recipeStep, $value['act3']) : array_push($recipeStep, 0);
+            if ($value['step'] === "0") {
+                break;
+            }
+        }
+        $result = implode(",", $recipeStep);
+        
+        $recipe = new Recipe();
+        $recipe->name = $request->name;
+        $recipe->recipe = $result;
+        $recipe->firm_id = auth()->user()->firm_id;
+        $recipe->save();
     }
 
     /**

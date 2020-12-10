@@ -9,63 +9,64 @@ class RecipeStepsSeeder extends Seeder
 {
     private $stepLists = [
         [
-            'id' => '0',
+            'value' => '0',
             'step' => 'Finish', // 結束
         ],
         [
-            'id' => '1',
+            'value' => '1',
             'step' => 'Instant', // 立即-不停留
         ],
         [
-            'id' => '2',
+            'value' => '2',
             'step' => 'Continue for a period of time', // 持續一段時間
+            'unit' => 'sec'
         ],
         [
-            'id' => '3',
+            'value' => '3',
             'step' => 'Water flood', // 注水XX公升
             'unit' => 'L'
         ],
         [
-            'id' => '4',
+            'value' => '4',
             'step' => 'Heating', // 加熱至XX度C
             'unit' => '℃'
         ],
         [
-            'id' => '5',
+            'value' => '5',
             'step' => 'Cool down', // 降溫至XX度C
             'unit' => '℃'
         ],
         [
-            'id' => '6',
+            'value' => '6',
             'step' => 'Washing', // XX公升水洗
             'unit' => 'L'
         ],
         [
-            'id' => '7',
+            'value' => '7',
             'step' => 'Washing time', // 水洗XX秒
             'unit' => 'sec'
         ],
         [
-            'id' => '9',
+            'value' => '9',
             'step' => 'thermostable mode', // 恆溫模式
             'unit' => 'sec'
         ],
         [
-            'id' => '11',
+            'value' => '11',
             'step' => 'Heating time', // 火力XX秒
             'unit' => 'sec'
         ],
         [
-            'id' => '100',
+            'value' => '100',
             'step' => 'set intermittent stir', // 設定間歇性攪拌參數
         ],
         [
-            'id' => '109',
+            'value' => '109',
             'step' => 'thermostable temperature', // 設定恆溫溫度
             'unit' => '℃'
         ],
         [
-            'id' => '111',
+            'value' => '111',
             'step' => 'Heating percent', // 設定火力XX%
             'unit' => '%'
         ],
@@ -74,13 +75,13 @@ class RecipeStepsSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return vovalue
      */
     public function run()
     {
         foreach ($this->stepLists as $item) {
             $step = new RecipeStep();
-            $step->id = $item['id'];
+            $step->value = $item['value'];
             $step->step = $item['step'];
             if (isset($item['unit'])) {
                 $step->unit = $item['unit'];

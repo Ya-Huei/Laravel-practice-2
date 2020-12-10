@@ -14,7 +14,8 @@ class CreateRecipeActions extends Migration
     public function up()
     {
         Schema::create('recipe_actions', function (Blueprint $table) {
-            $table->integer('id');
+            $table->bigIncrements('id');
+            $table->integer('value');
             $table->string('action');
         });
     }

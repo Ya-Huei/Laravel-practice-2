@@ -17,7 +17,7 @@ class Recipe extends JsonResource
         return [
             'id'          => $this->id,
             'name'        => $this->name,
-            'firm'        => $this->firm->name,
+            'firm'        => isset($this->firm) ? $this->firm->name : "",
             'recipe'      => $this->recipe,
             'updated'     => $this->updated_at->format('Y-m-d H:i:s'),
             'registered'  => $this->created_at->format('Y-m-d H:i:s'),

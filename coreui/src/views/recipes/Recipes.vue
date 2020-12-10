@@ -55,7 +55,7 @@ export default {
   data: () => {
     return {
       items: [],
-      fields: ["id", "firm", "name", "registered", "updated", "operate"],
+      fields: [],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
@@ -91,11 +91,22 @@ export default {
     createRecipe() {
       this.$router.push({ path: `recipes/create` });
     },
-    getDevices() {
+    getFields() {
+      let self = this;
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = ["id", "name", "registered", "updated", "operate"];
+        self.highestRole = "firm owner";
+        return false;
+      }
+      self.fields = ["id", "firm", "name", "registered", "updated", "operate"];
+      self.highestRole = "admin";
+    },
+    getRecipes() {
       let self = this;
       axios
         .get("/api/recipes?token=" + localStorage.getItem("api_token"))
         .then(function(response) {
+          self.getFields();
           self.items = response.data;
         })
         .catch(function(error) {
@@ -105,7 +116,7 @@ export default {
     },
   },
   mounted: function() {
-    this.getDevices();
+    this.getRecipes();
   },
 };
 </script>

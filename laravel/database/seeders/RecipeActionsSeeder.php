@@ -9,51 +9,55 @@ class RecipeActionsSeeder extends Seeder
 {
     private $actionLists = [
         [
-            'id' => '1',
+            'value' => '',
+            'action' => 'No Act',
+        ],
+        [
+            'value' => '1',
             'action' => 'Water gate open',
         ],
         [
-            'id' => '2',
+            'value' => '2',
             'action' => 'Water gate close',
         ],
         [
-            'id' => '3',
+            'value' => '3',
             'action' => 'Mat gate open',
         ],
         [
-            'id' => '4',
+            'value' => '4',
             'action' => 'Mat gate close',
         ],
         [
-            'id' => '5',
+            'value' => '5',
             'action' => 'Drain gate open',
         ],
         [
-            'id' => '6',
+            'value' => '6',
             'action' => 'Drain gate close',
         ],
         [
-            'id' => '7',
+            'value' => '7',
             'action' => 'Stir open',
         ],
         [
-            'id' => '8',
+            'value' => '8',
             'action' => 'Stir close',
         ],
         [
-            'id' => '9',
+            'value' => '9',
             'action' => 'Heater open',
         ],
         [
-            'id' => '10',
+            'value' => '10',
             'action' => 'Heater close',
         ],
         [
-            'id' => '11',
+            'value' => '11',
             'action' => 'intermittent stir open', // 間歇性攪拌開啟
         ],
         [
-            'id' => '12',
+            'value' => '12',
             'action' => 'intermittent stir close', // 間歇性攪拌關閉
         ],
     ];
@@ -61,7 +65,7 @@ class RecipeActionsSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return vovalue
      */
     public function run()
     {

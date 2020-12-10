@@ -14,7 +14,8 @@ class CreateRecipeSteps extends Migration
     public function up()
     {
         Schema::create('recipe_steps', function (Blueprint $table) {
-            $table->integer('id');
+            $table->bigIncrements('id');
+            $table->integer('value');
             $table->string('step');
             $table->string('unit')->nullable();
         });

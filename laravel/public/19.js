@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      fields: ["id", "firm", "name", "registered", "updated", "operate"],
+      fields: [],
       currentPage: 1,
       perPage: 6,
       totalRows: 0
@@ -177,9 +177,22 @@ __webpack_require__.r(__webpack_exports__);
         path: "recipes/create"
       });
     },
-    getDevices: function getDevices() {
+    getFields: function getFields() {
+      var self = this;
+
+      if (localStorage.getItem("user_firm") !== "null") {
+        self.fields = ["id", "name", "registered", "updated", "operate"];
+        self.highestRole = "firm owner";
+        return false;
+      }
+
+      self.fields = ["id", "firm", "name", "registered", "updated", "operate"];
+      self.highestRole = "admin";
+    },
+    getRecipes: function getRecipes() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/recipes?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.getFields();
         self.items = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -190,7 +203,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getDevices();
+    this.getRecipes();
   }
 });
 
