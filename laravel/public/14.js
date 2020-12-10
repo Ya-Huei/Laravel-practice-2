@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      fields: ["id", "serial_no", "type", "type_id", "status", "registered", "updated", "operate"],
+      fields: ["id", "serial_no", "type", "version", "status", "registered", "updated"],
       currentPage: 1,
       perPage: 6,
       totalRows: 0,
@@ -149,12 +149,10 @@ __webpack_require__.r(__webpack_exports__);
     otaLink: function otaLink(id) {
       return "otas/".concat(id.toString(), "/show");
     },
-    showOta: function showOta(id) {
-      var otaLink = this.otaLink(id);
-      this.$router.push({
-        path: otaLink
-      });
-    },
+    // showOta(id) {
+    //   const otaLink = this.otaLink(id);
+    //   this.$router.push({ path: otaLink });
+    // },
     otaUpdate: function otaUpdate() {
       this.$router.push({
         path: "otas/update"
@@ -272,32 +270,6 @@ var render = function() {
                                       "CBadge",
                                       { attrs: { color: item.status.class } },
                                       [_vm._v(_vm._s(item.status.name))]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          },
-                          {
-                            key: "operate",
-                            fn: function(ref) {
-                              var item = ref.item
-                              return [
-                                _c(
-                                  "td",
-                                  [
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "primary" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.showOta(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Detail")]
                                     )
                                   ],
                                   1

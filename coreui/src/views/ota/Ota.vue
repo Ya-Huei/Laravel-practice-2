@@ -32,13 +32,13 @@
                 </td>
               </template>
 
-              <template #operate="{item}">
+              <!-- <template #operate="{item}">
                 <td>
                   <CButton color="primary" @click="showOta(item.id)"
                     >Detail</CButton
                   >
                 </td>
-              </template>
+              </template> -->
             </CDataTable>
           </CCardBody>
         </CCard>
@@ -59,11 +59,10 @@ export default {
         "id",
         "serial_no",
         "type",
-        "type_id",
+        "version",
         "status",
         "registered",
         "updated",
-        "operate",
       ],
       currentPage: 1,
       perPage: 6,
@@ -75,10 +74,10 @@ export default {
     otaLink(id) {
       return `otas/${id.toString()}/show`;
     },
-    showOta(id) {
-      const otaLink = this.otaLink(id);
-      this.$router.push({ path: otaLink });
-    },
+    // showOta(id) {
+    //   const otaLink = this.otaLink(id);
+    //   this.$router.push({ path: otaLink });
+    // },
     otaUpdate() {
       this.$router.push({ path: `otas/update` });
     },

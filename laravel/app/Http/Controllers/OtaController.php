@@ -43,7 +43,7 @@ class OtaController extends Controller
      */
     public function show(OtaShowValidation $request, OtaRecord $ota)
     {
-        return response()->json(new ShowOtaRecord($ota));
+        // return response()->json(new ShowOtaRecord($ota));
     }
 
     public function getOtaUpdateInfo()
