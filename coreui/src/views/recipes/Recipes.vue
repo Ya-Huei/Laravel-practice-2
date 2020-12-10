@@ -29,9 +29,6 @@
                   <CButton color="primary" @click="editRecipe(item.id)"
                     >Edit</CButton
                   >
-                  <CButton color="primary" @click="showRecipe(item.id)"
-                    >Detail</CButton
-                  >
                   <CButton
                     color="success"
                     @click="exportRecipe(item.recipe, item.name)"

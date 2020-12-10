@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Recipes\RecipeStoreFormValidation;
-use App\Http\Resources\RecipeCollection;
 use Illuminate\Support\Facades\Log;
+
+use App\Http\Requests\Recipes\RecipeEditValidation;
+use App\Http\Requests\Recipes\RecipeStoreFormValidation;
+use App\Http\Requests\Recipes\RecipeUpdateFormValidation;
+use App\Http\Resources\RecipeCollection;
 use App\Models\Recipe;
-use App\Services\RecipeStepService;
 use App\Services\RecipeActionService;
+use App\Services\RecipeStepService;
 
 class RecipesController extends Controller
 {
@@ -52,9 +55,9 @@ class RecipesController extends Controller
         foreach ($request->recipes as $key => $value) {
             isset($value['step']) ? array_push($recipeStep, intval($value['step'])) : array_push($recipeStep, 0);
             isset($value['para']) ? array_push($recipeStep, $value['para']) : array_push($recipeStep, 0);
-            isset($value['act1']) ? array_push($recipeStep, $value['act1']) : array_push($recipeStep, 0);
-            isset($value['act2']) ? array_push($recipeStep, $value['act2']) : array_push($recipeStep, 0);
-            isset($value['act3']) ? array_push($recipeStep, $value['act3']) : array_push($recipeStep, 0);
+            isset($value['act1']) ? array_push($recipeStep, intval($value['act1'])) : array_push($recipeStep, 0);
+            isset($value['act2']) ? array_push($recipeStep, intval($value['act2'])) : array_push($recipeStep, 0);
+            isset($value['act3']) ? array_push($recipeStep, intval($value['act3'])) : array_push($recipeStep, 0);
             if ($value['step'] === "0") {
                 break;
             }
@@ -69,25 +72,17 @@ class RecipesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(RecipeEditValidation $request, Recipe $recipe)
     {
-        //
+        // Log::info(print_r($recipe));
+        $steps = RecipeStepService::getRecipeStepOptions();
+        $actions = RecipeActionService::getRecipeActionOptions();
+        return response()->json(compact('steps', 'actions', 'recipe'));
     }
 
     /**
@@ -97,19 +92,23 @@ class RecipesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RecipeUpdateFormValidation $request, Recipe $recipe)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $recipeStep = [];
+        foreach ($request->recipes as $key => $value) {
+            isset($value['step']) ? array_push($recipeStep, intval($value['step'])) : array_push($recipeStep, 0);
+            isset($value['para']) ? array_push($recipeStep, $value['para']) : array_push($recipeStep, 0);
+            isset($value['act1']) ? array_push($recipeStep, intval($value['act1'])) : array_push($recipeStep, 0);
+            isset($value['act2']) ? array_push($recipeStep, intval($value['act2'])) : array_push($recipeStep, 0);
+            isset($value['act3']) ? array_push($recipeStep, intval($value['act3'])) : array_push($recipeStep, 0);
+            if ($value['step'] === "0") {
+                break;
+            }
+        }
+        $result = implode(",", $recipeStep);
+        
+        $recipe->name = $request->name;
+        $recipe->recipe = $result;
+        $recipe->save();
     }
 }

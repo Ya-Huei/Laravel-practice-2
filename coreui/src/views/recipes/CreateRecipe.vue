@@ -125,7 +125,7 @@ import axios from "axios";
 import format from "../mixins/Format.vue";
 export default {
   mixins: [format],
-  name: "CreateRole",
+  name: "CreateRecipe",
   data: () => {
     return {
       name: "",
@@ -133,9 +133,9 @@ export default {
         {
           step: "3",
           para: "",
-          act1: 0,
-          act2: 0,
-          act3: 0,
+          act1: "0",
+          act2: "0",
+          act3: "0",
           unit: "L",
           isShowPara: true,
           isShowAct: true,
@@ -173,9 +173,9 @@ export default {
       let recipe = {
         step: "0",
         para: "",
-        act1: 0,
-        act2: 0,
-        act3: 0,
+        act1: "0",
+        act2: "0",
+        act3: "0",
         unit: "",
         isShowPara: false,
         isShowAct: false,

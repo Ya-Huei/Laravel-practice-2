@@ -126,9 +126,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Recipes",
@@ -309,19 +306,6 @@ var render = function() {
                                         }
                                       },
                                       [_vm._v("Edit")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "CButton",
-                                      {
-                                        attrs: { color: "primary" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.showRecipe(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Detail")]
                                     ),
                                     _vm._v(" "),
                                     _c(

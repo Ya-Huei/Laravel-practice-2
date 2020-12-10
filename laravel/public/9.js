@@ -299,16 +299,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
-  name: "CreateRole",
+  name: "CreateRecipe",
   data: function data() {
     return {
       name: "",
       recipes: [{
         step: "3",
         para: "",
-        act1: 0,
-        act2: 0,
-        act3: 0,
+        act1: "0",
+        act2: "0",
+        act3: "0",
         unit: "L",
         isShowPara: true,
         isShowAct: true,
@@ -350,9 +350,9 @@ __webpack_require__.r(__webpack_exports__);
       var recipe = {
         step: "0",
         para: "",
-        act1: 0,
-        act2: 0,
-        act3: 0,
+        act1: "0",
+        act2: "0",
+        act3: "0",
         unit: "",
         isShowPara: false,
         isShowAct: false,
