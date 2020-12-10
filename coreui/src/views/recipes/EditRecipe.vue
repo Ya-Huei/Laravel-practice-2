@@ -31,6 +31,7 @@
                   </CCol>
                   <CCol col="2">
                     <CInput
+                      type="number"
                       v-model="recipe.para"
                       v-if="recipe.isShowPara"
                       :requeired="`${recipe.isShowPara}`"
@@ -52,6 +53,7 @@
                       v-if="recipe.isShowAct"
                     />
                     <CInput
+                      type="number"
                       v-model="recipe.act1"
                       v-if="recipe.isShowActInput"
                       placeholder="delay sec"
@@ -64,6 +66,7 @@
                       v-if="recipe.isShowAct"
                     />
                     <CInput
+                      type="number"
                       v-model="recipe.act2"
                       v-if="recipe.isShowActInput"
                       placeholder="stir sec"
@@ -76,6 +79,7 @@
                       v-if="recipe.isShowAct"
                     />
                     <CInput
+                      type="number"
                       v-model="recipe.act3"
                       v-if="recipe.isShowActInput"
                       placeholder="stop sec"

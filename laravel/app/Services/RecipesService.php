@@ -8,16 +8,13 @@ class RecipesService
 {
     public static function getRecipesOptions()
     {
-        $recipes = Recipe::select('recipe')->get();
-        $result = $recipes->pluck("recipe")->toArray();
-        array_unshift($result, "");
+        $recipes = Recipe::ofFirmId(auth()->user()->firm_id)->get()->toArray();
+        $result = [];
+        foreach ($recipes as $key => $value) {
+            $result[$key]['value'] = $value['id'];
+            $result[$key]['label'] = $value['name'];
+        }
         return $result;
-    }
-
-    public static function getRecipeId($item)
-    {
-        $recipe = Recipe::where('recipe', $item)->first();
-        return $recipe->id;
     }
 
     public static function geRecipeInfo($recipe_id)

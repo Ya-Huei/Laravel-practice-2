@@ -32,11 +32,6 @@ class OtaRecord extends Model
         return $this->belongsTo(Status::class);
     }
 
-    public static function getDefineTypeKey($value)
-    {
-        return array_search($value, self::$typeLists);
-    }
-
     public function scopeOfFirmId($query, $firmId)
     {
         if ($firmId !== null) {

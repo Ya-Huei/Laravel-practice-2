@@ -341,13 +341,6 @@ __webpack_require__.r(__webpack_exports__);
     getInfo: function getInfo() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
-        if (response.data.status == "403") {
-          self.$router.push({
-            path: "/devices"
-          });
-          return;
-        }
-
         self.setDefaultData(response);
       })["catch"](function (error) {
         console.log(error);
@@ -373,8 +366,8 @@ __webpack_require__.r(__webpack_exports__);
         self.location.city = response.data.device.city;
       }
 
-      self.device.firm = response.data.device.firm;
-      self.device.status = response.data.device.status;
+      self.device.firm = response.data.device.firm_id;
+      self.device.status = response.data.device.status_id;
 
       if (localStorage.getItem("user_firm") === "null") {
         self.showFirmSelection = true;

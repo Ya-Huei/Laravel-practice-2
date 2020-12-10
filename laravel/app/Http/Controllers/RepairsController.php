@@ -35,7 +35,6 @@ class RepairsController extends Controller
     public function edit(RepairEditValidation $request, RepairRecord $repair)
     {
         $device = $repair->device()->first();
-        StatusesService::getStatusInfo($repair, $repair->status_id);
         $status = StatusesService::getStatusesOptions(StatusTypes::DEVICE);
         return response()->json(compact('repair', 'device', 'status'));
     }
@@ -51,12 +50,11 @@ class RepairsController extends Controller
     {
         $repair->reason = $request->reason;
         $repair->worker = $request->worker;
-        $status_id = StatusesService::getStatusId($request->status, StatusTypes::DEVICE);
-        $repair->status_id = $status_id;
+        $repair->status_id = $request->status;
         $repair->save();
 
         $device = $repair->device()->first();
-        $device->status_id = $status_id;
+        $device->status_id = $request->status;
         $device->save();
 
         return response()->json(['status' => 'success']);

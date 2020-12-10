@@ -171,10 +171,6 @@ export default {
             localStorage.getItem("api_token")
         )
         .then(function(response) {
-          if (response.data.status == "403") {
-            self.$router.push({ path: "/devices" });
-            return;
-          }
           self.setDefaultData(response);
         })
         .catch(function(error) {
@@ -197,8 +193,8 @@ export default {
         self.loadCities();
         self.location.city = response.data.device.city;
       }
-      self.device.firm = response.data.device.firm;
-      self.device.status = response.data.device.status;
+      self.device.firm = response.data.device.firm_id;
+      self.device.status = response.data.device.status_id;
       if (localStorage.getItem("user_firm") === "null") {
         self.showFirmSelection = true;
       }

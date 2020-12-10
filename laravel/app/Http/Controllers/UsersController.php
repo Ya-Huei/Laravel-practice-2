@@ -84,8 +84,12 @@ class UsersController extends Controller
             $user->location_id = auth()->user()->location_id;
         }
 
-        if (array_key_exists("firm", $validatedData)) {
-            $user->firm_id = !empty($validatedData['firm']) ? FirmsService::getFirmId($validatedData['firm']) : null;
+        if (array_key_exists("firm", $validatedData) && isset($validatedData['firm'])) {
+            if ($validatedData['firm'] === "0") {
+                $user->firm_id = null;
+            } else {
+                $user->firm_id = $validatedData['firm'];
+            }
         } else {
             $user->firm_id = auth()->user()->firm_id;
         }
@@ -116,7 +120,6 @@ class UsersController extends Controller
     {
         $user->menuroles = $user->getRoleNames();
         LocationsService::getLocationInfo($user, $user->location_id);
-        FirmsService::getFirmInfo($user, $user->firm_id);
         $roles = RolesService::getRolesOptions();
         $locations = LocationsService::getLocationsOptions();
         $firms = FirmsService::getFirmsOptions();
@@ -142,10 +145,14 @@ class UsersController extends Controller
             $user->location_id = !empty($validatedData['country']) ? LocationsService::getLocationId($validatedData['country'], $validatedData['region'], $validatedData['city']) : null;
         }
 
-        if (array_key_exists("firm", $validatedData)) {
-            $user->firm_id = !empty($validatedData['firm']) ? FirmsService::getFirmId($validatedData['firm']) : null;
+        if (array_key_exists("firm", $validatedData) && isset($validatedData['firm'])) {
+            if ($validatedData['firm'] === "0") {
+                $user->firm_id = null;
+            } else {
+                $user->firm_id = $validatedData['firm'];
+            }
         }
-
+        
         $user->save();
         $user->syncRoles($validatedData['roles']);
 

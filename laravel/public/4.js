@@ -381,7 +381,7 @@ __webpack_require__.r(__webpack_exports__);
       self.device.serial_no = response.data.device.serial_no;
       self.statusOptions = response.data.status;
       self.repair.reason = response.data.repair.reason;
-      self.repair.status = response.data.repair.status;
+      self.repair.status = response.data.repair.status_id;
     }
   },
   mounted: function mounted() {

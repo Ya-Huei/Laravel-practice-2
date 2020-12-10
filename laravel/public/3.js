@@ -295,6 +295,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -593,6 +597,7 @@ var render = function() {
                                       recipe.isShowPara
                                         ? _c("CInput", {
                                             attrs: {
+                                              type: "number",
                                               requeired: "" + recipe.isShowPara,
                                               placeholder: "" + recipe.unit
                                             },
@@ -660,7 +665,10 @@ var render = function() {
                                       _vm._v(" "),
                                       recipe.isShowActInput
                                         ? _c("CInput", {
-                                            attrs: { placeholder: "delay sec" },
+                                            attrs: {
+                                              type: "number",
+                                              placeholder: "delay sec"
+                                            },
                                             model: {
                                               value: recipe.act1,
                                               callback: function($$v) {
@@ -698,7 +706,10 @@ var render = function() {
                                       _vm._v(" "),
                                       recipe.isShowActInput
                                         ? _c("CInput", {
-                                            attrs: { placeholder: "stir sec" },
+                                            attrs: {
+                                              type: "number",
+                                              placeholder: "stir sec"
+                                            },
                                             model: {
                                               value: recipe.act2,
                                               callback: function($$v) {
@@ -736,7 +747,10 @@ var render = function() {
                                       _vm._v(" "),
                                       recipe.isShowActInput
                                         ? _c("CInput", {
-                                            attrs: { placeholder: "stop sec" },
+                                            attrs: {
+                                              type: "number",
+                                              placeholder: "stop sec"
+                                            },
                                             model: {
                                               value: recipe.act3,
                                               callback: function($$v) {

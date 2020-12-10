@@ -56,8 +56,8 @@ class OtaController extends Controller
 
     public function saveOtaUpdate(DeviceUpdateOtaFormValidation $request)
     {
-        $type = OtaRecord::getDefineTypeKey($request->type);
-        $typeId = $this->getTypeId($request->type, $request->name);
+        $type = $request->type;
+        $typeId = $request->name;
         $allowDevice = Device::select('id')->ofFirmId(auth()->user()->firm_id)->ofLocationId(auth()->user()->location_id)->whereIn('id', $request->devices)->orderBy('id', 'asc')->get();
         $records = [];
         foreach ($allowDevice as $key => $value) {
@@ -73,19 +73,5 @@ class OtaController extends Controller
 
         OtaRecord::insert($records);
         return response()->json(['status' => 'success']);
-    }
-
-    private function getTypeId($type, $name)
-    {
-        $result_id = "";
-        switch ($type) {
-            case OtaTypes::FIRMWARE:
-                $result_id = FirmwareService::getFirmwareId($name);
-                break;
-            case OtaTypes::RECIPE:
-                $result_id = RecipesService::getRecipeId($name);
-                break;
-        }
-        return $result_id;
     }
 }

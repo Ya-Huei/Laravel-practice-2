@@ -275,10 +275,16 @@ __webpack_require__.r(__webpack_exports__);
       },
       isUpdateOta: true,
       showMessage: false,
-      otaOptions: ["firmware", "recipe"],
+      otaOptions: [{
+        value: "1",
+        label: "firmware"
+      }, {
+        value: "2",
+        label: "recipe"
+      }],
       detailOptions: [],
-      ota: "firmware",
-      detail: "",
+      ota: "1",
+      detail: "1",
       firmware: [],
       recipe: [],
       select: [],
@@ -298,11 +304,13 @@ __webpack_require__.r(__webpack_exports__);
     loadDetail: function loadDetail() {
       var self = this;
 
-      if (self.ota == "firmware") {
+      if (self.ota == "1") {
         self.detailOptions = self.firmware;
-      } else if (self.ota == "recipe") {
+      } else if (self.ota == "2") {
         self.detailOptions = self.recipe;
       }
+
+      self.detail = self.detailOptions[0].value;
     },
     countDownChanged: function countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown;
@@ -371,6 +379,7 @@ __webpack_require__.r(__webpack_exports__);
         self.firmware = response.data.firmware;
         self.recipe = response.data.recipe;
         self.detailOptions = self.firmware;
+        self.detail = self.detailOptions[0].value;
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({

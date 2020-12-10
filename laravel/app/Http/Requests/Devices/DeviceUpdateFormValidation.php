@@ -46,19 +46,6 @@ class DeviceUpdateFormValidation extends FormRequest
         }
 
         return $this->commonRules();
-        $rule = [
-            'country'    => 'required_with_all:region,city|required_if:status,Enable',
-            'region'     => 'required_with_all:country,city',
-            'city'       => 'required_with_all:country,region',
-            'address'    => 'nullable|string|between:0,255',
-            'status'     => 'required|string',
-        ];
-
-        if (auth()->user()->hasRole('admin')) {
-            $rule += ['firm' => 'nullable|string'];
-        }
-
-        return $rule;
     }
 
     /**
@@ -73,8 +60,8 @@ class DeviceUpdateFormValidation extends FormRequest
             'region'     => 'required_with_all:country,city',
             'city'       => 'required_with_all:country,region',
             'address'    => 'nullable|string|between:0,255',
-            'firm'       => 'nullable|string',
-            'status'     => 'required|string',
+            'firm'       => 'nullable|integer',
+            'status'     => 'required|integer',
         ];
     }
 
@@ -90,7 +77,7 @@ class DeviceUpdateFormValidation extends FormRequest
             'region'     => 'required_with_all:country,city',
             'city'       => 'required_with_all:country,region',
             'address'    => 'nullable|string|between:0,255',
-            'status'     => 'required|string',
+            'status'     => 'required|integer',
         ];
     }
 
@@ -103,7 +90,7 @@ class DeviceUpdateFormValidation extends FormRequest
     {
         return  [
             'address'    => 'nullable|string|between:0,255',
-            'status'     => 'required|string',
+            'status'     => 'required|integer',
         ];
     }
 }

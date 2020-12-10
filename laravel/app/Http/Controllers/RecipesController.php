@@ -54,7 +54,7 @@ class RecipesController extends Controller
         $recipeStep = [];
         foreach ($request->recipes as $key => $value) {
             isset($value['step']) ? array_push($recipeStep, intval($value['step'])) : array_push($recipeStep, 0);
-            isset($value['para']) ? array_push($recipeStep, $value['para']) : array_push($recipeStep, 0);
+            isset($value['para']) ? array_push($recipeStep, intval($value['para'])) : array_push($recipeStep, 0);
             isset($value['act1']) ? array_push($recipeStep, intval($value['act1'])) : array_push($recipeStep, 0);
             isset($value['act2']) ? array_push($recipeStep, intval($value['act2'])) : array_push($recipeStep, 0);
             isset($value['act3']) ? array_push($recipeStep, intval($value['act3'])) : array_push($recipeStep, 0);
@@ -79,7 +79,6 @@ class RecipesController extends Controller
      */
     public function edit(RecipeEditValidation $request, Recipe $recipe)
     {
-        // Log::info(print_r($recipe));
         $steps = RecipeStepService::getRecipeStepOptions();
         $actions = RecipeActionService::getRecipeActionOptions();
         return response()->json(compact('steps', 'actions', 'recipe'));

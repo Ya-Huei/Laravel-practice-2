@@ -24,8 +24,8 @@ class DeviceUpdateOtaFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'type'      => 'required|string|required_with:name',
-            'name'      => 'required|string|required_with:type',
+            'type'      => 'required|integer|required_with:name',
+            'name'      => 'required|integer|required_with:type',
             'devices'   => 'required|array',
         ];
     }
