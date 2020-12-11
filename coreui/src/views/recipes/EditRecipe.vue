@@ -56,7 +56,7 @@
                       type="number"
                       v-model="recipe.act1"
                       v-if="recipe.isShowActInput"
-                      placeholder="delay sec"
+                      description="delay sec"
                     />
                   </CCol>
                   <CCol col="2">
@@ -69,7 +69,7 @@
                       type="number"
                       v-model="recipe.act2"
                       v-if="recipe.isShowActInput"
-                      placeholder="stir sec"
+                      description="stir sec"
                     />
                   </CCol>
                   <CCol col="2">
@@ -82,7 +82,7 @@
                       type="number"
                       v-model="recipe.act3"
                       v-if="recipe.isShowActInput"
-                      placeholder="stop sec"
+                      description="stop sec"
                     />
                   </CCol>
                   <CCol col="1">
@@ -308,7 +308,7 @@ export default {
         })
         .catch(function(error) {
           console.log(error);
-          // self.$router.push({ path: "/login" });
+          self.$router.push({ path: "/login" });
         });
     },
   },

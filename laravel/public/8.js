@@ -50,17 +50,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../coreui/src/views/ota/UpdateOta.vue":
-/*!*********************************************!*\
-  !*** ../coreui/src/views/ota/UpdateOta.vue ***!
-  \*********************************************/
+/***/ "../coreui/src/views/recipes/CreateRecipe.vue":
+/*!****************************************************!*\
+  !*** ../coreui/src/views/recipes/CreateRecipe.vue ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _UpdateOta_vue_vue_type_template_id_1fca5d26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateOta.vue?vue&type=template&id=1fca5d26& */ "../coreui/src/views/ota/UpdateOta.vue?vue&type=template&id=1fca5d26&");
-/* harmony import */ var _UpdateOta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateOta.vue?vue&type=script&lang=js& */ "../coreui/src/views/ota/UpdateOta.vue?vue&type=script&lang=js&");
+/* harmony import */ var _CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateRecipe.vue?vue&type=template&id=30540b7e& */ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&");
+/* harmony import */ var _CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateRecipe.vue?vue&type=script&lang=js& */ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -70,9 +70,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _UpdateOta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _UpdateOta_vue_vue_type_template_id_1fca5d26___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _UpdateOta_vue_vue_type_template_id_1fca5d26___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -82,38 +82,38 @@ var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNor
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "coreui/src/views/ota/UpdateOta.vue"
+component.options.__file = "coreui/src/views/recipes/CreateRecipe.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "../coreui/src/views/ota/UpdateOta.vue?vue&type=script&lang=js&":
-/*!**********************************************************************!*\
-  !*** ../coreui/src/views/ota/UpdateOta.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************/
+/***/ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateOta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./UpdateOta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/ota/UpdateOta.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateOta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRecipe.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "../coreui/src/views/ota/UpdateOta.vue?vue&type=template&id=1fca5d26&":
-/*!****************************************************************************!*\
-  !*** ../coreui/src/views/ota/UpdateOta.vue?vue&type=template&id=1fca5d26& ***!
-  \****************************************************************************/
+/***/ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&":
+/*!***********************************************************************************!*\
+  !*** ../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e& ***!
+  \***********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateOta_vue_vue_type_template_id_1fca5d26___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./UpdateOta.vue?vue&type=template&id=1fca5d26& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/ota/UpdateOta.vue?vue&type=template&id=1fca5d26&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateOta_vue_vue_type_template_id_1fca5d26___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRecipe.vue?vue&type=template&id=30540b7e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateOta_vue_vue_type_template_id_1fca5d26___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -161,10 +161,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/ota/UpdateOta.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/ota/UpdateOta.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -259,127 +259,180 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
-  name: "UpdateOta",
+  name: "CreateRecipe",
   data: function data() {
     return {
-      items: [],
-      fields: [],
+      name: "",
+      recipes: [{
+        step: "3",
+        para: "",
+        act1: "0",
+        act2: "0",
+        act3: "0",
+        unit: "L",
+        isShowPara: true,
+        isShowAct: true,
+        isShowActInput: false,
+        isShowParaSelect: false
+      }],
       messages: [],
       horizontal: {
-        label: "col-4",
-        input: "col-8"
+        label: "col-3",
+        input: "col-9"
       },
-      isUpdateOta: true,
-      showMessage: false,
-      otaOptions: [{
-        value: "1",
-        label: "firmware"
-      }, {
-        value: "2",
-        label: "recipe"
-      }],
-      detailOptions: [],
-      ota: "1",
-      detail: "1",
-      firmware: [],
-      recipe: [],
-      select: [],
-      selectAll: false,
-      filterItem: []
+      optionSteps: [],
+      optionActs: [],
+      isShowSub: false,
+      count: 1,
+      maxStep: 50,
+      isShowAdd: true,
+      isCreatedRecipe: true,
+      showMessage: false
     };
   },
   methods: {
-    setFilterItem: function setFilterItem(value) {
+    sub: function sub(index) {
       var self = this;
-      self.selectAll = false;
-      self.filterItem = value;
+      self.recipes.splice(index, 1);
+
+      if (self.recipes.length === 1) {
+        self.isShowSub = false;
+      }
+
+      self.count--;
+
+      if (self.count < self.maxStep) {
+        self.isShowAdd = true;
+      }
+    },
+    add: function add() {
+      var self = this;
+      var recipe = {
+        step: "0",
+        para: "",
+        act1: "0",
+        act2: "0",
+        act3: "0",
+        unit: "",
+        isShowPara: false,
+        isShowAct: false,
+        isShowActInput: false,
+        isShowParaSelect: false
+      };
+      self.recipes.push(recipe);
+      self.isShowSub = true;
+      self.count++;
+
+      if (self.count >= self.maxStep) {
+        self.isShowAdd = false;
+      }
+    },
+    resetRecipe: function resetRecipe(index) {
+      var self = this;
+      self.recipes[index].para = "";
+      self.recipes[index].isShowPara = true;
+      self.recipes[index].isShowAct = true;
+      self.recipes[index].isShowParaSelect = false;
+      self.recipes[index].isShowActInput = false;
+    },
+    loadDetail: function loadDetail(recipesIndex) {
+      var self = this;
+      var option = [];
+      self.optionSteps.forEach(function (item, index, array) {
+        if (item.value === self.recipes[recipesIndex].step) {
+          option = item;
+        }
+      });
+      self.resetRecipe(recipesIndex);
+      self.recipes[recipesIndex].unit = option.unit;
+
+      switch (option.value) {
+        case "0":
+          self.recipes[recipesIndex].isShowPara = false;
+          self.recipes[recipesIndex].isShowAct = false;
+          break;
+
+        case "1":
+          self.recipes[recipesIndex].isShowPara = false;
+          break;
+
+        case "100":
+          self.recipes[recipesIndex].isShowPara = false;
+          self.recipes[recipesIndex].isShowParaSelect = true;
+          self.recipes[recipesIndex].isShowAct = false;
+          self.recipes[recipesIndex].isShowActInput = true;
+          self.recipes[recipesIndex].act1 = "";
+          self.recipes[recipesIndex].act2 = "";
+          self.recipes[recipesIndex].act3 = "";
+          break;
+      }
     },
     goBack: function goBack() {
       this.$router.go(-1);
     },
-    loadDetail: function loadDetail() {
+    store: function store() {
       var self = this;
-
-      if (self.ota == "1") {
-        self.detailOptions = self.firmware;
-      } else if (self.ota == "2") {
-        self.detailOptions = self.recipe;
-      }
-
-      self.detail = self.detailOptions[0].value;
-    },
-    countDownChanged: function countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown;
-    },
-    showAlert: function showAlert() {
-      this.dismissCountDown = this.dismissSecs;
-    },
-    checkedAll: function checkedAll() {
-      var self = this;
-      self.selectAll = !self.selectAll;
-
-      if (self.selectAll) {
-        for (var i in self.filterItem) {
-          self.select.push(self.filterItem[i].id);
-        }
-      } else {
-        self.select = [];
-      }
-    },
-    checked: function checked(id) {
-      var self = this;
-      var temp = self.select.indexOf(id);
-
-      if (temp > -1) {
-        self.select.splice(temp, 1);
-      } else {
-        self.select.push(id);
-      }
-    },
-    update: function update() {
-      var self = this;
-      self.isUpdateOta = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/otas/saveOtaUpdate?token=" + localStorage.getItem("api_token"), {
-        _method: "POST",
-        type: self.ota,
-        name: self.detail,
-        devices: self.select
+      self.isCreatedRecipe = false;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/recipes?token=" + localStorage.getItem("api_token"), {
+        name: self.name,
+        recipes: self.recipes
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
-        self.isUpdateOta = true;
+        self.isCreatedRecipe = true;
         self.messages = self.formResponseFormat(error);
         self.showMessage = true;
       });
     },
-    getFields: function getFields() {
-      var self = this;
-
-      if (localStorage.getItem("user_location") !== "null") {
-        self.fields = ["operate", "serial_no", "address", "status"];
-        return false;
-      }
-
-      if (localStorage.getItem("user_firm") !== "null") {
-        self.fields = ["operate", "serial_no", "region", "address", "status"];
-        return false;
-      }
-
-      self.fields = ["operate", "serial_no", "region", "address", "firm", "status"];
-    },
     getInfo: function getInfo() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/otas/getOtaUpdateInfo?token=" + localStorage.getItem("api_token")).then(function (response) {
-        self.getFields();
-        self.items = response.data.devices;
-        self.firmware = response.data.firmware;
-        self.recipe = response.data.recipe;
-        self.detailOptions = self.firmware;
-        self.detail = self.detailOptions[0].value;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/recipes/create?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.optionSteps = response.data.steps;
+        self.optionActs = response.data.actions;
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({
@@ -395,10 +448,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/ota/UpdateOta.vue?vue&type=template&id=1fca5d26&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/ota/UpdateOta.vue?vue&type=template&id=1fca5d26& ***!
-  \**********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e& ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -415,219 +468,363 @@ var render = function() {
     [
       _c(
         "CCol",
-        { attrs: { col: "12", xl: "12" } },
+        { attrs: { col: "12", lg: "12" } },
         [
           _c(
-            "transition",
-            { attrs: { name: "slide" } },
+            "CCard",
             [
+              _c("CCardHeader", [_c("h4", [_vm._v("Create Recipe")])]),
+              _vm._v(" "),
               _c(
-                "CCard",
+                "CCardBody",
                 [
+                  _vm.showMessage
+                    ? _c(
+                        "span",
+                        _vm._l(_vm.messages, function(message) {
+                          return _c(
+                            "CAlert",
+                            { key: message, attrs: { color: "danger" } },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(message) +
+                                  "\n          "
+                              )
+                            ]
+                          )
+                        }),
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c(
-                    "CCardHeader",
+                    "CForm",
                     [
-                      _c(
-                        "CRow",
-                        [
+                      _c("CInput", {
+                        attrs: {
+                          description: "Enter your recipe name",
+                          label: "Name"
+                        },
+                        model: {
+                          value: _vm.name,
+                          callback: function($$v) {
+                            _vm.name = $$v
+                          },
+                          expression: "name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.recipes, function(recipe, index) {
+                        return _c("div", [
                           _c(
-                            "CCol",
-                            { attrs: { col: "4" } },
-                            [
-                              _c("CSelect", {
-                                staticClass: "mb-0",
-                                attrs: {
-                                  label: "Type",
-                                  options: _vm.otaOptions,
-                                  value: _vm.ota,
-                                  horizontal: ""
-                                },
-                                on: {
-                                  "update:value": function($event) {
-                                    _vm.ota = $event
-                                  },
-                                  change: function($event) {
-                                    return _vm.loadDetail()
-                                  }
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            { attrs: { col: "4" } },
-                            [
-                              _c("CSelect", {
-                                staticClass: "mb-0",
-                                attrs: {
-                                  label: "Name",
-                                  options: _vm.detailOptions,
-                                  value: _vm.detail,
-                                  horizontal: ""
-                                },
-                                on: {
-                                  "update:value": function($event) {
-                                    _vm.detail = $event
-                                  }
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "CCol",
-                            {
-                              staticClass: "d-flex justify-content-end",
-                              attrs: { col: "4" }
-                            },
+                            "div",
                             [
                               _c(
-                                "CButton",
-                                {
-                                  staticClass: "mr-2",
-                                  attrs: { color: "secondary" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.checkedAll()
-                                    }
-                                  },
-                                  model: {
-                                    value: _vm.selectAll,
-                                    callback: function($$v) {
-                                      _vm.selectAll = $$v
-                                    },
-                                    expression: "selectAll"
-                                  }
-                                },
-                                [_vm._v("Select All\n              ")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "CButton",
-                                {
-                                  attrs: {
-                                    disabled: !_vm.isUpdateOta,
-                                    color: "primary"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.update()
-                                    }
-                                  }
-                                },
+                                "CRow",
                                 [
-                                  _vm.isUpdateOta
-                                    ? _c("span", [_vm._v("Update")])
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  !_vm.isUpdateOta
-                                    ? _c("CSpinner", {
-                                        attrs: { color: "info", size: "sm" }
+                                  _c(
+                                    "CCol",
+                                    { attrs: { col: "3" } },
+                                    [
+                                      _c("CSelect", {
+                                        attrs: {
+                                          label: "Step" + (index + 1),
+                                          options: _vm.optionSteps,
+                                          value: recipe.step,
+                                          horizontal: ""
+                                        },
+                                        on: {
+                                          "update:value": function($event) {
+                                            return _vm.$set(
+                                              recipe,
+                                              "step",
+                                              $event
+                                            )
+                                          },
+                                          change: function($event) {
+                                            return _vm.loadDetail(index)
+                                          }
+                                        }
                                       })
-                                    : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "CCol",
+                                    { attrs: { col: "2" } },
+                                    [
+                                      recipe.isShowPara
+                                        ? _c("CInput", {
+                                            attrs: {
+                                              type: "number",
+                                              requeired: "" + recipe.isShowPara,
+                                              placeholder: "" + recipe.unit
+                                            },
+                                            model: {
+                                              value: recipe.para,
+                                              callback: function($$v) {
+                                                _vm.$set(recipe, "para", $$v)
+                                              },
+                                              expression: "recipe.para"
+                                            }
+                                          })
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      recipe.isShowParaSelect
+                                        ? _c("CSelect", {
+                                            attrs: {
+                                              options: [
+                                                {
+                                                  value: "0",
+                                                  label: "stir after"
+                                                },
+                                                {
+                                                  value: "1",
+                                                  label: "stir before"
+                                                }
+                                              ],
+                                              value: recipe.para
+                                            },
+                                            on: {
+                                              "update:value": function($event) {
+                                                return _vm.$set(
+                                                  recipe,
+                                                  "para",
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "CCol",
+                                    { attrs: { col: "2" } },
+                                    [
+                                      recipe.isShowAct
+                                        ? _c("CSelect", {
+                                            attrs: {
+                                              options: _vm.optionActs,
+                                              value: recipe.act1
+                                            },
+                                            on: {
+                                              "update:value": function($event) {
+                                                return _vm.$set(
+                                                  recipe,
+                                                  "act1",
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      recipe.isShowActInput
+                                        ? _c("CInput", {
+                                            attrs: {
+                                              type: "number",
+                                              description: "delay sec"
+                                            },
+                                            model: {
+                                              value: recipe.act1,
+                                              callback: function($$v) {
+                                                _vm.$set(recipe, "act1", $$v)
+                                              },
+                                              expression: "recipe.act1"
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "CCol",
+                                    { attrs: { col: "2" } },
+                                    [
+                                      recipe.isShowAct
+                                        ? _c("CSelect", {
+                                            attrs: {
+                                              options: _vm.optionActs,
+                                              value: recipe.act2
+                                            },
+                                            on: {
+                                              "update:value": function($event) {
+                                                return _vm.$set(
+                                                  recipe,
+                                                  "act2",
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      recipe.isShowActInput
+                                        ? _c("CInput", {
+                                            attrs: {
+                                              type: "number",
+                                              description: "stir sec"
+                                            },
+                                            model: {
+                                              value: recipe.act2,
+                                              callback: function($$v) {
+                                                _vm.$set(recipe, "act2", $$v)
+                                              },
+                                              expression: "recipe.act2"
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "CCol",
+                                    { attrs: { col: "2" } },
+                                    [
+                                      recipe.isShowAct
+                                        ? _c("CSelect", {
+                                            attrs: {
+                                              options: _vm.optionActs,
+                                              value: recipe.act3
+                                            },
+                                            on: {
+                                              "update:value": function($event) {
+                                                return _vm.$set(
+                                                  recipe,
+                                                  "act3",
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      recipe.isShowActInput
+                                        ? _c("CInput", {
+                                            attrs: {
+                                              type: "number",
+                                              description: "stop sec"
+                                            },
+                                            model: {
+                                              value: recipe.act3,
+                                              callback: function($$v) {
+                                                _vm.$set(recipe, "act3", $$v)
+                                              },
+                                              expression: "recipe.act3"
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "CCol",
+                                    { attrs: { col: "1" } },
+                                    [
+                                      _vm.isShowSub
+                                        ? _c(
+                                            "CButton",
+                                            {
+                                              attrs: {
+                                                color: "danger",
+                                                variant: "outline"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.sub(index)
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("-")]
+                                          )
+                                        : _vm._e()
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               )
                             ],
                             1
                           )
-                        ],
-                        1
-                      )
+                        ])
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "CRow",
+                    { staticClass: "d-flex justify-content-center" },
+                    [
+                      _vm.isShowAdd
+                        ? _c(
+                            "CButton",
+                            {
+                              attrs: { color: "info", variant: "outline" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.add()
+                                }
+                              }
+                            },
+                            [_vm._v("+ Add Step")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "CCardFooter",
+                { staticClass: "d-flex justify-content-end" },
+                [
+                  _c(
+                    "CButton",
+                    {
+                      attrs: {
+                        disabled: !_vm.isCreatedRecipe,
+                        color: "primary"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.store()
+                        }
+                      }
+                    },
+                    [
+                      _vm.isCreatedRecipe
+                        ? _c("span", [_vm._v("Create")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.isCreatedRecipe
+                        ? _c("CSpinner", {
+                            attrs: { color: "info", size: "sm" }
+                          })
+                        : _vm._e()
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "CCardBody",
-                    [
-                      _vm.showMessage
-                        ? _c(
-                            "span",
-                            _vm._l(_vm.messages, function(message) {
-                              return _c(
-                                "CAlert",
-                                { key: message, attrs: { color: "danger" } },
-                                [
-                                  _vm._v(
-                                    "\n              " +
-                                      _vm._s(message) +
-                                      "\n            "
-                                  )
-                                ]
-                              )
-                            }),
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("CDataTable", {
-                        attrs: {
-                          hover: "",
-                          striped: "",
-                          items: _vm.items,
-                          fields: _vm.fields,
-                          "items-per-page": 6,
-                          pagination: "",
-                          tableFilter: { external: false, lazy: false }
-                        },
-                        on: { "filtered-items-change": _vm.setFilterItem },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "status",
-                            fn: function(ref) {
-                              var item = ref.item
-                              return [
-                                _c(
-                                  "td",
-                                  [
-                                    _c(
-                                      "CBadge",
-                                      { attrs: { color: item.status.class } },
-                                      [_vm._v(_vm._s(item.status.name))]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          },
-                          {
-                            key: "operate",
-                            fn: function(ref) {
-                              var item = ref.item
-                              return [
-                                _c(
-                                  "td",
-                                  [
-                                    _c(
-                                      "CInputCheckbox",
-                                      {
-                                        attrs: {
-                                          color: "primary",
-                                          checked: _vm.select.includes(item.id)
-                                        },
-                                        on: {
-                                          "update:checked": function($event) {
-                                            return _vm.checked(item.id)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Edit")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          }
-                        ])
-                      })
-                    ],
-                    1
+                    "CButton",
+                    {
+                      staticClass: "ml-2",
+                      attrs: { color: "danger" },
+                      on: { click: _vm.goBack }
+                    },
+                    [_vm._v("Back")]
                   )
                 ],
                 1
