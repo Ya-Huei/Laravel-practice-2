@@ -432,7 +432,6 @@ __webpack_require__.r(__webpack_exports__);
     getInfo: function getInfo() {
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/recipes/" + self.$route.params.id + "/edit?token=" + localStorage.getItem("api_token")).then(function (response) {
-        console.log(response.data.recipe);
         self.optionSteps = response.data.steps;
         self.optionActs = response.data.actions;
         self.name = response.data.recipe.name;

@@ -259,6 +259,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -289,14 +290,18 @@ __webpack_require__.r(__webpack_exports__);
       recipe: [],
       select: [],
       selectAll: false,
-      filterItem: []
+      filterItem: [],
+      filterValue: ""
     };
   },
   methods: {
     setFilterItem: function setFilterItem(value) {
       var self = this;
-      self.selectAll = false;
       self.filterItem = value;
+    },
+    setFilterValue: function setFilterValue(value) {
+      var self = this;
+      self.filterValue = value;
     },
     goBack: function goBack() {
       this.$router.go(-1);
@@ -322,12 +327,45 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       self.selectAll = !self.selectAll;
 
-      if (self.selectAll) {
-        for (var i in self.filterItem) {
-          self.select.push(self.filterItem[i].id);
+      if (self.selectAll === true && self.filterValue === "") {
+        for (var i in self.items) {
+          var temp = self.select.indexOf(self.items[i].id);
+
+          if (temp <= -1) {
+            self.select.push(self.items[i].id);
+          }
         }
-      } else {
+
+        return false;
+      }
+
+      if (self.selectAll === false && self.filterValue === "") {
         self.select = [];
+        return false;
+      }
+
+      if (self.selectAll === true) {
+        for (var _i in self.filterItem) {
+          var _temp = self.select.indexOf(self.filterItem[_i].id);
+
+          if (_temp <= -1) {
+            self.select.push(self.filterItem[_i].id);
+          }
+        }
+
+        return false;
+      }
+
+      if (self.selectAll === false) {
+        for (var _i2 in self.filterItem) {
+          var _temp2 = self.select.indexOf(self.filterItem[_i2].id);
+
+          if (_temp2 > -1) {
+            self.select.splice(_temp2, 1);
+          }
+        }
+
+        return false;
       }
     },
     checked: function checked(id) {
@@ -574,7 +612,10 @@ var render = function() {
                           pagination: "",
                           tableFilter: { external: false, lazy: false }
                         },
-                        on: { "filtered-items-change": _vm.setFilterItem },
+                        on: {
+                          "filtered-items-change": _vm.setFilterItem,
+                          "update:table-filter-value": _vm.setFilterValue
+                        },
                         scopedSlots: _vm._u([
                           {
                             key: "status",

@@ -270,7 +270,6 @@ export default {
             localStorage.getItem("api_token")
         )
         .then(function(response) {
-          console.log(response.data.recipe);
           self.optionSteps = response.data.steps;
           self.optionActs = response.data.actions;
           self.name = response.data.recipe.name;

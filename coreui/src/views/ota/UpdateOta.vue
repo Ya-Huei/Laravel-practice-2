@@ -57,6 +57,7 @@
               pagination
               :tableFilter="{ external: false, lazy: false }"
               @filtered-items-change="setFilterItem"
+              @update:table-filter-value="setFilterValue"
             >
               <template #status="{item}">
                 <td>
@@ -114,13 +115,17 @@ export default {
       select: [],
       selectAll: false,
       filterItem: [],
+      filterValue: "",
     };
   },
   methods: {
     setFilterItem(value) {
       let self = this;
-      self.selectAll = false;
       self.filterItem = value;
+    },
+    setFilterValue(value) {
+      let self = this;
+      self.filterValue = value;
     },
     goBack() {
       this.$router.go(-1);
@@ -143,12 +148,40 @@ export default {
     checkedAll() {
       let self = this;
       self.selectAll = !self.selectAll;
-      if (self.selectAll) {
-        for (let i in self.filterItem) {
-          self.select.push(self.filterItem[i].id);
+
+      if (self.selectAll === true && self.filterValue === "") {
+        for (let i in self.items) {
+           let temp = self.select.indexOf(self.items[i].id);
+          if (temp <= -1) {
+            self.select.push(self.items[i].id);
+          }
         }
-      } else {
+        return false;
+      }
+
+      if (self.selectAll === false && self.filterValue === "") {
         self.select = [];
+        return false;
+      }
+
+      if (self.selectAll === true) {
+        for (let i in self.filterItem) {
+          let temp = self.select.indexOf(self.filterItem[i].id);
+          if (temp <= -1) {
+            self.select.push(self.filterItem[i].id);
+          }
+        }
+        return false;
+      }
+
+      if (self.selectAll === false) {
+        for (let i in self.filterItem) {
+          let temp = self.select.indexOf(self.filterItem[i].id);
+          if (temp > -1) {
+            self.select.splice(temp, 1);
+          }
+        }
+        return false;
       }
     },
     checked(id) {
