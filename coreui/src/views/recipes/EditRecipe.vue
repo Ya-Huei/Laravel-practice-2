@@ -17,6 +17,17 @@
               label="Name"
               v-model="name"
             />
+            <div>
+              <CRow>
+                <CCol col="5" class="d-flex justify-content-center"
+                  ><h5>Main Active</h5></CCol
+                >
+                <CCol col="7" class="d-flex justify-content-center"
+                  ><h5>Attach Active</h5></CCol
+                >
+              </CRow>
+            </div>
+            <hr />
             <div v-for="(recipe, index) in recipes">
               <div>
                 <CRow>
@@ -29,7 +40,10 @@
                       horizontal
                     />
                   </CCol>
-                  <CCol col="2">
+                  <CCol
+                    col="2"
+                    style="border-right: 1px solid rgba(0, 0, 21, 0.2);"
+                  >
                     <CInput
                       type="number"
                       v-model="recipe.para"

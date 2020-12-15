@@ -299,6 +299,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -556,6 +570,38 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c(
+                            "CRow",
+                            [
+                              _c(
+                                "CCol",
+                                {
+                                  staticClass: "d-flex justify-content-center",
+                                  attrs: { col: "5" }
+                                },
+                                [_c("h5", [_vm._v("Main Active")])]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "CCol",
+                                {
+                                  staticClass: "d-flex justify-content-center",
+                                  attrs: { col: "7" }
+                                },
+                                [_c("h5", [_vm._v("Attach Active")])]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
                       _vm._l(_vm.recipes, function(recipe, index) {
                         return _c("div", [
                           _c(
@@ -594,7 +640,13 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "CCol",
-                                    { attrs: { col: "2" } },
+                                    {
+                                      staticStyle: {
+                                        "border-right":
+                                          "1px solid rgba(0, 0, 21, 0.2)"
+                                      },
+                                      attrs: { col: "2" }
+                                    },
                                     [
                                       recipe.isShowPara
                                         ? _c("CInput", {
