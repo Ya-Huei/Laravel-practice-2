@@ -94,10 +94,12 @@
         </CCardBody>
         <CCardFooter class="text-right">
           <CButton :disabled="!isEditedUser" color="primary" @click="update()">
-            <span v-if="isEditedUser">Save</span>
+            <span v-if="isEditedUser"><CIcon name="cil-save"/></span>
             <CSpinner v-if="!isEditedUser" color="info" size="sm" />
           </CButton>
-          <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
+          <CButton color="danger" class="ml-2" @click="goBack"
+            ><CIcon name="cil-action-undo"
+          /></CButton>
         </CCardFooter>
       </CCard>
     </CCol>

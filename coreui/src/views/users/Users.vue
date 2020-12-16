@@ -10,8 +10,8 @@
               </CCol>
               <CCol col="6" class="d-flex justify-content-end">
                 <CButton color="primary" @click="createUser()"
-                  >Create User</CButton
-                >
+                  ><CIcon name="cil-plus"
+                /></CButton>
               </CCol>
             </CRow>
           </CCardHeader>
@@ -36,8 +36,8 @@
                     "
                     color="primary"
                     @click="editUser(item.id)"
-                    >Edit</CButton
-                  >
+                    ><CIcon name="cil-pencil"
+                  /></CButton>
                   <CButton
                     v-if="
                       adminName != item.name &&
@@ -49,8 +49,8 @@
                     color="danger"
                     class="ml-1"
                     @click="deleteUser(item.id)"
-                    >Delete</CButton
-                  >
+                    ><CIcon name="cil-x"
+                  /></CButton>
                 </td>
               </template>
             </CDataTable>

@@ -106,10 +106,12 @@
         </CCardBody>
         <CCardFooter class="d-flex justify-content-end">
           <CButton :disabled="!isCreatedUser" color="primary" @click="store()">
-            <span v-if="isCreatedUser">Create</span>
+            <span v-if="isCreatedUser"><CIcon name="cil-save"/></span>
             <CSpinner v-if="!isCreatedUser" color="info" size="sm" />
           </CButton>
-          <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
+          <CButton color="danger" class="ml-2" @click="goBack"
+            ><CIcon name="cil-action-undo"
+          /></CButton>
         </CCardFooter>
       </CCard>
     </CCol>

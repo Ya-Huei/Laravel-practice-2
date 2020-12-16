@@ -376,6 +376,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -790,7 +792,11 @@ var render = function() {
                     },
                     [
                       _vm.isCreatedUser
-                        ? _c("span", [_vm._v("Create")])
+                        ? _c(
+                            "span",
+                            [_c("CIcon", { attrs: { name: "cil-save" } })],
+                            1
+                          )
                         : _vm._e(),
                       _vm._v(" "),
                       !_vm.isCreatedUser
@@ -809,7 +815,8 @@ var render = function() {
                       attrs: { color: "danger" },
                       on: { click: _vm.goBack }
                     },
-                    [_vm._v("Back")]
+                    [_c("CIcon", { attrs: { name: "cil-action-undo" } })],
+                    1
                   )
                 ],
                 1

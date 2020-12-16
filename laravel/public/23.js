@@ -296,7 +296,8 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("Create User")]
+                                [_c("CIcon", { attrs: { name: "cil-plus" } })],
+                                1
                               )
                             ],
                             1
@@ -344,7 +345,12 @@ var render = function() {
                                               }
                                             }
                                           },
-                                          [_vm._v("Edit")]
+                                          [
+                                            _c("CIcon", {
+                                              attrs: { name: "cil-pencil" }
+                                            })
+                                          ],
+                                          1
                                         )
                                       : _vm._e(),
                                     _vm._v(" "),
@@ -364,7 +370,12 @@ var render = function() {
                                               }
                                             }
                                           },
-                                          [_vm._v("Delete")]
+                                          [
+                                            _c("CIcon", {
+                                              attrs: { name: "cil-x" }
+                                            })
+                                          ],
+                                          1
                                         )
                                       : _vm._e()
                                   ],
