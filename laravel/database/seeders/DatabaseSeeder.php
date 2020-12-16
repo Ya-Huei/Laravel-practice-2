@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             RepairRecordsSeeder::class,
             RecipeStepsSeeder::class,
             RecipeActionsSeeder::class,
+            GroupsSeeder::class,
         ]);
     }
 }

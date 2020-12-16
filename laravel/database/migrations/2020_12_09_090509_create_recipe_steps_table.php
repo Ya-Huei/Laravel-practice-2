@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecipeSteps extends Migration
+class CreateRecipeStepsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateRecipeSteps extends Migration
     {
         Schema::create('recipe_steps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('value');
+            $table->integer('value')->unique();
             $table->string('step');
             $table->string('unit')->nullable();
         });
