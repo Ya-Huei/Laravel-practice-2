@@ -210,6 +210,10 @@ export default {
     resetRecipe(index) {
       let self = this;
       self.recipes[index].para = "";
+      self.recipes[index].act1 = "0";
+      self.recipes[index].act2 = "0";
+      self.recipes[index].act3 = "0";
+      self.recipes[index].unit = "";
       self.recipes[index].isShowPara = true;
       self.recipes[index].isShowAct = true;
       self.recipes[index].isShowParaSelect = false;

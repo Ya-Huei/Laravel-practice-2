@@ -49,7 +49,7 @@
                     color="danger"
                     class="ml-1"
                     @click="deleteUser(item.id)"
-                    ><CIcon name="cil-x"
+                    ><CIcon name="cil-trash"
                   /></CButton>
                 </td>
               </template>

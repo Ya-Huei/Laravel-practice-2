@@ -388,6 +388,10 @@ __webpack_require__.r(__webpack_exports__);
     resetRecipe: function resetRecipe(index) {
       var self = this;
       self.recipes[index].para = "";
+      self.recipes[index].act1 = "0";
+      self.recipes[index].act2 = "0";
+      self.recipes[index].act3 = "0";
+      self.recipes[index].unit = "";
       self.recipes[index].isShowPara = true;
       self.recipes[index].isShowAct = true;
       self.recipes[index].isShowParaSelect = false;

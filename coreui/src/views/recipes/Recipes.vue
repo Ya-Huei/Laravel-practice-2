@@ -60,8 +60,17 @@ export default {
   },
   methods: {
     exportRecipe(data, name) {
-      let fileName = name + "_recipe.csv";
-      let blob = new Blob([data], {
+      let fileName = "recipe_" + name + ".csv";
+      var data = data.split(",");
+      var exportData = Date.now() + "\n";
+      data.forEach(function(value, index, array) {
+        if (index % 5 == 4 && index != 0) {
+          exportData += value + "\n";
+        } else {
+          exportData += value + ",";
+        }
+      });
+      let blob = new Blob([exportData], {
         type: "application/octet-stream",
       });
       var href = URL.createObjectURL(blob);

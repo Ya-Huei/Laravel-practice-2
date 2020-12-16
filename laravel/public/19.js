@@ -140,8 +140,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     exportRecipe: function exportRecipe(data, name) {
-      var fileName = name + "_recipe.csv";
-      var blob = new Blob([data], {
+      var fileName = "recipe_" + name + ".csv";
+      var data = data.split(",");
+      var exportData = Date.now() + "\n";
+      data.forEach(function (value, index, array) {
+        if (index % 5 == 4 && index != 0) {
+          exportData += value + "\n";
+        } else {
+          exportData += value + ",";
+        }
+      });
+      var blob = new Blob([exportData], {
         type: "application/octet-stream"
       });
       var href = URL.createObjectURL(blob);

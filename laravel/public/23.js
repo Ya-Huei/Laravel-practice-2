@@ -372,7 +372,7 @@ var render = function() {
                                           },
                                           [
                                             _c("CIcon", {
-                                              attrs: { name: "cil-x" }
+                                              attrs: { name: "cil-trash" }
                                             })
                                           ],
                                           1
