@@ -12,13 +12,12 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::group(['middleware' => 'api'], function ($router) {
     Route::get('menu', 'MenuController@index');
 
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
-
+    
     Route::group(['middleware' => 'permissions'], function ($router) {
         Route::resource('users', UsersController::class)->except(['show']);
         Route::resource('roles', RolesController::class)->except(['show']);
@@ -29,7 +28,9 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::get('otas/getOtaUpdateInfo', 'OtaController@getOtaUpdateInfo');
         Route::post('otas/saveOtaUpdate', 'OtaController@saveOtaUpdate');
         Route::resource('otas', OtaController::class)->only(['index']);
+        Route::get('recipes/{recipe}/copy', 'RecipesController@copy');
         Route::resource('recipes', RecipesController::class)->except(['show', 'destroy']);
-        Route::resource('repairs', RepairsController::class)->only(['index', 'edit', 'update']);;
+        Route::resource('repairs', RepairsController::class)->only(['index', 'edit', 'update']);
+        ;
     });
 });

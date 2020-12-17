@@ -143,6 +143,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Users",
@@ -155,8 +163,11 @@ __webpack_require__.r(__webpack_exports__);
       perPage: 6,
       totalRows: 0,
       you: null,
-      showDismissibleAlert: false,
-      highestRole: ""
+      highestRole: "",
+      message: "",
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 7
     };
   },
   methods: {
@@ -176,7 +187,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteUser: function deleteUser(id) {
       var self = this;
-      var userId = id;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/" + id + "?token=" + localStorage.getItem("api_token"), {
         _method: "DELETE"
       }).then(function (response) {
@@ -199,6 +209,7 @@ __webpack_require__.r(__webpack_exports__);
       this.dismissCountDown = dismissCountDown;
     },
     showAlert: function showAlert() {
+      this.showMessage = true;
       this.dismissCountDown = this.dismissSecs;
     },
     getFields: function getFields() {
@@ -312,6 +323,33 @@ var render = function() {
                   _c(
                     "CCardBody",
                     [
+                      _vm.showMessage
+                        ? _c(
+                            "CAlert",
+                            {
+                              attrs: {
+                                show: _vm.dismissCountDown,
+                                color: "danger",
+                                fade: ""
+                              },
+                              on: {
+                                "update:show": function($event) {
+                                  _vm.dismissCountDown = $event
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            (" +
+                                  _vm._s(_vm.dismissCountDown) +
+                                  ") " +
+                                  _vm._s(_vm.message) +
+                                  "\n          "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c("CDataTable", {
                         attrs: {
                           hover: "",

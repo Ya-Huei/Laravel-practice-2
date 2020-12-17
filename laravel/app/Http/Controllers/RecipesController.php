@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+use App\Http\Requests\Recipes\RecipeCopyValidation;
 use App\Http\Requests\Recipes\RecipeEditValidation;
 use App\Http\Requests\Recipes\RecipeStoreFormValidation;
 use App\Http\Requests\Recipes\RecipeUpdateFormValidation;
@@ -52,13 +53,11 @@ class RecipesController extends Controller
     public function store(RecipeStoreFormValidation $request)
     {
         $recipeStep = [];
+        $step = 0;
         foreach ($request->recipes as $key => $value) {
-            isset($value['step']) ? array_push($recipeStep, intval($value['step'])) : array_push($recipeStep, 0);
-            isset($value['para']) ? array_push($recipeStep, intval($value['para'])) : array_push($recipeStep, 0);
-            isset($value['act1']) ? array_push($recipeStep, intval($value['act1'])) : array_push($recipeStep, 0);
-            isset($value['act2']) ? array_push($recipeStep, intval($value['act2'])) : array_push($recipeStep, 0);
-            isset($value['act3']) ? array_push($recipeStep, intval($value['act3'])) : array_push($recipeStep, 0);
-            if ($value['step'] === "0") {
+            $this->checkValue($recipeStep, $value);
+            $step++;
+            if ($value['step'] === "0" || $step > 50) {
                 break;
             }
         }
@@ -94,13 +93,11 @@ class RecipesController extends Controller
     public function update(RecipeUpdateFormValidation $request, Recipe $recipe)
     {
         $recipeStep = [];
+        $step = 0;
         foreach ($request->recipes as $key => $value) {
-            isset($value['step']) ? array_push($recipeStep, intval($value['step'])) : array_push($recipeStep, 0);
-            isset($value['para']) ? array_push($recipeStep, $value['para']) : array_push($recipeStep, 0);
-            isset($value['act1']) ? array_push($recipeStep, intval($value['act1'])) : array_push($recipeStep, 0);
-            isset($value['act2']) ? array_push($recipeStep, intval($value['act2'])) : array_push($recipeStep, 0);
-            isset($value['act3']) ? array_push($recipeStep, intval($value['act3'])) : array_push($recipeStep, 0);
-            if ($value['step'] === "0") {
+            $this->checkValue($recipeStep, $value);
+            $step++;
+            if ($value['step'] === "0" || $step > 50) {
                 break;
             }
         }
@@ -109,5 +106,62 @@ class RecipesController extends Controller
         $recipe->name = $request->name;
         $recipe->recipe = $result;
         $recipe->save();
+    }
+
+    public function copy(RecipeCopyValidation $request, Recipe $recipe)
+    {
+        $copyRecipe = new Recipe();
+        $copyRecipe->name = $recipe->name . time();
+        $copyRecipe->recipe = $recipe->recipe;
+        $copyRecipe->firm_id = $recipe->firm_id;
+        $copyRecipe->save();
+
+        return response()->json(['status' => 'success']);
+    }
+
+    private function checkValue(&$recipeStep, $value)
+    {
+        $step = isset($value['step']) ? intval($value['step']) : 0;
+        $para = isset($value['para']) ? intval($value['para']) : 0;
+        $act1 = isset($value['act1']) ? intval($value['act1']) : 0;
+        $act2 = isset($value['act2']) ? intval($value['act2']) : 0;
+        $act3 = isset($value['act3']) ? intval($value['act3']) : 0;
+        $unit = isset($value['unit']) ? $value['unit'] : 0;
+        
+        array_push($recipeStep, $step);
+        array_push($recipeStep, $this->checkParaByUnit($unit, $para));
+        array_push($recipeStep, $this->checkAct($act1));
+        array_push($recipeStep, $this->checkAct($act2));
+        array_push($recipeStep, $this->checkAct($act3));
+    }
+
+    private function checkParaByUnit($unit, $value)
+    {
+        Log::info('unit: ' . $unit);
+        if ($unit === 0) {
+            return 0;
+        }
+
+        $value = $value < 0 || !is_numeric($value) ? 0 : $value;
+        switch ($unit) {
+            case "L":
+                $value = $value > 24 ? 24 : $value;
+                break;
+            case "℃":
+            case "%":
+                $value = $value > 100 ? 100 : $value;
+                break;
+            case "sec":
+                $value = $value > 7200 ? 7200 : $value;
+                break;
+        }
+        return $value;
+    }
+
+    private function checkAct($value)
+    {
+        $value = $value < 0 || !is_numeric($value) ? 0 : $value;
+        $value = $value > 7200 ? 7200 : $value;
+        return $value;
     }
 }

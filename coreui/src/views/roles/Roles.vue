@@ -16,6 +16,13 @@
             </CRow>
           </CCardHeader>
           <CCardBody>
+            <CAlert
+              v-if="showMessage"
+              :show.sync="dismissCountDown"
+              color="danger"
+              fade
+            >
+            </CAlert>
             <CDataTable
               hover
               striped
@@ -62,7 +69,10 @@ export default {
       perPage: 6,
       totalRows: 0,
       adminName: "admin",
-      showDismissibleAlert: false,
+      message: "",
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 7,
     };
   },
   methods: {
@@ -107,6 +117,7 @@ export default {
       this.dismissCountDown = dismissCountDown;
     },
     showAlert() {
+      this.showMessage = true;
       this.dismissCountDown = this.dismissSecs;
     },
     getRoles() {

@@ -126,6 +126,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Recipes",
@@ -134,7 +145,11 @@ __webpack_require__.r(__webpack_exports__);
       items: [],
       fields: [],
       currentPage: 1,
-      totalRows: 0
+      totalRows: 0,
+      message: "",
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 7
     };
   },
   methods: {
@@ -181,6 +196,31 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push({
         path: "recipes/create"
       });
+    },
+    copyRecipe: function copyRecipe(id) {
+      var self = this;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/recipes/" + id + "/copy?token=" + localStorage.getItem("api_token")).then(function (response) {
+        if (response.data.status == "success") {
+          self.message = "Successfully copy recipe.";
+        } else {
+          self.message = response.data.message;
+        }
+
+        self.showAlert();
+        self.getRecipes();
+      })["catch"](function (error) {
+        console.log(error);
+        self.$router.push({
+          path: "/login"
+        });
+      });
+    },
+    countDownChanged: function countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert: function showAlert() {
+      this.showMessage = true;
+      this.dismissCountDown = this.dismissSecs;
     },
     getFields: function getFields() {
       var self = this;
@@ -286,6 +326,33 @@ var render = function() {
                   _c(
                     "CCardBody",
                     [
+                      _vm.showMessage
+                        ? _c(
+                            "CAlert",
+                            {
+                              attrs: {
+                                show: _vm.dismissCountDown,
+                                color: "danger",
+                                fade: ""
+                              },
+                              on: {
+                                "update:show": function($event) {
+                                  _vm.dismissCountDown = $event
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            (" +
+                                  _vm._s(_vm.dismissCountDown) +
+                                  ") " +
+                                  _vm._s(_vm.message) +
+                                  "\n          "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c("CDataTable", {
                         attrs: {
                           hover: "",
@@ -317,6 +384,24 @@ var render = function() {
                                       [
                                         _c("CIcon", {
                                           attrs: { name: "cil-pencil" }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "CButton",
+                                      {
+                                        attrs: { color: "info" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.copyRecipe(item.id)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("CIcon", {
+                                          attrs: { name: "cil-copy" }
                                         })
                                       ],
                                       1

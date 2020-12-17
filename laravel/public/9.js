@@ -374,6 +374,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -464,6 +467,46 @@ __webpack_require__.r(__webpack_exports__);
         self.isShowAdd = false;
       }
     },
+    check: function check(index) {
+      var self = this;
+      self.recipes[index].act1 = self.checkValue(self.recipes[index].act1, null);
+      self.recipes[index].act2 = self.checkValue(self.recipes[index].act2, null);
+      self.recipes[index].act3 = self.checkValue(self.recipes[index].act3, null);
+      self.recipes[index].para = self.checkValue(self.recipes[index].para, self.recipes[index].unit);
+    },
+    checkValue: function checkValue(value, unit) {
+      var regex = /^(0|\+?[1-9][0-9]*)$/;
+      value = !regex.test(value) || value < 0 ? 0 : value;
+
+      if (unit === null) {
+        value = value > 7200 ? 7200 : value;
+        return value;
+      }
+
+      switch (unit) {
+        case "L":
+          value = value > 24 ? 24 : value;
+          break;
+
+        case "℃":
+        case "%":
+          value = value > 100 ? 100 : value;
+          break;
+
+        case "sec":
+          value = value > 7200 ? 7200 : value;
+          break;
+      }
+
+      value = value > 7200 ? 7200 : value;
+      return value;
+    },
+    countDownChanged: function countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert: function showAlert() {
+      this.dismissCountDown = this.dismissSecs;
+    },
     resetRecipe: function resetRecipe(index) {
       var self = this;
       self.recipes[index].para = "";
@@ -502,9 +545,9 @@ __webpack_require__.r(__webpack_exports__);
           self.recipes[recipesIndex].isShowParaSelect = true;
           self.recipes[recipesIndex].isShowAct = false;
           self.recipes[recipesIndex].isShowActInput = true;
-          self.recipes[recipesIndex].act1 = "";
-          self.recipes[recipesIndex].act2 = "";
-          self.recipes[recipesIndex].act3 = "";
+          self.recipes[recipesIndex].act1 = "0";
+          self.recipes[recipesIndex].act2 = "0";
+          self.recipes[recipesIndex].act3 = "0";
           break;
       }
     },
@@ -800,13 +843,12 @@ var render = function() {
                                                 }
                                               ],
                                               staticClass: "form-control",
-                                              attrs: {
-                                                type: "number",
-                                                requeired:
-                                                  "" + recipe.isShowPara
-                                              },
+                                              attrs: { type: "number" },
                                               domProps: { value: recipe.para },
                                               on: {
+                                                change: function($event) {
+                                                  return _vm.check(index)
+                                                },
                                                 input: function($event) {
                                                   if ($event.target.composing) {
                                                     return
@@ -902,6 +944,11 @@ var render = function() {
                                             type: "number",
                                             description: "delay sec"
                                           },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.check(index)
+                                            }
+                                          },
                                           model: {
                                             value: recipe.act1,
                                             callback: function($$v) {
@@ -943,6 +990,11 @@ var render = function() {
                                             type: "number",
                                             description: "stir sec"
                                           },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.check(index)
+                                            }
+                                          },
                                           model: {
                                             value: recipe.act2,
                                             callback: function($$v) {
@@ -983,6 +1035,11 @@ var render = function() {
                                           attrs: {
                                             type: "number",
                                             description: "stop sec"
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.check(index)
+                                            }
                                           },
                                           model: {
                                             value: recipe.act3,

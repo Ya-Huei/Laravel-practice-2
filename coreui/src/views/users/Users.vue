@@ -16,6 +16,14 @@
             </CRow>
           </CCardHeader>
           <CCardBody>
+            <CAlert
+              v-if="showMessage"
+              :show.sync="dismissCountDown"
+              color="danger"
+              fade
+            >
+              ({{ dismissCountDown }}) {{ message }}
+            </CAlert>
             <CDataTable
               hover
               striped
@@ -75,8 +83,11 @@ export default {
       perPage: 6,
       totalRows: 0,
       you: null,
-      showDismissibleAlert: false,
       highestRole: "",
+      message: "",
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 7,
     };
   },
   methods: {
@@ -92,7 +103,6 @@ export default {
     },
     deleteUser(id) {
       let self = this;
-      let userId = id;
       axios
         .post(
           "/api/users/" + id + "?token=" + localStorage.getItem("api_token"),
@@ -118,6 +128,7 @@ export default {
       this.dismissCountDown = dismissCountDown;
     },
     showAlert() {
+      this.showMessage = true;
       this.dismissCountDown = this.dismissSecs;
     },
     getFields() {

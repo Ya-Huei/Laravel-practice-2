@@ -67,7 +67,7 @@
                         type="number"
                         class="form-control"
                         v-model="recipe.para"
-                        :requeired="`${recipe.isShowPara}`"
+                        @change="check(index)"
                       />
                       <div class="input-group-append">
                         <span
@@ -97,6 +97,7 @@
                       v-model="recipe.act1"
                       v-if="recipe.isShowActInput"
                       description="delay sec"
+                      @change="check(index)"
                     />
                   </td>
                   <td style="min-width: 120px;">
@@ -110,6 +111,7 @@
                       v-model="recipe.act2"
                       v-if="recipe.isShowActInput"
                       description="stir sec"
+                      @change="check(index)"
                     />
                   </td>
                   <td style="min-width: 120px;">
@@ -123,6 +125,7 @@
                       v-model="recipe.act3"
                       v-if="recipe.isShowActInput"
                       description="stop sec"
+                      @change="check(index)"
                     />
                   </td>
                   <td style="min-width: 100px;">
@@ -251,6 +254,68 @@ export default {
         self.isShowAdd = false;
       }
     },
+    checkPara(index) {
+      let self = this;
+      let value = self.recipes[index].para;
+      let unit = self.recipes[index].unit;
+      var regex = /^(0|\+?[1-9][0-9]*)$/;
+      value = !regex.test(value) || value < 0 ? 0 : value;
+      switch (unit) {
+        case "L":
+          value = value > 24 ? 24 : value;
+          break;
+        case "℃":
+        case "%":
+          value = value > 100 ? 100 : value;
+          break;
+        case "sec":
+          value = value > 7200 ? 7200 : value;
+          break;
+      }
+      self.recipes[index].para = value;
+    },
+    check(index) {
+      let self = this;
+      self.recipes[index].act1 = self.checkValue(
+        self.recipes[index].act1,
+        null
+      );
+      self.recipes[index].act2 = self.checkValue(
+        self.recipes[index].act2,
+        null
+      );
+      self.recipes[index].act3 = self.checkValue(
+        self.recipes[index].act3,
+        null
+      );
+      self.recipes[index].para = self.checkValue(
+        self.recipes[index].para,
+        self.recipes[index].unit
+      );
+    },
+    checkValue(value, unit) {
+      var regex = /^(0|\+?[1-9][0-9]*)$/;
+      value = !regex.test(value) || value < 0 ? 0 : value;
+      if (unit === null) {
+        value = value > 7200 ? 7200 : value;
+        return value;
+      }
+
+      switch (unit) {
+        case "L":
+          value = value > 24 ? 24 : value;
+          break;
+        case "℃":
+        case "%":
+          value = value > 100 ? 100 : value;
+          break;
+        case "sec":
+          value = value > 7200 ? 7200 : value;
+          break;
+      }
+      value = value > 7200 ? 7200 : value;
+      return value;
+    },
     resetRecipe(index) {
       let self = this;
       self.recipes[index].para = "";
@@ -285,9 +350,9 @@ export default {
           self.recipes[recipesIndex].isShowParaSelect = true;
           self.recipes[recipesIndex].isShowAct = false;
           self.recipes[recipesIndex].isShowActInput = true;
-          self.recipes[recipesIndex].act1 = "";
-          self.recipes[recipesIndex].act2 = "";
-          self.recipes[recipesIndex].act3 = "";
+          self.recipes[recipesIndex].act1 = "0";
+          self.recipes[recipesIndex].act2 = "0";
+          self.recipes[recipesIndex].act3 = "0";
           break;
       }
     },

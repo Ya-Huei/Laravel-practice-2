@@ -16,6 +16,14 @@
             </CRow>
           </CCardHeader>
           <CCardBody>
+            <CAlert
+              v-if="showMessage"
+              :show.sync="dismissCountDown"
+              color="danger"
+              fade
+            >
+              ({{ dismissCountDown }}) {{ message }}
+            </CAlert>
             <CDataTable
               hover
               striped
@@ -28,6 +36,9 @@
                 <td>
                   <CButton color="primary" @click="editRecipe(item.id)"
                     ><CIcon name="cil-pencil"
+                  /></CButton>
+                  <CButton color="info" @click="copyRecipe(item.id)"
+                    ><CIcon name="cil-copy"
                   /></CButton>
                   <CButton
                     color="success"
@@ -55,6 +66,10 @@ export default {
       fields: [],
       currentPage: 1,
       totalRows: 0,
+      message: "",
+      showMessage: false,
+      dismissSecs: 7,
+      dismissCountDown: 7,
     };
   },
   methods: {
@@ -95,6 +110,36 @@ export default {
     },
     createRecipe() {
       this.$router.push({ path: `recipes/create` });
+    },
+    copyRecipe(id) {
+      let self = this;
+      axios
+        .get(
+          "/api/recipes/" +
+            id +
+            "/copy?token=" +
+            localStorage.getItem("api_token")
+        )
+        .then(function(response) {
+          if (response.data.status == "success") {
+            self.message = "Successfully copy recipe.";
+          } else {
+            self.message = response.data.message;
+          }
+          self.showAlert();
+          self.getRecipes();
+        })
+        .catch(function(error) {
+          console.log(error);
+          self.$router.push({ path: "/login" });
+        });
+    },
+    countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
+    showAlert() {
+      this.showMessage = true;
+      this.dismissCountDown = this.dismissSecs;
     },
     getFields() {
       let self = this;
