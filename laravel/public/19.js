@@ -164,6 +164,7 @@ __webpack_require__.r(__webpack_exports__);
           exportData += value + ",";
         }
       });
+      exportData += "0,0,0,0,0";
       var blob = new Blob([exportData], {
         type: "application/octet-stream"
       });

@@ -84,6 +84,7 @@ export default {
           exportData += value + ",";
         }
       });
+      exportData += "0,0,0,0,0";
       let blob = new Blob([exportData], {
         type: "application/octet-stream",
       });
