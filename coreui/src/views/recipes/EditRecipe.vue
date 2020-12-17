@@ -17,40 +17,66 @@
               label="Name"
               v-model="name"
             />
-            <div>
-              <CRow>
-                <CCol col="5" class="d-flex justify-content-center"
-                  ><h5>Main Active</h5></CCol
-                >
-                <CCol col="7" class="d-flex justify-content-center"
-                  ><h5>Attach Active</h5></CCol
-                >
-              </CRow>
-            </div>
-            <hr />
-            <div v-for="(recipe, index) in recipes">
-              <div>
-                <CRow>
-                  <CCol col="3">
+            <div class="overflow-auto">
+              <table class="table table-borderless">
+                <tr class="text-center border-bottom">
+                  <th colspan="4">
+                    <h5>Main Active</h5>
+                  </th>
+                  <th colspan="4">
+                    <h5>Attach Active</h5>
+                  </th>
+                </tr>
+                <tr v-for="(recipe, index) in recipes">
+                  <td
+                    style="width: 83px;"
+                    :class="{
+                      'text-right': index === 0,
+                    }"
+                  >
+                    <CButtonGroup>
+                      <CButton
+                        v-if="isShowSub && index !== 0"
+                        color="info"
+                        variant="outline"
+                        @click="up(index)"
+                        ><CIcon name="cil-arrow-top"
+                      /></CButton>
+                      <CButton
+                        v-if="isShowSub && index < recipes.length - 1"
+                        color="info"
+                        variant="outline"
+                        @click="down(index)"
+                        ><CIcon name="cil-arrow-bottom"
+                      /></CButton>
+                    </CButtonGroup>
+                  </td>
+                  <td style="min-width: 60px;">
+                    {{ `Step${index + 1}` }}
+                  </td>
+                  <td style="min-width: 150px;">
                     <CSelect
-                      :label="`Step${index + 1}`"
                       :options="optionSteps"
                       :value.sync="recipe.step"
                       @change="loadDetail(index)"
-                      horizontal
                     />
-                  </CCol>
-                  <CCol
-                    col="2"
-                    style="border-right: 1px solid rgba(0, 0, 21, 0.2);"
-                  >
-                    <CInput
-                      type="number"
-                      v-model="recipe.para"
-                      v-if="recipe.isShowPara"
-                      :requeired="`${recipe.isShowPara}`"
-                      :placeholder="`${recipe.unit}`"
-                    />
+                  </td>
+                  <td class="border-right" style="min-width: 150px;">
+                    <div class="input-group" v-if="recipe.isShowPara">
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model="recipe.para"
+                        :requeired="`${recipe.isShowPara}`"
+                      />
+                      <div class="input-group-append">
+                        <span
+                          class="input-group-text align-center"
+                          style="min-width: 50px;"
+                          >{{ recipe.unit }}</span
+                        >
+                      </div>
+                    </div>
                     <CSelect
                       :options="[
                         { value: '0', label: 'stir after' },
@@ -59,8 +85,8 @@
                       :value.sync="recipe.para"
                       v-if="recipe.isShowParaSelect"
                     />
-                  </CCol>
-                  <CCol col="2">
+                  </td>
+                  <td style="min-width: 120px;">
                     <CSelect
                       :options="optionActs"
                       :value.sync="recipe.act1"
@@ -72,8 +98,8 @@
                       v-if="recipe.isShowActInput"
                       description="delay sec"
                     />
-                  </CCol>
-                  <CCol col="2">
+                  </td>
+                  <td style="min-width: 120px;">
                     <CSelect
                       :options="optionActs"
                       :value.sync="recipe.act2"
@@ -85,8 +111,8 @@
                       v-if="recipe.isShowActInput"
                       description="stir sec"
                     />
-                  </CCol>
-                  <CCol col="2">
+                  </td>
+                  <td style="min-width: 120px;">
                     <CSelect
                       :options="optionActs"
                       :value.sync="recipe.act3"
@@ -98,18 +124,18 @@
                       v-if="recipe.isShowActInput"
                       description="stop sec"
                     />
-                  </CCol>
-                  <CCol col="1">
+                  </td>
+                  <td style="min-width: 100px;">
                     <CButton
                       v-if="isShowSub"
                       color="danger"
                       variant="outline"
                       @click="sub(index)"
-                      >-</CButton
-                    >
-                  </CCol>
-                </CRow>
-              </div>
+                      ><CIcon name="cil-minus"
+                    /></CButton>
+                  </td>
+                </tr>
+              </table>
             </div>
           </CForm>
           <CRow class="d-flex justify-content-center">
@@ -164,7 +190,6 @@ export default {
         },
       ],
       messages: [],
-      horizontal: { label: "col-3", input: "col-9" },
       optionSteps: [],
       optionActs: [],
       isShowSub: false,
@@ -176,6 +201,22 @@ export default {
     };
   },
   methods: {
+    up(index) {
+      let self = this;
+      const arrayMove = require("array-move");
+      if (index - 1 < 0) {
+        return false;
+      }
+      self.recipes = arrayMove(self.recipes, index, index - 1);
+    },
+    down(index) {
+      let self = this;
+      const arrayMove = require("array-move");
+      if (index + 1 > self.recipes.length - 1) {
+        return false;
+      }
+      self.recipes = arrayMove(self.recipes, index, index + 1);
+    },
     sub(index) {
       let self = this;
       self.recipes.splice(index, 1);
@@ -310,20 +351,16 @@ export default {
                 self.recipes[count].para = item;
                 break;
               case 2: // act1
-                console.log(item);
                 self.recipes[count].act1 = item;
                 break;
               case 3: // act2
-                console.log(item);
                 self.recipes[count].act2 = item;
                 break;
               case 4: // act3
-                console.log(item);
                 self.recipes[count].act3 = item;
                 break;
             }
           });
-          // self.recipe = response.data.actions;
         })
         .catch(function(error) {
           console.log(error);

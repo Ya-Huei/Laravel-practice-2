@@ -1,5 +1,38 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[8],{
 
+/***/ "../coreui/node_modules/array-move/index.js":
+/*!**************************************************!*\
+  !*** ../coreui/node_modules/array-move/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const arrayMoveMutate = (array, from, to) => {
+	const startIndex = from < 0 ? array.length + from : from;
+
+	if (startIndex >= 0 && startIndex < array.length) {
+		const endIndex = to < 0 ? array.length + to : to;
+
+		const [item] = array.splice(from, 1);
+		array.splice(endIndex, 0, item);
+	}
+};
+
+const arrayMove = (array, from, to) => {
+	array = [...array];
+	arrayMoveMutate(array, from, to);
+	return array;
+};
+
+module.exports = arrayMove;
+module.exports.mutate = arrayMoveMutate;
+
+
+/***/ }),
+
 /***/ "../coreui/src/views/mixins/Format.vue":
 /*!*********************************************!*\
   !*** ../coreui/src/views/mixins/Format.vue ***!
@@ -315,6 +348,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -351,6 +410,28 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    up: function up(index) {
+      var self = this;
+
+      var arrayMove = __webpack_require__(/*! array-move */ "../coreui/node_modules/array-move/index.js");
+
+      if (index - 1 < 0) {
+        return false;
+      }
+
+      self.recipes = arrayMove(self.recipes, index, index - 1);
+    },
+    down: function down(index) {
+      var self = this;
+
+      var arrayMove = __webpack_require__(/*! array-move */ "../coreui/node_modules/array-move/index.js");
+
+      if (index + 1 > self.recipes.length - 1) {
+        return false;
+      }
+
+      self.recipes = arrayMove(self.recipes, index, index + 1);
+    },
     sub: function sub(index) {
       var self = this;
       self.recipes.splice(index, 1);
@@ -531,288 +612,390 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        [
-                          _c(
-                            "CRow",
-                            [
-                              _c(
-                                "CCol",
-                                {
-                                  staticClass: "d-flex justify-content-center",
-                                  attrs: { col: "5" }
-                                },
-                                [_c("h5", [_vm._v("Main Active")])]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "CCol",
-                                {
-                                  staticClass: "d-flex justify-content-center",
-                                  attrs: { col: "7" }
-                                },
-                                [_c("h5", [_vm._v("Attach Active")])]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("hr"),
-                      _vm._v(" "),
-                      _vm._l(_vm.recipes, function(recipe, index) {
-                        return _c("div", [
-                          _c(
-                            "div",
-                            [
-                              _c(
-                                "CRow",
-                                [
-                                  _c(
-                                    "CCol",
-                                    { attrs: { col: "3" } },
-                                    [
-                                      _c("CSelect", {
-                                        attrs: {
-                                          label: "Step" + (index + 1),
-                                          options: _vm.optionSteps,
-                                          value: recipe.step,
-                                          horizontal: ""
-                                        },
-                                        on: {
-                                          "update:value": function($event) {
-                                            return _vm.$set(
-                                              recipe,
-                                              "step",
-                                              $event
-                                            )
-                                          },
-                                          change: function($event) {
-                                            return _vm.loadDetail(index)
-                                          }
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "CCol",
-                                    {
-                                      staticStyle: {
-                                        "border-right":
-                                          "1px solid rgba(0, 0, 21, 0.2)"
-                                      },
-                                      attrs: { col: "2" }
+                      _c("div", { staticClass: "overflow-auto" }, [
+                        _c(
+                          "table",
+                          { staticClass: "table table-borderless" },
+                          [
+                            _c(
+                              "tr",
+                              { staticClass: "text-center border-bottom" },
+                              [
+                                _c("th", { attrs: { colspan: "4" } }, [
+                                  _c("h5", [_vm._v("Main Active")])
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { attrs: { colspan: "4" } }, [
+                                  _c("h5", [_vm._v("Attach Active")])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.recipes, function(recipe, index) {
+                              return _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    class: {
+                                      "text-right": index === 0
                                     },
-                                    [
-                                      recipe.isShowPara
-                                        ? _c("CInput", {
-                                            attrs: {
-                                              type: "number",
-                                              requeired: "" + recipe.isShowPara,
-                                              placeholder: "" + recipe.unit
-                                            },
-                                            model: {
-                                              value: recipe.para,
-                                              callback: function($$v) {
-                                                _vm.$set(recipe, "para", $$v)
-                                              },
-                                              expression: "recipe.para"
-                                            }
-                                          })
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      recipe.isShowParaSelect
-                                        ? _c("CSelect", {
-                                            attrs: {
-                                              options: [
-                                                {
-                                                  value: "0",
-                                                  label: "stir after"
+                                    staticStyle: { width: "83px" }
+                                  },
+                                  [
+                                    _c(
+                                      "CButtonGroup",
+                                      [
+                                        _vm.isShowSub && index !== 0
+                                          ? _c(
+                                              "CButton",
+                                              {
+                                                attrs: {
+                                                  color: "info",
+                                                  variant: "outline"
                                                 },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.up(index)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("CIcon", {
+                                                  attrs: {
+                                                    name: "cil-arrow-top"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.isShowSub &&
+                                        index < _vm.recipes.length - 1
+                                          ? _c(
+                                              "CButton",
+                                              {
+                                                attrs: {
+                                                  color: "info",
+                                                  variant: "outline"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.down(index)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("CIcon", {
+                                                  attrs: {
+                                                    name: "cil-arrow-bottom"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "60px" } },
+                                  [
+                                    _vm._v(
+                                      "\n                  " +
+                                        _vm._s("Step" + (index + 1)) +
+                                        "\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "150px" } },
+                                  [
+                                    _c("CSelect", {
+                                      attrs: {
+                                        options: _vm.optionSteps,
+                                        value: recipe.step
+                                      },
+                                      on: {
+                                        "update:value": function($event) {
+                                          return _vm.$set(
+                                            recipe,
+                                            "step",
+                                            $event
+                                          )
+                                        },
+                                        change: function($event) {
+                                          return _vm.loadDetail(index)
+                                        }
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "border-right",
+                                    staticStyle: { "min-width": "150px" }
+                                  },
+                                  [
+                                    recipe.isShowPara
+                                      ? _c(
+                                          "div",
+                                          { staticClass: "input-group" },
+                                          [
+                                            _c("input", {
+                                              directives: [
                                                 {
-                                                  value: "1",
-                                                  label: "stir before"
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: recipe.para,
+                                                  expression: "recipe.para"
                                                 }
                                               ],
-                                              value: recipe.para
-                                            },
-                                            on: {
-                                              "update:value": function($event) {
-                                                return _vm.$set(
-                                                  recipe,
-                                                  "para",
-                                                  $event
-                                                )
-                                              }
-                                            }
-                                          })
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "CCol",
-                                    { attrs: { col: "2" } },
-                                    [
-                                      recipe.isShowAct
-                                        ? _c("CSelect", {
-                                            attrs: {
-                                              options: _vm.optionActs,
-                                              value: recipe.act1
-                                            },
-                                            on: {
-                                              "update:value": function($event) {
-                                                return _vm.$set(
-                                                  recipe,
-                                                  "act1",
-                                                  $event
-                                                )
-                                              }
-                                            }
-                                          })
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      recipe.isShowActInput
-                                        ? _c("CInput", {
-                                            attrs: {
-                                              type: "number",
-                                              description: "delay sec"
-                                            },
-                                            model: {
-                                              value: recipe.act1,
-                                              callback: function($$v) {
-                                                _vm.$set(recipe, "act1", $$v)
-                                              },
-                                              expression: "recipe.act1"
-                                            }
-                                          })
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "CCol",
-                                    { attrs: { col: "2" } },
-                                    [
-                                      recipe.isShowAct
-                                        ? _c("CSelect", {
-                                            attrs: {
-                                              options: _vm.optionActs,
-                                              value: recipe.act2
-                                            },
-                                            on: {
-                                              "update:value": function($event) {
-                                                return _vm.$set(
-                                                  recipe,
-                                                  "act2",
-                                                  $event
-                                                )
-                                              }
-                                            }
-                                          })
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      recipe.isShowActInput
-                                        ? _c("CInput", {
-                                            attrs: {
-                                              type: "number",
-                                              description: "stir sec"
-                                            },
-                                            model: {
-                                              value: recipe.act2,
-                                              callback: function($$v) {
-                                                _vm.$set(recipe, "act2", $$v)
-                                              },
-                                              expression: "recipe.act2"
-                                            }
-                                          })
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "CCol",
-                                    { attrs: { col: "2" } },
-                                    [
-                                      recipe.isShowAct
-                                        ? _c("CSelect", {
-                                            attrs: {
-                                              options: _vm.optionActs,
-                                              value: recipe.act3
-                                            },
-                                            on: {
-                                              "update:value": function($event) {
-                                                return _vm.$set(
-                                                  recipe,
-                                                  "act3",
-                                                  $event
-                                                )
-                                              }
-                                            }
-                                          })
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      recipe.isShowActInput
-                                        ? _c("CInput", {
-                                            attrs: {
-                                              type: "number",
-                                              description: "stop sec"
-                                            },
-                                            model: {
-                                              value: recipe.act3,
-                                              callback: function($$v) {
-                                                _vm.$set(recipe, "act3", $$v)
-                                              },
-                                              expression: "recipe.act3"
-                                            }
-                                          })
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "CCol",
-                                    { attrs: { col: "1" } },
-                                    [
-                                      _vm.isShowSub
-                                        ? _c(
-                                            "CButton",
-                                            {
+                                              staticClass: "form-control",
                                               attrs: {
-                                                color: "danger",
-                                                variant: "outline"
+                                                type: "number",
+                                                requeired:
+                                                  "" + recipe.isShowPara
                                               },
+                                              domProps: { value: recipe.para },
                                               on: {
-                                                click: function($event) {
-                                                  return _vm.sub(index)
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    recipe,
+                                                    "para",
+                                                    $event.target.value
+                                                  )
                                                 }
                                               }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "input-group-append"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "input-group-text align-center",
+                                                    staticStyle: {
+                                                      "min-width": "50px"
+                                                    }
+                                                  },
+                                                  [_vm._v(_vm._s(recipe.unit))]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowParaSelect
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: [
+                                              {
+                                                value: "0",
+                                                label: "stir after"
+                                              },
+                                              {
+                                                value: "1",
+                                                label: "stir before"
+                                              }
+                                            ],
+                                            value: recipe.para
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "para",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "120px" } },
+                                  [
+                                    recipe.isShowAct
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: _vm.optionActs,
+                                            value: recipe.act1
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "act1",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowActInput
+                                      ? _c("CInput", {
+                                          attrs: {
+                                            type: "number",
+                                            description: "delay sec"
+                                          },
+                                          model: {
+                                            value: recipe.act1,
+                                            callback: function($$v) {
+                                              _vm.$set(recipe, "act1", $$v)
                                             },
-                                            [_vm._v("-")]
-                                          )
-                                        : _vm._e()
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ])
-                      })
+                                            expression: "recipe.act1"
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "120px" } },
+                                  [
+                                    recipe.isShowAct
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: _vm.optionActs,
+                                            value: recipe.act2
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "act2",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowActInput
+                                      ? _c("CInput", {
+                                          attrs: {
+                                            type: "number",
+                                            description: "stir sec"
+                                          },
+                                          model: {
+                                            value: recipe.act2,
+                                            callback: function($$v) {
+                                              _vm.$set(recipe, "act2", $$v)
+                                            },
+                                            expression: "recipe.act2"
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "120px" } },
+                                  [
+                                    recipe.isShowAct
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: _vm.optionActs,
+                                            value: recipe.act3
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "act3",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowActInput
+                                      ? _c("CInput", {
+                                          attrs: {
+                                            type: "number",
+                                            description: "stop sec"
+                                          },
+                                          model: {
+                                            value: recipe.act3,
+                                            callback: function($$v) {
+                                              _vm.$set(recipe, "act3", $$v)
+                                            },
+                                            expression: "recipe.act3"
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "100px" } },
+                                  [
+                                    _vm.isShowSub
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            attrs: {
+                                              color: "danger",
+                                              variant: "outline"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.sub(index)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("CIcon", {
+                                              attrs: { name: "cil-minus" }
+                                            })
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ])
+                            })
+                          ],
+                          2
+                        )
+                      ])
                     ],
-                    2
+                    1
                   ),
                   _vm._v(" "),
                   _c(
