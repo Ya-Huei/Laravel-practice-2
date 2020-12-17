@@ -1,0 +1,9 @@
+{
+    "recipes":{
+        "title": "用戶資訊",
+        "field_name": "用戶ID",
+        "field_firm": "帳號",
+        "field_registered": "註冊時間",
+        "field_operate": "操作"
+    }
+}

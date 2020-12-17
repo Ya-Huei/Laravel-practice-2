@@ -128,10 +128,12 @@
             color="primary"
             @click="update()"
           >
-            <span v-if="isEditedRecipe">Save</span>
+            <span v-if="isEditedRecipe"><CIcon name="cil-pencil"/></span>
             <CSpinner v-if="!isEditedRecipe" color="info" size="sm" />
           </CButton>
-          <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
+          <CButton color="danger" class="ml-2" @click="goBack"
+            ><CIcon name="cil-action-undo"
+          /></CButton>
         </CCardFooter>
       </CCard>
     </CCol>

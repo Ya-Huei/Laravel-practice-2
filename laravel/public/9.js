@@ -313,6 +313,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -902,7 +904,11 @@ var render = function() {
                     },
                     [
                       _vm.isEditedRecipe
-                        ? _c("span", [_vm._v("Save")])
+                        ? _c(
+                            "span",
+                            [_c("CIcon", { attrs: { name: "cil-pencil" } })],
+                            1
+                          )
                         : _vm._e(),
                       _vm._v(" "),
                       !_vm.isEditedRecipe
@@ -921,7 +927,8 @@ var render = function() {
                       attrs: { color: "danger" },
                       on: { click: _vm.goBack }
                     },
-                    [_vm._v("Back")]
+                    [_c("CIcon", { attrs: { name: "cil-action-undo" } })],
+                    1
                   )
                 ],
                 1

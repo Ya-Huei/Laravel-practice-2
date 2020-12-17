@@ -10,8 +10,8 @@
               </CCol>
               <CCol col="6" class="d-flex justify-content-end">
                 <CButton color="primary" @click="createRecipe()"
-                  >Create Recipe</CButton
-                >
+                  ><CIcon name="cil-plus"
+                /></CButton>
               </CCol>
             </CRow>
           </CCardHeader>
@@ -21,19 +21,19 @@
               striped
               :items="items"
               :fields="fields"
-              :items-per-page="6"
+              :items-per-page="25"
               pagination
             >
               <template #operate="{item}">
                 <td>
                   <CButton color="primary" @click="editRecipe(item.id)"
-                    >Edit</CButton
-                  >
+                    ><CIcon name="cil-pencil"
+                  /></CButton>
                   <CButton
                     color="success"
                     @click="exportRecipe(item.recipe, item.name)"
-                    >Export</CButton
-                  >
+                    ><CIcon name="cil-cloud-download"
+                  /></CButton>
                 </td>
               </template>
             </CDataTable>
@@ -54,7 +54,6 @@ export default {
       items: [],
       fields: [],
       currentPage: 1,
-      perPage: 6,
       totalRows: 0,
     };
   },
@@ -100,11 +99,11 @@ export default {
     getFields() {
       let self = this;
       if (localStorage.getItem("user_firm") !== "null") {
-        self.fields = ["id", "name", "registered", "updated", "operate"];
+        self.fields = ["id", "name", "registered", "operate"];
         self.highestRole = "firm owner";
         return false;
       }
-      self.fields = ["id", "firm", "name", "registered", "updated", "operate"];
+      self.fields = ["id", "firm", "name", "registered", "operate"];
       self.highestRole = "admin";
     },
     getRecipes() {

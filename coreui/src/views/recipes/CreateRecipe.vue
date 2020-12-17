@@ -128,10 +128,12 @@
             color="primary"
             @click="store()"
           >
-            <span v-if="isCreatedRecipe">Create</span>
+            <span v-if="isCreatedRecipe"><CIcon name="cil-save"/></span>
             <CSpinner v-if="!isCreatedRecipe" color="info" size="sm" />
           </CButton>
-          <CButton color="danger" class="ml-2" @click="goBack">Back</CButton>
+          <CButton color="danger" class="ml-2" @click="goBack"
+            ><CIcon name="cil-action-undo"
+          /></CButton>
         </CCardFooter>
       </CCard>
     </CCol>

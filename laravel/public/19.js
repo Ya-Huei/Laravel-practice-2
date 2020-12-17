@@ -134,7 +134,6 @@ __webpack_require__.r(__webpack_exports__);
       items: [],
       fields: [],
       currentPage: 1,
-      perPage: 6,
       totalRows: 0
     };
   },
@@ -187,12 +186,12 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
 
       if (localStorage.getItem("user_firm") !== "null") {
-        self.fields = ["id", "name", "registered", "updated", "operate"];
+        self.fields = ["id", "name", "registered", "operate"];
         self.highestRole = "firm owner";
         return false;
       }
 
-      self.fields = ["id", "firm", "name", "registered", "updated", "operate"];
+      self.fields = ["id", "firm", "name", "registered", "operate"];
       self.highestRole = "admin";
     },
     getRecipes: function getRecipes() {
@@ -271,7 +270,8 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("Create Recipe")]
+                                [_c("CIcon", { attrs: { name: "cil-plus" } })],
+                                1
                               )
                             ],
                             1
@@ -292,7 +292,7 @@ var render = function() {
                           striped: "",
                           items: _vm.items,
                           fields: _vm.fields,
-                          "items-per-page": 6,
+                          "items-per-page": 25,
                           pagination: ""
                         },
                         scopedSlots: _vm._u([
@@ -314,7 +314,12 @@ var render = function() {
                                           }
                                         }
                                       },
-                                      [_vm._v("Edit")]
+                                      [
+                                        _c("CIcon", {
+                                          attrs: { name: "cil-pencil" }
+                                        })
+                                      ],
+                                      1
                                     ),
                                     _vm._v(" "),
                                     _c(
@@ -330,7 +335,12 @@ var render = function() {
                                           }
                                         }
                                       },
-                                      [_vm._v("Export")]
+                                      [
+                                        _c("CIcon", {
+                                          attrs: { name: "cil-cloud-download" }
+                                        })
+                                      ],
+                                      1
                                     )
                                   ],
                                   1
