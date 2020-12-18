@@ -64,7 +64,7 @@ class RecipesController extends Controller
         $result = implode(",", $recipeStep);
         
         $recipe = new Recipe();
-        $recipe->name = $request->name;
+        $recipe->name = $request->recipeName;
         $recipe->recipe = $result;
         $recipe->firm_id = auth()->user()->firm_id;
         $recipe->save();
@@ -103,7 +103,7 @@ class RecipesController extends Controller
         }
         $result = implode(",", $recipeStep);
         
-        $recipe->name = $request->name;
+        $recipe->name = $request->recipeName;
         $recipe->recipe = $result;
         $recipe->save();
     }

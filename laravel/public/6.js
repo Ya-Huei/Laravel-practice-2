@@ -1,70 +1,34 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
 
-/***/ "../coreui/src/views/devices/RepairDevice.vue":
-/*!****************************************************!*\
-  !*** ../coreui/src/views/devices/RepairDevice.vue ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "../coreui/node_modules/array-move/index.js":
+/*!**************************************************!*\
+  !*** ../coreui/node_modules/array-move/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RepairDevice.vue?vue&type=template&id=7b60945f& */ "../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&");
-/* harmony import */ var _RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RepairDevice.vue?vue&type=script&lang=js& */ "../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
+const arrayMoveMutate = (array, from, to) => {
+	const startIndex = from < 0 ? array.length + from : from;
 
+	if (startIndex >= 0 && startIndex < array.length) {
+		const endIndex = to < 0 ? array.length + to : to;
 
+		const [item] = array.splice(from, 1);
+		array.splice(endIndex, 0, item);
+	}
+};
 
-/* normalize component */
+const arrayMove = (array, from, to) => {
+	array = [...array];
+	arrayMoveMutate(array, from, to);
+	return array;
+};
 
-var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "coreui/src/views/devices/RepairDevice.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./RepairDevice.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&":
-/*!***********************************************************************************!*\
-  !*** ../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f& ***!
-  \***********************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./RepairDevice.vue?vue&type=template&id=7b60945f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_RepairDevice_vue_vue_type_template_id_7b60945f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
+module.exports = arrayMove;
+module.exports.mutate = arrayMoveMutate;
 
 
 /***/ }),
@@ -119,9 +83,120 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js&":
+/***/ "../coreui/src/views/recipes/CreateRecipe.vue":
+/*!****************************************************!*\
+  !*** ../coreui/src/views/recipes/CreateRecipe.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateRecipe.vue?vue&type=template&id=30540b7e& */ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&");
+/* harmony import */ var _CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateRecipe.vue?vue&type=script&lang=js& */ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../laravel/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_laravel_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "coreui/src/views/recipes/CreateRecipe.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/babel-loader/lib??ref--4-0!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRecipe.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_laravel_node_modules_babel_loader_lib_index_js_ref_4_0_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&":
+/*!***********************************************************************************!*\
+  !*** ../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../laravel/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../laravel/node_modules/vue-loader/lib??vue-loader-options!./CreateRecipe.vue?vue&type=template&id=30540b7e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _laravel_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_laravel_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRecipe_vue_vue_type_template_id_30540b7e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    formResponseFormat: function formResponseFormat(error) {
+      var messages = [];
+
+      if (typeof error.response.data.errors == 'undefined') {
+        messages.push("error");
+        return messages;
+      }
+
+      for (var _i = 0, _Object$entries = Object.entries(error.response.data.errors); _i < _Object$entries.length; _i++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            key = _Object$entries$_i[0],
+            value = _Object$entries$_i[1];
+
+        messages.push(value[0]);
+      }
+
+      return messages;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/RepairDevice.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=script&lang=js& ***!
   \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -170,113 +245,373 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"], location],
-  name: "EditUser",
+  mixins: [_mixins_Format_vue__WEBPACK_IMPORTED_MODULE_1__["default"]],
+  name: "CreateRecipe",
   data: function data() {
     return {
-      device: {
-        serial_no: ""
-      },
-      reason: "",
+      name: "",
+      recipes: [{
+        step: "3",
+        para: "0",
+        act1: "0",
+        act2: "0",
+        act3: "0",
+        unit: "L",
+        isShowPara: true,
+        isShowAct: true,
+        isShowActInput: false,
+        isShowParaSelect: false
+      }],
       messages: [],
       horizontal: {
         label: "col-3",
         input: "col-9"
       },
-      optionPermissions: [],
-      isRepairedDevice: true,
+      optionSteps: [],
+      optionActs: [],
+      isShowSub: false,
+      count: 1,
+      maxStep: 50,
+      isShowAdd: true,
+      isCreatedRecipe: true,
       showMessage: false
     };
   },
   methods: {
+    up: function up(index) {
+      var self = this;
+
+      var arrayMove = __webpack_require__(/*! array-move */ "../coreui/node_modules/array-move/index.js");
+
+      if (index - 1 < 0) {
+        return false;
+      }
+
+      self.recipes = arrayMove(self.recipes, index, index - 1);
+    },
+    down: function down(index) {
+      var self = this;
+
+      var arrayMove = __webpack_require__(/*! array-move */ "../coreui/node_modules/array-move/index.js");
+
+      if (index + 1 > self.recipes.length - 1) {
+        return false;
+      }
+
+      self.recipes = arrayMove(self.recipes, index, index + 1);
+    },
+    sub: function sub(index) {
+      var self = this;
+      self.recipes.splice(index, 1);
+
+      if (self.recipes.length === 1) {
+        self.isShowSub = false;
+      }
+
+      self.count--;
+
+      if (self.count < self.maxStep) {
+        self.isShowAdd = true;
+      }
+    },
+    add: function add() {
+      var self = this;
+      var recipe = {
+        step: "0",
+        para: "",
+        act1: "0",
+        act2: "0",
+        act3: "0",
+        unit: "",
+        isShowPara: false,
+        isShowAct: false,
+        isShowActInput: false,
+        isShowParaSelect: false
+      };
+      self.recipes.push(recipe);
+      self.isShowSub = true;
+      self.count++;
+
+      if (self.count >= self.maxStep) {
+        self.isShowAdd = false;
+      }
+    },
+    checkPara: function checkPara(index) {
+      var self = this;
+      var value = self.recipes[index].para;
+      var unit = self.recipes[index].unit;
+      var regex = /^(0|\+?[1-9][0-9]*)$/;
+      value = !regex.test(value) || value < 0 ? 0 : value;
+
+      switch (unit) {
+        case "L":
+          value = value > 24 ? 24 : value;
+          break;
+
+        case "℃":
+        case "%":
+          value = value > 100 ? 100 : value;
+          break;
+
+        case "sec":
+          value = value > 7200 ? 7200 : value;
+          break;
+      }
+
+      self.recipes[index].para = value;
+    },
+    check: function check(index) {
+      var self = this;
+      self.recipes[index].act1 = self.checkValue(self.recipes[index].act1, null);
+      self.recipes[index].act2 = self.checkValue(self.recipes[index].act2, null);
+      self.recipes[index].act3 = self.checkValue(self.recipes[index].act3, null);
+      self.recipes[index].para = self.checkValue(self.recipes[index].para, self.recipes[index].unit);
+    },
+    checkValue: function checkValue(value, unit) {
+      var regex = /^(0|\+?[1-9][0-9]*)$/;
+      value = !regex.test(value) || value < 0 ? 0 : value;
+
+      if (unit === null) {
+        value = value > 7200 ? 7200 : value;
+        return value;
+      }
+
+      switch (unit) {
+        case "L":
+          value = value > 24 ? 24 : value;
+          break;
+
+        case "℃":
+        case "%":
+          value = value > 100 ? 100 : value;
+          break;
+
+        case "sec":
+          value = value > 7200 ? 7200 : value;
+          break;
+      }
+
+      value = value > 7200 ? 7200 : value;
+      return value;
+    },
+    resetRecipe: function resetRecipe(index) {
+      var self = this;
+      self.recipes[index].para = "";
+      self.recipes[index].isShowPara = true;
+      self.recipes[index].isShowAct = true;
+      self.recipes[index].isShowParaSelect = false;
+      self.recipes[index].isShowActInput = false;
+    },
+    loadDetail: function loadDetail(recipesIndex) {
+      var self = this;
+      var option = [];
+      self.optionSteps.forEach(function (item, index, array) {
+        if (item.value === self.recipes[recipesIndex].step) {
+          option = item;
+        }
+      });
+      self.resetRecipe(recipesIndex);
+      self.recipes[recipesIndex].unit = option.unit;
+
+      switch (option.value) {
+        case "0":
+          self.recipes[recipesIndex].isShowPara = false;
+          self.recipes[recipesIndex].isShowAct = false;
+          break;
+
+        case "1":
+          self.recipes[recipesIndex].isShowPara = false;
+          break;
+
+        case "100":
+          self.recipes[recipesIndex].isShowPara = false;
+          self.recipes[recipesIndex].isShowParaSelect = true;
+          self.recipes[recipesIndex].isShowAct = false;
+          self.recipes[recipesIndex].isShowActInput = true;
+          self.recipes[recipesIndex].act1 = "0";
+          self.recipes[recipesIndex].act2 = "0";
+          self.recipes[recipesIndex].act3 = "0";
+          break;
+      }
+    },
     goBack: function goBack() {
       this.$router.go(-1);
     },
-    update: function update() {
+    store: function store() {
       var self = this;
-      self.isRepairedDevice = false;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/devices/" + self.$route.params.id + "/saveRepair?token=" + localStorage.getItem("api_token"), {
-        _method: "POST",
-        reason: self.reason
+      self.isCreatedRecipe = false;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/recipes?token=" + localStorage.getItem("api_token"), {
+        recipeName: self.name,
+        recipes: self.recipes
       }).then(function (response) {
         self.goBack();
       })["catch"](function (error) {
-        self.isRepairedDevice = true;
+        self.isCreatedRecipe = true;
         self.messages = self.formResponseFormat(error);
         self.showMessage = true;
       });
     },
     getInfo: function getInfo() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/devices/" + self.$route.params.id + "/repair?token=" + localStorage.getItem("api_token")).then(function (response) {
-        self.setDefaultData(response);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/recipes/create?token=" + localStorage.getItem("api_token")).then(function (response) {
+        self.optionSteps = response.data.steps;
+        self.optionActs = response.data.actions;
       })["catch"](function (error) {
         console.log(error);
         self.$router.push({
           path: "/login"
         });
       });
-    },
-    setDefaultData: function setDefaultData(response) {
-      var self = this;
-      self.device.serial_no = response.data.serial_no;
     }
   },
   mounted: function mounted() {
     this.getInfo();
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/mixins/Format.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  methods: {
-    formResponseFormat: function formResponseFormat(error) {
-      var messages = [];
-
-      if (typeof error.response.data.errors == 'undefined') {
-        messages.push("error");
-        return messages;
-      }
-
-      for (var _i = 0, _Object$entries = Object.entries(error.response.data.errors); _i < _Object$entries.length; _i++) {
-        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-            key = _Object$entries$_i[0],
-            value = _Object$entries$_i[1];
-
-        messages.push(value[0]);
-      }
-
-      return messages;
+  },
+  computed: {
+    title: function title() {
+      console.log("here");
+      return this.$t("route.recipe.index");
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/devices/RepairDevice.vue?vue&type=template&id=7b60945f& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!../coreui/src/views/recipes/CreateRecipe.vue?vue&type=template&id=30540b7e& ***!
   \*****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -299,7 +634,9 @@ var render = function() {
           _c(
             "CCard",
             [
-              _c("CCardHeader", [_c("h4", [_vm._v("Repair Device")])]),
+              _c("CCardHeader", [
+                _c("h4", [_vm._v(_vm._s(_vm.$t("createRecipes.title")))])
+              ]),
               _vm._v(" "),
               _c(
                 "CCardBody",
@@ -329,29 +666,438 @@ var render = function() {
                     [
                       _c("CInput", {
                         attrs: {
-                          label: "Serial_no",
-                          horizontal: "",
-                          disabled: ""
+                          description: _vm.$t(
+                            "createRecipes.inputNameDescription"
+                          ),
+                          label: _vm.$t("createRecipes.inputName")
                         },
                         model: {
-                          value: _vm.device.serial_no,
+                          value: _vm.name,
                           callback: function($$v) {
-                            _vm.$set(_vm.device, "serial_no", $$v)
+                            _vm.name = $$v
                           },
-                          expression: "device.serial_no"
+                          expression: "name"
                         }
                       }),
                       _vm._v(" "),
-                      _c("CTextarea", {
-                        attrs: { label: "Reason", rows: "5", horizontal: "" },
-                        model: {
-                          value: _vm.reason,
-                          callback: function($$v) {
-                            _vm.reason = $$v
-                          },
-                          expression: "reason"
-                        }
-                      })
+                      _c("div", { staticClass: "overflow-auto" }, [
+                        _c(
+                          "table",
+                          { staticClass: "table table-borderless" },
+                          [
+                            _c(
+                              "tr",
+                              { staticClass: "text-center border-bottom" },
+                              [
+                                _c("th", { attrs: { colspan: "4" } }, [
+                                  _c("h5", [
+                                    _vm._v(
+                                      _vm._s(_vm.$t("createRecipes.mainActive"))
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { attrs: { colspan: "4" } }, [
+                                  _c("h5", [
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.$t("createRecipes.attachActive")
+                                      )
+                                    )
+                                  ])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.recipes, function(recipe, index) {
+                              return _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    class: {
+                                      "text-right": index === 0
+                                    },
+                                    staticStyle: { width: "83px" }
+                                  },
+                                  [
+                                    _c(
+                                      "CButtonGroup",
+                                      [
+                                        _vm.isShowSub && index !== 0
+                                          ? _c(
+                                              "CButton",
+                                              {
+                                                attrs: {
+                                                  color: "info",
+                                                  variant: "outline"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.up(index)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("CIcon", {
+                                                  attrs: {
+                                                    name: "cil-arrow-top"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.isShowSub &&
+                                        index < _vm.recipes.length - 1
+                                          ? _c(
+                                              "CButton",
+                                              {
+                                                attrs: {
+                                                  color: "info",
+                                                  variant: "outline"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.down(index)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("CIcon", {
+                                                  attrs: {
+                                                    name: "cil-arrow-bottom"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "80px" } },
+                                  [
+                                    _vm._v(
+                                      "\n                  " +
+                                        _vm._s(_vm.$t("createRecipes.step")) +
+                                        _vm._s("" + (index + 1)) +
+                                        "\n                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "150px" } },
+                                  [
+                                    _c("CSelect", {
+                                      attrs: {
+                                        options: _vm.optionSteps,
+                                        value: recipe.step
+                                      },
+                                      on: {
+                                        "update:value": function($event) {
+                                          return _vm.$set(
+                                            recipe,
+                                            "step",
+                                            $event
+                                          )
+                                        },
+                                        change: function($event) {
+                                          return _vm.loadDetail(index)
+                                        }
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "border-right",
+                                    staticStyle: { "min-width": "150px" }
+                                  },
+                                  [
+                                    recipe.isShowPara
+                                      ? _c("CInput", {
+                                          attrs: {
+                                            type: "number",
+                                            appendHtml: ""
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.check(index)
+                                            }
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "append-content",
+                                                fn: function() {
+                                                  return [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.$t(
+                                                          "createRecipes." +
+                                                            recipe.unit
+                                                        )
+                                                      )
+                                                    )
+                                                  ]
+                                                },
+                                                proxy: true
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          ),
+                                          model: {
+                                            value: recipe.para,
+                                            callback: function($$v) {
+                                              _vm.$set(recipe, "para", $$v)
+                                            },
+                                            expression: "recipe.para"
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowParaSelect
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: [
+                                              {
+                                                value: "0",
+                                                label: "stir after"
+                                              },
+                                              {
+                                                value: "1",
+                                                label: "stir before"
+                                              }
+                                            ],
+                                            value: recipe.para
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "para",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "120px" } },
+                                  [
+                                    recipe.isShowAct
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: _vm.optionActs,
+                                            value: recipe.act1
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "act1",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowActInput
+                                      ? _c("CInput", {
+                                          attrs: {
+                                            type: "number",
+                                            description: "delay sec"
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.check(index)
+                                            }
+                                          },
+                                          model: {
+                                            value: recipe.act1,
+                                            callback: function($$v) {
+                                              _vm.$set(recipe, "act1", $$v)
+                                            },
+                                            expression: "recipe.act1"
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "120px" } },
+                                  [
+                                    recipe.isShowAct
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: _vm.optionActs,
+                                            value: recipe.act2
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "act2",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowActInput
+                                      ? _c("CInput", {
+                                          attrs: {
+                                            type: "number",
+                                            description: "stir sec"
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.check(index)
+                                            }
+                                          },
+                                          model: {
+                                            value: recipe.act2,
+                                            callback: function($$v) {
+                                              _vm.$set(recipe, "act2", $$v)
+                                            },
+                                            expression: "recipe.act2"
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "120px" } },
+                                  [
+                                    recipe.isShowAct
+                                      ? _c("CSelect", {
+                                          attrs: {
+                                            options: _vm.optionActs,
+                                            value: recipe.act3
+                                          },
+                                          on: {
+                                            "update:value": function($event) {
+                                              return _vm.$set(
+                                                recipe,
+                                                "act3",
+                                                $event
+                                              )
+                                            }
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    recipe.isShowActInput
+                                      ? _c("CInput", {
+                                          attrs: {
+                                            type: "number",
+                                            description: "stop sec"
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              return _vm.check(index)
+                                            }
+                                          },
+                                          model: {
+                                            value: recipe.act3,
+                                            callback: function($$v) {
+                                              _vm.$set(recipe, "act3", $$v)
+                                            },
+                                            expression: "recipe.act3"
+                                          }
+                                        })
+                                      : _vm._e()
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticStyle: { "min-width": "100px" } },
+                                  [
+                                    _vm.isShowSub
+                                      ? _c(
+                                          "CButton",
+                                          {
+                                            attrs: {
+                                              color: "danger",
+                                              variant: "outline"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.sub(index)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("CIcon", {
+                                              attrs: { name: "cil-minus" }
+                                            })
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              ])
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "CRow",
+                    { staticClass: "d-flex justify-content-center" },
+                    [
+                      _vm.isShowAdd
+                        ? _c(
+                            "CButton",
+                            {
+                              attrs: { color: "info", variant: "outline" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.add()
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "+ " + _vm._s(_vm.$t("createRecipes.addStep"))
+                              )
+                            ]
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -361,27 +1107,31 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "CCardFooter",
-                { staticClass: "text-right" },
+                { staticClass: "d-flex justify-content-end" },
                 [
                   _c(
                     "CButton",
                     {
                       attrs: {
-                        disabled: !_vm.isRepairedDevice,
+                        disabled: !_vm.isCreatedRecipe,
                         color: "primary"
                       },
                       on: {
                         click: function($event) {
-                          return _vm.update()
+                          return _vm.store()
                         }
                       }
                     },
                     [
-                      _vm.isRepairedDevice
-                        ? _c("span", [_vm._v("Save")])
+                      _vm.isCreatedRecipe
+                        ? _c(
+                            "span",
+                            [_c("CIcon", { attrs: { name: "cil-save" } })],
+                            1
+                          )
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.isRepairedDevice
+                      !_vm.isCreatedRecipe
                         ? _c("CSpinner", {
                             attrs: { color: "info", size: "sm" }
                           })
@@ -397,7 +1147,8 @@ var render = function() {
                       attrs: { color: "danger" },
                       on: { click: _vm.goBack }
                     },
-                    [_vm._v("Back")]
+                    [_c("CIcon", { attrs: { name: "cil-action-undo" } })],
+                    1
                   )
                 ],
                 1

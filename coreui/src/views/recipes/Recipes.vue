@@ -6,7 +6,7 @@
           <CCardHeader>
             <CRow>
               <CCol col="6">
-                <h4>Recipes</h4>
+                <h4>{{ $t("recipes.title") }}</h4>
               </CCol>
               <CCol col="6" class="d-flex justify-content-end">
                 <CButton color="primary" @click="createRecipe()"
@@ -145,12 +145,21 @@ export default {
     getFields() {
       let self = this;
       if (localStorage.getItem("user_firm") !== "null") {
-        self.fields = ["id", "name", "registered", "operate"];
-        self.highestRole = "firm owner";
+        self.fields = [
+          { key: "id", label: this.$t("recipes.fieldId") },
+          { key: "name", label: this.$t("recipes.fieldName") },
+          { key: "registered", label: this.$t("recipes.fieldRegistered") },
+          { key: "operate", label: this.$t("recipes.fieldOperate") },
+        ];
         return false;
       }
-      self.fields = ["id", "firm", "name", "registered", "operate"];
-      self.highestRole = "admin";
+      self.fields = [
+        { key: "id", label: this.$t("recipes.fieldId") },
+        { key: "firm", label: this.$t("recipes.fieldFirm") },
+        { key: "name", label: this.$t("recipes.fieldName") },
+        { key: "registered", label: this.$t("recipes.fieldRegistered") },
+        { key: "operate", label: this.$t("recipes.fieldOperate") },
+      ];
     },
     getRecipes() {
       let self = this;

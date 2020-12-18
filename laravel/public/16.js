@@ -206,10 +206,12 @@ var render = function() {
                           }
                         },
                         [
-                          _c("h1", [_vm._v("Login")]),
+                          _c("h1", [
+                            _vm._v(_vm._s(_vm.$t("base.login.index")))
+                          ]),
                           _vm._v(" "),
                           _c("p", { staticClass: "text-muted" }, [
-                            _vm._v("Sign In to your account")
+                            _vm._v(_vm._s(_vm.$t("base.login.description")))
                           ]),
                           _vm._v(" "),
                           _c("p", { staticClass: "text-danger" }, [
@@ -219,7 +221,7 @@ var render = function() {
                           _c("CInput", {
                             attrs: {
                               prependHtml: "<i class='cui-user'></i>",
-                              placeholder: "Username",
+                              placeholder: _vm.$t("base.login.username"),
                               autocomplete: "username email"
                             },
                             scopedSlots: _vm._u([
@@ -245,7 +247,7 @@ var render = function() {
                           _c("CInput", {
                             attrs: {
                               prependHtml: "<i class='cui-lock-locked'></i>",
-                              placeholder: "Password",
+                              placeholder: _vm.$t("base.login.password"),
                               type: "password",
                               autocomplete: "curent-password"
                             },
@@ -290,7 +292,11 @@ var render = function() {
                                         color: "primary"
                                       }
                                     },
-                                    [_vm._v("Login")]
+                                    [
+                                      _vm._v(
+                                        _vm._s(_vm.$t("base.login.button"))
+                                      )
+                                    ]
                                   )
                                 ],
                                 1

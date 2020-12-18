@@ -33,7 +33,7 @@ class RecipeUpdateFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'name'       => 'required|string|max:255',
+            'recipeName'       => 'required|string|max:255',
             'recipes'    => 'required|array',
         ];
     }

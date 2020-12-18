@@ -3,7 +3,7 @@
     <CCol col="12" lg="12">
       <CCard>
         <CCardHeader>
-          <h4>Edit Recipe</h4>
+          <h4>{{ $t("editRecipes.title") }}</h4>
         </CCardHeader>
         <CCardBody>
           <span v-if="showMessage">
@@ -13,18 +13,18 @@
           </span>
           <CForm>
             <CInput
-              description="Enter your recipe name"
-              label="Name"
+              :description="$t('editRecipes.inputNameDescription')"
+              :label="$t('editRecipes.inputName')"
               v-model="name"
             />
             <div class="overflow-auto">
               <table class="table table-borderless">
                 <tr class="text-center border-bottom">
                   <th colspan="4">
-                    <h5>Main Active</h5>
+                    <h5>{{ $t("editRecipes.mainActive") }}</h5>
                   </th>
                   <th colspan="4">
-                    <h5>Attach Active</h5>
+                    <h5>{{ $t("editRecipes.attachActive") }}</h5>
                   </th>
                 </tr>
                 <tr v-for="(recipe, index) in recipes">
@@ -51,8 +51,8 @@
                       /></CButton>
                     </CButtonGroup>
                   </td>
-                  <td style="min-width: 60px;">
-                    {{ `Step${index + 1}` }}
+                  <td style="min-width: 80px;">
+                    {{ $t("editRecipes.step") }}{{ `${index + 1}` }}
                   </td>
                   <td style="min-width: 150px;">
                     <CSelect
@@ -62,21 +62,17 @@
                     />
                   </td>
                   <td class="border-right" style="min-width: 150px;">
-                    <div class="input-group" v-if="recipe.isShowPara">
-                      <input
-                        type="number"
-                        class="form-control"
-                        v-model="recipe.para"
-                        @change="check(index)"
-                      />
-                      <div class="input-group-append">
-                        <span
-                          class="input-group-text align-center"
-                          style="min-width: 50px;"
-                          >{{ recipe.unit }}</span
-                        >
-                      </div>
-                    </div>
+                    <CInput
+                      v-if="recipe.isShowPara"
+                      type="number"
+                      v-model="recipe.para"
+                      appendHtml=""
+                      @change="check(index)"
+                    >
+                      <template #append-content>{{
+                        $t("createRecipes." + recipe.unit)
+                      }}</template>
+                    </CInput>
                     <CSelect
                       :options="[
                         { value: '0', label: 'stir after' },
@@ -147,7 +143,7 @@
               variant="outline"
               @click="add()"
               v-if="isShowAdd"
-              >+ Add Step</CButton
+              >+ {{ $t("editRecipes.addStep") }}</CButton
             >
           </CRow>
         </CCardBody>
@@ -359,7 +355,7 @@ export default {
             localStorage.getItem("api_token"),
           {
             _method: "PUT",
-            name: self.name,
+            recipeName: self.name,
             recipes: self.recipes,
           }
         )

@@ -1,9 +1,43 @@
 {
-    "recipes":{
-        "title": "用戶資訊",
-        "field_name": "用戶ID",
-        "field_firm": "帳號",
-        "field_registered": "註冊時間",
-        "field_operate": "操作"
+    "base": {
+        "hello": "您好",
+        "logout": "登出",
+        "login": {
+            "index": "登入",
+            "description": "輸入您的帳號",
+            "username": "帳號",
+            "password": "密碼",
+            "button": "登入"
+        }
+    },
+    "recipes": {
+        "title": "配方管理",
+        "fieldId": "配方ID",
+        "fieldFirm": "公司名稱",
+        "fieldName": "配方名稱",
+        "fieldRegistered": "創建時間",
+        "fieldOperate": "操作"
+    },
+    "createRecipes": {
+        "title": "創建配方",
+        "inputName": "配方名稱",
+        "inputNameDescription": "請輸入您的配方名稱",
+        "mainActive": "主要動作",
+        "attachActive": "附屬動作",
+        "step": "步驟",
+        "addStep": "新增步驟",
+        "L" : "公升",
+        "℃" : "度C",
+        "sec" : "秒",
+        "%" : "百分比"
+    },
+    "editRecipes": {
+        "title": "編輯配方",
+        "inputName": "配方名稱",
+        "inputNameDescription": "請輸入您的配方名稱",
+        "mainActive": "主要動作",
+        "attachActive": "附屬動作",
+        "step": "步驟",
+        "addStep": "新增步驟"
     }
 }

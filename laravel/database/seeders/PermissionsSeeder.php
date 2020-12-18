@@ -61,13 +61,13 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
-        $this->insertLink('admin,firm owner,location owner', 'Users', '/users');
-        $this->insertLink('admin,firm owner,location owner', 'Roles', '/roles');
-        $this->insertLink('admin,firm owner,location owner', 'Devices', '/devices');
-        $this->insertLink('admin,firm owner,location owner', 'Repairs', '/repairs');
-        $this->insertLink('admin,firm owner,location owner', 'OTA', '/otas');
-        $this->insertLink('admin,firm owner,location owner', 'Recipes', '/recipes');
-        $this->insertLink('admin,firm owner,location owner', 'Firmware', '/firmware');
+        $this->insertLink('admin,firm owner,location owner', 'Users', '/users', 'cil-user');
+        $this->insertLink('admin,firm owner,location owner', 'Roles', '/roles', 'cil-lock-locked');
+        $this->insertLink('admin,firm owner,location owner', 'Devices', '/devices', 'cil-devices');
+        $this->insertLink('admin,firm owner,location owner', 'Repairs', '/repairs', 'cil-bug');
+        $this->insertLink('admin,firm owner,location owner', 'OTA', '/otas', 'cil-cloud-download');
+        $this->insertLink('admin,firm owner,location owner', 'Recipes', '/recipes', 'cil-book');
+        $this->insertLink('admin,firm owner,location owner', 'Firmware', '/firmware', 'cil-code');
         $this->joinAllByTransaction();
     }
 }

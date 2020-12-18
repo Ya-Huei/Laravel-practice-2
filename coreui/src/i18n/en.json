@@ -1,4 +1,43 @@
 {
-    "title": "MIS footmark",
-    "description": "IT learn"
+    "base": {
+        "hello": "Hello",
+        "logout": "Logout",
+        "login": {
+            "index": "Login",
+            "description": "Sign In to your account",
+            "username": "Username",
+            "password": "Password",
+            "button": "Login"
+        }
+    },
+    "recipes": {
+        "title": "Recipes",
+        "fieldId": "Id",
+        "fieldFirm": "Firm",
+        "fieldName": "Name",
+        "fieldRegistered": "Registered",
+        "fieldOperate": "Operate"
+    },
+    "createRecipes": {
+        "title": "Create Recipe",
+        "inputName": "Name",
+        "inputNameDescription": "Enter your recipe name",
+        "mainActive": "Main Active",
+        "attachActive": "Attach Active",
+        "step": "Step",
+        "addStep": "Add Step",
+        "L" : "L",
+        "℃" : "℃",
+        "sec" : "sec",
+        "%" : "%"
+    },
+    "editRecipes": {
+        "title": "Edit Recipe",
+        "inputName": "Name",
+        "inputNameDescription": "Enter your recipe name",
+        "mainActive": "Main Active",
+        "attachActive": "Attach Active",
+        "step": "Step",
+        "addStep": "Add Step"
+    }
 }

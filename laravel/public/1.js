@@ -616,10 +616,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'TheHeader',
+  name: "TheHeader",
   data: function data() {
     return {
       loginUser: ""
@@ -631,9 +633,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     logout: function logout() {
       var self = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/logout?token=' + localStorage.getItem("api_token"), {}).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/logout?token=" + localStorage.getItem("api_token"), {}).then(function (response) {
         self.$router.push({
-          path: '/login'
+          path: "/login"
         });
       })["catch"](function (error) {
         console.log(error);
@@ -1087,7 +1089,7 @@ var render = function() {
       _c("CMenu"),
       _vm._v(" "),
       _c("CHeaderNav", { staticClass: "mr-2" }, [
-        _vm._v("Hello, " + _vm._s(_vm.loginUser))
+        _vm._v(_vm._s(_vm.$t("base.hello")) + ", " + _vm._s(_vm.loginUser))
       ]),
       _vm._v(" "),
       _c(
@@ -1109,7 +1111,7 @@ var render = function() {
                 },
                 [
                   _c("CIcon", { attrs: { name: "cil-lock-locked" } }),
-                  _vm._v(" Logout\n      ")
+                  _vm._v(" " + _vm._s(_vm.$t("base.logout")) + "\n      ")
                 ],
                 1
               )
@@ -1117,13 +1119,6 @@ var render = function() {
             1
           )
         ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CSubheader",
-        { staticClass: "px-3" },
-        [_c("CBreadcrumbRouter", { staticClass: "border-0 mb-0" })],
         1
       )
     ],

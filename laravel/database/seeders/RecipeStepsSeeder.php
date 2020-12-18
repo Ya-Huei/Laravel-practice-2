@@ -37,11 +37,6 @@ class RecipeStepsSeeder extends Seeder
             'unit' => '℃'
         ],
         [
-            'value' => '6',
-            'step' => 'Washing', // XX公升水洗
-            'unit' => 'L'
-        ],
-        [
             'value' => '7',
             'step' => 'Washing time', // 水洗XX秒
             'unit' => 'sec'

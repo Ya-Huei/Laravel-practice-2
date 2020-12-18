@@ -12,7 +12,7 @@ class RecipeActionService
         $result = [];
         foreach ($actions as $key => $value) {
             $result[$key]['value'] = strval($value['value']);
-            $result[$key]['label'] = $value['action'];
+            $result[$key]['label'] = trans("recipe-action.action" . $value['value']);
         }
         return $result;
     }

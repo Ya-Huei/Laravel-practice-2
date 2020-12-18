@@ -227,13 +227,38 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
 
       if (localStorage.getItem("user_firm") !== "null") {
-        self.fields = ["id", "name", "registered", "operate"];
-        self.highestRole = "firm owner";
+        self.fields = [{
+          key: "id",
+          label: this.$t("recipes.fieldId")
+        }, {
+          key: "name",
+          label: this.$t("recipes.fieldName")
+        }, {
+          key: "registered",
+          label: this.$t("recipes.fieldRegistered")
+        }, {
+          key: "operate",
+          label: this.$t("recipes.fieldOperate")
+        }];
         return false;
       }
 
-      self.fields = ["id", "firm", "name", "registered", "operate"];
-      self.highestRole = "admin";
+      self.fields = [{
+        key: "id",
+        label: this.$t("recipes.fieldId")
+      }, {
+        key: "firm",
+        label: this.$t("recipes.fieldFirm")
+      }, {
+        key: "name",
+        label: this.$t("recipes.fieldName")
+      }, {
+        key: "registered",
+        label: this.$t("recipes.fieldRegistered")
+      }, {
+        key: "operate",
+        label: this.$t("recipes.fieldOperate")
+      }];
     },
     getRecipes: function getRecipes() {
       var self = this;
@@ -291,7 +316,7 @@ var render = function() {
                         "CRow",
                         [
                           _c("CCol", { attrs: { col: "6" } }, [
-                            _c("h4", [_vm._v("Recipes")])
+                            _c("h4", [_vm._v(_vm._s(_vm.$t("recipes.title")))])
                           ]),
                           _vm._v(" "),
                           _c(

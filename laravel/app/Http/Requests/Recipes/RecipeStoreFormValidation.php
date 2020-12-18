@@ -24,8 +24,8 @@ class RecipeStoreFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'name'       => 'required|string|max:255',
-            'recipes'    => 'required|array',
+            'recipeName'  => 'required|string|max:255',
+            'recipes'     => 'required|array',
         ];
     }
 }

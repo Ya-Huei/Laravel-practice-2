@@ -5,13 +5,13 @@
         <CCard class="p-4">
           <CCardBody>
             <CForm @submit.prevent="login" method="POST">
-              <h1>Login</h1>
-              <p class="text-muted">Sign In to your account</p>
+              <h1>{{ $t("base.login.index") }}</h1>
+              <p class="text-muted">{{ $t("base.login.description") }}</p>
               <p class="text-danger">{{ message }}</p>
               <CInput
                 v-model="email"
                 prependHtml="<i class='cui-user'></i>"
-                placeholder="Username"
+                :placeholder="$t('base.login.username')"
                 autocomplete="username email"
               >
                 <template #prepend-content><CIcon name="cil-user"/></template>
@@ -19,7 +19,7 @@
               <CInput
                 v-model="password"
                 prependHtml="<i class='cui-lock-locked'></i>"
-                placeholder="Password"
+                :placeholder="$t('base.login.password')"
                 type="password"
                 autocomplete="curent-password"
               >
@@ -29,9 +29,9 @@
               </CInput>
               <CRow>
                 <CCol col="12" class="d-flex justify-content-end">
-                  <CButton type="submit" color="primary" class="px-4"
-                    >Login</CButton
-                  >
+                  <CButton type="submit" color="primary" class="px-4">{{
+                    $t("base.login.button")
+                  }}</CButton>
                 </CCol>
               </CRow>
             </CForm>
